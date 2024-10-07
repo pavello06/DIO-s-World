@@ -26,3 +26,18 @@ DIRECTION_X_RIGHT =  1
 DIRECTION_Y_DOWN  = -1
 DIRECTION_Y_UP    =  1
 ;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
+struct Frames
+  totalFrames  dd ?
+  refsTextures Texture
+ends
+
+struct Animation
+  isInfinite   dd ?
+  maxTimer     dd ?
+  timer        dd ?
+  currentFrame dd ?
+  refFrames    dd ?
+ends
+;-------------------------------------------------------------------------------
