@@ -26,3 +26,21 @@ proc Normalize.NormalizeAll\
         ret
 endp
 ;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
+proc Normalize.NormalizeColor\
+     old
+     
+        stdcall Normalize.NormalizeAll, 0, 255, 0.0, 1.0, [old]
+        
+        ret
+endp
+
+proc Normalize.NormalizeCoordinate\
+     oldMin, oldMax, old
+     
+        stdcall Normalize.NormalizeAll, [oldMin], [oldMax], -1.0, 1.0, [old]
+        
+        ret
+endp
+;-------------------------------------------------------------------------------  
