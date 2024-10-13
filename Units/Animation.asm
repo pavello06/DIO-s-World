@@ -1,3 +1,4 @@
+;-------------------------------------------------------------------------------
 proc Animate.AnimateObject\
      refObject
      
@@ -39,3 +40,30 @@ proc Animate.AnimateObject\
   .exit:            
         ret
 endp
+
+proc Animate.AnimateObjects uses ebx esi,\
+     refObjects
+     
+        mov     ebx, [refObjects] 
+        
+        xor     esi, esi
+        mov     ecx, [ebx + 0]
+  
+  .loop:
+        push    ecx     
+        
+        mov     eax, [ebx + esi + 4]
+        
+        cmp     DWORD [eax + Object.animation.refFrames], NO_ANIMATION
+        je      .endLoop
+        
+        stdcall Animate.AnimateObject, eax
+            
+  .endLoop:                     
+        add     esi, 4
+        pop     ecx                                   
+        loop    .loop
+                    
+        ret
+endp
+;-------------------------------------------------------------------------------
