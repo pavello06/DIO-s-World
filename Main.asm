@@ -4,7 +4,7 @@ entry start
 
 include 'win32a.inc'
 
-include 'Units.inc'
+include 'Units/Units.inc'
 
 section '.text' code readable executable
 
