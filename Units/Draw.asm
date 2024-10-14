@@ -146,7 +146,9 @@ proc Draw.DrawObject uses ebx esi,\
   .invisiblePixel:
         add     [objectPixelX], PIXEL_SIZE
         pop     ecx
-        loop     .xLoop
+        dec     ecx
+        cmp     ecx, 0
+        jne     .xLoop
         
         sub     [objectPixelY], PIXEL_SIZE
         pop     ecx
