@@ -1,3 +1,4 @@
+;-------------------------------------------------------------------------------
 proc Size.FixObject\
      refObject
         
@@ -17,3 +18,25 @@ proc Size.FixObject\
   .exit:            
         ret
 endp
+
+proc Size.FixObjects uses ebx esi,\
+     refObjects
+     
+        mov     ebx, [refObjects] 
+        
+        xor     esi, esi
+        mov     ecx, [ebx + 0]
+  
+  .loop:
+        push    ecx     
+        
+        stdcall Size.FixObject, [ebx + esi + 4]
+            
+  .endLoop:                     
+        add     esi, 4
+        pop     ecx                                   
+        loop    .loop
+                    
+        ret
+endp
+;-------------------------------------------------------------------------------
