@@ -1,0 +1,1 @@
+screen Entity <DECORATION, 0, 0, 0, 0, <0, 0, NO_DRAWING>, <0, 0, 0, NO_ANIMATION>>, 0, 0, FALSE
