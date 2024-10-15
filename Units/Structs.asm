@@ -18,7 +18,7 @@ struct Drawing
   refTexture dd ?
 ends
 
-PIXEL_SIZE_GENERAL = 5
+PIXEL_SIZE = 5
 PIXEL_SIZE_SMALL   = 3
 
 DIRECTION_X_LEFT  = -1

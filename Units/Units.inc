@@ -3,4 +3,4 @@ include 'Draw.asm'
 include 'Normalize.asm'
 include 'Structs.asm'
 
-include 'Textures/Textures.inc'
+include '../Textures/Textures.inc'

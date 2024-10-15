@@ -100,7 +100,7 @@ proc Draw.DrawObject uses ebx esi,\
   
         mov     eax, [objectPixelX]
         sub     eax, [ebx + Object.x]
-        mov     ecx, PIXEL_SIZE
+        mov     ecx, [ebx + Object.drawing.pixelSize]
         xor     edx, edx
         div     ecx
         xor     edx, edx
@@ -144,13 +144,15 @@ proc Draw.DrawObject uses ebx esi,\
                                 [objectPixelX], [objectPixelY], [xMin], [yMin], [xMax], [yMax]
 
   .invisiblePixel:
-        add     [objectPixelX], PIXEL_SIZE
+        mov     eax, [ebx + Object.drawing.pixelSize]
+        add     [objectPixelX], eax
         pop     ecx
         dec     ecx
         cmp     ecx, 0
         jne     .xLoop
         
-        sub     [objectPixelY], PIXEL_SIZE
+        mov     eax, [ebx + Object.drawing.pixelSize]
+        sub     [objectPixelY], eax
         pop     ecx
         dec     ecx
         cmp     ecx, 0
