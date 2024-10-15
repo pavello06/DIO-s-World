@@ -74,7 +74,10 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglCreateContext, [hdc]
         mov     [hrc], eax
         invoke  wglMakeCurrent, [hdc], [hrc]
-        invoke  GetClientRect, [hwnd], rc       
+        invoke  GetClientRect, [hwnd], rc
+        
+        stdcall Size.FixObject, object1
+               
         xor     eax, eax
         jmp     .exit
         
@@ -85,6 +88,7 @@ proc WindowProc uses ebx esi edi,\
         jmp     .exit
         
   .wmpaint:
+        stdcall Draw.DrawObject, object1, 0, 0, 500, 500
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
         jmp     .exit
@@ -126,6 +130,8 @@ section '.data' data readable writeable
   hrc dd ?
   
   rc RECT
+  
+  object1 Object 0, 10, 10, 1, 1, <10, 1, 1, luckTexture2>, <0, 0, 0, 0, 0>
 
 section '.idata' import data readable writeable
 
