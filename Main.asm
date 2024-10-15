@@ -131,7 +131,7 @@ section '.data' data readable writeable
   
   rc RECT
   
-  object1 Object 0, 10, 10, 1, 1, <10, 1, 1, luckTexture2>, <0, 0, 0, 0, 0>
+  object1 Object 0, 10, 10, 1, 1, <18, 1, 1, standingPlayerTexture1>, <0, 0, 0, 0, 0>
 
 section '.idata' import data readable writeable
 
