@@ -18,7 +18,7 @@ section '.text' code readable executable
         invoke  RegisterClass, wc
         invoke  CreateWindowEx, 0, class, title,\
                                 WS_VISIBLE + WS_OVERLAPPEDWINDOW + WS_CLIPCHILDREN + WS_CLIPSIBLINGS,\ 
-                                100, 100, 600, 600,\ 
+                                100, 100, 1600, 600,\ 
                                 NULL, NULL, [wc.hInstance], NULL
                                 
         mov     [hwnd], eax
@@ -88,7 +88,7 @@ proc WindowProc uses ebx esi edi,\
         jmp     .exit
         
   .wmpaint:
-        stdcall Draw.DrawObject, object1, 0, 0, 500, 500
+        stdcall Draw.DrawObject, object1, 0, 0, 1600, 500
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
         jmp     .exit
@@ -131,7 +131,7 @@ section '.data' data readable writeable
   
   rc RECT
   
-  object1 Object 0, 10, 10, 1, 1, <18, 1, 1, standingPlayerTexture1>, <0, 0, 0, 0, 0>
+  object1 Object 0, 0, 0, 20, 1, <5, 1, 1, grassTexture>, <0, 0, 0, 0, 0>
 
 section '.idata' import data readable writeable
 
