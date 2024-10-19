@@ -1,6 +1,6 @@
 ;-------------------------------------------------------------------------------
 proc Normalize.NormalizeAll\
-     oldMin, oldMax, newMin, newMax, old
+     old, oldMin, oldMax, newMin, newMax
         locals
           new dd ?
         endl
@@ -31,15 +31,15 @@ endp
 proc Normalize.NormalizeColor\
      old
      
-        stdcall Normalize.NormalizeAll, 0, 255, 0.0, 1.0, [old]
+        stdcall Normalize.NormalizeAll, [old], 0, 255, 0.0, 1.0
         
         ret
 endp
 
 proc Normalize.NormalizeCoordinate\
-     oldMin, oldMax, old
+     old, oldMin, oldMax
      
-        stdcall Normalize.NormalizeAll, [oldMin], [oldMax], -1.0, 1.0, [old]
+        stdcall Normalize.NormalizeAll, [old], [oldMin], [oldMax], -1.0, 1.0
         
         ret
 endp

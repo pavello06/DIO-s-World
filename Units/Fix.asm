@@ -1,25 +1,34 @@
 ;-------------------------------------------------------------------------------
-proc Size.FixObject uses ebx,\
+proc Fix.FixObject uses ebx esi,\
      refObject
         
         mov     ecx, [refObject]
-        mov     ebx, [ecx + Object.drawing.refTexture]
+        
+        mov     ebx, sizeof.Object
+        mov     eax, [ecx + Object.type]
+        and     eax, MENU_OBJECT_WITH_DRAWING
+        cmp     eax, 0
+        jne     .MenuObject
+        add     ebx, 1 * 4
+  
+  .MenuObject:      
+        mov     esi, [ecx + ebx + Drawing.refTexture]
         
         mov     eax, [ecx + Object.width]
-        mul     [ebx + Texture.width]
-        mul     [ecx + Object.drawing.pixelSize]
+        mul     [esi + Texture.width]
+        mul     [ecx + ebx + Drawing.pixelSize]
         mov     [ecx + Object.width], eax
         
         mov     eax, [ecx + Object.height]
-        mul     [ebx + Texture.height]
-        mul     [ecx + Object.drawing.pixelSize]
+        mul     [esi + Texture.height]
+        mul     [ecx + ebx + Drawing.pixelSize]
         mov     [ecx + Object.height], eax
   
   .exit:            
         ret
 endp
 
-proc Size.FixObjects uses ebx esi,\
+proc Fix.FixObjects uses ebx esi,\
      refObjects
      
         mov     ebx, [refObjects] 
@@ -30,7 +39,7 @@ proc Size.FixObjects uses ebx esi,\
   .loop:
         push    ecx     
         
-        stdcall Size.FixObject, [ebx + esi + 4]
+        stdcall Fix.FixObject, [ebx + esi + 4]
             
   .endLoop:                     
         add     esi, 4

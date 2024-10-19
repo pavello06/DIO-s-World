@@ -76,7 +76,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
-        stdcall Size.FixObject, object1
+        stdcall Fix.FixObjects, objects
                
         xor     eax, eax
         jmp     .exit
@@ -84,11 +84,20 @@ proc WindowProc uses ebx esi edi,\
   .wmsize:
         invoke  GetClientRect, [hwnd], rc
         invoke  glViewport, 0, 0, [rc.right], [rc.bottom]
+        
+        mov     eax, [rc.right]
+        mov     [screen.object.width], eax
+        mov     eax, [rc.bottom]
+        mov     [screen.object.height], eax
+        
         xor     eax, eax
         jmp     .exit
         
   .wmpaint:
-        stdcall Draw.DrawObject, object1, 0, 0, 500, 500
+        stdcall Screen.Clear
+        stdcall Animate.AnimateObjects, objects, screen
+        stdcall Draw.DrawObjects, objects, screen
+        
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
         jmp     .exit
@@ -131,7 +140,16 @@ section '.data' data readable writeable
   
   rc RECT
   
-  object1 Object 0, 0, 0, 2, 1, <5, 1, 1, grassTexture>, <0, 0, 0, 0, 0>
+  object1 Object MENU_OBJECT_WITH_DRAWING + MENU_OBJECT_WITH_ANIMATION, 100, 100, 1, 1
+              dd 10, 1, 1, luckTexture1, FALSE, 200, 0, 0, luckFrames
+              
+  object2 Object MENU_OBJECT_WITH_DRAWING + MENU_OBJECT_WITH_ANIMATION, 10, 10, 1, 1
+              dd 5, 1, 1, luckTexture1, FALSE, 300, 0, 0, luckFrames
+              
+  objects dd 2, object1, object2
+  
+  PIXEL_SIZE = 5
+  PIXEL_SIZE_SMALL = 3
 
 section '.idata' import data readable writeable
 

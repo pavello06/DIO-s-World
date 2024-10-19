@@ -1,158 +1,145 @@
 ;-------------------------------------------------------------------------------
 proc Draw.DrawPixel\
-     pixelSize, red, green, blue, x, y, xMin, yMin, xMax, yMax
-        locals
-          normalizedRed   dd ?
-          normalizedGreen dd ?
-          normalizedBlue  dd ?
-          
-          normalizedX1 dd ?
-          normalizedY1 dd ?
-          normalizedX2 dd ?
-          normalizedY2 dd ? 
-        endl
-        
-        stdcall Normalize.NormalizeColor, [red]
-        mov     [normalizedRed], eax
-        
-        stdcall Normalize.NormalizeColor, [green]
-        mov     [normalizedGreen], eax
+     red, green, blue, x, xMin, xMax, y, yMin, yMax, pixelSize
         
         stdcall Normalize.NormalizeColor, [blue]
-        mov     [normalizedBlue], eax
+        push    eax
         
-        invoke  glColor3f, [normalizedRed], [normalizedGreen], [normalizedBlue]
+        stdcall Normalize.NormalizeColor, [green]
+        push    eax
         
-        stdcall Normalize.NormalizeCoordinate, [xMin], [xMax], [x]
-        mov     [normalizedX1], eax
+        stdcall Normalize.NormalizeColor, [red]
+        push    eax
         
-        stdcall Normalize.NormalizeCoordinate, [yMin], [yMax], [y]
-        mov     [normalizedY1], eax
+        invoke  glColor3f
+        
+        mov     eax, [y]
+        add     eax, [pixelSize]
+        stdcall Normalize.NormalizeCoordinate, eax, [yMin], [yMax]
+        push    eax
+        
+        mov     eax, [x]
+        add     eax, [pixelSize]
+        stdcall Normalize.NormalizeCoordinate, eax, [xMin], [xMax]
+        push    eax
+        
+        stdcall Normalize.NormalizeCoordinate, [y], [yMin], [yMax]
+        push    eax
+        
+        stdcall Normalize.NormalizeCoordinate, [x], [xMin], [xMax]
+        push    eax
 
-        mov     eax, [pixelSize]
-        add     [x], eax
-        stdcall Normalize.NormalizeCoordinate, [xMin], [xMax], [x]
-        mov     [normalizedX2], eax
-
-        mov     eax, [pixelSize]
-        add     [y], eax
-        stdcall Normalize.NormalizeCoordinate, [yMin], [yMax], [y]
-        mov     [normalizedY2], eax
-
-        invoke  glRectf, [normalizedX1], [normalizedY1], [normalizedX2], [normalizedY2]
+        invoke  glRectf
         
         ret
 endp
 
-proc Draw.DrawObject uses ebx esi,\
-     refObject, xMin, yMin, xMax, yMax 
+proc Draw.DrawObject uses ebx esi edi,\
+     refObjectWithDrawing, xMin, xMax, yMin, yMax 
         locals               
-          objectPixelX dd ?
-          objectPixelY dd ?
-          
+          objectPixelX  dd ?
           texturePixelX dd ?
-          texturePixelY dd ?
           
-          texturePixelRed   dd ?
-          texturePixelGreen dd ?
-          texturePixelBlue  dd ?
+          objectPixelY  dd ?
+          texturePixelY dd ?
         endl
         
-        mov     ebx, [refObject]                                
-        mov     esi, [ebx + Object.drawing.refTexture]
+        mov     ebx, [refObjectWithDrawing]
+        
+        mov     esi, sizeof.Object
+        mov     eax, [ebx + Object.type]
+        and     eax, MENU_OBJECT_WITH_DRAWING
+        cmp     eax, 0
+        jne     .MenuObject
+        add     esi, 1 * 4
+  
+  .MenuObject:                                      
+        mov     edi, [ebx + esi + Drawing.refTexture]
         
         mov     eax, [ebx + Object.y]
         add     eax, [ebx + Object.height]
-        sub     eax, [ebx + Object.drawing.pixelSize]
+        sub     eax, [ebx + esi + Drawing.pixelSize]
         mov     [objectPixelY], eax
         
+        mov     [texturePixelY], 0
+        
         mov     eax, [ebx + Object.height]
-        mov     ecx, [ebx + Object.drawing.pixelSize]
         xor     edx, edx
-        div     ecx
+        div     DWORD [ebx + esi + Drawing.pixelSize]
         mov     ecx, eax
         
   .yLoop:
         push    ecx
         
-        mov     eax, [ebx + Object.y]
-        add     eax, [ebx + Object.height]
-        sub     eax, [ebx + Object.drawing.pixelSize]
-        sub     eax, [objectPixelY]
-        mov     ecx, [ebx + Object.drawing.pixelSize]
-        xor     edx, edx
-        div     ecx
-        xor     edx, edx
-        div     DWORD [esi + Texture.height]
-        mov     [texturePixelY], edx
-        
         mov     eax, [ebx + Object.x]
         mov     [objectPixelX], eax
         
+        mov     [texturePixelX], 0
+        
         mov     eax, [ebx + Object.width]
-        mov     ecx, [ebx + Object.drawing.pixelSize]
         xor     edx, edx
-        div     ecx
+        div     DWORD [ebx + esi + Drawing.pixelSize]
         mov     ecx, eax
 
   .xLoop:
         push    ecx
-  
-        mov     eax, [objectPixelX]
-        sub     eax, [ebx + Object.x]
-        mov     ecx, [ebx + Object.drawing.pixelSize]
-        xor     edx, edx
-        div     ecx
-        xor     edx, edx
-        div     DWORD [esi + Texture.width] 
-        mov     [texturePixelX], edx
 
         mov     eax, [texturePixelY]
-        cmp     [ebx + Object.drawing.directionY], DIRECTION_Y_UP
+        cmp     [ebx + esi + Drawing.directionY], UP
         je      .directionYUp
         neg     eax
         add     eax, [esi + Texture.height]
         dec     eax
   
   .directionYUp:        
-        mul     DWORD [esi + Texture.width]
+        mul     DWORD [edi + Texture.width]
         
         mov     edx, [texturePixelX]
-        cmp     [ebx + Object.drawing.directionX], DIRECTION_X_RIGHT
+        cmp     [ebx + esi + Drawing.directionX], RIGHT
         je      .directionXRight
         neg     edx
-        add     edx, [esi + Texture.width]
+        add     edx, [edi + Texture.width]
         dec     edx
   
   .directionXRight:
         add     eax, edx
-        mov     edx, 3 * 4
+        mov     edx, 3 * 1
         mul     edx
-        add     eax, esi
+        add     eax, edi
+        
+        cmp     BYTE [eax + Texture.colors.red], -1
+        je      .invisiblePixel                
 
-        mov     edx, [eax + Texture.colors.red]
-        mov     [texturePixelRed], edx
-        mov     edx, [eax + Texture.colors.green]
-        mov     [texturePixelGreen], edx
-        mov     edx, [eax + Texture.colors.blue]
-        mov     [texturePixelBlue], edx
+        movzx   edx, BYTE [eax + Texture.colors.red]
+        movzx   ecx, BYTE [eax + Texture.colors.green]
+        movzx   eax, BYTE [eax + Texture.colors.blue]
 
-        cmp     edx, -1
-        je      .invisiblePixel
-
-        stdcall Draw.DrawPixel, [ebx + Object.drawing.pixelSize], [texturePixelRed], [texturePixelGreen], [texturePixelBlue],\ 
-                                [objectPixelX], [objectPixelY], [xMin], [yMin], [xMax], [yMax]
+        stdcall Draw.DrawPixel, edx, ecx, eax, [objectPixelX], [xMin], [xMax], [objectPixelY], [yMin], [yMax], [ebx + esi + Drawing.pixelSize]
 
   .invisiblePixel:
-        mov     eax, [ebx + Object.drawing.pixelSize]
+        mov     eax, [ebx + esi + Drawing.pixelSize]
         add     [objectPixelX], eax
+        
+        mov     eax, [texturePixelX]
+        inc     eax
+        xor     edx, edx
+        div     DWORD [edi + Texture.width]
+        mov     [texturePixelX], edx
+        
         pop     ecx
         dec     ecx
         cmp     ecx, 0
         jne     .xLoop
         
-        mov     eax, [ebx + Object.drawing.pixelSize]
+        mov     eax, [ebx + esi + Drawing.pixelSize]
         sub     [objectPixelY], eax
+        
+        mov     eax, [texturePixelY]
+        inc     eax
+        xor     edx, edx
+        div     DWORD [edi + Texture.height]
+        mov     [texturePixelY], edx
+        
         pop     ecx
         dec     ecx
         cmp     ecx, 0
@@ -161,40 +148,51 @@ proc Draw.DrawObject uses ebx esi,\
         ret
 endp
 
-proc Draw.DrawObjects uses ebx esi,\
-     refObjects, xMin, yMin, xMax, yMax
+proc Draw.DrawObjects uses ebx esi edi,\
+     refObjectsWithDrawing, refScreen
+        locals               
+          xMax dd ?
+          yMax dd ?
+        endl      
      
-        mov     ebx, [refObjects] 
+        mov     ebx, [refObjectsWithDrawing]
         
-        xor     esi, esi
+        mov     esi, [refScreen]
+        mov     eax, [esi + Screen.object.x]
+        add     eax, [esi + Screen.object.width]
+        dec     eax
+        mov     [xMax], eax
+        mov     eax, [esi + Screen.object.y]
+        add     eax, [esi + Screen.object.height]
+        dec     eax
+        mov     [yMax], eax 
+        
+        xor     edi, edi
         mov     ecx, [ebx + 0]
   
   .loop:
         push    ecx
         
-        mov     eax, [ebx + esi + 4]
-        
-        cmp     DWORD [eax + Object.drawing.refTexture], NO_DRAWING
-        je      .endLoop
+        mov     eax, [ebx + edi + 4]
         
         mov     ecx, [eax + Object.x]
         cmp     ecx, [xMax]
         ja      .endLoop
         add     ecx, [eax + Object.width]
-        cmp     ecx, [xMin]
+        cmp     ecx, [esi + Screen.object.x]
         jb      .endLoop
         
         mov     ecx, [eax + Object.y]
         cmp     ecx, [yMax]
         ja      .endLoop
         add     ecx, [eax + Object.height]
-        cmp     ecx, [yMin]
+        cmp     ecx, [esi + Screen.object.y]
         jb      .endLoop                  
         
-        stdcall Draw.DrawObject, eax, [xMin], [yMin], [xMax], [yMax] 
+        stdcall Draw.DrawObject, eax, [esi + Screen.object.x], [xMax], [esi + Screen.object.y], [yMax] 
   
   .endLoop:                     
-        add     esi, 4                                   
+        add     edi, 4                                   
         pop     ecx
         loop    .loop    
           
