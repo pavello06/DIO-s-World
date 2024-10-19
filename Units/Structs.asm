@@ -54,17 +54,26 @@ struct Object
   height dd ?
 ends
 
+;general
 OBJECT                     = 1
 SCREEN                     = OBJECT * 2
-
+;menu
 MENU_OBJECT                = SCREEN * 2
 MENU_OBJECT_WITH_DRAWING   = MENU_OBJECT * 2
 MENU_OBJECT_WITH_ANIMATION = MENU_OBJECT_WITH_DRAWING * 2
-
+;game
 GAME_OBJECT                = MENU_OBJECT_WITH_ANIMATION * 2
 GAME_OBJECT_WITH_DRAWING   = GAME_OBJECT * 2
 GAME_OBJECT_WITH_ANIMATION = GAME_OBJECT_WITH_DRAWING * 2
-
+TELEPORT                   = GAME_OBJECT_WITH_ANIMATION * 2
+BRICK_WIWH_BREAK_TIMER     = TELEPORT * 2
+LUCK                       = BRICK_WIWH_BREAK_TIMER * 2
+ENTITY                     = LUCK * 2
+BULLET                     = ENTITY * 2
+ENEMY                      = BULLET * 2
+ENEMY_WITH_STOP_TIMER      = ENEMY * 2
+ENEMY_WITH_BULLETS         = ENEMY_WITH_STOP_TIMER * 2
+PLAYER                     = ENEMY_WITH_BULLETS  * 2
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
