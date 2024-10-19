@@ -88,7 +88,7 @@ proc Draw.DrawObject uses ebx esi edi,\
         cmp     [ebx + esi + Drawing.directionY], UP
         je      .directionYUp
         neg     eax
-        add     eax, [esi + Texture.height]
+        add     eax, [edi + Texture.height]
         dec     eax
   
   .directionYUp:        
