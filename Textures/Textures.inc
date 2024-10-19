@@ -3,11 +3,11 @@
 NO_DRAWING = 0
 
 ;Player-------------------------------------------------------------------------
-include 'General/Player/standingPlayer1.inc'
+include 'General/Player/standingPlayer.inc'
 include 'General/Player/standingPlayer2.inc'
 include 'General/Player/standingPlayer3.inc'
 
-include 'General/Player/runPlayer1.inc'
+include 'General/Player/runPlayer.inc'
 include 'General/Player/runPlayer2.inc'
 include 'General/Player/runPlayer3.inc'
 include 'General/Player/runPlayer4.inc'
@@ -19,11 +19,7 @@ include 'General/Player/upJumpPlayer.inc'
 include 'General/Player/downJumpPlayer.inc'
 
 ;Bonuses------------------------------------------------------------------------
-include 'General/Bonuses/floppy1.inc'
-include 'General/Bonuses/floppy2.inc'
 
-include 'General/Bonuses/heart1.inc'
-include 'General/Bonuses/heart2.inc'
 
 ;Blocks-------------------------------------------------------------------------
 include 'General/Blocks/shadow.inc'
@@ -32,7 +28,7 @@ include 'General/Blocks/dirt.inc'
 
 include 'General/Blocks/brick.inc'
 
-include 'General/Blocks/luck1.inc'
+include 'General/Blocks/luck.inc'
 include 'General/Blocks/luck2.inc'
 include 'General/Blocks/luck3.inc'
 include 'General/Blocks/luck4.inc'
@@ -57,7 +53,7 @@ include 'General/Blocks/topPipe.inc'
 include 'Location1/Blocks/grass.inc'
 
 ;Mobs---------------------------------------------------------------------------
-include 'Location1/Mobs/owl1.inc'
+include 'Location1/Mobs/owl.inc'
 include 'Location1/Mobs/owl2.inc'
 include 'Location1/Mobs/owl3.inc'
 include 'Location1/Mobs/owl4.inc'
@@ -66,12 +62,12 @@ include 'Location1/Mobs/owl6.inc'
 
 include 'Location1/Mobs/deathOwl.inc'
 
-include 'Location1/Mobs/venusFlycatcher1.inc'
+include 'Location1/Mobs/venusFlycatcher.inc'
 include 'Location1/Mobs/venusFlycatcher2.inc'
 
 include 'Location1/Mobs/deathVenusFlycatcher.inc'
 
-include 'Location1/Mobs/bee1.inc'
+include 'Location1/Mobs/bee.inc'
 include 'Location1/Mobs/bee2.inc'
 
 include 'Location1/Mobs/deathBee.inc'

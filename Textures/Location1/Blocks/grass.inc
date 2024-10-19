@@ -1,5 +1,5 @@
-GRASS_WIDTH  = 16 * PIXEL_SIZE
-GRASS_HEIGHT = 17 * PIXEL_SIZE
+GRASS_WIDTH  = 16 * NORMAL
+GRASS_HEIGHT = 17  * NORMAL
 grassTexture dd 16, 17
 db\
   0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,  \

@@ -141,10 +141,10 @@ section '.data' data readable writeable
   rc RECT
   
   object1 Object MENU_OBJECT_WITH_DRAWING + MENU_OBJECT_WITH_ANIMATION, 100, 100, 1, 1
-              dd 10, 1, 1, luckTexture1, FALSE, 200, 0, 0, luckFrames
+              dd 10, -1, -1, standingPlayerTexture, FALSE, 200, 0, 0, standingPlayerFrames
               
   object2 Object MENU_OBJECT_WITH_DRAWING + MENU_OBJECT_WITH_ANIMATION, 10, 10, 1, 1
-              dd 5, 1, 1, luckTexture1, FALSE, 300, 0, 0, luckFrames
+              dd 1, 1, 1, standingPlayerTexture, FALSE, 100, 0, 0, runPlayerFrames
               
   objects dd 2, object1, object2
   

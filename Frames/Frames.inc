@@ -3,15 +3,14 @@
 NO_ANIMATION = 0
 
 ;Player-------------------------------------------------------------------------
-standingPlayerFrames dd 3, standingPlayerTexture1, standingPlayerTexture2, standingPlayerTexture3
-runPlayerFrames      dd 6, runPlayerTexture1, runPlayerTexture2, runPlayerTexture3, runPlayerTexture4, runPlayerTexture5, runPlayerTexture6
+standingPlayerFrames dd 3, standingPlayerTexture, standingPlayer2Texture, standingPlayer3Texture
+runPlayerFrames      dd 6, runPlayerTexture, runPlayer2Texture, runPlayer3Texture, runPlayer4Texture, runPlayer5Texture, runPlayer6Texture
 
 ;Bonuses------------------------------------------------------------------------
-floppyFrames dd 2, floppyTexture1, floppyTexture2
-heartFrames  dd 2, heartTexture1, heartTexture2
+
 
 ;Blocks-------------------------------------------------------------------------
-luckFrames dd 4, luckTexture1, luckTexture2, luckTexture3, luckTexture4
+luckFrames dd 4, luckTexture, luck2Texture, luck3Texture, luck4Texture
 
 
 ;Location1----------------------------------------------------------------------
@@ -19,13 +18,13 @@ luckFrames dd 4, luckTexture1, luckTexture2, luckTexture3, luckTexture4
 ;Blocks-------------------------------------------------------------------------
 
 ;Mobs---------------------------------------------------------------------------
-owlFrames      dd 6, owlTexture1, owlTexture2, owlTexture3, owlTexture4, owlTexture5, owlTexture6
+owlFrames      dd 6, owlTexture, owl2Texture, owl3Texture, owl4Texture, owl5Texture, owl6Texture
 deathOwlFrames dd 1, deathOwlTexture
 
-venusFlycatcherFrames      dd 2, venusFlycatcherTexture1, venusFlycatcherTexture2
+venusFlycatcherFrames      dd 2, venusFlycatcherTexture, venusFlycatcher2Texture
 deathVenusFlycatcherFrames dd 1, deathVenusFlycatcherTexture
 
-beeFrames      dd 2, beeTexture1, beeTexture2
+beeFrames      dd 2, beeTexture, bee2Texture
 deathBeeFrames dd 1, deathBeeTexture
 
 ;Decorations--------------------------------------------------------------------
