@@ -1,5 +1,5 @@
-UPJUMPPLAYER_WIDTH  = 12 * NORMAL
-UPJUMPPLAYER_HEIGHT = 16  * NORMAL
+UPJUMPPLAYER_WIDTH  = 12 * Structs.NORMAL
+UPJUMPPLAYER_HEIGHT = 16  * Structs.NORMAL
 upJumpPlayerTexture dd 12, 16
 db\
  -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,  \

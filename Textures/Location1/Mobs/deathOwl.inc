@@ -1,5 +1,5 @@
-DEATHOWL_WIDTH  = 13 * NORMAL
-DEATHOWL_HEIGHT = 12  * NORMAL
+DEATHOWL_WIDTH  = 13 * Structs.NORMAL
+DEATHOWL_HEIGHT = 12  * Structs.NORMAL
 deathOwlTexture dd 13, 12
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

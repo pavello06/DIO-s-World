@@ -1,5 +1,5 @@
-DIRT_WIDTH  = 16 * NORMAL
-DIRT_HEIGHT = 16  * NORMAL
+DIRT_WIDTH  = 16 * Structs.NORMAL
+DIRT_HEIGHT = 16  * Structs.NORMAL
 dirtTexture dd 16, 16
 db\
 147, 92, 66,  147, 92, 66,  147, 92, 66,  205,147, 87,  205,147, 87,  147, 92, 66,  147, 92, 66,  147, 92, 66,  147, 92, 66,  147, 92, 66,  205,147, 87,  147, 92, 66,  147, 92, 66,  147, 92, 66,  147, 92, 66,  147, 92, 66,  \

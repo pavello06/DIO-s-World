@@ -1,5 +1,5 @@
-RUNPLAYER_WIDTH  = 12 * NORMAL
-RUNPLAYER_HEIGHT = 16  * NORMAL
+RUNPLAYER_WIDTH  = 12 * Structs.NORMAL
+RUNPLAYER_HEIGHT = 16  * Structs.NORMAL
 runPlayerTexture dd 12, 16
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

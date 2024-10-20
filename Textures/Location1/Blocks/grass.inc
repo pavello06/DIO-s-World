@@ -1,5 +1,5 @@
-GRASS_WIDTH  = 16 * NORMAL
-GRASS_HEIGHT = 17  * NORMAL
+GRASS_WIDTH  = 16 * Structs.NORMAL
+GRASS_HEIGHT = 17  * Structs.NORMAL
 grassTexture dd 16, 17
 db\
   0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,  \

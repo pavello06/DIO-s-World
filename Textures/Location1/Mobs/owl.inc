@@ -1,5 +1,5 @@
-OWL_WIDTH  = 13 * NORMAL
-OWL_HEIGHT = 12  * NORMAL
+OWL_WIDTH  = 13 * Structs.NORMAL
+OWL_HEIGHT = 12  * Structs.NORMAL
 owlTexture dd 13, 12
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   99, 99, 99,   -1, -1, -1,  \
