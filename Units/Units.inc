@@ -8,3 +8,5 @@ include 'Screen.asm'
 
 include '../Frames/Frames.inc'
 include '../Textures/Textures.inc'
+
+include '../Game/Game.asm'

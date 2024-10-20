@@ -4,44 +4,45 @@ struct GameObject
   collide dd ?
 ends
 
-DECORATION         = 1
+Structs.DECORATION         = 1
 ;blocks
 ;with both
-BLOCK              = DECORATION * 2
-JUMP               = BLOCK * 2
-TELEPORT           = JUMP * 2
-DELETE             = TELEPORT * 2
+Structs.BLOCK              = Structs.DECORATION * 2
+Structs.JUMP               = Structs.BLOCK * 2
+Structs.TELEPORT           = Structs.JUMP * 2
+Structs.DELETE             = Structs.TELEPORT * 2
 ;with player
-TOP_BLOCK          = DELETE * 2
-TOP_BREAK          = TOP_BLOCK * 2
-BOTTOM_LUCK        = TOP_BREAK * 2
-BOTTOM_BREAK       = BOTTOM_LUCK * 2
+Structs.TOP_BLOCK          = Structs.DELETE * 2
+Structs.TOP_BREAK          = Structs.TOP_BLOCK * 2
+Structs.BOTTOM_LUCK        = Structs.TOP_BREAK * 2
+Structs.BOTTOM_BREAK       = Structs.BOTTOM_LUCK * 2
 ;with enemy
-REVERSE            = BOTTOM_BREAK * 2
-ROTATE             = REVERSE * 2
+Structs.REVERSE            = Structs.BOTTOM_BREAK * 2
+Structs.ROTATE             = Structs.REVERSE * 2
 ;bonuses 
-COIN               = ROTATE * 2
-STAR               = COIN * 2
-HEART              = STAR * 2
-ARROW              = HEART * 2
-WORLD              = ARROW * 2
+Structs.COIN               = Structs.ROTATE * 2
+Structs.STAR               = Structs.COIN * 2
+Structs.HEART              = Structs.STAR * 2
+Structs.ARROW              = Structs.HEART * 2
+Structs.WORLD              = Structs.ARROW * 2
 ;enemies
+;with both
+Structs.DEAD_ENEMY         = Structs.WORLD * 2
 ;with block
-DEAD_ENEMY         = WORLD * 2
-DECORATIVE_ENEMY   = DEAD_ENEMY * 2
-BLOCKABLE_ENEMY    = DECORATIVE_ENEMY * 2
-JUMPABLE_ENEMY     = BLOCKABLE_ENEMY * 2
-TELEPORTABLE_ENEMY = JUMPABLE_ENEMY * 2
-REVERSEABLE_ENEMY  = TELEPORTABLE_ENEMY * 2
-ROTATEABLE_ENEMY   = REVERSEABLE_ENEMY * 2
+Structs.DECORATIVE_ENEMY   = Structs.DEAD_ENEMY * 2
+Structs.BLOCKABLE_ENEMY    = Structs.DECORATIVE_ENEMY * 2
+Structs.JUMPABLE_ENEMY     = Structs.BLOCKABLE_ENEMY * 2
+Structs.TELEPORTABLE_ENEMY = Structs.JUMPABLE_ENEMY * 2
+Structs.REVERSEABLE_ENEMY  = Structs.TELEPORTABLE_ENEMY * 2
+Structs.ROTATEABLE_ENEMY   = Structs.REVERSEABLE_ENEMY * 2
 ;with player
-ENEMY              = ROTATEABLE_ENEMY * 2
-UNTOCHABLE_ENEMY   = ENEMY * 2 
-UNBEATABLE_ENEMY   = UNTOCHABLE_ENEMY * 2
-SNAIL              = UNBEATABLE_ENEMY * 2
+Structs.ENEMY              = Structs.ROTATEABLE_ENEMY * 2
+Structs.UNTOCHABLE_ENEMY   = Structs.ENEMY * 2 
+Structs.UNBEATABLE_ENEMY   = Structs.UNTOCHABLE_ENEMY * 2
+Structs.SNAIL              = Structs.UNBEATABLE_ENEMY * 2
 ;players
-PLAYER             = SNAIL * 2
-PLAYER_BULLET      = PLAYER * 2
+Structs.PLAYER             = Structs.SNAIL * 2
+Structs.PLAYER_BULLET      = Structs.PLAYER * 2
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
@@ -53,8 +54,8 @@ ends
 
 ;-------------------------------------------------------------------------------
 struct GameObjectWithAnimation
-  gameObject GameObject
-  animation  Animation
+  gameObjectWithDrawing GameObjectWithDrawing
+  animation             Animation
 ends
 ;-------------------------------------------------------------------------------
 

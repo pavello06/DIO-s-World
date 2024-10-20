@@ -103,6 +103,7 @@ proc WindowProc uses ebx esi edi,\
         jmp     .exit
         
   .wmkeydown:
+        stdcall KeyDown.Move, object1, [wparam]
         cmp     [wparam], VK_ESCAPE
         jne     .defwndproc
   
@@ -140,16 +141,12 @@ section '.data' data readable writeable
   
   rc RECT
   
-  object1 Object MENU_OBJECT_WITH_DRAWING + MENU_OBJECT_WITH_ANIMATION, 100, 100, 1, 1
-              dd 10, -1, -1, standingPlayerTexture, FALSE, 200, 0, 0, standingPlayerFrames
+  object1 Player <<<<<GAME_OBJECT_WITH_DRAWING + GAME_OBJECT_WITH_ANIMATION + ENTITY + PLAYER, 100, 100, 1, 1>,PLAYER>, <10, 1, 1, standingPlayerTexture>>, <FALSE, 200, 0, 0, standingPlayerFrames>>, 0, 0, TRUE>, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
               
   object2 Object MENU_OBJECT_WITH_DRAWING + MENU_OBJECT_WITH_ANIMATION, 10, 10, 1, 1
               dd 1, 1, 1, standingPlayerTexture, FALSE, 100, 0, 0, runPlayerFrames
               
   objects dd 2, object1, object2
-  
-  PIXEL_SIZE = 5
-  PIXEL_SIZE_SMALL = 3
 
 section '.idata' import data readable writeable
 

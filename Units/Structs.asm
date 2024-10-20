@@ -20,14 +20,14 @@ struct Drawing
   refTexture dd ?
 ends
 
-LITTLE = 3
-NORMAL = 5
+Structs.LITTLE = 3
+Structs.NORMAL = 5
 
-LEFT  = -1
-RIGHT = 1
+Structs.LEFT  = -1
+Structs.RIGHT = 1
 
-DOWN  = -1
-UP    = 1
+Structs.DOWN  = -1
+Structs.UP    = 1
 ;------------------------------------------------------------------------------- 
 
 ;-------------------------------------------------------------------------------
@@ -55,25 +55,25 @@ struct Object
 ends
 
 ;general
-OBJECT                     = 1
-SCREEN                     = OBJECT * 2
+Structs.OBJECT                     = 1
+Structs.SCREEN                     = Structs.OBJECT * 2
 ;menu
-MENU_OBJECT                = SCREEN * 2
-MENU_OBJECT_WITH_DRAWING   = MENU_OBJECT * 2
-MENU_OBJECT_WITH_ANIMATION = MENU_OBJECT_WITH_DRAWING * 2
+Structs.MENU_OBJECT                = Structs.SCREEN * 2
+Structs.MENU_OBJECT_WITH_DRAWING   = Structs.MENU_OBJECT * 2
+Structs.MENU_OBJECT_WITH_ANIMATION = Structs.MENU_OBJECT_WITH_DRAWING * 2
 ;game
-GAME_OBJECT                = MENU_OBJECT_WITH_ANIMATION * 2
-GAME_OBJECT_WITH_DRAWING   = GAME_OBJECT * 2
-GAME_OBJECT_WITH_ANIMATION = GAME_OBJECT_WITH_DRAWING * 2
-TELEPORT                   = GAME_OBJECT_WITH_ANIMATION * 2
-BRICK_WIWH_BREAK_TIMER     = TELEPORT * 2
-LUCK                       = BRICK_WIWH_BREAK_TIMER * 2
-ENTITY                     = LUCK * 2
-BULLET                     = ENTITY * 2
-ENEMY                      = BULLET * 2
-ENEMY_WITH_STOP_TIMER      = ENEMY * 2
-ENEMY_WITH_BULLETS         = ENEMY_WITH_STOP_TIMER * 2
-PLAYER                     = ENEMY_WITH_BULLETS  * 2
+Structs.GAME_OBJECT                = Structs.Structs.MENU_OBJECT_WITH_ANIMATION * 2
+Structs.GAME_OBJECT_WITH_DRAWING   = Structs.GAME_OBJECT * 2
+Structs.GAME_OBJECT_WITH_ANIMATION = Structs.GAME_OBJECT_WITH_DRAWING * 2
+Structs.TELEPORT                   = Structs.GAME_OBJECT_WITH_ANIMATION * 2
+Structs.BRICK_WIWH_BREAK_TIMER     = Structs.TELEPORT * 2
+Structs.LUCK                       = Structs.BRICK_WIWH_BREAK_TIMER * 2
+Structs.ENTITY                     = Structs.LUCK * 2
+Structs.BULLET                     = Structs.ENTITY * 2
+Structs.ENEMY                      = Structs.BULLET * 2
+Structs.ENEMY_WITH_STOP_TIMER      = Structs.ENEMY * 2
+Structs.ENEMY_WITH_BULLETS         = Structs.ENEMY_WITH_STOP_TIMER * 2
+Structs.PLAYER                     = Structs.ENEMY_WITH_BULLETS  * 2
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
