@@ -6,11 +6,9 @@ proc Animate.AnimateObject uses ebx esi,\
         
         mov     ecx, [refObjectWithAnimation]
         
-        mov     ebx, sizeof.Object + sizeof.Drawing
-        mov     edx, [ecx + Object.type]
-        and     edx, Structs.MENU
-        cmp     edx, 0
-        jne     .MenuObject
+        mov     ebx, sizeof.Object + sizeof.Drawing 
+        cmp     DWORD [ecx + Object.type], Structs.MENU
+        je     .MenuObject
         add     ebx, 1 * 4
   
   .MenuObject:      

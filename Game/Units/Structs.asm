@@ -41,7 +41,8 @@ Structs.UNTOCHABLE_ENEMY   = Structs.ENEMY * 2
 Structs.UNBEATABLE_ENEMY   = Structs.UNTOCHABLE_ENEMY * 2
 Structs.SNAIL              = Structs.UNBEATABLE_ENEMY * 2
 ;players
-Structs.PLAYER             = Structs.SNAIL * 2
+Structs.DEAD_PLAYER        = Structs.SNAIL * 2
+Structs.PLAYER             = Structs.DEAD_PLAYER * 2
 Structs.PLAYER_BULLET      = Structs.PLAYER * 2
 ;-------------------------------------------------------------------------------
 
@@ -69,16 +70,16 @@ ends
 
 ;-------------------------------------------------------------------------------
 struct BrickWithBreakTimer
-  gameObject GameObject
-  maxTimer   dd ?
-  timer      dd ?
+  gameObjectWithAnimation GameObjectWithAnimation
+  maxTimer                dd ?
+  timer                   dd ?
 ends
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
 struct Luck
-  gameObject GameObject
-  refBonus   dd ?
+  gameObjectWithAnimation GameObjectWithAnimation
+  refBonus                dd ?
 ends
 ;-------------------------------------------------------------------------------
 
@@ -109,15 +110,15 @@ ends
 
 ;-------------------------------------------------------------------------------
 struct EnemyWithStopTimer
-  enemy Enemy
-  maxTimer   dd ?
-  timer      dd ?
+  enemy    Enemy
+  maxTimer dd ?
+  timer    dd ?
 ends
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
 struct EnemyWithBullets
-  enemy Enemy
+  enemy        Enemy
   maxTimer     dd ?
   timer        dd ?
   totalBullets dd ?

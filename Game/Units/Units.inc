@@ -1,3 +1,4 @@
 include 'KeyDown.asm'
-;include 'KeyUp.inc'
+include 'KeyUp.asm'
+include 'Move.asm'
 include 'Structs.asm'

@@ -86,17 +86,18 @@ proc WindowProc uses ebx esi edi,\
         invoke  glViewport, 0, 0, [rc.right], [rc.bottom]
         
         mov     eax, [rc.right]
-        mov     [screen.object.width], eax
+        mov     [Screen.screen.object.width], eax
         mov     eax, [rc.bottom]
-        mov     [screen.object.height], eax
+        mov     [Screen.screen.object.height], eax
         
         xor     eax, eax
         jmp     .exit
         
   .wmpaint:
         stdcall Screen.Clear
-        stdcall Animate.AnimateObjects, objects, screen
-        stdcall Draw.DrawObjects, objects, screen
+        stdcall Animate.AnimateObjects, objects, Screen.screen
+        stdcall Draw.DrawObjects, objects, Screen.screen
+        stdcall Move.MoveEntities, entities
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
@@ -108,6 +109,7 @@ proc WindowProc uses ebx esi edi,\
         jne     .defwndproc
   
   .wmkeyup:
+        stdcall KeyUp.Move, object1, [wparam]
         jmp     .exit
         
   .wmdestroy:
@@ -141,12 +143,15 @@ section '.data' data readable writeable
   
   rc RECT
   
-  object1 Player <<<<<GAME_OBJECT_WITH_DRAWING + GAME_OBJECT_WITH_ANIMATION + ENTITY + PLAYER, 100, 100, 1, 1>,PLAYER>, <10, 1, 1, standingPlayerTexture>>, <FALSE, 200, 0, 0, standingPlayerFrames>>, 0, 0, TRUE>, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  object1 Object Structs.GAME, 100, 100, 1, 1
+              dd Structs.PLAYER, Structs.NORMAL, Structs.RIGHT, Structs.UP, standingPlayerTexture, FALSE, 200, 0, 0, standingPlayerFrames, 0, 0, FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
               
-  object2 Object MENU_OBJECT_WITH_DRAWING + MENU_OBJECT_WITH_ANIMATION, 10, 10, 1, 1
-              dd 1, 1, 1, standingPlayerTexture, FALSE, 100, 0, 0, runPlayerFrames
+  object2 Object Structs.MENU, 10, 10, 1, 1
+              dd Structs.NORMAL, Structs.RIGHT, Structs.UP, luckTexture, FALSE, 200, 0, 0, luckFrames
               
   objects dd 2, object1, object2
+  
+  entities dd 1, object1
 
 section '.idata' import data readable writeable
 

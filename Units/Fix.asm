@@ -5,10 +5,8 @@ proc Fix.FixObject uses ebx esi,\
         mov     ecx, [refObjectWithDrawing]
         
         mov     ebx, sizeof.Object
-        mov     eax, [ecx + Object.type]
-        and     eax, Structs.MENU
-        cmp     eax, 0
-        jne     .MenuObject
+        cmp     DWORD [ecx + Object.type], Structs.MENU
+        je     .MenuObject
         add     ebx, 1 * 4
   
   .MenuObject:      

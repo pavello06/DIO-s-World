@@ -46,10 +46,8 @@ proc Draw.DrawObject uses ebx esi edi,\
         mov     ebx, [refObjectWithDrawing]
         
         mov     esi, sizeof.Object
-        mov     eax, [ebx + Object.type]
-        and     eax, Structs.MENU
-        cmp     eax, 0
-        jne     .MenuObject
+        cmp     DWORD [ebx + Object.type], Structs.MENU
+        je     .MenuObject
         add     esi, 1 * 4
   
   .MenuObject:                                      
