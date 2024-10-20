@@ -38,8 +38,7 @@ proc Draw.DrawObject uses ebx esi edi,\
      refObjectWithDrawing, xMin, xMax, yMin, yMax 
         locals               
           objectPixelX  dd ?
-          texturePixelX dd ?
-          
+          texturePixelX dd ?          
           objectPixelY  dd ?
           texturePixelY dd ?
         endl
@@ -48,7 +47,7 @@ proc Draw.DrawObject uses ebx esi edi,\
         
         mov     esi, sizeof.Object
         mov     eax, [ebx + Object.type]
-        and     eax, MENU_OBJECT_WITH_DRAWING
+        and     eax, Structs.MENU
         cmp     eax, 0
         jne     .MenuObject
         add     esi, 1 * 4
@@ -85,7 +84,7 @@ proc Draw.DrawObject uses ebx esi edi,\
         push    ecx
 
         mov     eax, [texturePixelY]
-        cmp     [ebx + esi + Drawing.directionY], UP
+        cmp     [ebx + esi + Drawing.directionY], Structs.UP
         je      .directionYUp
         neg     eax
         add     eax, [edi + Texture.height]
@@ -95,7 +94,7 @@ proc Draw.DrawObject uses ebx esi edi,\
         mul     DWORD [edi + Texture.width]
         
         mov     edx, [texturePixelX]
-        cmp     [ebx + esi + Drawing.directionX], RIGHT
+        cmp     [ebx + esi + Drawing.directionX], Structs.RIGHT
         je      .directionXRight
         neg     edx
         add     edx, [edi + Texture.width]

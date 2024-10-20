@@ -1,12 +1,12 @@
 ;-------------------------------------------------------------------------------
 proc Fix.FixObject uses ebx esi,\
-     refObject
+     refObjectWithDrawing
         
-        mov     ecx, [refObject]
+        mov     ecx, [refObjectWithDrawing]
         
         mov     ebx, sizeof.Object
         mov     eax, [ecx + Object.type]
-        and     eax, MENU_OBJECT_WITH_DRAWING
+        and     eax, Structs.MENU
         cmp     eax, 0
         jne     .MenuObject
         add     ebx, 1 * 4
@@ -29,9 +29,9 @@ proc Fix.FixObject uses ebx esi,\
 endp
 
 proc Fix.FixObjects uses ebx esi,\
-     refObjects
+     refObjectsWithDrawing
      
-        mov     ebx, [refObjects] 
+        mov     ebx, [refObjectsWithDrawing] 
         
         xor     esi, esi
         mov     ecx, [ebx + 0]
