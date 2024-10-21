@@ -1,8 +1,8 @@
+;-------------------------------------------------------------------------------
 Collide.LEFT   = 0
 Collide.TOP    = 1
 Collide.RIGHT  = 2
 Collide.BOTTOM = 3
-
 
 proc Collide.AreObjectsColliding\
      refObject1, refObject2
@@ -101,10 +101,33 @@ proc Collide.GetCollisionSide uses ebx esi,\
   .exit: 
         ret
 endp
-
 ;-------------------------------------------------------------------------------
 
-proc Collide.CollidePlayerOrEnemyAndBlock\
+;-------------------------------------------------------------------------------
+proc Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy\
+     refPlayerBullet
+     
+        stdcall Action.KillBullet, [refPlayerBullet]
+     
+        ret
+endp
+
+proc Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy\
+     refPlayerBullet, refEnemy
+     
+        mov     eax, [refPlayerBullet]
+        
+        cmp     [eax + Bullet.isActive], TRUE
+        je      .exit
+        
+        stdcall Action.DamageEnemy, eax, [refEnemy]
+        stdcall Action.KillBullet, [refPlayerBullet]
+  
+  .exit:   
+        ret
+endp
+
+proc Collide.CollidePlayerAndBlock\
      refEntity, refObject, side
 
         mov     eax, [refEntity]
@@ -121,13 +144,13 @@ proc Collide.CollidePlayerOrEnemyAndBlock\
   .left:
         mov     edx, [ecx + Object.x]
         add     edx, [ecx + Object.width]
-        mov     [eax + Entity.object.x], edx
+        mov     [eax + Object.x], edx
         jmp     .exit 
         
   .top:
         mov     edx, [ecx + Object.y]
-        sub     edx, [eax + Entity.object.height]
-        mov     [eax + Entity.object.y], edx
+        sub     edx, [eax + Object.height]
+        mov     [eax + Object.y], edx
         cmp     DWORD [eax + Entity.canGravitate], FALSE
         je      .exit
         mov     [eax + Entity.speedY], 0
@@ -135,355 +158,66 @@ proc Collide.CollidePlayerOrEnemyAndBlock\
              
   .right:
         mov     edx, [ecx + Object.x]
-        sub     edx, [eax + Entity.object.width]
-        mov     [eax + Entity.object.x], edx
+        sub     edx, [eax + Object.width]
+        mov     [eax + Object.x], edx
         jmp     .exit 
         
   .bottom:
         mov     edx, [ecx + Object.y]
         add     edx, [ecx + Object.height]
-        mov     [eax + Entity.object.y], edx
+        mov     [eax + Object.y], edx
         cmp     DWORD [eax + Entity.canGravitate], FALSE
         je      .exit
         mov     [eax + Entity.speedY], 0
-        cmp     DWORD [eax + Entity.object.type], PLAYER
+        cmp     DWORD [eax + GameObject.collide], Structs.PLAYER
         jne     .exit
         mov     [eax + Player.canJump], TRUE
 
   .exit:   
-        ret
-endp
-
-proc Collide.CollidePlayerOrEnemyAndTopBlock\
-     refEntity, refObject, side
-
-        mov     eax, [refEntity]
-        mov     ecx, [refObject]
-        mov     edx, [side]
-   
-        cmp     edx, Collide.BOTTOM
-        jne     .exit 
-        
-  .bottom:
-        mov     edx, [ecx + Object.y]
-        add     edx, [ecx + Object.height]
-        mov     [eax + Entity.object.y], edx
-        cmp     DWORD [eax + Entity.object.type], PLAYER
-        jne     .exit
-        mov     [eax + Player.canJump], TRUE
-        cmp     DWORD [eax + Entity.speedY], 0
-        jg      .exit        
-        mov     [eax + Entity.speedY], 0
-
-  .exit:   
-        ret
-endp
-
-proc Collide.CollidePlayerAndDeathPlayer\
-     refPlayer    
-        
-        mov     eax, [refPlayer]
-        
-        mov     [eax + Player.health], 0      
-   
-        ret
-endp
-
-proc Collide.CollidePlayerAndBrick\
-     refPlayer, refObject, side
-   
-        stdcall Collide.CollidePlayerOrEnemyAndBlock, [refPlayer], [refObject], [side] 
-        
-        cmp     DWORD [side], Collide.TOP
-        jne     .exit
-        
-        mov     eax, [refObject]
-        
-        mov     [eax + Object.x], -1000
-        mov     [eax + Object.y], -1000      
-
-  .exit:   
-        ret
-endp
-
-proc Collide.CollidePlayerAndLuck\
-     refPlayer, refObject, side
-     
-        stdcall Collide.CollidePlayerOrEnemyAndBlock, [refPlayer], [refObject], [side]
-        
-        cmp     DWORD [side], Collide.TOP
-        jne     .exit
-        
-        mov     eax, [refObject]
-        mov     ecx, [eax + Luck.refBonus]        
-        
-        mov     [eax + Luck.object.type], BLOCK
-        mov     [eax + Luck.object.drawing.refTexture], blockTexture
-        mov     [eax + Luck.object.animation.refFrames], NO_ANIMATION
-        
-        mov     edi, [eax + Object.width]
-        sub     edi, [ecx + Object.width]
-        shr     edi, 1
-        add     edi, [eax + Object.x]
-        mov     [ecx + Object.x], edi
-        
-        mov     edi, [eax + Object.y] 
-        add     edi, [eax + Object.height]
-        add     edi, 2 * PIXEL_SIZE
-        mov     [ecx + Object.y], edi
-     
-  .exit:   
-        ret
-endp
-
-proc Collide.CollidePlayerAndFloppy\
-     refObject, refLevelStatistics
-     
-        mov     eax, [refObject]
-        mov     ecx, [refLevelStatistics]
-        
-        mov     [eax + Object.x], -1000
-        mov     [eax + Object.y], -1000
-        
-        add     [ecx + LevelStatistics.score], 1
-   
-        ret
-endp
-
-proc Collide.CollidePlayerAndPC\
-     refObject, refLevelStatistics
-     
-        mov     eax, [refObject]
-        mov     ecx, [refLevelStatistics]
-        
-        mov     [eax + Object.x], -1000
-        mov     [eax + Object.y], -1000
-        
-        add     [ecx + LevelStatistics.score], 400
-        inc     [ecx + LevelStatistics.PCs]
-
-  .exit:   
-        ret
-endp
-
-proc Collide.CollidePlayerAndPancake\
-     refPlayer, refObject
-     
-        mov     eax, [refPlayer]
-        mov     ecx, [refObject]
-        
-        mov     [eax + Player.hasPancake], TRUE
-        
-        mov     [ecx + Object.x], -1000
-        mov     [ecx + Object.y], -1000
-   
-        ret
-endp
-
-proc Collide.CollidePlayerAndBasket\
-     refPlayer, refObject
-     
-        mov     eax, [refPlayer]
-        mov     ecx, [refObject]
-        
-        mov     [eax + Player.canShoot], TRUE
-        
-        mov     [ecx + Object.x], -1000
-        mov     [ecx + Object.y], -1000
-   
-        ret
-endp
-
-proc Collide.CollidePlayerAndApple\
-     refPlayer, refObject
-     
-        mov     eax, [refPlayer]
-        mov     ecx, [refObject]
-        
-        mov     [eax + Player.hasApple], TRUE
-        
-        mov     [ecx + Object.x], -1000
-        mov     [ecx + Object.y], -1000
-   
-        ret
-endp
-
-proc Collide.CollidePlayerAndEnemy\
-     refPlayer, refEnemy, side
-     
-        mov     eax, [refPlayer]
-        mov     ecx, [refEnemy]
-        
-        cmp     DWORD [side], Collide.BOTTOM
-        je      .damageEnemy
-        cmp     [eax + Player.hasApple], TRUE
-        je      .deathEnemy
-        cmp     [eax + Player.canShoot], TRUE
-        je      .canNotShoot
-        cmp     [eax + Player.hasPancake], TRUE
-        je      .hasNotPancake
-  
-        dec     [eax + Player.health]
-        jmp     .exit       
-        
-  .damageEnemy:
-        mov     DWORD [eax + Player.entity.speedY], 18
-        stdcall [ecx + Enemy.refAction], ecx
-        jmp     .exit      
-        
-  .deathEnemy:
-        mov     [ecx + Enemy.health], 0
-        jmp     .exit
-  
-  .canNotShoot:
-        mov     [eax + Player.canShoot], FALSE
-        jmp     .exit
-        
-  .hasNotPancake:
-        mov     [eax + Player.hasPancake], FALSE
-  
-  .exit: 
-        ret
-endp
-
-proc Collide.CollidePlayerAndUntochableEnemy\
-     refPlayer, refEnemy
-     
-        mov     eax, [refPlayer]
-        mov     ecx, [refEnemy]
-        
-        cmp     [eax + Player.hasApple], TRUE
-        je      .deathEnemy
-        cmp     [eax + Player.canShoot], TRUE
-        je      .canNotShoot
-        cmp     [eax + Player.hasPancake], TRUE
-        je      .hasNotPancake
-  
-        dec     [eax + Player.health]
-        jmp     .exit             
-        
-  .deathEnemy:
-        mov     [ecx + Enemy.health], 0
-        jmp     .exit
-  
-  .canNotShoot:
-        mov     [eax + Player.canShoot], FALSE
-        jmp     .exit
-        
-  .hasNotPancake:
-        mov     [eax + Player.hasPancake], FALSE
-  
-  .exit: 
-        ret
-endp
-
-proc Collide.CollidePlayerAndEnemyBullet\
-     refPlayer, refEntity
-     
-        mov     eax, [refPlayer]
-        mov     ecx, [refEntity]
-        
-        cmp     [eax + Player.canShoot], TRUE
-        je      .canNotShoot
-        cmp     [eax + Player.hasPancake], TRUE
-        je      .hasNotPancake
-  
-        dec     [eax + Player.health]
-        jmp     .exit             
-  
-  .canNotShoot:
-        mov     [eax + Player.canShoot], FALSE
-        jmp     .exit
-        
-  .hasNotPancake:
-        mov     [eax + Player.hasPancake], FALSE
-  
-  .exit: 
-        ret
-endp
-
-proc Collide.CollidePlayerBulletAndBlock\
-     refEntity
-     
-        mov     eax, [refEntity]
-        
-        mov     [eax + Object.x], -1000
-        mov     [eax + Object.y], -1000
-        
-        ret
-endp
-
-proc Collide.CollidePlayerBulletAndEnemyOrJumpableEnemyOrRotateableEnemy\
-     refEntity, refEnemy
-     
-        mov     eax, [refEntity]
-        mov     ecx, [refEnemy]
-        
-        dec     [ecx + Enemy.health]        
-        mov     [eax + Object.x], -1000
-        mov     [eax + Object.y], -1000
-        
-        ret
-endp
-
-proc Collide.CollideEnemyAndReverseEnemy\
-     refEnemy, refObject, side
-     
-        stdcall Collide.CollidePlayerOrEnemyAndBlock, [refEnemy], [refObject], [side]
-     
-        mov     eax, [refEnemy]
-        
-        neg     DWORD [eax + Enemy.entity.speedX]
-        neg     DWORD [eax + Enemy.entity.speedY]
-        
-        cmp     DWORD [eax + Enemy.entity.speedX], 0
-        je      .exit
-        neg     DWORD [eax + Enemy.entity.object.drawing.directionX]
-
-  .exit:     
         ret
 endp
 ;-------------------------------------------------------------------------------  
 
 ;------------------------------------------------------------------------------- 
-proc Collide.HandleCollisionPlayerBulletAndSomething\
-     refObject1, refObject2, side
+proc Collide.HandleCollisionPlayerBulletAndSomething uses ebx esi,\
+     refPlayerBullet, refObject, side
      
-        mov     eax, [refObject1]
-        mov     ecx, [refObject2]
+        mov     ebx, [refPlayerBullet]
+        mov     esi, [refObject]
      
-        cmp     DWORD [ecx + GameObject.collide], Structs.BLOCK
+        cmp     DWORD [esi + GameObject.collide], Structs.BLOCK
         jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndBlock
+        stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx 
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.ENEMY
+        cmp     DWORD [esi + GameObject.collide], Structs.ENEMY
         jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndEnemy 
+        stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi 
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.UNTOCHABLE_ENEMY
+        cmp     DWORD [esi + GameObject.collide], Structs.UNTOCHABLE_ENEMY
         jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndUntochableEnemy
+        stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.UNBEATABLE_ENEMY
+        cmp     DWORD [esi + GameObject.collide], Structs.UNBEATABLE_ENEMY
         jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndUnbeatableEnemy
+        stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.SNAIL
+        cmp     DWORD [esi + GameObject.collide], Structs.SNAIL
         jne     .exit
         ;stdcall Collide.CollidePlayerBulletAndSnail
-     
+  
+  .exit:   
         ret     
 endp
 
 proc Collide.HandleCollisionPlayerAndSomething\
-     refObject1, refObject2, side
+     refPlayer, refObject2, side
      
-        mov     eax, [refObject1]
+        mov     eax, [refPlayer]
         mov     ecx, [refObject2]
      
         cmp     DWORD [ecx + GameObject.collide], Structs.BLOCK
         jne     @F
-        ;stdcall Collide.CollidePlayerAndBlock
+        stdcall Collide.CollidePlayerAndBlock, eax, ecx, [side]
   @@:
         cmp     DWORD [ecx + GameObject.collide], Structs.JUMP
         jne     @F
@@ -509,7 +243,7 @@ proc Collide.HandleCollisionPlayerAndSomething\
         jne     @F
         ;stdcall Collide.CollidePlayerAndBottomLuck
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.BottomBreak
+        cmp     DWORD [ecx + GameObject.collide], Structs.BOTTOM_BREAK
         jne     @F
         ;stdcall Collide.CollidePlayerAndBottomBreak
   @@: 
@@ -548,7 +282,8 @@ proc Collide.HandleCollisionPlayerAndSomething\
         cmp     DWORD [ecx + GameObject.collide], Structs.SNAIL
         jne     .exit
         ;stdcall Collide.CollidePlayerAndSnail
-     
+  
+  .exit:   
         ret     
 endp
 
@@ -560,12 +295,12 @@ proc Collide.HandleCollision\
         
         cmp     DWORD [eax + GameObject.collide], Structs.PLAYER_BULLET
         jne     .notPlayerBullet
-        stdcall Collide.HandleCollisionPlayerBulletAndSomething, eax, ecx, side     
+        stdcall Collide.HandleCollisionPlayerBulletAndSomething, eax, ecx, [side]     
         jmp     .exit        
   .notPlayerBullet:
         cmp     DWORD [eax + GameObject.collide], Structs.PLAYER
         jne     .notPlayer
-        stdcall Collide.HandleCollisionPlayerAndSomething, eax, ecx, side           
+        stdcall Collide.HandleCollisionPlayerAndSomething, eax, ecx, [side]           
         jmp     .exit
   .notPlayer:
              

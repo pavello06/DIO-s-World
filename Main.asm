@@ -76,7 +76,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
-        stdcall Fix.FixObjects, objects
+        stdcall Fix.FixObjects, objectsWithDrawing
                
         xor     eax, eax
         jmp     .exit
@@ -95,21 +95,21 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        stdcall Animate.AnimateObjects, objects, Screen.screen
-        stdcall Draw.DrawObjects, objects, Screen.screen
-        stdcall Move.MoveEntities, entities
+        stdcall Animate.AnimateObjects, objectsWithAnimation, Screen.screen
+        stdcall Draw.DrawObjects, objectsWithDrawing, Screen.screen
+        stdcall Move.MoveEntities, entities, objects
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
         jmp     .exit
         
   .wmkeydown:
-        stdcall KeyDown.Move, object1, [wparam]
+        stdcall KeyDown.Move, player, [wparam]
         cmp     [wparam], VK_ESCAPE
         jne     .defwndproc
   
   .wmkeyup:
-        stdcall KeyUp.Move, object1, [wparam]
+        stdcall KeyUp.Move, player, [wparam]
         jmp     .exit
         
   .wmdestroy:
@@ -143,15 +143,19 @@ section '.data' data readable writeable
   
   rc RECT
   
-  object1 Object Structs.GAME, 100, 100, 1, 1
-              dd Structs.PLAYER, Structs.NORMAL, Structs.RIGHT, Structs.UP, standingPlayerTexture, FALSE, 200, 0, 0, standingPlayerFrames, 0, 0, FALSE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-              
-  object2 Object Structs.MENU, 10, 10, 1, 1
-              dd Structs.NORMAL, Structs.RIGHT, Structs.UP, luckTexture, FALSE, 200, 0, 0, luckFrames
-              
-  objects dd 2, object1, object2
+  player Object Structs.GAME, 10, 50, 1, 1
+              dd Structs.PLAYER, 5, Structs.RIGHT, Structs.UP, standingPlayerTexture, FALSE, 200, 0, 0, standingPlayerFrames, 0, 0, TRUE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   
-  entities dd 1, object1
+  grass   Object Structs.GAME, 10, 10, 10, 1
+              dd Structs.BLOCK, 5, Structs.RIGHT, Structs.UP, grassTexture
+  
+  objects dd 2, player, grass
+              
+  objectsWithDrawing dd 2, player, grass
+  
+  objectsWithAnimation dd 1, player
+  
+  entities dd 1, player
 
 section '.idata' import data readable writeable
 

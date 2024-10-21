@@ -5,6 +5,8 @@ NO_ANIMATION = 0
 ;Player-------------------------------------------------------------------------
 standingPlayerFrames dd 3, standingPlayerTexture, standingPlayer2Texture, standingPlayer3Texture
 runPlayerFrames      dd 6, runPlayerTexture, runPlayer2Texture, runPlayer3Texture, runPlayer4Texture, runPlayer5Texture, runPlayer6Texture
+downJumpPlayerFrames dd 1, downJumpPlayerTexture
+upJumpPlayerFrames   dd 1, upJumpPlayerTexture
 
 ;Bonuses------------------------------------------------------------------------
 

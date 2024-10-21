@@ -7,7 +7,9 @@ proc Fix.FixObject uses ebx esi,\
         mov     ebx, sizeof.Object
         cmp     DWORD [ecx + Object.type], Structs.MENU
         je     .MenuObject
-        add     ebx, 1 * 4
+
+  .GameObject:
+        add     ebx, sizeof.GameObject - sizeof.Object;sizeof.MenuObject
   
   .MenuObject:      
         mov     esi, [ecx + ebx + Drawing.refTexture]

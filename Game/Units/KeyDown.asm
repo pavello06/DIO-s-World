@@ -9,54 +9,54 @@ proc KeyDown.Move\
         mov     edx, [key]
         
         cmp     edx, VK_LEFT
-        je      .vKLeft
+        je      .VKLeft
         cmp     edx, 'a'
-        je      .vKLeft
+        je      .VKLeft
         cmp     edx, 'A'
-        jne     .notVkLeft
+        jne     .notVKLeft
         
-  .vKLeft:
+  .VKLeft:
         mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Structs.LEFT        
         mov     DWORD [eax + Entity.speedX], -KeyDown.BOOST_SPEED_X
         jmp     .exit     
   
-  .notVkLeft:   
+  .notVKLeft:   
         cmp     edx, VK_UP
-        je      .vKUp
+        je      .VKUp
         cmp     edx, 'w'
-        je      .vKUp
+        je      .VKUp
         cmp     edx, 'W'
-        jne     .notVkUp
+        jne     .notVKUp
         
-  .vKUp:
+  .VKUp:
         cmp     DWORD [eax + Player.canJump], TRUE
         jne     .exit
         mov     DWORD [eax + Player.canJump], FALSE
         mov     DWORD [eax + Entity.speedY], KeyDown.BOOST_SPEED_Y
         jmp     .exit
    
-  .notVkUp:            
+  .notVKUp:            
         cmp     edx, VK_RIGHT
-        je      .vKRight
+        je      .VKRight
         cmp     edx, 'd'
-        je      .vKRight
+        je      .VKRight
         cmp     edx, 'D'
-        jne     .notVkRight
+        jne     .notVKRight
         
-  .vKRight:
+  .VKRight:
         mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Structs.RIGHT  
         mov     DWORD [eax + Entity.speedX], KeyDown.BOOST_SPEED_X
         jmp     .exit
         
-  .notVkRight:            
+  .notVKRight:            
         cmp     edx, VK_DOWN
-        je      .vKDown
+        je      .VKDown
         cmp     edx, 's'
-        je      .vKDown
+        je      .VKDown
         cmp     edx, 'S'
         jne     .exit
         
-  .vKDown:  
+  .VKDown:  
         mov     DWORD [eax + Entity.speedY], -1       
         
   .exit:  

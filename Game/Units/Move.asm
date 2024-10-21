@@ -21,8 +21,7 @@ proc Move.MoveEntity uses ebx esi,\
         
         cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
         jne     .notPlayer
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.maxTimer], 180
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.timer], 0
+        mov     DWORD [ebx + GameObjectWithAnimation.animation.maxTimer], 250
         mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
   
   .notPlayer:
@@ -49,12 +48,11 @@ proc Move.MoveEntity uses ebx esi,\
         push    ecx 
         
         add     [ebx + Object.x], esi
-        ;stdcall Collide.HandleCollisions, ebx, [refObjects]
+        stdcall Collide.HandleCollisions, ebx, [refObjects]
         
         cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
         jne     .endXLoop
         mov     DWORD [ebx + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.timer], 0
         mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], runPlayerFrames
   
   .endXLoop:        
@@ -80,17 +78,16 @@ proc Move.MoveEntity uses ebx esi,\
         push    ecx
         
         add     [ebx + Object.y], esi
-        ;stdcall Collide.HandleCollisions, ebx, [refObjects]
+        stdcall Collide.HandleCollisions, ebx, [refObjects]
         cmp     DWORD [ebx + Entity.speedY], 0
         je      .endYLoop
         
         cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
         jne     .endYLoop
-        mov     DWORD [ebx + GameObjectWithDrawing.drawing.refTexture], upJumpPlayerTexture
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.timer], -1
+        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], upJumpPlayerFrames
         cmp     DWORD [ebx + Entity.speedY], 0
         jg      .endYLoop
-        mov     DWORD [ebx + GameObjectWithDrawing.drawing.refTexture], downJumpPlayerTexture
+        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], downJumpPlayerFrames
         mov     DWORD [ebx + Player.canJump], FALSE
   
   .endYLoop:           

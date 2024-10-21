@@ -48,7 +48,9 @@ proc Draw.DrawObject uses ebx esi edi,\
         mov     esi, sizeof.Object
         cmp     DWORD [ebx + Object.type], Structs.MENU
         je     .MenuObject
-        add     esi, 1 * 4
+        
+  .GameObject:
+        add     esi, sizeof.GameObject - sizeof.Object;sizeof.MenuObject
   
   .MenuObject:                                      
         mov     edi, [ebx + esi + Drawing.refTexture]
@@ -83,22 +85,26 @@ proc Draw.DrawObject uses ebx esi edi,\
 
         mov     eax, [texturePixelY]
         cmp     [ebx + esi + Drawing.directionY], Structs.UP
-        je      .directionYUp
+        je      .up
+        
+  .down:
         neg     eax
         add     eax, [edi + Texture.height]
         dec     eax
   
-  .directionYUp:        
+  .up:        
         mul     DWORD [edi + Texture.width]
         
         mov     edx, [texturePixelX]
         cmp     [ebx + esi + Drawing.directionX], Structs.RIGHT
-        je      .directionXRight
+        je      .right
+        
+  .left:
         neg     edx
         add     edx, [edi + Texture.width]
         dec     edx
   
-  .directionXRight:
+  .right:
         add     eax, edx
         mov     edx, 3 * 1
         mul     edx
@@ -155,12 +161,12 @@ proc Draw.DrawObjects uses ebx esi edi,\
         mov     ebx, [refObjectsWithDrawing]
         
         mov     esi, [refScreen]
-        mov     eax, [esi + Screen.object.x]
-        add     eax, [esi + Screen.object.width]
+        mov     eax, [esi + Object.x]
+        add     eax, [esi + Object.width]
         dec     eax
         mov     [xMax], eax
-        mov     eax, [esi + Screen.object.y]
-        add     eax, [esi + Screen.object.height]
+        mov     eax, [esi + Object.y]
+        add     eax, [esi + Object.height]
         dec     eax
         mov     [yMax], eax 
         
@@ -174,19 +180,19 @@ proc Draw.DrawObjects uses ebx esi edi,\
         
         mov     ecx, [eax + Object.x]
         cmp     ecx, [xMax]
-        ja      .endLoop
+        jg      .endLoop
         add     ecx, [eax + Object.width]
-        cmp     ecx, [esi + Screen.object.x]
-        jb      .endLoop
+        cmp     ecx, [esi + Object.x]
+        jl      .endLoop
         
         mov     ecx, [eax + Object.y]
         cmp     ecx, [yMax]
-        ja      .endLoop
+        jg      .endLoop
         add     ecx, [eax + Object.height]
-        cmp     ecx, [esi + Screen.object.y]
-        jb      .endLoop                  
+        cmp     ecx, [esi + Object.y]
+        jl      .endLoop                  
         
-        stdcall Draw.DrawObject, eax, [esi + Screen.object.x], [xMax], [esi + Screen.object.y], [yMax] 
+        stdcall Draw.DrawObject, eax, [esi + Object.x], [xMax], [esi + Object.y], [yMax] 
   
   .endLoop:                     
         add     edi, 4                                   

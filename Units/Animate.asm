@@ -9,7 +9,9 @@ proc Animate.AnimateObject uses ebx esi,\
         mov     ebx, sizeof.Object + sizeof.Drawing 
         cmp     DWORD [ecx + Object.type], Structs.MENU
         je     .MenuObject
-        add     ebx, 1 * 4
+        
+  .GameObject:
+        add     ebx, sizeof.GameObject - sizeof.Object;sizeof.MenuObject
   
   .MenuObject:      
         cmp     DWORD [ecx + ebx + Animation.timer], -1
@@ -57,12 +59,12 @@ proc Animate.AnimateObjects uses ebx esi edi,\
         mov     ebx, [refObjectsWithAnimation]
         
         mov     esi, [refScreen]
-        mov     eax, [esi + Screen.object.x]
-        add     eax, [esi + Screen.object.width]
+        mov     eax, [esi + Object.x]
+        add     eax, [esi + Object.width]
         dec     eax
         mov     [xMax], eax
-        mov     eax, [esi + Screen.object.y]
-        add     eax, [esi + Screen.object.height]
+        mov     eax, [esi + Object.y]
+        add     eax, [esi + Object.height]
         dec     eax
         mov     [yMax], eax 
         
@@ -78,14 +80,14 @@ proc Animate.AnimateObjects uses ebx esi edi,\
         cmp     ecx, [xMax]
         ja      .endLoop
         add     ecx, [eax + Object.width]
-        cmp     ecx, [esi + Screen.object.x]
+        cmp     ecx, [esi + Object.x]
         jb      .endLoop
         
         mov     ecx, [eax + Object.y]
         cmp     ecx, [yMax]
         ja      .endLoop
         add     ecx, [eax + Object.height]
-        cmp     ecx, [esi + Screen.object.y]
+        cmp     ecx, [esi + Object.y]
         jb      .endLoop                  
         
         stdcall Animate.AnimateObject, eax 

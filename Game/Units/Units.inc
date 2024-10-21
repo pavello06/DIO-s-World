@@ -1,3 +1,5 @@
+include 'Action.asm'
+include 'Collide.asm'
 include 'KeyDown.asm'
 include 'KeyUp.asm'
 include 'Move.asm'

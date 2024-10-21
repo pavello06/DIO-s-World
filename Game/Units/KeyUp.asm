@@ -5,19 +5,19 @@ proc KeyUp.Move\
         mov     eax, [key]
         
         cmp     eax, VK_LEFT
-        je      .notVkLeftAndVkRight
+        je      .VKLeftOrVkRight
         cmp     eax, 'a'
-        je      .notVkLeftAndVkRight
+        je      .VKLeftOrVkRight
         cmp     eax, 'A'
-        je      .notVkLeftAndVkRight
+        je      .VKLeftOrVkRight
         cmp     eax, VK_RIGHT
-        je      .notVkLeftAndVkRight
+        je      .VKLeftOrVkRight
         cmp     eax, 'd'
-        je      .notVkLeftAndVkRight
+        je      .VKLeftOrVkRight
         cmp     eax, 'D'
         jne     .exit
         
-  .notVkLeftAndVkRight:
+  .VKLeftOrVkRight:
         mov     eax, [refPlayer]
                 
         mov     [eax + Player.entity.speedX], 0   
