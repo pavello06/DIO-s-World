@@ -53,7 +53,7 @@ proc Move.MoveEntity uses ebx esi,\
         cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
         jne     .endXLoop
         mov     DWORD [ebx + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], runPlayerFrames
+        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], runningPlayerFrames
   
   .endXLoop:        
         pop     ecx                
@@ -84,10 +84,10 @@ proc Move.MoveEntity uses ebx esi,\
         
         cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
         jne     .endYLoop
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], upJumpPlayerFrames
+        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], upJumpingPlayerFrames
         cmp     DWORD [ebx + Entity.speedY], 0
         jg      .endYLoop
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], downJumpPlayerFrames
+        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], downJumpingPlayerFrames
         mov     DWORD [ebx + Player.canJump], FALSE
   
   .endYLoop:           
