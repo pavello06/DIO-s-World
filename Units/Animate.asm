@@ -49,8 +49,8 @@ proc Animate.AnimateObject uses ebx,\
         ret
 endp
 
-proc Animate.AnimateObjects uses ebx esi edi,\
-     refObjectsWithAnimation, refScreen
+proc Animate.AnimateObjects uses ebx esi,\
+     refObjectsWithAnimation, xMin, xMax, yMin, yMax
         locals               
           xMax dd ?
           yMax dd ?
@@ -58,42 +58,31 @@ proc Animate.AnimateObjects uses ebx esi edi,\
      
         mov     ebx, [refObjectsWithAnimation]
         
-        mov     esi, [refScreen]
-        mov     eax, [esi + Object.x]
-        add     eax, [esi + Object.width]
-        dec     eax
-        mov     [xMax], eax
-        mov     eax, [esi + Object.y]
-        add     eax, [esi + Object.height]
-        dec     eax
-        mov     [yMax], eax 
-        
-        xor     edi, edi
+        xor     esi, esi
         mov     ecx, [ebx + 0]
   
   .loop:
         push    ecx
         
-        mov     eax, [ebx + edi + 4]
+        mov     eax, [ebx + esi + 4]
         
+        add     ecx, [eax + Object.width]
+        cmp     ecx, [xMin]
+        jl      .endLoop
         mov     ecx, [eax + Object.x]
         cmp     ecx, [xMax]
-        ja      .endLoop
-        add     ecx, [eax + Object.width]
-        cmp     ecx, [esi + Object.x]
-        jb      .endLoop
-        
+        jg      .endLoop        
+        add     ecx, [eax + Object.height]
+        cmp     ecx, [yMin]
+        jl      .endLoop 
         mov     ecx, [eax + Object.y]
         cmp     ecx, [yMax]
-        ja      .endLoop
-        add     ecx, [eax + Object.height]
-        cmp     ecx, [esi + Object.y]
-        jb      .endLoop                  
+        jg      .endLoop                 
         
         stdcall Animate.AnimateObject, eax 
   
   .endLoop:                     
-        add     edi, 4                                   
+        add     esi, 4                                   
         pop     ecx
         loop    .loop    
           

@@ -7,9 +7,9 @@ struct Object
   height dd ?
 ends
 
-Structs.GENERAL = 1
-Structs.MENU    = 2
-Structs.GAME    = 3
+Structs.GENERAL = 0
+Structs.MENU    = 1
+Structs.GAME    = 2
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------

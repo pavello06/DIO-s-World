@@ -152,7 +152,7 @@ proc Draw.DrawObject uses ebx esi edi,\
 endp
 
 proc Draw.DrawObjects uses ebx esi edi,\
-     refObjectsWithDrawing, refScreen
+     refObjectsWithDrawing, xMin, xMax, yMin, yMax
         locals               
           xMax dd ?
           yMax dd ?
@@ -160,42 +160,31 @@ proc Draw.DrawObjects uses ebx esi edi,\
      
         mov     ebx, [refObjectsWithDrawing]
         
-        mov     esi, [refScreen]
-        mov     eax, [esi + Object.x]
-        add     eax, [esi + Object.width]
-        dec     eax
-        mov     [xMax], eax
-        mov     eax, [esi + Object.y]
-        add     eax, [esi + Object.height]
-        dec     eax
-        mov     [yMax], eax 
-        
-        xor     edi, edi
+        xor     esi, esi
         mov     ecx, [ebx + 0]
   
   .loop:
         push    ecx
         
-        mov     eax, [ebx + edi + 4]
+        mov     eax, [ebx + esi + 4]
         
+        add     ecx, [eax + Object.width]
+        cmp     ecx, [xMin]
+        jl      .endLoop
         mov     ecx, [eax + Object.x]
         cmp     ecx, [xMax]
-        jg      .endLoop
-        add     ecx, [eax + Object.width]
-        cmp     ecx, [esi + Object.x]
-        jl      .endLoop
-        
+        jg      .endLoop        
+        add     ecx, [eax + Object.height]
+        cmp     ecx, [yMin]
+        jl      .endLoop 
         mov     ecx, [eax + Object.y]
         cmp     ecx, [yMax]
-        jg      .endLoop
-        add     ecx, [eax + Object.height]
-        cmp     ecx, [esi + Object.y]
-        jl      .endLoop                  
+        jg      .endLoop                 
         
-        stdcall Draw.DrawObject, eax, [esi + Object.x], [xMax], [esi + Object.y], [yMax] 
+        stdcall Draw.DrawObject, eax, xMin, xMax, yMin, yMax 
   
   .endLoop:                     
-        add     edi, 4                                   
+        add     esi, 4                                   
         pop     ecx
         loop    .loop    
           
