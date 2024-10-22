@@ -4,9 +4,9 @@ NO_ANIMATION = 0
 
 ;Player-------------------------------------------------------------------------
 standingPlayerFrames dd 3, standingPlayerTexture, standingPlayer2Texture, standingPlayer3Texture
-runPlayerFrames      dd 6, runPlayerTexture, runPlayer2Texture, runPlayer3Texture, runPlayer4Texture, runPlayer5Texture, runPlayer6Texture
-downJumpPlayerFrames dd 1, downJumpPlayerTexture
-upJumpPlayerFrames   dd 1, upJumpPlayerTexture
+runPlayerFrames      dd 6, runningPlayerTexture, runningPlayer2Texture, runningPlayer3Texture, runningPlayer4Texture, runningPlayer5Texture, runningPlayer6Texture
+downJumpPlayerFrames dd 1, downJumpingPlayerTexture
+upJumpPlayerFrames   dd 1, upJumpingPlayerTexture
 
 ;Bonuses------------------------------------------------------------------------
 
@@ -21,13 +21,13 @@ luckFrames dd 4, luckTexture, luck2Texture, luck3Texture, luck4Texture
 
 ;Mobs---------------------------------------------------------------------------
 owlFrames      dd 6, owlTexture, owl2Texture, owl3Texture, owl4Texture, owl5Texture, owl6Texture
-deathOwlFrames dd 1, deathOwlTexture
+deathOwlFrames dd 1, deadOwlTexture
 
 venusFlycatcherFrames      dd 2, venusFlycatcherTexture, venusFlycatcher2Texture
-deathVenusFlycatcherFrames dd 1, deathVenusFlycatcherTexture
+deathVenusFlycatcherFrames dd 1, deadVenusFlycatcherTexture
 
 beeFrames      dd 2, beeTexture, bee2Texture
-deathBeeFrames dd 1, deathBeeTexture
+deathBeeFrames dd 1, deadBeeTexture
 
 ;Decorations--------------------------------------------------------------------
 

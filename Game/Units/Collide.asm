@@ -104,30 +104,9 @@ endp
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
-proc Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy\
-     refPlayerBullet
-     
-        stdcall Action.KillBullet, [refPlayerBullet]
-     
-        ret
-endp
 
-proc Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy\
-     refPlayerBullet, refEnemy
-     
-        mov     eax, [refPlayerBullet]
-        
-        cmp     [eax + Bullet.isActive], TRUE
-        je      .exit
-        
-        stdcall Action.DamageEnemy, eax, [refEnemy]
-        stdcall Action.KillBullet, [refPlayerBullet]
-  
-  .exit:   
-        ret
-endp
 
-proc Collide.CollidePlayerAndBlock\
+proc Collide.CollidePlayerOrBlockableEnemyAndBlock\
      refEntity, refObject, side
 
         mov     eax, [refEntity]
@@ -176,6 +155,84 @@ proc Collide.CollidePlayerAndBlock\
   .exit:   
         ret
 endp
+
+proc Collide.CollidePlayerAndJump\
+     refPlayer, refObject, side
+     
+        cmp     DWORD [side], Collide.BOTTOM
+        jne     .exit
+        
+        mov     eax, [refPlayer]
+        
+        cmp     DWORD [eax + Entity.speedY], -Move.G
+        jge      .exit
+        
+        mov     DWORD [eax + Entity.speedY], 40        
+  
+  .exit:   
+        ret
+endp
+
+proc Collide.CollidePlayerAndTeleport\
+     refPlayer, refTeleport
+     
+        mov     eax, [refPlayer]
+        mov     ecx, [refTeleport]
+        
+        mov     edx, [ecx + Teleport.x]
+        mov     [eax + Object.x], edx
+        
+        mov     edx, [ecx + Teleport.y]
+        mov     [eax + Object.y], edx
+     
+        ret
+endp
+
+proc Collide.CollidePlayerAndTopBlock\
+     refPlayer, refObject, side
+     
+        cmp     DWORD [side], Collide.BOTTOM
+        jne     .exit
+        
+        mov     eax, [refPlayer]
+        
+        cmp     DWORD [eax + Entity.speedY], -Move.G
+        jg      .exit
+        
+        mov     ecx, [refObject]
+        
+        mov     edx, [ecx + Object.y]
+        add     edx, [ecx + Object.height]
+        mov     [eax + Object.y], edx
+        mov     [eax + Entity.speedY], 0
+        mov     [eax + Player.canJump], TRUE      
+  
+  .exit:   
+        ret
+endp
+
+proc Collide.CollidePlayerAndTopBreak\
+     refBrickWithBreakTimer, side
+     
+        cmp     DWORD [side], Collide.BOTTOM
+        jne     .exit
+        
+        mov     eax, [refBrickWithBreakTimer]
+        
+        mov     [eax + BrickWithBreakTimer.timer], 0     
+  
+  .exit:   
+        ret
+endp
+
+proc Collide.CollidePlayerAndBottomLuck\
+     refLuck, side
+     
+        
+     
+        ret
+endp
+          
 ;-------------------------------------------------------------------------------  
 
 ;------------------------------------------------------------------------------- 
@@ -187,19 +244,19 @@ proc Collide.HandleCollisionPlayerBulletAndSomething uses ebx esi,\
      
         cmp     DWORD [esi + GameObject.collide], Structs.BLOCK
         jne     @F
-        stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx 
+        ;stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx 
   @@:
         cmp     DWORD [esi + GameObject.collide], Structs.ENEMY
         jne     @F
-        stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi 
+        ;stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi 
   @@:
         cmp     DWORD [esi + GameObject.collide], Structs.UNTOCHABLE_ENEMY
         jne     @F
-        stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi
+        ;stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi
   @@:
         cmp     DWORD [esi + GameObject.collide], Structs.UNBEATABLE_ENEMY
         jne     @F
-        stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx
+        ;stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx
   @@:
         cmp     DWORD [esi + GameObject.collide], Structs.SNAIL
         jne     .exit
@@ -209,77 +266,77 @@ proc Collide.HandleCollisionPlayerBulletAndSomething uses ebx esi,\
         ret     
 endp
 
-proc Collide.HandleCollisionPlayerAndSomething\
+proc Collide.HandleCollisionPlayerAndSomething uses ebx esi,\
      refPlayer, refObject2, side
      
-        mov     eax, [refPlayer]
-        mov     ecx, [refObject2]
+        mov     ebx, [refPlayer]
+        mov     esi, [refObject2]
      
-        cmp     DWORD [ecx + GameObject.collide], Structs.BLOCK
+        cmp     DWORD [esi + GameObject.collide], Structs.BLOCK
         jne     @F
-        stdcall Collide.CollidePlayerAndBlock, eax, ecx, [side]
+        stdcall Collide.CollidePlayerOrBlockableEnemyAndBlock, ebx, esi, [side]
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.JUMP
+        cmp     DWORD [esi + GameObject.collide], Structs.JUMP
         jne     @F
-        ;stdcall Collide.CollidePlayerAndJump
+        stdcall Collide.CollidePlayerAndJump, ebx, esi, [side] 
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.TELEPORT
+        cmp     DWORD [esi + GameObject.collide], Structs.TELEPORT
         jne     @F
-        ;stdcall Collide.CollidePlayerAndTeleport
+        stdcall Collide.CollidePlayerAndTeleport, ebx, esi
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.DELETE
+        cmp     DWORD [esi + GameObject.collide], Structs.DELETE
         jne     @F
         ;stdcall Collide.CollidePlayerAndDelete
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.TOP_BLOCK
+        cmp     DWORD [esi + GameObject.collide], Structs.TOP_BLOCK
         jne     @F
-        ;stdcall Collide.CollidePlayerAndTopBlock
+        stdcall Collide.CollidePlayerAndTopBlock, ebx, esi, [side]
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.TOP_BREAK
+        cmp     DWORD [esi + GameObject.collide], Structs.TOP_BREAK
         jne     @F
-        ;stdcall Collide.CollidePlayerAndTopBreak
+        stdcall Collide.CollidePlayerAndTopBreak, esi, [side]
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.BOTTOM_LUCK
+        cmp     DWORD [esi + GameObject.collide], Structs.BOTTOM_LUCK
         jne     @F
-        ;stdcall Collide.CollidePlayerAndBottomLuck
+        stdcall Collide.CollidePlayerAndBottomLuck, esi, [side]
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.BOTTOM_BREAK
+        cmp     DWORD [esi + GameObject.collide], Structs.BOTTOM_BREAK
         jne     @F
         ;stdcall Collide.CollidePlayerAndBottomBreak
   @@: 
-        cmp     DWORD [ecx + GameObject.collide], Structs.COIN
+        cmp     DWORD [esi + GameObject.collide], Structs.COIN
         jne     @F
         ;stdcall Collide.CollidePlayerAndCoin
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.STAR
+        cmp     DWORD [esi + GameObject.collide], Structs.STAR
         jne     @F
         ;stdcall Collide.CollidePlayerAndStar
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.HEART
+        cmp     DWORD [esi + GameObject.collide], Structs.HEART
         jne     @F
         ;stdcall Collide.CollidePlayerAndHeart
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.ARROW
+        cmp     DWORD [esi + GameObject.collide], Structs.ARROW
         jne     @F
         ;stdcall Collide.CollidePlayerAndArrow
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.WORLD
+        cmp     DWORD [esi + GameObject.collide], Structs.WORLD
         jne     @F
         ;stdcall Collide.CollidePlayerAndWorld
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.ENEMY
+        cmp     DWORD [esi + GameObject.collide], Structs.ENEMY
         jne     @F
         ;stdcall Collide.CollidePlayerAndEnemy
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.UNTOCHABLE_ENEMY
+        cmp     DWORD [esi + GameObject.collide], Structs.UNTOCHABLE_ENEMY
         jne     @F
         ;stdcall Collide.CollidePlayerAndUntochableEnemy
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.UNBEATABLE_ENEMY
+        cmp     DWORD [esi + GameObject.collide], Structs.UNBEATABLE_ENEMY
         jne     @F
         ;stdcall Collide.CollidePlayerAndUnbeatableEnemy
   @@:
-        cmp     DWORD [ecx + GameObject.collide], Structs.SNAIL
+        cmp     DWORD [esi + GameObject.collide], Structs.SNAIL
         jne     .exit
         ;stdcall Collide.CollidePlayerAndSnail
   

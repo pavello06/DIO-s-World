@@ -1,5 +1,5 @@
 ;-------------------------------------------------------------------------------
-proc Action.KillBullet\
+proc Damage.KillBullet\
      refBullet
      
         mov     eax, [refBullet]
@@ -15,7 +15,7 @@ endp
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
-proc Action.DamagePlayer\
+proc Damage.DamagePlayer\
      refPlayer
      
         mov     eax, [refPlayer]
@@ -27,13 +27,15 @@ proc Action.DamagePlayer\
         jne     .hasNotArrow
         
         mov     DWORD [eax + Player.hasArrow], FALSE
+        mov     DWORD [eax + Player.invulnerabilityTimer], 0
         jmp     .exit
         
   .hasNotArrow:      
         cmp     DWORD [eax + Player.hasHeart], TRUE
-        jne     .hasNotArrow
+        jne     .hasNotHeart
         
         mov     DWORD [eax + Player.hasHeart], FALSE
+        mov     DWORD [eax + Player.invulnerabilityTimer], 0
         jmp     .exit
         
   .hasNotHeart: 
@@ -43,7 +45,7 @@ proc Action.DamagePlayer\
         ret
 endp
 
-proc Action.KillPlayer\
+proc Damage.KillPlayer\
      refPlayer
      
         mov     eax, [refPlayer]
@@ -58,7 +60,7 @@ endp
 ;-------------------------------------------------------------------------------
 
 ;-------------------------------------------------------------------------------
-proc Action.DamageEnemy\
+proc Damage.DamageEnemy\
      refEnemy
      
         mov     ecx, [refEnemy]
@@ -89,20 +91,30 @@ proc Action.DamageEnemy\
         ret
 endp
 
-proc Action.DamageSnail\
+proc Damage.DamageSnail\
      refSnail
      
         stdcall Action.DamageEnemy, [refSnail]
         
         mov     eax, [refSnail]
         
-        cmp     DWORD [eax + Enemy.health], 
+        cmp     DWORD [eax + Enemy.health], 2
+        jne     .notStop
+        
+        mov     DWORD [eax + Enemy.speedX], 0
+  
+  .notStop:
+        
+        cmp     DWORD [eax + Enemy.health], 1
+        jne     .exit
+  
+        mov     DWORD [eax + Enemy.speedX], 20
         
   .exit:   
         ret
 endp
 
-proc Action.KillEnemy\
+proc Damage.KillEnemy\
      refEnemy
      
         mov     eax, [refEnemy]

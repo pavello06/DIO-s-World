@@ -25,9 +25,11 @@ Structs.STAR               = Structs.COIN * 2
 Structs.HEART              = Structs.STAR * 2
 Structs.ARROW              = Structs.HEART * 2
 Structs.WORLD              = Structs.ARROW * 2
+;bullets
+Structs.ACTIVATE           = Structs.WORLD * 2
 ;enemies
 ;with both
-Structs.DEAD_ENEMY         = Structs.WORLD * 2
+Structs.DEAD_ENEMY         = Structs.ACTIVATE * 2
 ;with block
 Structs.DECORATIVE_ENEMY   = Structs.DEAD_ENEMY * 2
 Structs.BLOCKABLE_ENEMY    = Structs.DECORATIVE_ENEMY * 2

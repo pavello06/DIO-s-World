@@ -18,7 +18,7 @@ section '.text' code readable executable
         invoke  RegisterClass, wc
         invoke  CreateWindowEx, 0, class, title,\
                                 WS_VISIBLE + WS_OVERLAPPEDWINDOW + WS_CLIPCHILDREN + WS_CLIPSIBLINGS,\ 
-                                100, 100, 600, 600,\ 
+                                100, 100, 900, 600,\ 
                                 NULL, NULL, [wc.hInstance], NULL
                                 
         mov     [hwnd], eax
@@ -148,10 +148,24 @@ section '.data' data readable writeable
   
   grass   Object Structs.GAME, 10, 10, 10, 1
               dd Structs.BLOCK, 5, Structs.RIGHT, Structs.UP, grassTexture
-  
-  objects dd 2, player, grass
               
-  objectsWithDrawing dd 2, player, grass
+  palm Object Structs.GAME, 300, 100, 1, 1
+              dd Structs.DECORATION, 5, Structs.RIGHT, Structs.UP, palmTexture
+              
+  jump    Object Structs.GAME, 80, 90, 1, 1
+              dd Structs.JUMP, 5, Structs.RIGHT, Structs.UP, beeTexture
+              
+  teleport Object Structs.GAME, 350, 95, 1, 1
+              dd Structs.TELEPORT, 10, 300
+              
+  topBlock Object Structs.GAME, 300, 150, 15, 1
+              dd Structs.TOP_BLOCK, 5, Structs.RIGHT, Structs.UP, shadowTexture
+  
+  objects dd (objectsLength / 4 - 1), player, grass, jump, palm, topBlock
+  objectsLength = $ - objects
+              
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, jump, palm, topBlock
+  objectsWithDrawingLength = $ - objectsWithDrawing
   
   objectsWithAnimation dd 1, player
   

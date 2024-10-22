@@ -1,5 +1,5 @@
 ;-------------------------------------------------------------------------------
-proc Animate.AnimateObject uses ebx esi,\
+proc Animate.AnimateObject uses ebx,\
      refObjectWithAnimation
      
         invoke	GetTickCount
