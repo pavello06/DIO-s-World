@@ -1,0 +1,1 @@
+upJumpingPlayerFrames   dd 1, upJumpingPlayerTexture

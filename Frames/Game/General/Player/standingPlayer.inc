@@ -1,0 +1,1 @@
+standingPlayerFrames dd 3, standingPlayerTexture, standingPlayer2Texture, standingPlayer3Texture

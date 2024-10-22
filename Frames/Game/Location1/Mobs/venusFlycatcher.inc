@@ -1,0 +1,1 @@
+venusFlycatcherFrames dd 2, venusFlycatcherTexture, venusFlycatcher2Texture

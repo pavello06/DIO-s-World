@@ -1,34 +1,54 @@
+;-------------------------------------------------------------------------------
+struct Frames
+  totalFrames  dd ?
+  refsTextures dd ?
+ends
+;-------------------------------------------------------------------------------
+
 ;General------------------------------------------------------------------------
 
-NO_ANIMATION = 0
 
-;Player-------------------------------------------------------------------------
-standingPlayerFrames dd 3, standingPlayerTexture, standingPlayer2Texture, standingPlayer3Texture
-runPlayerFrames      dd 6, runningPlayerTexture, runningPlayer2Texture, runningPlayer3Texture, runningPlayer4Texture, runningPlayer5Texture, runningPlayer6Texture
-downJumpPlayerFrames dd 1, downJumpingPlayerTexture
-upJumpPlayerFrames   dd 1, upJumpingPlayerTexture
+;Menu---------------------------------------------------------------------------
+
+
+;Game---------------------------------------------------------------------------
+;General------------------------------------------------------------------------
+;Blocks-------------------------------------------------------------------------
+include 'Game/General/Blocks/luck.inc'
 
 ;Bonuses------------------------------------------------------------------------
 
 
-;Blocks-------------------------------------------------------------------------
-luckFrames dd 4, luckTexture, luck2Texture, luck3Texture, luck4Texture
+;Player-------------------------------------------------------------------------
+include 'Game/General/Player/standingPlayer.inc'
 
+include 'Game/General/Player/runningPlayer.inc'
+
+include 'Game/General/Player/upJumpingPlayer.inc'
+
+include 'Game/General/Player/downJumpingPlayer.inc'
+
+include 'Game/General/Player/dyingPlayer.inc'
 
 ;Location1----------------------------------------------------------------------
+;Background---------------------------------------------------------------------
+
 
 ;Blocks-------------------------------------------------------------------------
 
-;Mobs---------------------------------------------------------------------------
-owlFrames      dd 6, owlTexture, owl2Texture, owl3Texture, owl4Texture, owl5Texture, owl6Texture
-deathOwlFrames dd 1, deadOwlTexture
-
-venusFlycatcherFrames      dd 2, venusFlycatcherTexture, venusFlycatcher2Texture
-deathVenusFlycatcherFrames dd 1, deadVenusFlycatcherTexture
-
-beeFrames      dd 2, beeTexture, bee2Texture
-deathBeeFrames dd 1, deadBeeTexture
 
 ;Decorations--------------------------------------------------------------------
 
-;Background---------------------------------------------------------------------
+
+;Mobs---------------------------------------------------------------------------
+include 'Game/Location1/Mobs/owl.inc'
+
+include 'Game/Location1/Mobs/deadOwl.inc'
+
+include 'Game/Location1/Mobs/venusFlycatcher.inc'
+
+include 'Game/Location1/Mobs/deadVenusFlycatcher.inc'
+
+include 'Game/Location1/Mobs/bee.inc'
+
+include 'Game/Location1/Mobs/deadBee.inc'

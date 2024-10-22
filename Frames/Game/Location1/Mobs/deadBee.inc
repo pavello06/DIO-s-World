@@ -1,0 +1,1 @@
+deadBeeFrames dd 1, deadBeeTexture

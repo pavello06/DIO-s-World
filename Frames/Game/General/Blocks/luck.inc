@@ -1,0 +1,1 @@
+luckFrames dd 4, luckTexture, luck2Texture, luck3Texture, luck4Texture

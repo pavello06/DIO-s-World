@@ -1,0 +1,1 @@
+dyingPlayerFrames dd 1, dyingPlayerTexture

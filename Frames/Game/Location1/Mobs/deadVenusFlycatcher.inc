@@ -1,0 +1,1 @@
+deadVenusFlycatcherFrames dd 1, deadVenusFlycatcherTexture

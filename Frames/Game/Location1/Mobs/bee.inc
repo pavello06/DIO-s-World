@@ -1,0 +1,1 @@
+beeFrames dd 2, beeTexture, bee2Texture
