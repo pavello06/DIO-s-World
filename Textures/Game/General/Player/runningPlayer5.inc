@@ -1,6 +1,4 @@
-UPJUMPPLAYER_WIDTH  = 12 * Structs.NORMAL
-UPJUMPPLAYER_HEIGHT = 16  * Structs.NORMAL
-upJumpPlayerTexture dd 12, 16
+runningPlayer5Texture dd 12, 16
 db\
  -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,  \
  -1, -1, -1,    0,  0,  0,  205,147, 87,  205,147, 87,  205,147, 87,  205,147, 87,  163,108, 83,  205,147, 87,  205,147, 87,  163,108, 83,    0,  0,  0,   -1, -1, -1,  \
