@@ -1,5 +1,5 @@
-TOPPIPE_WIDTH  = 34 * Structs.NORMAL
-TOPPIPE_HEIGHT = 19  * Structs.NORMAL
+TOPPIPE_WIDTH  = 34 * Drawing.NORMAL
+TOPPIPE_HEIGHT = 19  * Drawing.NORMAL
 topPipeTexture dd 34, 19
 db\
   0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,  \

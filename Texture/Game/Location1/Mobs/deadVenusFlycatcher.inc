@@ -1,5 +1,5 @@
-DEADVENUSFLYCATCHER_WIDTH  = 23 * Structs.NORMAL
-DEADVENUSFLYCATCHER_HEIGHT = 24  * Structs.NORMAL
+DEADVENUSFLYCATCHER_WIDTH  = 23 * Drawing.NORMAL
+DEADVENUSFLYCATCHER_HEIGHT = 24  * Drawing.NORMAL
 deadVenusFlycatcherTexture dd 23, 24
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

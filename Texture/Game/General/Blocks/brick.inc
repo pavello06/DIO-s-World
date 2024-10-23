@@ -1,5 +1,5 @@
-BRICK_WIDTH  = 16 * Structs.NORMAL
-BRICK_HEIGHT = 16  * Structs.NORMAL
+BRICK_WIDTH  = 16 * Drawing.NORMAL
+BRICK_HEIGHT = 16  * Drawing.NORMAL
 brickTexture dd 16, 16
 db\
 254,255,255,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  254,255,255,  \

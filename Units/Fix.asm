@@ -1,11 +1,10 @@
-;-------------------------------------------------------------------------------
 proc Fix.FixObject uses ebx esi,\
      refObjectWithDrawing
         
         mov     ecx, [refObjectWithDrawing]
         
         mov     ebx, sizeof.Object
-        cmp     DWORD [ecx + Object.type], Structs.MENU
+        cmp     DWORD [ecx + Object.type], Object.MENU
         je     .MenuObject
 
   .GameObject:
@@ -48,4 +47,3 @@ proc Fix.FixObjects uses ebx esi,\
                     
         ret
 endp
-;-------------------------------------------------------------------------------

@@ -1,4 +1,3 @@
-;-------------------------------------------------------------------------------
 proc Normalize.NormalizeAll\
      old, oldMin, oldMax, newMin, newMax
         locals
@@ -41,4 +40,3 @@ proc Normalize.NormalizeCoordinate\
         
         ret
 endp
-;-------------------------------------------------------------------------------  

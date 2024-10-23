@@ -1,5 +1,5 @@
-VENUSFLYCATCHER_WIDTH  = 23 * Structs.NORMAL
-VENUSFLYCATCHER_HEIGHT = 24  * Structs.NORMAL
+VENUSFLYCATCHER_WIDTH  = 23 * Drawing.NORMAL
+VENUSFLYCATCHER_HEIGHT = 24  * Drawing.NORMAL
 venusFlycatcherTexture dd 23, 24
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

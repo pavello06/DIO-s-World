@@ -1,5 +1,12 @@
-;-------------------------------------------------------------------------------
-proc Animate.AnimateObject uses ebx,\
+struct Animation
+  isFinite     dd ?
+  timer        dd ?
+  maxTimer     dd ?
+  currentFrame dd ?
+  refFrames    dd ?
+ends
+
+proc Animation.AnimateObject uses ebx,\
      refObjectWithAnimation
      
         invoke	GetTickCount
@@ -8,7 +15,7 @@ proc Animate.AnimateObject uses ebx,\
         
         mov     ebx, sizeof.Object + sizeof.Drawing 
         cmp     DWORD [ecx + Object.type], Structs.MENU
-        je     .MenuObject
+        je      .MenuObject
         
   .GameObject:
         add     ebx, sizeof.GameObject - sizeof.Object;sizeof.MenuObject
@@ -49,7 +56,7 @@ proc Animate.AnimateObject uses ebx,\
         ret
 endp
 
-proc Animate.AnimateObjects uses ebx esi,\
+proc Animation.AnimateObjects uses ebx esi,\
      refObjectsWithAnimation, xMin, xMax, yMin, yMax    
      
         mov     ebx, [refObjectsWithAnimation]
@@ -75,7 +82,7 @@ proc Animate.AnimateObjects uses ebx esi,\
         cmp     ecx, [yMax]
         jg      .endLoop                 
         
-        stdcall Animate.AnimateObject, eax 
+        stdcall Animation.AnimateObject, eax 
   
   .endLoop:                     
         add     esi, 4                                   
@@ -84,4 +91,3 @@ proc Animate.AnimateObjects uses ebx esi,\
           
         ret
 endp
-;-------------------------------------------------------------------------------

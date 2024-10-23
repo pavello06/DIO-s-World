@@ -1,5 +1,5 @@
-YELLOWBLOCK_WIDTH  = 16 * Structs.NORMAL
-YELLOWBLOCK_HEIGHT = 16  * Structs.NORMAL
+YELLOWBLOCK_WIDTH  = 16 * Drawing.NORMAL
+YELLOWBLOCK_HEIGHT = 16  * Drawing.NORMAL
 yellowBlockTexture dd 16, 16
 db\
  -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,  \

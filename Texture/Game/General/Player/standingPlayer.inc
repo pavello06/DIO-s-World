@@ -1,5 +1,5 @@
-STANDINGPLAYER_WIDTH  = 12 * Structs.NORMAL
-STANDINGPLAYER_HEIGHT = 16  * Structs.NORMAL
+STANDINGPLAYER_WIDTH  = 12 * Drawing.NORMAL
+STANDINGPLAYER_HEIGHT = 16  * Drawing.NORMAL
 standingPlayerTexture dd 12, 16
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

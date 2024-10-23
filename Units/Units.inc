@@ -1,10 +1,10 @@
 include '../Frames/Frames.inc'
 include '../Texture/Texture.inc'
 
-include 'Structs.asm'
+include 'Object.asm'
 
-include 'Animate.asm'
-include 'Draw.asm'
+include 'Animation.asm'
+include 'Drawing.asm'
 include 'Fix.asm'
 include 'Normalize.asm'
 include 'Screen.asm'

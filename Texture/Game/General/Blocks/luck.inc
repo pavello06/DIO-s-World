@@ -1,5 +1,5 @@
-LUCK_WIDTH  = 16 * Structs.NORMAL
-LUCK_HEIGHT = 16  * Structs.NORMAL
+LUCK_WIDTH  = 16 * Drawing.NORMAL
+LUCK_HEIGHT = 16  * Drawing.NORMAL
 luckTexture dd 16, 16
 db\
  -1, -1, -1,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,  248,128,  0,   -1, -1, -1,  \

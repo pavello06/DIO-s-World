@@ -1,5 +1,5 @@
-BLOCK_WIDTH  = 16 * Structs.NORMAL
-BLOCK_HEIGHT = 16  * Structs.NORMAL
+BLOCK_WIDTH  = 16 * Drawing.NORMAL
+BLOCK_HEIGHT = 16  * Drawing.NORMAL
 blockTexture dd 16, 16
 db\
  -1, -1, -1,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,  105, 27, 40,   -1, -1, -1,  \

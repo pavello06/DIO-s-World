@@ -144,7 +144,7 @@ section '.data' data readable writeable
   rc RECT
   
   player Object Structs.GAME, 10, 50, 1, 1
-              dd Structs.PLAYER, 5, Structs.RIGHT, Structs.UP, standingPlayerTexture, FALSE, 200, 0, 0, standingPlayerFrames, 0, 0, TRUE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+              dd Structs.PLAYER, 5, Structs.RIGHT, Structs.UP, standingPlayerTexture, FALSE, 0, 200, 0, standingPlayerFrames, 0, 0, TRUE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   
   grass   Object Structs.GAME, 0, 0, 10, 1
               dd Structs.BLOCK, 5, Structs.RIGHT, Structs.UP, grassTexture

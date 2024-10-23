@@ -1,5 +1,5 @@
-DEADBEE_WIDTH  = 14 * Structs.NORMAL
-DEADBEE_HEIGHT = 8  * Structs.NORMAL
+DEADBEE_WIDTH  = 14 * Drawing.NORMAL
+DEADBEE_HEIGHT = 8  * Drawing.NORMAL
 deadBeeTexture dd 14, 8
 db\
  -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,  \
