@@ -1,4 +1,22 @@
 ;-------------------------------------------------------------------------------
+struct Drawing
+  pixelSize  dd ?
+  directionX dd ?
+  directionY dd ?
+  refTexture dd ?
+ends
+
+Structs.LITTLE = 3
+Structs.NORMAL = 5
+
+Structs.LEFT  = -1
+Structs.RIGHT = 1
+
+Structs.DOWN  = -1
+Structs.UP    = 1
+;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
 proc Draw.DrawPixel\
      red, green, blue, x, xMin, xMax, y, yMin, yMax, pixelSize
         
