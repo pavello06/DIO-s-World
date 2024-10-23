@@ -50,11 +50,7 @@ proc Animate.AnimateObject uses ebx,\
 endp
 
 proc Animate.AnimateObjects uses ebx esi,\
-     refObjectsWithAnimation, xMin, xMax, yMin, yMax
-        locals               
-          xMax dd ?
-          yMax dd ?
-        endl      
+     refObjectsWithAnimation, xMin, xMax, yMin, yMax    
      
         mov     ebx, [refObjectsWithAnimation]
         

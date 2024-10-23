@@ -151,12 +151,8 @@ proc Draw.DrawObject uses ebx esi edi,\
         ret
 endp
 
-proc Draw.DrawObjects uses ebx esi edi,\
-     refObjectsWithDrawing, xMin, xMax, yMin, yMax
-        locals               
-          xMax dd ?
-          yMax dd ?
-        endl      
+proc Draw.DrawObjects uses ebx esi,\
+     refObjectsWithDrawing, xMin, xMax, yMin, yMax     
      
         mov     ebx, [refObjectsWithDrawing]
         
@@ -170,18 +166,18 @@ proc Draw.DrawObjects uses ebx esi edi,\
         
         add     ecx, [eax + Object.width]
         cmp     ecx, [xMin]
-        jl      .endLoop
+        ;jl      .endLoop
         mov     ecx, [eax + Object.x]
         cmp     ecx, [xMax]
-        jg      .endLoop        
+        ;jg      .endLoop        
         add     ecx, [eax + Object.height]
         cmp     ecx, [yMin]
-        jl      .endLoop 
+        ;jl      .endLoop 
         mov     ecx, [eax + Object.y]
         cmp     ecx, [yMax]
-        jg      .endLoop                 
+        ;jg      .endLoop                 
         
-        stdcall Draw.DrawObject, eax, xMin, xMax, yMin, yMax 
+        stdcall Draw.DrawObject, eax, [xMin], [xMax], [yMin], [yMax] 
   
   .endLoop:                     
         add     esi, 4                                   
