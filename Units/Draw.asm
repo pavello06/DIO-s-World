@@ -166,16 +166,16 @@ proc Draw.DrawObjects uses ebx esi,\
         
         add     ecx, [eax + Object.width]
         cmp     ecx, [xMin]
-        ;jl      .endLoop
+        jl      .endLoop
         mov     ecx, [eax + Object.x]
         cmp     ecx, [xMax]
-        ;jg      .endLoop        
+        jg      .endLoop        
         add     ecx, [eax + Object.height]
         cmp     ecx, [yMin]
-        ;jl      .endLoop 
+        jl      .endLoop 
         mov     ecx, [eax + Object.y]
         cmp     ecx, [yMax]
-        ;jg      .endLoop                 
+        jg      .endLoop                 
         
         stdcall Draw.DrawObject, eax, [xMin], [xMax], [yMin], [yMax] 
   

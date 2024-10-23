@@ -95,8 +95,8 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        stdcall Animate.AnimateObjects, objectsWithAnimation, Screen.screen
-        stdcall Draw.DrawObjects, objectsWithDrawing, Screen.screen
+        stdcall Animate.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
+        stdcall Draw.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
         stdcall Move.MoveEntities, entities, objects
         
         invoke  SwapBuffers, [hdc]        
@@ -146,7 +146,7 @@ section '.data' data readable writeable
   player Object Structs.GAME, 10, 50, 1, 1
               dd Structs.PLAYER, 5, Structs.RIGHT, Structs.UP, standingPlayerTexture, FALSE, 200, 0, 0, standingPlayerFrames, 0, 0, TRUE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   
-  grass   Object Structs.GAME, 10, 10, 10, 1
+  grass   Object Structs.GAME, 0, 0, 10, 1
               dd Structs.BLOCK, 5, Structs.RIGHT, Structs.UP, grassTexture
               
   palm Object Structs.GAME, 300, 100, 1, 1
