@@ -61,7 +61,7 @@ proc Drawing.DrawObject uses ebx esi edi,\
         mov     ebx, [refObjectWithDrawing]
         
         mov     esi, sizeof.Object
-        cmp     DWORD [ebx + Object.type], Structs.MENU
+        cmp     DWORD [ebx + Object.type], Object.MENU
         je      .MenuObject
         
   .GameObject:

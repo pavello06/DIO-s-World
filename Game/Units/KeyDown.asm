@@ -16,7 +16,7 @@ proc KeyDown.Move\
         jne     .notVKLeft
         
   .VKLeft:
-        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Structs.LEFT        
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT        
         mov     DWORD [eax + Entity.speedX], -KeyDown.BOOST_SPEED_X
         jmp     .exit     
   

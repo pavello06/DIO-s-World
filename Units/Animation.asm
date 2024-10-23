@@ -14,7 +14,7 @@ proc Animation.AnimateObject uses ebx,\
         mov     ecx, [refObjectWithAnimation]
         
         mov     ebx, sizeof.Object + sizeof.Drawing 
-        cmp     DWORD [ecx + Object.type], Structs.MENU
+        cmp     DWORD [ecx + Object.type], Object.MENU
         je      .MenuObject
         
   .GameObject:

@@ -95,9 +95,9 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        stdcall Animate.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
-        stdcall Draw.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
-        stdcall Move.MoveEntities, entities, objects
+        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
+        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
+        ;stdcall Move.MoveEntities, entities, objects
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
@@ -143,23 +143,23 @@ section '.data' data readable writeable
   
   rc RECT
   
-  player Object Structs.GAME, 10, 50, 1, 1
-              dd Structs.PLAYER, 5, Structs.RIGHT, Structs.UP, standingPlayerTexture, FALSE, 0, 200, 0, standingPlayerFrames, 0, 0, TRUE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  player Object Object.GAME, 10, 100, 1, 1
+              dd Structs.PLAYER, 5, Drawing.RIGHT, Drawing.UP, standingPlayerTexture, FALSE, 0, 200, 0, standingPlayerFrames, 0, 0, TRUE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   
-  grass   Object Structs.GAME, 0, 0, 10, 1
-              dd Structs.BLOCK, 5, Structs.RIGHT, Structs.UP, grassTexture
+  grass   Object Object.GAME, 0, 0, 10, 1
+              dd Structs.BLOCK, 5, Drawing.RIGHT, Drawing.UP, grassTexture
               
-  palm Object Structs.GAME, 300, 100, 1, 1
-              dd Structs.DECORATION, 5, Structs.RIGHT, Structs.UP, palmTexture
+  palm Object Object.GAME, 300, 100, 1, 1
+              dd Structs.DECORATION, 5, Drawing.RIGHT, Drawing.UP, palmTexture
               
-  jump    Object Structs.GAME, 80, 90, 1, 1
-              dd Structs.JUMP, 5, Structs.RIGHT, Structs.UP, beeTexture
+  jump    Object Object.GAME, 80, 90, 1, 1
+              dd Structs.JUMP, 5, Drawing.RIGHT, Drawing.UP, beeTexture
               
-  teleport Object Structs.GAME, 350, 95, 1, 1
+  teleport Object Object.GAME, 350, 95, 1, 1
               dd Structs.TELEPORT, 10, 300
               
-  topBlock Object Structs.GAME, 300, 150, 15, 1
-              dd Structs.TOP_BLOCK, 5, Structs.RIGHT, Structs.UP, shadowTexture
+  topBlock Object Object.GAME, 300, 150, 15, 1
+              dd Structs.TOP_BLOCK, 5, Drawing.RIGHT, Drawing.UP, shadowTexture
   
   objects dd (objectsLength / 4 - 1), player, grass, jump, palm, topBlock
   objectsLength = $ - objects
