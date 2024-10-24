@@ -97,7 +97,7 @@ proc WindowProc uses ebx esi edi,\
         stdcall Screen.Clear
         stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
         stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
-        ;stdcall Move.MoveEntities, entities, objects
+        stdcall Move.MoveEntities, entities, objects
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax

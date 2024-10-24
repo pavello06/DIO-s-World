@@ -13,7 +13,7 @@ proc Animation.AnimateObject uses ebx,\
         
         mov     ecx, [refObjectWithAnimation]
         
-        mov     ebx, sizeof.Object + sizeof.Drawing 
+        mov     ebx, sizeof.Object + sizeof.Drawing;sizeof.MenuObject 
         cmp     DWORD [ecx + Object.type], Object.MENU
         je      .MenuObject
         

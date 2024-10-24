@@ -3,7 +3,7 @@ proc Fix.FixObject uses ebx esi,\
         
         mov     ecx, [refObjectWithDrawing]
         
-        mov     ebx, sizeof.Object
+        mov     ebx, sizeof.Object;sizeof.MenuObject
         cmp     DWORD [ecx + Object.type], Object.MENU
         je     .MenuObject
 
