@@ -41,9 +41,7 @@ endp
 proc BrickWithBreakTimer.Break\
      refBrickWithBreakTimer
      
-        mov     eax, [refBrickWithBreakTimer]     
-     
-        mov     DWORD [eax + BrickWithBreakTimer.timer], 0
+        stdcall Object.Delete, [refBrickWithBreakTimer]  
      
         ret
 endp
@@ -57,3 +55,4 @@ proc BrickWithBreakTimer.Stop\
      
         ret
 endp
+
