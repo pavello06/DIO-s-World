@@ -95,21 +95,21 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
-        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
-        stdcall Move.MoveEntities, entities, objects
+        ;stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
+        ;stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
+        ;stdcall Move.MoveEntities, entities, objects
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
         jmp     .exit
         
   .wmkeydown:
-        stdcall KeyDown.Move, player, [wparam]
+        ;stdcall KeyDown.Move, player, [wparam]
         cmp     [wparam], VK_ESCAPE
         jne     .defwndproc
   
   .wmkeyup:
-        stdcall KeyUp.Move, player, [wparam]
+        ;stdcall KeyUp.Move, player, [wparam]
         jmp     .exit
         
   .wmdestroy:
