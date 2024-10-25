@@ -13,3 +13,32 @@ proc Screen.Clear
         
         ret
 endp
+
+proc Screen.IsObjectOnScreen\
+     refObject, xMin, xMax, yMin, yMax
+     
+        mov     eax, [refObject]
+     
+        mov     ecx, [eax + Object.x]
+        cmp     ecx, [xMax]
+        jg      .objectIsNotOnScreen
+        add     ecx, [eax + Object.width]
+        cmp     ecx, [xMin]
+        jl      .objectIsNotOnScreen
+        mov     ecx, [eax + Object.y]
+        cmp     ecx, [yMax]
+        jg      .objectIsNotOnScreen        
+        add     ecx, [eax + Object.height]
+        cmp     ecx, [yMin]
+        jl      .objectIsNotOnScreen
+  
+  .objectIsNotOnScreen: 
+        mov     eax, TRUE
+        jmp     .exit
+        
+  .objectIsNotOnScreen:        
+        mov     eax, FALSE
+
+  .exit:
+        ret
+endp
