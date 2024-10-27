@@ -10,6 +10,7 @@ proc BrickWithBreakTimer.Start\
         mov     eax, [refBrickWithBreakTimer]     
      
         mov     DWORD [eax + BrickWithBreakTimer.timer], 0
+        stdcall Animation.Start, eax + sizeof.GameObjectWithAnimation 
      
         ret
 endp
@@ -52,6 +53,7 @@ proc BrickWithBreakTimer.Stop\
         mov     eax, [refBrickWithBreakTimer]     
      
         mov     DWORD [eax + BrickWithBreakTimer.timer], -1
+        stdcall Animation.Stop, eax + sizeof.GameObjectWithAnimation 
      
         ret
 endp
@@ -73,20 +75,20 @@ proc BrickWithBreakTimer.TimerObject uses ebx,\
         ret
 endp
 
-proc BrickWithBreakTimer.TimerObjects uses ebx esi,\
+proc BrickWithBreakTimer.TimerObjects uses ebx,\
      refBricksWithBreakTimers    
      
         mov     ebx, [refBricksWithBreakTimers]
         
-        xor     esi, esi
         mov     ecx, [ebx + 0]
+        add     ebx, 4
   
   .loop:
         push    ecx                
         
-        stdcall BrickWithBreakTimer.TimerObject, [ebx + esi + 4]
+        stdcall BrickWithBreakTimer.TimerObject, [ebx]
                       
-        add     esi, 4                                   
+        add     ebx, 4                                   
         pop     ecx
         loop    .loop    
           
