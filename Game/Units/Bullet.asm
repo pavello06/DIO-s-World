@@ -33,7 +33,7 @@ proc Bullet.ActivateOrDeactivate
         mul     edx            
         mov     edx, [ecx + Bullet.refAnimations]
         add     edx, eax
-        add     ecx, sizeof.GameObjectWithAnimation
+        add     ecx, sizeof.GameObjectWithDrawing
         stdcall Animation.Copy, ecx, edx       
         
         mov     eax, [refBullet]
