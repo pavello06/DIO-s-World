@@ -5,10 +5,14 @@ struct Bullet
 ends
 
 proc Bullet.ActivateOrDeactivate
-     refBullet, speedX, speedY, isActive
+     refBullet, x, y, speedX, speedY, isActive
      
         mov     ecx, [refBullet]
         
+        mov     edx, [x]
+        mov     DWORD [ecx + Object.x], edx
+        mov     edx, [y]
+        mov     DWORD [ecx + Object.y], edx
         mov     edx, [speedX]
         mov     DWORD [ecx + Entity.speedX], edx
         mov     edx, [speedY]
@@ -43,15 +47,17 @@ endp
 proc Bullet.Activate\
      refBullet
      
-        stdcall Bullet.ActivateOrDeactivate, [refBullet], 0, 0, TRUE
+        mov     eax, [refBullet]
+     
+        stdcall Bullet.ActivateOrDeactivate, eax, [eax + Object.x], [eax + Object.y], 0, 0, TRUE
      
         ret
 endp
 
 proc Bullet.Deactivate\
-     refBullet, refRefsFrames, speedX, speedY
+     refBullet, x, y, speedX, speedY
      
-        stdcall Bullet.ActivateOrDeactivate, [refBullet], [speedX], [speedY], FALSE
+        stdcall Bullet.ActivateOrDeactivate, [refBullet], [x], [y], [speedX], [speedY], FALSE
      
         ret
 endp
