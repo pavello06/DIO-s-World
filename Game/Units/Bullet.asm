@@ -1,24 +1,38 @@
 struct Bullet
-  entity   Entity
-  isActive dd ?
+  entity        Entity
+  isActive      dd ?
+  refAnimations dd ?
 ends
 
 proc Bullet.ActivateOrDeactivate
-     refBullet, refRefsFrames, speedX, speedY , isActive
+     refBullet, speedX, speedY, isActive
      
+        mov     ecx, [refBullet]
+        
+        mov     edx, [speedX]
+        mov     DWORD [ecx + Entity.speedX], edx
+        mov     edx, [speedY]
+        mov     DWORD [ecx + Entity.speedY], edx
+        mov     edx, [isActive]
+        mov     DWORD [ecx + Bullet.isActive], edx
+        
+        mov      edx, 1
+        
+        cmp     [isActive], FALSE
+        je      .notActive
+  
+  .active:
+        mov      edx, 0
+        
+  .notActive:
+        mov     eax, sizeof.Animation
+        mul     edx            
+        mov     edx, [ecx + Bullet.refAnimations]
+        add     edx, eax
+        add     ecx, sizeof.GameObjectWithAnimation
+        stdcall Animation.Copy, ecx, edx       
+        
         mov     eax, [refBullet]
-        mov     ecx, [refRefsFrames]
-        
-        mov     DWORD [eax + GameObjectWithAnimation.animation.isFinite], TRUE
-        mov     DWORD [eax + GameObjectWithAnimation.animation.currentFrame], 0
-        mov     DWORD [eax + GameObjectWithAnimation.animation.refsFrames], ecx
-        
-        mov     ecx, [speedX]
-        mov     DWORD [eax + Entity.speedX], ecx
-        mov     ecx, [speedY]
-        mov     DWORD [eax + Entity.speedY], ecx
-        mov     ecx, [isActive]
-        mov     DWORD [eax + Bullet.isActive], ecx
         
         add     eax, sizeof.GameObjectWithDrawing 
         stdcall Animation.Start, eax
@@ -27,9 +41,9 @@ proc Bullet.ActivateOrDeactivate
 endp        
 
 proc Bullet.Activate\
-     refBullet, refRefsFrames
+     refBullet
      
-        stdcall Bullet.ActivateOrDeactivate, [refBullet], [refRefsFrames], 0, 0, TRUE
+        stdcall Bullet.ActivateOrDeactivate, [refBullet], 0, 0, TRUE
      
         ret
 endp
@@ -37,7 +51,7 @@ endp
 proc Bullet.Deactivate\
      refBullet, refRefsFrames, speedX, speedY
      
-        stdcall Bullet.ActivateOrDeactivate, [refBullet], [refRefsFrames], [speedX], [speedY], FALSE
+        stdcall Bullet.ActivateOrDeactivate, [refBullet], [speedX], [speedY], FALSE
      
         ret
 endp
