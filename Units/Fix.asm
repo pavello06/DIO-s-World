@@ -27,21 +27,21 @@ proc Fix.FixObject uses ebx esi,\
         ret
 endp
 
-proc Fix.FixObjects uses ebx esi,\
+proc Fix.FixObjects uses ebx,\
      refObjectsWithDrawing
      
         mov     ebx, [refObjectsWithDrawing] 
         
-        xor     esi, esi
         mov     ecx, [ebx + 0]
+        add     ebx, 4
   
   .loop:
         push    ecx     
         
-        stdcall Fix.FixObject, [ebx + esi + 4]
+        stdcall Fix.FixObject, [ebx]
             
   .endLoop:                     
-        add     esi, 4
+        add     ebx, 4
         pop     ecx                                   
         loop    .loop
                     

@@ -87,7 +87,7 @@ proc Animation.AnimateObjects uses ebx,\
   .loop:
         push    ecx
         
-        stdcall Screen.IsObjectOnScreen, [ebx]
+        stdcall Screen.IsObjectOnScreen, [ebx], [xMin], [xMax], [yMin], [yMax]
         cmp     eax, FALSE
         je      .endLoop                 
         

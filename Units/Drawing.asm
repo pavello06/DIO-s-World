@@ -177,11 +177,11 @@ proc Drawing.DrawObjects uses ebx esi,\
   .loop:
         push    ecx
         
-        stdcall Screen.IsObjectOnScreen, [ebx]
+        stdcall Screen.IsObjectOnScreen, [ebx], [xMin], [xMax], [yMin], [yMax]
         cmp     eax, FALSE
         je      .endLoop                 
         
-        stdcall Drawing.DrawObject, [ebx] 
+        stdcall Drawing.DrawObject, [ebx], [xMin], [xMax], [yMin], [yMax] 
   
   .endLoop:                     
         add     ebx, 4                                   
