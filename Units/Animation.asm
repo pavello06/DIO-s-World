@@ -9,9 +9,11 @@ ends
 proc Animation.Start\
      refAnimation
      
-        mov     eax, [refAnimation]
+        invoke	GetTickCount
+     
+        mov     ecx, [refAnimation]
         
-        mov     [eax + Animation.timer], 0
+        mov     [ecx + Animation.timer], eax
 
         ret
 endp
@@ -21,7 +23,7 @@ proc Animation.Stop\
      
         mov     eax, [refAnimation]
         
-        mov     [eax + Animation.timer], -1
+        mov     DWORD [eax + Animation.timer], -1
 
         ret
 endp
