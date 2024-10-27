@@ -18,6 +18,27 @@ proc Animation.Start\
         ret
 endp
 
+proc Animation.Copy\
+     refAnimation1, refAnimation2
+     
+        mov     ecx, [refAnimation1]
+        mov     eax, [refAnimation2]
+     
+        mov     edx, [eax + Animation.isFinite]
+        mov     [ecx + Animation.isFinite], edx
+        mov     edx, [eax + Animation.maxTimer]
+        mov     [ecx + Animation.maxTimer], edx
+        mov     edx, [eax + Animation.currentFrame]
+        mov     [ecx + Animation.currentFrame], edx
+        mov     edx, [eax + Animation.refFrames]
+        mov     [ecx + Animation.refFrames], edx
+        
+        invoke  GetTickCount
+        mov     [ecx + Animation.timer], eax
+     
+        ret
+endp
+
 proc Animation.Stop\
      refAnimation
      
