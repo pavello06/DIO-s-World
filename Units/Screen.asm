@@ -32,7 +32,7 @@ proc Screen.IsObjectOnScreen\
         cmp     ecx, [yMin]
         jl      .objectIsNotOnScreen
   
-  .objectIsNotOnScreen: 
+  .objectIsOnScreen: 
         mov     eax, TRUE
         jmp     .exit
         

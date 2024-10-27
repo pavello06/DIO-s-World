@@ -171,31 +171,20 @@ proc Drawing.DrawObjects uses ebx esi,\
      
         mov     ebx, [refObjectsWithDrawing]
         
-        xor     esi, esi
         mov     ecx, [ebx + 0]
+        add     ebx, 4
   
   .loop:
         push    ecx
         
-        mov     eax, [ebx + esi + 4]
+        stdcall Screen.IsObjectOnScreen, [ebx]
+        cmp     eax, FALSE
+        je      .endLoop                 
         
-        add     ecx, [eax + Object.width]
-        cmp     ecx, [xMin]
-        jl      .endLoop
-        mov     ecx, [eax + Object.x]
-        cmp     ecx, [xMax]
-        jg      .endLoop        
-        add     ecx, [eax + Object.height]
-        cmp     ecx, [yMin]
-        jl      .endLoop 
-        mov     ecx, [eax + Object.y]
-        cmp     ecx, [yMax]
-        jg      .endLoop                 
-        
-        stdcall Drawing.DrawObject, eax, [xMin], [xMax], [yMin], [yMax] 
+        stdcall Drawing.DrawObject, [ebx] 
   
   .endLoop:                     
-        add     esi, 4                                   
+        add     ebx, 4                                   
         pop     ecx
         loop    .loop    
           

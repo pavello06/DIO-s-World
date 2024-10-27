@@ -6,6 +6,26 @@ struct Animation
   refFrames    dd ?
 ends
 
+proc Animation.Start\
+     refAnimation
+     
+        mov     eax, [refAnimation]
+        
+        mov     [eax + Animation.timer], 0
+
+        ret
+endp
+
+proc Animation.Stop\
+     refAnimation
+     
+        mov     eax, [refAnimation]
+        
+        mov     [eax + Animation.timer], -1
+
+        ret
+endp
+
 proc Animation.AnimateObject uses ebx,\
      refObjectWithAnimation
      
@@ -56,36 +76,25 @@ proc Animation.AnimateObject uses ebx,\
         ret
 endp
 
-proc Animation.AnimateObjects uses ebx esi,\
+proc Animation.AnimateObjects uses ebx,\
      refObjectsWithAnimation, xMin, xMax, yMin, yMax    
      
         mov     ebx, [refObjectsWithAnimation]
         
-        xor     esi, esi
         mov     ecx, [ebx + 0]
+        add     ebx, 4
   
   .loop:
         push    ecx
         
-        mov     eax, [ebx + esi + 4]
+        stdcall Screen.IsObjectOnScreen, [ebx]
+        cmp     eax, FALSE
+        je      .endLoop                 
         
-        add     ecx, [eax + Object.width]
-        cmp     ecx, [xMin]
-        jl      .endLoop
-        mov     ecx, [eax + Object.x]
-        cmp     ecx, [xMax]
-        jg      .endLoop        
-        add     ecx, [eax + Object.height]
-        cmp     ecx, [yMin]
-        jl      .endLoop 
-        mov     ecx, [eax + Object.y]
-        cmp     ecx, [yMax]
-        jg      .endLoop                 
-        
-        stdcall Animation.AnimateObject, eax 
+        stdcall Animation.AnimateObject, [ebx] 
   
   .endLoop:                     
-        add     esi, 4                                   
+        add     ebx, 4                                   
         pop     ecx
         loop    .loop    
           
