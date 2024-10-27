@@ -42,14 +42,6 @@ proc BrickWithBreakTimer.CanBreak\
         ret
 endp
 
-proc BrickWithBreakTimer.Break\
-     refBrickWithBreakTimer
-     
-        stdcall Object.Delete, [refBrickWithBreakTimer]  
-     
-        ret
-endp
-
 proc BrickWithBreakTimer.Stop\
      refBrickWithBreakTimer
      
@@ -70,7 +62,7 @@ proc BrickWithBreakTimer.TimerObject uses ebx,\
         cmp     eax, FALSE
         je      .exit
         
-        stdcall BrickWithBreakTimer.Break, ebx
+        stdcall Object.Delete, ebx
         stdcall BrickWithBreakTimer.Stop, ebx 
      
   .exit: 
