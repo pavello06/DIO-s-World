@@ -1,33 +1,51 @@
-;-------------------------------------------------------------------------------
 Move.G = 2
 
-Move.maxTimer dd 17
 Move.timer    dd 0
+Move.maxTimer dd 17
 
-proc Move.Gravitate\
-     refEntity
-
-        mov     eax, [refEntity]
+proc Move.MoveEntityCoordinate\
+     refEntity, refObjects, coordinate
+     
+        mov     eax, 
+     
+        mov     esi, 1
+        mov     ecx, [ebx + Entity.speedX]
+        cmp     ecx, 0
+        jg      .loop
+        neg     esi
+        neg     ecx
+    
+  .loop:
+        cmp     DWORD [ebx + Entity.speedX], 0
+        je      .exit
+        mov     eax, [ebx + Entity.speedX]
+        mul     esi
+        cmp     eax, 0
+        jl      .exit
         
-        sub     DWORD [eax + Entity.speedY], Move.G
-          
+        push    ecx
+        
+        add     [ebx + Object.x], esi
+        stdcall Collide.HandleCollisions, ebx, [refObjects]
+             
+        pop     ecx                
+        loop    .loop
+
+  .exit:     
         ret
 endp
+     
 
 proc Move.MoveEntity uses ebx esi,\
      refEntity, refObjects
         
         mov     ebx, [refEntity]
-        
-        cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
-        jne     .notPlayer
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.maxTimer], 250
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
   
-  .notPlayer:
         cmp     DWORD [ebx + Entity.canGravitate], FALSE
-        je      .canNotGravitate      
-        stdcall Move.Gravitate, ebx
+        je      .canNotGravitate
+        
+  .canGravitate:      
+        sub     DWORD [ebx + Entity.speedY], Move.G
         
   .canNotGravitate:      
         mov     esi, 1
@@ -49,13 +67,7 @@ proc Move.MoveEntity uses ebx esi,\
         
         add     [ebx + Object.x], esi
         stdcall Collide.HandleCollisions, ebx, [refObjects]
-        
-        cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
-        jne     .endXLoop
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], runningPlayerFrames
-  
-  .endXLoop:        
+          
         pop     ecx                
         loop    .xLoop
   
@@ -79,18 +91,7 @@ proc Move.MoveEntity uses ebx esi,\
         
         add     [ebx + Object.y], esi
         stdcall Collide.HandleCollisions, ebx, [refObjects]
-        cmp     DWORD [ebx + Entity.speedY], 0
-        je      .endYLoop
-        
-        cmp     DWORD [ebx + GameObject.collide], Structs.PLAYER
-        jne     .endYLoop
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], upJumpingPlayerFrames
-        cmp     DWORD [ebx + Entity.speedY], 0
-        jg      .endYLoop
-        mov     DWORD [ebx + GameObjectWithAnimation.animation.refFrames], downJumpingPlayerFrames
-        mov     DWORD [ebx + Player.canJump], FALSE
-  
-  .endYLoop:           
+             
         pop     ecx                
         loop    .yLoop
 
@@ -98,10 +99,11 @@ proc Move.MoveEntity uses ebx esi,\
         ret
 endp
 
-proc Move.MoveEntities uses ebx esi,\
+proc Move.MoveEntities uses ebx,\
      refEntities, refObjects
      
         invoke	GetTickCount
+        
 	      sub	    eax, [Move.timer]
 	      cmp	    eax, [Move.maxTimer]
 	      jb	    .exit
@@ -110,20 +112,18 @@ proc Move.MoveEntities uses ebx esi,\
      
         mov     ebx, [refEntities] 
         
-        xor     esi, esi
         mov     ecx, [ebx + 0]
+        add     ebx, 4
   
   .loop:
         push    ecx      
         
-        stdcall Move.MoveEntity, [ebx + esi + 4], [refObjects]
-            
-  .endLoop:                     
-        add     esi, 4
+        stdcall Move.MoveEntity, [ebx], [refObjects]
+                    
+        add     ebx, 4
         pop     ecx                                   
         loop    .loop
         
   .exit:     
         ret
-endp
-;-------------------------------------------------------------------------------     
+endp     

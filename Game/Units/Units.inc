@@ -1,3 +1,5 @@
+include '../Animations/Animations.inc'
+
 include 'GameObject.asm'
 include 'Entity.asm'
 

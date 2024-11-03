@@ -8,10 +8,10 @@ GameObject.DECORATION         = 1
 ;with both
 GameObject.BLOCK              = GameObject.DECORATION * 2
 GameObject.JUMP               = GameObject.BLOCK * 2
-GameObject.TELEPORT           = GameObject.JUMP * 2
-GameObject.DELETE             = GameObject.TELEPORT * 2
+GameObject.DELETE             = GameObject.JUMP * 2
 ;with player
-GameObject.TOP_BLOCK          = GameObject.DELETE * 2
+GameObject.TELEPORT           = GameObject.DELETE * 2
+GameObject.TOP_BLOCK          = GameObject.TELEPORT * 2
 GameObject.TOP_BREAK          = GameObject.TOP_BLOCK * 2
 GameObject.BOTTOM_LUCK        = GameObject.TOP_BREAK * 2
 GameObject.BOTTOM_BREAK       = GameObject.BOTTOM_LUCK * 2
@@ -36,8 +36,9 @@ GameObject.JUMPABLE_ENEMY     = GameObject.BLOCKABLE_ENEMY * 2
 GameObject.TELEPORTABLE_ENEMY = GameObject.JUMPABLE_ENEMY * 2
 GameObject.REVERSEABLE_ENEMY  = GameObject.TELEPORTABLE_ENEMY * 2
 GameObject.ROTATEABLE_ENEMY   = GameObject.REVERSEABLE_ENEMY * 2
+GameObject.ENEMY_BULLET       = GameObject.ROTATEABLE_ENEMY * 2
 ;with player
-GameObject.ENEMY              = GameObject.ROTATEABLE_ENEMY * 2
+GameObject.ENEMY              = GameObject.ENEMY_BULLET * 2
 GameObject.UNTOCHABLE_ENEMY   = GameObject.ENEMY * 2 
 GameObject.UNBEATABLE_ENEMY   = GameObject.UNTOCHABLE_ENEMY * 2
 GameObject.SNAIL              = GameObject.UNBEATABLE_ENEMY * 2

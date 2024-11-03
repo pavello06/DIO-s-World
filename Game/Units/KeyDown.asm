@@ -1,6 +1,6 @@
 ;-------------------------------------------------------------------------------
 KeyDown.BOOST_SPEED_X = 12
-KeyDown.BOOST_SPEED_Y = 33
+KeyDown.BOOST_SPEED_Y = 43
 
 proc KeyDown.Move\
      refPlayer, key
@@ -44,7 +44,7 @@ proc KeyDown.Move\
         jne     .notVKRight
         
   .VKRight:
-        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Structs.RIGHT  
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT  
         mov     DWORD [eax + Entity.speedX], KeyDown.BOOST_SPEED_X
         jmp     .exit
         

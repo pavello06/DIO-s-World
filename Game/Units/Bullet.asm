@@ -4,7 +4,7 @@ struct Bullet
   refAnimations dd ?
 ends
 
-proc Bullet.ActivateOrDeactivate
+proc Bullet.ActivateOrDeactivate\
      refBullet, x, y, speedX, speedY, isActive
      
         mov     ecx, [refBullet]
@@ -20,17 +20,15 @@ proc Bullet.ActivateOrDeactivate
         mov     edx, [isActive]
         mov     DWORD [ecx + Bullet.isActive], edx
         
-        mov      edx, 1
+        mov      eax, sizeof.Animation
         
         cmp     [isActive], FALSE
         je      .notActive
   
   .active:
-        mov      edx, 0
+        mov      eax, 0
         
-  .notActive:
-        mov     eax, sizeof.Animation
-        mul     edx            
+  .notActive:          
         mov     edx, [ecx + Bullet.refAnimations]
         add     edx, eax
         add     ecx, sizeof.GameObjectWithDrawing

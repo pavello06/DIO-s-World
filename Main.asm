@@ -77,7 +77,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  GetClientRect, [hwnd], rc
         
         stdcall Fix.FixObjects, objectsWithDrawing
-               
+              
         xor     eax, eax
         jmp     .exit
         
@@ -95,21 +95,23 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        ;stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
-        ;stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
-        ;stdcall Move.MoveEntities, entities, objects
+        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
+        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
+        stdcall Move.MoveEntities, entities, objects
+        stdcall Player.ChangeAnimation, player
+        stdcall EnemyWithBullets.TimerObject, enemyWithBullets, player
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
         jmp     .exit
         
   .wmkeydown:
-        ;stdcall KeyDown.Move, player, [wparam]
+        stdcall KeyDown.Move, player, [wparam]
         cmp     [wparam], VK_ESCAPE
         jne     .defwndproc
   
   .wmkeyup:
-        ;stdcall KeyUp.Move, player, [wparam]
+        stdcall KeyUp.Move, player, [wparam]
         jmp     .exit
         
   .wmdestroy:
@@ -143,33 +145,30 @@ section '.data' data readable writeable
   
   rc RECT
   
-  player Object Object.GAME, 10, 100, 1, 1
-              dd Structs.PLAYER, 5, Drawing.RIGHT, Drawing.UP, standingPlayerTexture, FALSE, 0, 200, 0, standingPlayerFrames, 0, 0, TRUE, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-  
   grass   Object Object.GAME, 0, 0, 10, 1
-              dd Structs.BLOCK, 5, Drawing.RIGHT, Drawing.UP, grassTexture
+              dd GameObject.BLOCK, 5, Drawing.RIGHT, Drawing.UP, grassTexture
               
-  palm Object Object.GAME, 300, 100, 1, 1
-              dd Structs.DECORATION, 5, Drawing.RIGHT, Drawing.UP, palmTexture
+  bullet  Object Object.GAME, -1000, -1000, 1, 1
+              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, 0, 0, FALSE, TRUE, beeAnimations
               
-  jump    Object Object.GAME, 80, 90, 1, 1
-              dd Structs.JUMP, 5, Drawing.RIGHT, Drawing.UP, beeTexture
-              
-  teleport Object Object.GAME, 350, 95, 1, 1
-              dd Structs.TELEPORT, 10, 300
-              
-  topBlock Object Object.GAME, 300, 150, 15, 1
-              dd Structs.TOP_BLOCK, 5, Drawing.RIGHT, Drawing.UP, shadowTexture
+  bullet2  Object Object.GAME, -1000, -1000, 1, 1
+              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, 0, 0, FALSE, TRUE, beeAnimations
   
-  objects dd (objectsLength / 4 - 1), player, grass, jump, palm, topBlock
+  bullets dd 2, bullet, bullet2            
+  enemyWithBullets Object Object.GAME, 100, 100, 1, 1
+              dd GameObject.ENEMY_BULLET, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, 0, 0, FALSE, 0, 0, 0, 0, 4000, 5, 0, bullets
+  
+  objects dd (objectsLength / 4 - 1), player, grass, bullet, bullet2
   objectsLength = $ - objects
               
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, jump, palm, topBlock
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemyWithBullets, bullet, bullet2
   objectsWithDrawingLength = $ - objectsWithDrawing
   
-  objectsWithAnimation dd 1, player
+  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemyWithBullets, bullet, bullet2
+  objectsWithAnimationLength = $ - objectsWithAnimation
   
-  entities dd 1, player
+  entities dd (entitiesLength / 4 - 1), player, enemyWithBullets, bullet, bullet2
+  entitiesLength = $ - entities
 
 section '.idata' import data readable writeable
 

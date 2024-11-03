@@ -19,32 +19,75 @@ player Player <<<<<Object.GAME, 30, 100, 1, 1>,\
               0, 0, TRUE>,\
               FALSE, 3, 0, FALSE, FALSE, FALSE, -1, 5000, -1, 2000
               
-proc Damage.DamagePlayer\
+proc Player.ChangeAnimation\
      refPlayer
      
         mov     eax, [refPlayer]
+        
+        cmp     DWORD [eax + Entity.speedY], 0
+        jle     .notUpJumpingPlayer
+        
+  .upJumpingPlayer:
+        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 100
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], upJumpingPlayerFrames
+        jmp     .exit
+  
+  .notUpJumpingPlayer:
+        cmp     DWORD [eax + Entity.speedY], 0
+        je     .notDownJumpingPlayer
+        
+  .downJumpingPlayer:
+        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 100
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], downJumpingPlayerFrames
+        jmp     .exit
+  
+  .notDownJumpingPlayer:
+        cmp     DWORD [eax + Entity.speedX], 0
+        je      .notRunningPlauer
+        
+  .runningPlayer:
+        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 100
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], runningPlayerFrames
+        jmp     .exit      
+        
+  .notRunningPlauer:      
+        
+  .standingPlayer:
+        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 250
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
+
+  .exit:
+        ret     
+endp
+              
+proc Player.GetDamage\
+     refPlayer
      
-        cmp     DWORD [eax + Player.hasWorld], TRUE
+        invoke  GetTickCount
+     
+        mov     ecx, [refPlayer]
+     
+        cmp     DWORD [ecx + Player.hasWorld], TRUE
         je      .exit
   
   .hasNotWorld:      
-        cmp     DWORD [eax + Player.hasArrow], TRUE
+        cmp     DWORD [ecx + Player.hasArrow], TRUE
         jne     .hasNotArrow
         
-        mov     DWORD [eax + Player.hasArrow], FALSE
-        mov     DWORD [eax + Player.invulnerabilityTimer], 0
+        mov     DWORD [ecx + Player.hasArrow], FALSE        
+        mov     DWORD [ecx + Player.invulnerabilityTimer], eax
         jmp     .exit
         
   .hasNotArrow:      
-        cmp     DWORD [eax + Player.hasHeart], TRUE
+        cmp     DWORD [ecx + Player.hasHeart], TRUE
         jne     .hasNotHeart
         
-        mov     DWORD [eax + Player.hasHeart], FALSE
-        mov     DWORD [eax + Player.invulnerabilityTimer], 0
+        mov     DWORD [ecx + Player.hasHeart], FALSE
+        mov     DWORD [ecx + Player.invulnerabilityTimer], eax
         jmp     .exit
         
   .hasNotHeart: 
-        stdcall Player.Die, eax
+        stdcall Player.Die, ecx
         
   .exit:   
         ret
@@ -55,8 +98,8 @@ proc Player.Die\
      
         mov     eax, [refPlayer]
      
-        mov     DWORD [eax + GameObject.collide], Structs.DEAD_PLAYER
-        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], deadPlayerFrames
+        mov     DWORD [eax + GameObject.collide], GameObject.DEAD_PLAYER
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], dyingPlayerFrames
           
         ret
 endp

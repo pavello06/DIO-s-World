@@ -16,7 +16,7 @@ proc EnemyWithBullets.IsPlayerNear\
         mov     edx, [eax + Object.x]
         sub     edx, [ecx + Object.x]
      
-        mov     eax, [Screen.screen]
+        mov     eax, Screen.screen
         
         mov     eax, [eax + Object.width]
         shr     eax, 1
@@ -145,17 +145,12 @@ proc EnemyWithBullets.Shoot uses ebx,\
         ret     
 endp
 
-proc EnemyWithBullets.TimerObject\
-
-
-
-
 proc EnemyWithBullets.TimerObject uses ebx,\
-     refEnemyWithBullets
+     refEnemyWithBullets, refPlayer
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall EnemyWithBullets.CanShoot, ebx
+        stdcall EnemyWithBullets.CanShoot, ebx, [refPlayer]
         
         cmp     eax, FALSE
         je      .exit
@@ -167,7 +162,7 @@ proc EnemyWithBullets.TimerObject uses ebx,\
 endp
 
 proc EnemyWithBullets.TimerObjects uses ebx,\
-     refEnemiesWithBullets    
+     refEnemiesWithBullets, refPlayer    
      
         mov     ebx, [refEnemiesWithBullets]
         
@@ -177,7 +172,7 @@ proc EnemyWithBullets.TimerObjects uses ebx,\
   .loop:
         push    ecx                
         
-        stdcall EnemyWithBullets.TimerObject, [ebx]
+        stdcall EnemyWithBullets.TimerObject, [ebx], [refPlayer]
                       
         add     ebx, 4                                   
         pop     ecx
