@@ -1,7 +1,6 @@
 struct Player
   entity                  Entity
   canJump                 dd ?
-  totalBullets            dd ?
   refBullets              dd ?
   hasHeart                dd ?
   hasArrow                dd ?
@@ -11,6 +10,12 @@ struct Player
   invulnerabilityTimer    dd ?
   maxInvulnerabilityTimer dd ?    
 ends
+
+Player.PLAYER_SPEED_BOOST_X = 12
+Player.PLAYER_SPEED_BOOST_Y = 33
+
+Player.BULLET_SPEED_BOOST_X = 14
+Player.BULLET_SPEED_BOOST_Y = 0
 
 player Player <<<<<Object.GAME, 30, 100, 1, 1>,\ 
               GameObject.PLAYER>,\
@@ -57,6 +62,84 @@ proc Player.ChangeAnimation\
         mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
 
   .exit:
+        ret     
+endp
+
+proc Player.AreBulletsActive\
+     refPlayer
+     
+        mov     eax, [refPlayer]
+        mov     eax, [eax + Player.refsBullets]
+        
+        mov     ecx, [eax + 0]
+        add     eax, 4
+        
+  .loop:        
+        mov     edx, [eax]
+        
+        cmp     DWORD [edx + Bullet.isActive], TRUE
+        jne     .endLoop
+        
+        mov     eax, TRUE
+        jmp     .exit 
+  
+  .endLoop:      
+        add     eax, 4
+        loop    .loop
+        
+        mov     eax, FALSE
+        
+  .exit:   
+        ret 
+endp
+
+proc Player.CanShoot uses ebx,\
+     refPlayer
+     
+        mov     ebx, [refPlayer]
+        
+        stdcall Player.AreBulletsActive, ebx
+        cmp     eax, FALSE
+        je      .canNotShoot                  
+  
+  .canShoot:
+        mov     eax, TRUE
+        jmp     .exit
+  
+  .canNotShoot:
+        mov     eax, FALSE
+  
+  .exit:   
+        ret     
+endp
+
+proc Player.Shoot uses ebx,\
+     refPlayer
+     
+        mov     eax, [refPlayer]
+        mov     eax, [eax + Player.refsBullets]
+        
+        mov     ecx, [eax + 0]
+        add     eax, 4
+        
+  .loop:        
+        mov     edx, [eax]
+        
+        cmp     DWORD [edx + Bullet.isActive], TRUE
+        jne     .endLoop
+        
+        jmp     .findActiveBullet
+  
+  .endLoop:      
+        add     eax, 4
+        loop    .loop
+        
+  .findActiveBullet:
+        mov     eax, [refPlayer]
+        
+        stdcall Bullet.Deactivate, edx, [eax + Object.x], [eax + Object.y], Player.BULLET_SPEED_BOOST_X, Player.BULLET_SPEED_BOOST_Y
+  
+  .exit:   
         ret     
 endp
               
