@@ -1,31 +1,33 @@
+Move.MAX_TIMER = 17
 Move.G = 2
 
 Move.timer    dd 0
-Move.maxTimer dd 17
 
-proc Move.MoveEntityCoordinate\
+proc Move.MoveEntityCoordinate uses ebx esi edi,\
      refEntity, refObjects, coordinate
      
-        mov     eax, 
+        mov     ebx, [refEntity]
+        
+        mov     esi, [coordinate] 
      
-        mov     esi, 1
-        mov     ecx, [ebx + Entity.speedX]
+        mov     edi, 1
+        mov     ecx, [ebx + esi + Entity.speedX]
         cmp     ecx, 0
         jg      .loop
-        neg     esi
+        neg     edi
         neg     ecx
     
   .loop:
-        cmp     DWORD [ebx + Entity.speedX], 0
+        cmp     DWORD [ebx + esi + Entity.speedX], 0
         je      .exit
-        mov     eax, [ebx + Entity.speedX]
-        mul     esi
+        mov     eax, [ebx + esi + Entity.speedX]
+        mul     edi
         cmp     eax, 0
         jl      .exit
         
         push    ecx
         
-        add     [ebx + Object.x], esi
+        add     [ebx + esi + Object.x], edi
         stdcall Collide.HandleCollisions, ebx, [refObjects]
              
         pop     ecx                
@@ -34,9 +36,25 @@ proc Move.MoveEntityCoordinate\
   .exit:     
         ret
 endp
+
+proc Move.MoveEntityCoordinateX\
+     refEntity, refObjects
+     
+        stdcall Move.MoveEntityCoordinate, [refEntity], [refObjects], 0
+            
+        ret
+endp
+
+proc Move.MoveEntityCoordinateY\
+     refEntity, refObjects
+     
+        stdcall Move.MoveEntityCoordinate, [refEntity], [refObjects], sizeof.Object.x
+            
+        ret
+endp
      
 
-proc Move.MoveEntity uses ebx esi,\
+proc Move.MoveEntity uses ebx,\
      refEntity, refObjects
         
         mov     ebx, [refEntity]
@@ -48,52 +66,8 @@ proc Move.MoveEntity uses ebx esi,\
         sub     DWORD [ebx + Entity.speedY], Move.G
         
   .canNotGravitate:      
-        mov     esi, 1
-        mov     ecx, [ebx + Entity.speedX]
-        cmp     ecx, 0
-        jg      .xLoop
-        neg     esi
-        neg     ecx
-    
-  .xLoop:
-        cmp     DWORD [ebx + Entity.speedX], 0
-        je      .stopX
-        mov     eax, [ebx + Entity.speedX]
-        imul    eax, esi
-        cmp     eax, 0
-        jl      .stopX
-        
-        push    ecx 
-        
-        add     [ebx + Object.x], esi
-        stdcall Collide.HandleCollisions, ebx, [refObjects]
-          
-        pop     ecx                
-        loop    .xLoop
-  
-  .stopX:           
-        mov     esi, 1
-        mov     ecx, [ebx + Entity.speedY]
-        cmp     ecx, 0
-        jg      .yLoop
-        neg     esi
-        neg     ecx
-    
-  .yLoop:
-        cmp     DWORD [ebx + Entity.speedY], 0
-        je      .exit
-        mov     eax, [ebx + Entity.speedY]
-        imul    eax, esi
-        cmp     eax, 0
-        jl      .exit
-        
-        push    ecx
-        
-        add     [ebx + Object.y], esi
-        stdcall Collide.HandleCollisions, ebx, [refObjects]
-             
-        pop     ecx                
-        loop    .yLoop
+        stdcall Move.MoveEntityCoordinateX, ebx, [refObjects]
+        stdcall Move.MoveEntityCoordinateY, ebx, [refObjects]
 
   .exit:     
         ret
@@ -105,7 +79,7 @@ proc Move.MoveEntities uses ebx,\
         invoke	GetTickCount
         
 	      sub	    eax, [Move.timer]
-	      cmp	    eax, [Move.maxTimer]
+	      cmp	    eax, Move.MAX_TIMER
 	      jb	    .exit
         
         add	    [Move.timer], eax

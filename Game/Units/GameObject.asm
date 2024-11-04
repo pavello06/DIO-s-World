@@ -31,7 +31,7 @@ GameObject.ENEMY_BULLET       = GameObject.WORLD * 2
 GameObject.PLAYER_BULLET      = GameObject.ENEMY_BULLET * 2
 ;enemies
 ;with both
-GameObject.DEAD_ENEMY         = PLAYER_BULLET * 2
+GameObject.DEAD_ENEMY         = GameObject.PLAYER_BULLET * 2
 GameObject.SNAIL              = GameObject.DEAD_ENEMY * 2
 ;with block
 GameObject.BLOCKABLE_ENEMY    = GameObject.SNAIL * 2
