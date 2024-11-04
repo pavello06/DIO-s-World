@@ -1,7 +1,3 @@
-;-------------------------------------------------------------------------------
-KeyDown.BOOST_SPEED_X = 12
-KeyDown.BOOST_SPEED_Y = 33
-
 proc KeyDown.Move\
      refPlayer, key
      
@@ -17,7 +13,7 @@ proc KeyDown.Move\
         
   .VKLeft:
         mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT        
-        mov     DWORD [eax + Entity.speedX], -KeyDown.BOOST_SPEED_X
+        mov     DWORD [eax + Entity.speedX], -Player.PLAYER_SPEED_BOOST_X
         jmp     .exit     
   
   .notVKLeft:   
@@ -34,7 +30,7 @@ proc KeyDown.Move\
         cmp     DWORD [eax + Entity.speedY], -2
         jl      .exit
         mov     DWORD [eax + Player.canJump], FALSE
-        mov     DWORD [eax + Entity.speedY], KeyDown.BOOST_SPEED_Y
+        mov     DWORD [eax + Entity.speedY], Player.PLAYER_SPEED_BOOST_Y
         jmp     .exit
    
   .notVKUp:            
@@ -43,41 +39,45 @@ proc KeyDown.Move\
         cmp     edx, 'd'
         je      .VKRight
         cmp     edx, 'D'
-        jne     .notVKRight
+        jne     .exit
         
   .VKRight:
         mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT  
-        mov     DWORD [eax + Entity.speedX], KeyDown.BOOST_SPEED_X
-        jmp     .exit
-        
-  .notVKRight:            
-        cmp     edx, VK_DOWN
-        je      .VKDown
-        cmp     edx, 's'
-        je      .VKDown
-        cmp     edx, 'S'
-        jne     .exit
-        
-  .VKDown:  
-        mov     DWORD [eax + Entity.speedY], -1       
+        mov     DWORD [eax + Entity.speedX], Player.PLAYER_SPEED_BOOST_X       
         
   .exit:  
         ret
 endp
-;-------------------------------------------------------------------------------
 
-;-------------------------------------------------------------------------------
 proc KeyDown.Shoot\
      refPlayer, refObjects, key
+     
+        mov     eax, [key]
+        
+        cmp     eax, 'x'
+        je      .shootKey
+        cmp     eax, 'X'
+        je      .shootKey
+        cmp     eax, 'j'
+        je      .shootKey
+        cmp     eax, 'J'
+        jne     .exit
 
+        mov     ebx, [refPlayer]
+  
+  .shootKey:      
+        stdcall Player.CanShoot, ebx
+        
+        cmp     eax, FALSE
+        je      .exit
+        
+        stdcall Player.Shoot, ebx
+     
   .exit:  
         ret
 endp
-;-------------------------------------------------------------------------------
 
-;-------------------------------------------------------------------------------
-proc KeyDown.Pause;\
+proc KeyDown.Pause
      
         ret
-endp
-;-------------------------------------------------------------------------------  
+endp 
