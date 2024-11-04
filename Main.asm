@@ -18,7 +18,7 @@ section '.text' code readable executable
         invoke  RegisterClass, wc
         invoke  CreateWindowEx, 0, class, title,\
                                 WS_VISIBLE + WS_OVERLAPPEDWINDOW + WS_CLIPCHILDREN + WS_CLIPSIBLINGS,\ 
-                                100, 100, 900, 600,\ 
+                                100, 100, 300, 100,\ 
                                 NULL, NULL, [wc.hInstance], NULL
                                 
         mov     [hwnd], eax
@@ -95,8 +95,8 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
-        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
+        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 300, 0, 100
+        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 300, 0, 100
         stdcall Move.MoveEntities, entities, objects
         stdcall Player.ChangeAnimation, player
         stdcall EnemyWithBullets.TimerObject, enemyWithBullets, player
@@ -145,6 +145,9 @@ section '.data' data readable writeable
   
   rc RECT
   
+  dirt    Object Object.GAME, 500, 100, 1, 1
+              dd GameObject.BLOCK, 5, Drawing.RIGHT, Drawing.UP, dirtTexture
+  
   grass   Object Object.GAME, 0, 0, 10, 1
               dd GameObject.BLOCK, 5, Drawing.RIGHT, Drawing.UP, grassTexture
               
@@ -156,12 +159,12 @@ section '.data' data readable writeable
   
   bullets dd 2, bullet, bullet2            
   enemyWithBullets Object Object.GAME, 100, 100, 1, 1
-              dd GameObject.ENEMY_BULLET, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, 0, 0, FALSE, 0, 0, 0, 0, 4000, 5, 0, bullets
+              dd GameObject.BLOCK, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, 0, 0, FALSE, 0, 0, 0, 0, 4000, 5, 0, bullets
   
-  objects dd (objectsLength / 4 - 1), player, grass, bullet, bullet2
+  objects dd (objectsLength / 4 - 1), player, grass, bullet, bullet2, dirt, enemyWithBullets
   objectsLength = $ - objects
               
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemyWithBullets, bullet, bullet2
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemyWithBullets, bullet, bullet2, dirt
   objectsWithDrawingLength = $ - objectsWithDrawing
   
   objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemyWithBullets, bullet, bullet2

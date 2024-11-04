@@ -1,6 +1,6 @@
 ;-------------------------------------------------------------------------------
 KeyDown.BOOST_SPEED_X = 12
-KeyDown.BOOST_SPEED_Y = 43
+KeyDown.BOOST_SPEED_Y = 33
 
 proc KeyDown.Move\
      refPlayer, key
@@ -31,6 +31,8 @@ proc KeyDown.Move\
   .VKUp:
         cmp     DWORD [eax + Player.canJump], TRUE
         jne     .exit
+        cmp     DWORD [eax + Entity.speedY], -2
+        jl      .exit
         mov     DWORD [eax + Player.canJump], FALSE
         mov     DWORD [eax + Entity.speedY], KeyDown.BOOST_SPEED_Y
         jmp     .exit
