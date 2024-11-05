@@ -40,7 +40,7 @@ proc Enemy.Die\
      
         mov     eax, [refEnemy]
      
-        mov     DWORD [eax + GameObject.collide], Structs.DEAD_ENEMY
+        mov     DWORD [eax + GameObject.collide], GameObject.DEAD_ENEMY
                 
   .exit:   
         ret
