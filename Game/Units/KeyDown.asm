@@ -49,13 +49,13 @@ proc KeyDown.Move\
         ret
 endp
 
-proc KeyDown.Shoot\
-     refPlayer, refObjects, key
-     
+proc KeyDown.Shoot uses ebx,\
+     refPlayer, key
+                                                       
         mov     eax, [key]
         
         cmp     eax, 'x'
-        je      .shootKey
+        je      .shootKey 
         cmp     eax, 'X'
         je      .shootKey
         cmp     eax, 'j'

@@ -11,11 +11,10 @@ include 'EnemyWithStopTimer.asm'
 include 'Luck.asm'
 include 'Player.asm'
 include 'Snail.asm'
+include 'Teleport.asm'
 
 include 'Collide.asm'
 include 'Move.asm'
 
 include 'KeyDown.asm'
 include 'KeyUp.asm'
-
-include 'Teleport.asm'

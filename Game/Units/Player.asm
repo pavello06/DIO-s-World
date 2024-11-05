@@ -1,7 +1,7 @@
 struct Player
   entity                  Entity
   canJump                 dd ?
-  refBullets              dd ?
+  refsBullets             dd ?
   hasHeart                dd ?
   hasArrow                dd ?
   hasWorld                dd ?
@@ -22,7 +22,7 @@ player Player <<<<<Object.GAME, 30, 100, 1, 1>,\
               <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
               <FALSE, 0, 200, 0, standingPlayerFrames>>,\
               0, 0, TRUE>,\
-              FALSE, 3, 0, FALSE, FALSE, FALSE, -1, 5000, -1, 2000
+              FALSE, bullets, FALSE, FALSE, FALSE, -1, 5000, -1, 2000
               
 proc Player.ChangeAnimation\
      refPlayer
@@ -93,12 +93,10 @@ proc Player.AreBulletsActive\
         ret 
 endp
 
-proc Player.CanShoot uses ebx,\
+proc Player.CanShoot\
      refPlayer
-     
-        mov     ebx, [refPlayer]
         
-        stdcall Player.AreBulletsActive, ebx
+        stdcall Player.AreBulletsActive, [refPlayer]
         cmp     eax, FALSE
         je      .canNotShoot                  
   
@@ -113,7 +111,7 @@ proc Player.CanShoot uses ebx,\
         ret     
 endp
 
-proc Player.Shoot uses ebx,\
+proc Player.Shoot\
      refPlayer
      
         mov     eax, [refPlayer]
@@ -126,15 +124,13 @@ proc Player.Shoot uses ebx,\
         mov     edx, [eax]
         
         cmp     DWORD [edx + Bullet.isActive], TRUE
-        jne     .endLoop
-        
-        jmp     .findActiveBullet
+        je      .foundActiveBullet    
   
   .endLoop:      
         add     eax, 4
         loop    .loop
         
-  .findActiveBullet:
+  .foundActiveBullet:
         mov     eax, [refPlayer]
         
         stdcall Bullet.Deactivate, edx, [eax + Object.x], [eax + Object.y], Player.BULLET_SPEED_BOOST_X, Player.BULLET_SPEED_BOOST_Y

@@ -18,7 +18,7 @@ section '.text' code readable executable
         invoke  RegisterClass, wc
         invoke  CreateWindowEx, 0, class, title,\
                                 WS_VISIBLE + WS_OVERLAPPEDWINDOW + WS_CLIPCHILDREN + WS_CLIPSIBLINGS,\ 
-                                100, 100, 300, 100,\ 
+                                100, 100, 900, 600,\ 
                                 NULL, NULL, [wc.hInstance], NULL
                                 
         mov     [hwnd], eax
@@ -95,8 +95,8 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 300, 0, 100
-        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 300, 0, 100
+        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
+        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
         stdcall Move.MoveEntities, entities, objects
         stdcall Player.ChangeAnimation, player
         stdcall EnemyWithBullets.TimerObject, enemyWithBullets, player
@@ -107,6 +107,7 @@ proc WindowProc uses ebx esi edi,\
         
   .wmkeydown:
         stdcall KeyDown.Move, player, [wparam]
+        stdcall KeyDown.Shoot, player, [wparam]
         cmp     [wparam], VK_ESCAPE
         jne     .defwndproc
   
