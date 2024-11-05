@@ -52,26 +52,29 @@ endp
 
 proc Animation.AnimateObject uses ebx,\
      refObjectWithAnimation
-     
-        invoke	GetTickCount
         
-        mov     ecx, [refObjectWithAnimation]
+        mov     eax, [refObjectWithAnimation]
         
         mov     ebx, sizeof.Object + sizeof.Drawing;sizeof.MenuObject 
-        cmp     DWORD [ecx + Object.type], Object.MENU
+        
+        cmp     DWORD [eax + Object.type], Object.MENU
         je      .MenuObject
         
   .GameObject:
         add     ebx, sizeof.GameObject - sizeof.Object;sizeof.MenuObject
   
   .MenuObject:      
-        cmp     DWORD [ecx + ebx + Animation.timer], -1
+        cmp     DWORD [eax + ebx + Animation.timer], -1
         je      .exit
-	      sub	    eax, [ecx + ebx + Animation.timer]
-	      cmp	    eax, [ecx + ebx + Animation.maxTimer]
-	      jb	    .exit     
+	      
+        add     eax, ebx
+        add     eax, Animation.timer
+        stdcall Timer.IsTimeUp, eax, [eax + sizeof.Animation.timer]
         
-        add	    [ecx + ebx + Animation.timer], eax
+        cmp     eax, FALSE
+        je      .exit
+        
+        mov     ecx, [refObjectWithAnimation] 
         
         mov     eax, [ecx + ebx + Animation.currentFrame]
         inc     eax

@@ -7,5 +7,6 @@ include 'Fix.asm'
 include 'Normalize.asm'
 include 'Object.asm'
 include 'Screen.asm'
+include 'Timer.asm'
 
 include '../Game/Game.asm'
