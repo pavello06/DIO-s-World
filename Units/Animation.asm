@@ -34,6 +34,7 @@ proc Animation.Copy\
         mov     [ecx + Animation.refFrames], edx
         
         invoke  GetTickCount
+        
         mov     [ecx + Animation.timer], eax
      
         ret
@@ -111,6 +112,7 @@ proc Animation.AnimateObjects uses ebx,\
         push    ecx
         
         stdcall Screen.IsObjectOnScreen, [ebx], [xMin], [xMax], [yMin], [yMax]
+        
         cmp     eax, FALSE
         je      .endLoop                 
         

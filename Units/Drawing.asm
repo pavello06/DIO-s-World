@@ -166,7 +166,7 @@ proc Drawing.DrawObject uses ebx esi edi,\
         ret
 endp
 
-proc Drawing.DrawObjects uses ebx esi,\
+proc Drawing.DrawObjects uses ebx,\
      refObjectsWithDrawing, xMin, xMax, yMin, yMax     
      
         mov     ebx, [refObjectsWithDrawing]
@@ -178,6 +178,7 @@ proc Drawing.DrawObjects uses ebx esi,\
         push    ecx
         
         stdcall Screen.IsObjectOnScreen, [ebx], [xMin], [xMax], [yMin], [yMax]
+        
         cmp     eax, FALSE
         je      .endLoop                 
         

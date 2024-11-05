@@ -11,6 +11,7 @@ Object.MENU    = 1
 Object.GAME    = 2
 
 Object.TRASH_X = -1000
+
 Object.TRASH_Y = -1000
 
 proc Object.Delete\
