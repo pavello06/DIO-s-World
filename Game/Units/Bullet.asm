@@ -59,7 +59,7 @@ proc Bullet.Deactivate\
         ret
 endp
 
-proc Bullet.HasActiveBullet\                     
+proc Bullet.GetActiveBullet\                     
      refBullets
 
         mov     eax, [refBullets]
@@ -78,36 +78,11 @@ proc Bullet.HasActiveBullet\
         loop    .loop
   
   .hasNotActiveBullet:      
-        mov     eax, FALSE
+        mov     eax, -1
         jmp     .exit
         
   .hasActiveBullet:      
-        mov     eax, TRUE                                             
-        
-  .exit:
-        ret
-endp
-
-proc Bullet.GetActiveBullet\                     
-     refBullets
-
-        mov     eax, [refBullets]
-                                                           
-        mov     ecx, [eax + 0]
-        add     eax, 4
-        
-  .loop:        
-        mov     edx, [eax]
-        
-        cmp     DWORD [edx + Bullet.isActive], TRUE
-        je      .foundActiveBullet
-  
-  .endLoop:      
-        add     eax, 4
-        loop    .loop
-        
-  .foundActiveBullet:
-        mov     eax, edx                                                  
+        mov     eax, edx                                            
         
   .exit:
         ret
