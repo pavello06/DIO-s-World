@@ -7,32 +7,31 @@ ends
 proc Bullet.ActivateOrDeactivate\
      refBullet, x, y, speedX, speedY, isActive
      
-        mov     ecx, [refBullet]
+        mov     eax, [refBullet]
         
-        mov     edx, [x]
-        mov     DWORD [ecx + Object.x], edx
-        mov     edx, [y]
-        mov     DWORD [ecx + Object.y], edx
-        mov     edx, [speedX]
-        mov     DWORD [ecx + Entity.speedX], edx
-        mov     edx, [speedY]
-        mov     DWORD [ecx + Entity.speedY], edx
-        mov     edx, [isActive]
-        mov     DWORD [ecx + Bullet.isActive], edx
+        mov     ecx, [x]
+        mov     DWORD [eax + Object.x], ecx
+        mov     ecx, [y]
+        mov     DWORD [eax + Object.y], ecx
+        mov     ecx, [speedX]
+        mov     DWORD [eax + Entity.speedX], ecx
+        mov     ecx, [speedY]
+        mov     DWORD [eax + Entity.speedY], ecx
+        mov     ecx, [isActive]
+        mov     DWORD [eax + Bullet.isActive], ecx
         
-        mov      eax, sizeof.Animation
+        mov     ecx, sizeof.Animation
         
         cmp     [isActive], FALSE
         je      .notActive
   
   .active:
-        mov      eax, 0
+        mov     ecx, 0
         
   .notActive:          
-        mov     edx, [ecx + Bullet.refAnimations]
-        add     edx, eax
-        add     ecx, sizeof.GameObjectWithDrawing
-        stdcall Animation.Copy, ecx, edx       
+        add     ecx, [eax + Bullet.refAnimations]
+        add     eax, sizeof.GameObjectWithDrawing
+        stdcall Animation.Copy, eax, ecx       
         
         mov     eax, [refBullet]
         
@@ -57,5 +56,59 @@ proc Bullet.Deactivate\
      
         stdcall Bullet.ActivateOrDeactivate, [refBullet], [x], [y], [speedX], [speedY], FALSE
      
+        ret
+endp
+
+proc Bullet.HasActiveBullet\                     
+     refBullets
+
+        mov     eax, [refBullets]
+                                                           
+        mov     ecx, [eax + 0]
+        add     eax, 4
+        
+  .loop:        
+        mov     edx, [eax]
+        
+        cmp     DWORD [edx + Bullet.isActive], TRUE
+        je      .hasActiveBullet
+  
+  .endLoop:      
+        add     eax, 4
+        loop    .loop
+  
+  .hasNotActiveBullet:      
+        mov     eax, FALSE
+        jmp     .exit
+        
+  .hasActiveBullet:      
+        mov     eax, TRUE                                             
+        
+  .exit:
+        ret
+endp
+
+proc Bullet.GetActiveBullet\                     
+     refBullets
+
+        mov     eax, [refBullets]
+                                                           
+        mov     ecx, [eax + 0]
+        add     eax, 4
+        
+  .loop:        
+        mov     edx, [eax]
+        
+        cmp     DWORD [edx + Bullet.isActive], TRUE
+        je      .foundActiveBullet
+  
+  .endLoop:      
+        add     eax, 4
+        loop    .loop
+        
+  .foundActiveBullet:
+        mov     eax, edx                                                  
+        
+  .exit:
         ret
 endp
