@@ -7,100 +7,25 @@ struct EnemyWithBullets
   refsBullets  dd ?
 ends
 
-proc EnemyWithBullets.IsPlayerNear\
-     refEnemyWithBullets, refPlayer
-     
-        mov     eax, [refEnemyWithBullets]
-        mov     ecx, [refPlayer]
-        
-        mov     edx, [eax + Object.x]
-        sub     edx, [ecx + Object.x]
-     
-        mov     eax, Screen.screen
-        
-        mov     eax, [eax + Object.width]
-        shr     eax, 1
-        
-        cmp     edx, eax
-        jg      .playerIsNotNear
-  
-  .playerIsNear:      
-        mov     eax, TRUE
-        jmp     .exit
-        
-  .playerIsNotNear:
-        mov     eax, FALSE
-        
-  .exit:   
-        ret 
-endp
-
-proc EnemyWithBullets.AreBulletsActive\
-     refEnemyWithBullets
-     
-        mov     eax, [refEnemyWithBullets]
-        mov     eax, [eax + EnemyWithBullets.refsBullets]
-        
-        mov     ecx, [eax + 0]
-        add     eax, 4
-        
-  .loop:        
-        mov     edx, [eax]
-        
-        cmp     DWORD [edx + Bullet.isActive], TRUE
-        jne     .endLoop
-        
-        mov     eax, TRUE
-        jmp     .exit 
-  
-  .endLoop:      
-        add     eax, 4
-        loop    .loop
-        
-        mov     eax, FALSE
-        
-  .exit:   
-        ret 
-endp
-
-proc EnemyWithBullets.TimeUp\
-     refEnemyWithBullets
-     
-        invoke  GetTickCount
-        
-        mov     ecx, [refEnemyWithBullets]
-        
-        sub	    eax, [ecx + EnemyWithBullets.timer]
-	      cmp	    eax, [ecx + EnemyWithBullets.maxTimer]
-	      jb	    .timeDoesNotUp
-        
-        add	    [ecx + EnemyWithBullets.timer], eax 
-  
-  .timeUp:
-        mov     eax, TRUE
-        jmp     .exit
-  
-  .timeDoesNotUp:
-        mov     eax, FALSE
-      
-  .exit:   
-        ret
-endp
-
 proc EnemyWithBullets.CanShoot uses ebx,\
      refEnemyWithBullets, refPlayer
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall EnemyWithBullets.IsPlayerNear, ebx, [refPlayer]
+        stdcall Enemy.IsPlayerNear, ebx, [refPlayer]
+        
         cmp     eax, FALSE
         je      .canNotShoot
         
-        stdcall EnemyWithBullets.AreBulletsActive, ebx
-        cmp     eax, FALSE
+        mov     eax, [ebx + EnemyWithBullets.refsBullets]
+        stdcall Bullet.GetActiveBullet, eax
+        
+        cmp     eax, -1
         je      .canNotShoot
 
-        stdcall EnemyWithBullets.TimeUp, ebx
+        add     ebx, EnemyWithBullets.timer
+        stdcall Timer.IsTimeUp, ebx, [ebx + sizeof.EnemyWithBullets.timer]
+         
         cmp     eax, FALSE
         je      .canNotShoot                   
   
@@ -118,30 +43,12 @@ endp
 proc EnemyWithBullets.Shoot uses ebx,\
      refEnemyWithBullets
      
-        mov     eax, [refEnemyWithBullets]
-        mov     eax, [eax + EnemyWithBullets.refsBullets]
+        mov     ebx, [refEnemyWithBullets]
+        mov     eax, [ebx + EnemyWithBullets.refsBullets]
+        stdcall Bullet.GetActiveBullet, eax
         
-        mov     ecx, [eax + 0]
-        add     eax, 4
-        
-  .loop:        
-        mov     edx, [eax]
-        
-        cmp     DWORD [edx + Bullet.isActive], TRUE
-        jne     .endLoop
-        
-        jmp     .findActiveBullet
-  
-  .endLoop:      
-        add     eax, 4
-        loop    .loop
-        
-  .findActiveBullet:
-        mov     eax, [refEnemyWithBullets]
-        
-        stdcall Bullet.Deactivate, edx, [eax + Object.x], [eax + Object.y], [eax + EnemyWithBullets.bulletSpeedX], [eax + EnemyWithBullets.bulletSpeedY]
-  
-  .exit:   
+        stdcall Bullet.Deactivate, eax, [ebx + Object.x], [ebx + Object.y], [ebx + EnemyWithBullets.bulletSpeedX], [ebx + EnemyWithBullets.bulletSpeedY]
+    
         ret     
 endp
 
