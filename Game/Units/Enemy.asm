@@ -5,6 +5,31 @@ struct Enemy
   score         dd ?
 ends
 
+proc Enemy.IsPlayerNear\
+     refEnemy, refPlayer, minDistance, maxDistance
+     
+        mov     eax, [refEnemy]
+        mov     ecx, [refPlayer]
+        
+        mov     edx, [eax + Object.x]
+        sub     edx, [ecx + Object.x]
+        
+        cmp     edx, [minDistance]
+        jl      .playerIsNotNear
+        cmp     edx, [maxDistance]
+        jg      .playerIsNotNear
+  
+  .playerIsNear:      
+        mov     eax, TRUE
+        jmp     .exit
+        
+  .playerIsNotNear:
+        mov     eax, FALSE
+        
+  .exit:   
+        ret 
+endp
+
 proc Enemy.GetDamage\
      refEnemy
      
