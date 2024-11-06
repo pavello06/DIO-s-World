@@ -1,3 +1,15 @@
+proc Timer.Start\
+     refTimer
+    
+        invoke	GetTickCount
+        
+        mov     ecx, [refTimer]
+        
+        mov     [ecx], eax
+    
+        ret 
+endp
+
 proc Timer.IsTimeUp\
      refTimer, maxTimer
      
