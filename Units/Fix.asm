@@ -40,8 +40,7 @@ proc Fix.FixObjects uses ebx,\
         push    ecx     
         
         stdcall Fix.FixObject, [ebx]
-            
-  .endLoop:                     
+                                
         add     ebx, 4
         pop     ecx                                   
         loop    .loop
