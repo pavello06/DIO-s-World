@@ -5,15 +5,15 @@ struct Teleport
 ends
 
 proc Teleport.TeleportObject
-     refObject, refTeleport
+     refTeleport, refObject
      
-        mov     eax, [refObject]
-        mov     ecx, [refTeleport]
+        mov     eax, [refTeleport]
+        mov     ecx, [refObject]
         
-        mov     edx, [ecx + Teleport.x]
-        mov     [eax + Object.x], edx
-        mov     edx, [ecx + Teleport.y]
-        mov     [eax + Object.y], edx
+        mov     edx, [eax + Teleport.x]
+        mov     [ecx + Object.x], edx
+        mov     edx, [eax + Teleport.y]
+        mov     [ecx + Object.y], edx
      
         ret     
 endp
