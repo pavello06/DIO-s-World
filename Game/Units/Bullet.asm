@@ -5,7 +5,7 @@ struct Bullet
 ends
 
 proc Bullet.ActivateOrDeactivate\
-     refBullet, x, y, speedX, speedY, isActive
+     refBullet, x, y, isActive
      
         mov     eax, [refBullet]
         
@@ -13,10 +13,9 @@ proc Bullet.ActivateOrDeactivate\
         mov     DWORD [eax + Object.x], ecx
         mov     ecx, [y]
         mov     DWORD [eax + Object.y], ecx
-        mov     ecx, [speedX]
-        mov     DWORD [eax + Entity.speedX], ecx
-        mov     ecx, [speedY]
-        mov     DWORD [eax + Entity.speedY], ecx
+        mov     ecx, [isActive]
+        mov     DWORD [eax + Entity.canMove], ecx
+        xor     DWORD [eax + Entity.canMove], 1
         mov     ecx, [isActive]
         mov     DWORD [eax + Bullet.isActive], ecx
         
@@ -30,12 +29,12 @@ proc Bullet.ActivateOrDeactivate\
         
   .notActive:          
         add     ecx, [eax + Bullet.refAnimations]
-        add     eax, sizeof.GameObjectWithDrawing
+        add     eax, GameObjectWithAnimation.animation
         stdcall Animation.Copy, eax, ecx       
         
         mov     eax, [refBullet]
         
-        add     eax, sizeof.GameObjectWithDrawing 
+        add     eax, GameObjectWithAnimation.animation
         stdcall Animation.Start, eax
      
         ret
@@ -46,15 +45,15 @@ proc Bullet.Activate\
      
         mov     eax, [refBullet]
      
-        stdcall Bullet.ActivateOrDeactivate, eax, [eax + Object.x], [eax + Object.y], 0, 0, TRUE
+        stdcall Bullet.ActivateOrDeactivate, eax, [eax + Object.x], [eax + Object.y], TRUE
      
         ret
 endp
 
 proc Bullet.Deactivate\
-     refBullet, x, y, speedX, speedY
+     refBullet, x, y
      
-        stdcall Bullet.ActivateOrDeactivate, [refBullet], [x], [y], [speedX], [speedY], FALSE
+        stdcall Bullet.ActivateOrDeactivate, [refBullet], [x], [y], FALSE
      
         ret
 endp
@@ -72,8 +71,7 @@ proc Bullet.GetActiveBullet\
         
         cmp     DWORD [edx + Bullet.isActive], TRUE
         je      .hasActiveBullet
-  
-  .endLoop:      
+       
         add     eax, 4
         loop    .loop
   

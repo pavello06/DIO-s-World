@@ -9,28 +9,11 @@ ends
 proc Animation.Start\
      refAnimation
      
-        mov     ecx, [refAnimation]
+        mov     eax, [refAnimation]
         
-        stdcall Timer.Start, ecx + Animation.timer
+        add     eax, Animation.timer
+        stdcall Timer.Start, eax
 
-        ret
-endp
-
-proc Animation.Copy\
-     refAnimation1, refAnimation2
-     
-        mov     ecx, [refAnimation1]
-        mov     eax, [refAnimation2]
-     
-        mov     edx, [eax + Animation.isFinite]
-        mov     [ecx + Animation.isFinite], edx
-        mov     edx, [eax + Animation.maxTimer]
-        mov     [ecx + Animation.maxTimer], edx
-        mov     edx, [eax + Animation.currentFrame]
-        mov     [ecx + Animation.currentFrame], edx
-        mov     edx, [eax + Animation.refFrames]
-        mov     [ecx + Animation.refFrames], edx
-     
         ret
 endp
 
@@ -39,8 +22,27 @@ proc Animation.Stop\
      
         mov     eax, [refAnimation]
         
-        mov     DWORD [eax + Animation.timer], -1
+        add     eax, Animation.timer
+        stdcall Timer.Stop, eax
 
+        ret
+endp
+
+proc Animation.Copy\
+     refAnimation1, refAnimation2
+     
+        mov     eax, [refAnimation1]
+        mov     ecx, [refAnimation2]
+     
+        mov     edx, [ecx + Animation.isFinite]
+        mov     [eax + Animation.isFinite], edx
+        mov     edx, [ecx + Animation.maxTimer]
+        mov     [eax + Animation.maxTimer], edx
+        mov     edx, [ecx + Animation.currentFrame]
+        mov     [eax + Animation.currentFrame], edx
+        mov     edx, [ecx + Animation.refFrames]
+        mov     [eax + Animation.refFrames], edx
+     
         ret
 endp
 
@@ -82,7 +84,7 @@ proc Animation.AnimateObject uses ebx,\
         mov     [eax + ebx + Animation.currentFrame], edx
                 
         shl     edx, 2
-        mov     ecx, [ecx + edx + Frames.refsTextures]
+        mov     ecx, [ecx + edx + Frames.refTextures]
         mov     [eax + ebx - sizeof.Drawing + Drawing.refTexture], ecx
         
         cmp     DWORD [eax + ebx + Animation.isFinite], TRUE
@@ -90,7 +92,8 @@ proc Animation.AnimateObject uses ebx,\
         cmp     DWORD [eax + ebx + Animation.currentFrame], 0
         jne     .exit
         
-        mov     DWORD [eax + ebx + Animation.timer], -1
+        add     eax, ebx
+        stdcall Animation.Stop, eax
   
   .exit:            
         ret

@@ -7,14 +7,15 @@ ends
 proc BrickWithBreakTimer.Start\
      refBrickWithBreakTimer
      
-        invoke	GetTickCount
+        mov     eax, [refBrickWithBreakTimer]     
      
-        mov     ecx, [refBrickWithBreakTimer]     
-     
-        mov     [ecx + BrickWithBreakTimer.timer], eax
+        add     eax, BrickWithBreakTimer.timer
+        stdcall Timer.Start, eax
         
-        add     ecx, sizeof.GameObjectWithDrawing 
-        stdcall Animation.Start, ecx 
+        mov     eax, [refBrickWithBreakTimer] 
+        
+        add     eax, GameObjectWithAnimation.animation 
+        stdcall Animation.Start, eax 
      
         ret
 endp
@@ -24,7 +25,8 @@ proc BrickWithBreakTimer.Stop\
      
         mov     eax, [refBrickWithBreakTimer]     
      
-        mov     DWORD [eax + BrickWithBreakTimer.timer], -1 
+        add     eax, BrickWithBreakTimer.timer 
+        stdcall Timer.Stop, eax
      
         ret
 endp
@@ -38,8 +40,7 @@ proc BrickWithBreakTimer.CanBreak\
         je      .canNotBreak
         
         add     eax, BrickWithBreakTimer.timer
-        stdcall Timer.IsTimeUp, eax, [eax + sizeof.BrickWithBreakTimer.timer]
-        
+        stdcall Timer.IsTimeUp, eax, [eax + sizeof.BrickWithBreakTimer.timer]        
 	      cmp     eax, FALSE
 	      je	    .canNotBreak         
 
@@ -71,8 +72,7 @@ proc BrickWithBreakTimer.TimerObject uses ebx,\
      
         mov     ebx, [refBrickWithBreakTimer]
         
-        stdcall BrickWithBreakTimer.CanBreak, ebx
-        
+        stdcall BrickWithBreakTimer.CanBreak, ebx        
         cmp     eax, FALSE
         je      .exit
         

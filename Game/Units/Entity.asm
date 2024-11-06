@@ -1,5 +1,6 @@
 struct Entity
   gameObjectWithAnimation GameObjectWithAnimation
+  canMove                 dd ?
   speedX                  dd ?
   speedY                  dd ?
   canGravitate            dd ?
@@ -12,9 +13,7 @@ proc Entity.Delete\
         
         mov     eax, [refEntity]
         
-        mov     DWORD [eax + Entity.speedX], 0
-        mov     DWORD [eax + Entity.speedY], 0
-        mov     DWORD [eax + Entity.canGravitate], FALSE
+        mov     DWORD [eax + Entity.canMove], FALSE
      
         ret
 endp

@@ -10,6 +10,16 @@ proc Timer.Start\
         ret 
 endp
 
+proc Timer.Stop\
+     refTimer
+        
+        mov     eax, [refTimer]
+        
+        mov     DWORD [eax], -1
+    
+        ret 
+endp
+
 proc Timer.IsTimeUp\
      refTimer, maxTimer
      

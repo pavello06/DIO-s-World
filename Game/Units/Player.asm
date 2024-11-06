@@ -1,7 +1,7 @@
 struct Player
   entity                  Entity
   canJump                 dd ?
-  refsBullets             dd ?
+  refBullets             dd ?
   hasHeart                dd ?
   hasArrow                dd ?
   hasWorld                dd ?
@@ -21,7 +21,7 @@ player Player <<<<<Object.GAME, 30, 100, 1, 1>,\
               GameObject.PLAYER>,\
               <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
               <FALSE, 0, 200, 0, standingPlayerFrames>>,\
-              0, 0, TRUE>,\
+              TRUE, 0, 0, TRUE>,\
               FALSE, bullets, FALSE, FALSE, FALSE, -1, 5000, -1, 2000
               
 proc Player.ChangeAnimation\
@@ -65,39 +65,13 @@ proc Player.ChangeAnimation\
         ret     
 endp
 
-proc Player.AreBulletsActive\
+proc Player.CanShoot\
      refPlayer
      
         mov     eax, [refPlayer]
-        mov     eax, [eax + Player.refsBullets]
         
-        mov     ecx, [eax + 0]
-        add     eax, 4
-        
-  .loop:        
-        mov     edx, [eax]
-        
-        cmp     DWORD [edx + Bullet.isActive], TRUE
-        jne     .endLoop
-        
-        mov     eax, TRUE
-        jmp     .exit 
-  
-  .endLoop:      
-        add     eax, 4
-        loop    .loop
-        
-        mov     eax, FALSE
-        
-  .exit:   
-        ret 
-endp
-
-proc Player.CanShoot\
-     refPlayer
-        
-        stdcall Player.AreBulletsActive, [refPlayer]
-        cmp     eax, FALSE
+        stdcall Bullet.GetActiveBullet, [eax + Player.refBullets]
+        cmp     eax, -1
         je      .canNotShoot                  
   
   .canShoot:
@@ -111,29 +85,25 @@ proc Player.CanShoot\
         ret     
 endp
 
-proc Player.Shoot\
+proc Player.Shoot uses ebx esi,\
      refPlayer
      
-        mov     eax, [refPlayer]
-        mov     eax, [eax + Player.refsBullets]
+        mov     ebx, [refPlayer]
+        mov     eax, [ebx + Player.refBullets]
         
-        mov     ecx, [eax + 0]
-        add     eax, 4
+        stdcall Bullet.GetActiveBullet, eax
         
-  .loop:        
-        mov     edx, [eax]
+        mov     esi, eax        
         
-        cmp     DWORD [edx + Bullet.isActive], TRUE
-        je      .foundActiveBullet    
-  
-  .endLoop:      
-        add     eax, 4
-        loop    .loop
+        mov     eax, [esi + GameObjectWithDrawing.drawing.directionX]
+        mul     DWORD [esi + Entity.speedX]        
+        mul     DWORD [ebx + GameObjectWithDrawing.drawing.directionX]  
+        mov     [esi + Entity.speedX], eax
         
-  .foundActiveBullet:
-        mov     eax, [refPlayer]
+        mov     eax, [ebx + GameObjectWithDrawing.drawing.directionX]
+        mov     [esi + GameObjectWithDrawing.drawing.directionX], eax        
         
-        stdcall Bullet.Deactivate, edx, [eax + Object.x], [eax + Object.y], Player.BULLET_SPEED_BOOST_X, Player.BULLET_SPEED_BOOST_Y
+        stdcall Bullet.Deactivate, esi, [ebx + Object.x], [ebx + Object.y]
   
   .exit:   
         ret     

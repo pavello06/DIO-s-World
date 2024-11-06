@@ -95,24 +95,24 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Screen.Clear
-        ;stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
+        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
         stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
-        ;stdcall Move.MoveEntities, entities, objects
-        ;stdcall Player.ChangeAnimation, player
-        ;stdcall EnemyWithBullets.TimerObject, enemyWithBullets, player
+        stdcall Move.MoveEntities, entities, objects
+        stdcall Player.ChangeAnimation, player
+        stdcall EnemyWithBullets.TimerObject, enemyWithBullets, player
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
         jmp     .exit
         
   .wmkeydown:
-        ;stdcall KeyDown.Move, player, [wparam]
+        stdcall KeyDown.Move, player, [wparam]
         stdcall KeyDown.Shoot, player, [wparam]
         cmp     [wparam], VK_ESCAPE
         jne     .defwndproc
   
   .wmkeyup:
-        ;stdcall KeyUp.Move, player, [wparam]
+        stdcall KeyUp.Move, player, [wparam]
         jmp     .exit
         
   .wmdestroy:
@@ -153,14 +153,14 @@ section '.data' data readable writeable
               dd GameObject.BLOCK, 5, Drawing.RIGHT, Drawing.UP, grassTexture
               
   bullet  Object Object.GAME, -1000, -1000, 1, 1
-              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, 0, 0, FALSE, TRUE, beeAnimations
+              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, FALSE, 5, 5, FALSE, TRUE, beeAnimations
               
   bullet2  Object Object.GAME, -1000, -1000, 1, 1
-              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, 0, 0, FALSE, TRUE, beeAnimations
+              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, FALSE, 5, 5, FALSE, TRUE, beeAnimations
   
   bullets dd 2, bullet, bullet2            
   enemyWithBullets Object Object.GAME, 100, 100, 1, 1
-              dd GameObject.BLOCK, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, 0, 0, FALSE, 0, 0, 0, 0, 4000, 5, 0, bullets
+              dd GameObject.BLOCK, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, TRUE, 0, 0, FALSE, 0, 0, 1000, 0, 3000, bullets
   
   objects dd (objectsLength / 4 - 1), player, grass, bullet, bullet2, dirt, enemyWithBullets
   objectsLength = $ - objects

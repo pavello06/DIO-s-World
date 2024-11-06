@@ -41,12 +41,12 @@ proc Enemy.GetDamage\
         mul     DWORD [ecx + Enemy.health]
         mov     edx, [ecx + Enemy.refAnimations]
         add     edx, eax
-        add     ecx, sizeof.GameObjectWithDrawing   
+        add     ecx, GameObjectWithAnimation.animation 
         stdcall Animation.Copy, ecx, edx
         
         mov     eax, [refEnemy]
         
-        add     eax, sizeof.GameObjectWithDrawing
+        add     eax, GameObjectWithAnimation.animation
         stdcall Animation.Start, eax
         
         mov     eax, [refEnemy]       

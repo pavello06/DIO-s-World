@@ -58,6 +58,9 @@ proc Move.MoveEntity uses ebx,\
      refEntity, refObjects
         
         mov     ebx, [refEntity]
+        
+        cmp     DWORD [ebx + Entity.canMove], FALSE
+        je      .exit
   
         cmp     DWORD [ebx + Entity.canGravitate], FALSE
         je      .canNotGravitate

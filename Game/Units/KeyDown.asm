@@ -62,10 +62,10 @@ proc KeyDown.Shoot uses ebx,\
         je      .shootKey
         cmp     eax, 'J'
         jne     .exit
-
-        mov     ebx, [refPlayer]
   
-  .shootKey:      
+  .shootKey:
+        mov     ebx, [refPlayer]
+        
         stdcall Player.CanShoot, ebx
         
         cmp     eax, FALSE
