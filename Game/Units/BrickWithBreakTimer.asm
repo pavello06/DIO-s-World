@@ -32,15 +32,16 @@ endp
 proc BrickWithBreakTimer.CanBreak\
      refBrickWithBreakTimer
      
-        invoke  GetTickCount
-     
-        mov     ecx, [refBrickWithBreakTimer]
+        mov     eax, [refBrickWithBreakTimer]
         
-        cmp     DWORD [ecx + BrickWithBreakTimer.timer], -1
+        cmp     DWORD [eax + BrickWithBreakTimer.timer], -1
         je      .canNotBreak
-	      sub	    eax, [ecx + BrickWithBreakTimer.timer]
-	      cmp	    eax, [ecx + BrickWithBreakTimer.maxTimer]
-	      jb	    .canNotBreak         
+        
+        add     eax, BrickWithBreakTimer.timer
+        stdcall Timer.IsTimeUp, eax, [eax + sizeof.BrickWithBreakTimer.timer]
+        
+	      cmp     eax, FALSE
+	      je	    .canNotBreak         
 
   .canBreak:
         mov     eax, TRUE
@@ -53,8 +54,10 @@ proc BrickWithBreakTimer.CanBreak\
         ret
 endp
 
-proc BrickWithBreakTimer.Break\
+proc BrickWithBreakTimer.Break uses ebx,\
      refBrickWithBreakTimer
+     
+        mov     ebx, [refBrickWithBreakTimer]
      
         stdcall Object.Delete, ebx
         stdcall BrickWithBreakTimer.Stop, ebx 
