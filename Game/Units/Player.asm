@@ -17,12 +17,12 @@ Player.PLAYER_SPEED_BOOST_Y = 33
 Player.BULLET_SPEED_BOOST_X = 14
 Player.BULLET_SPEED_BOOST_Y = 0
 
-player Player <<<<<Object.GAME, 30, 100, 1, 1>,\ 
+player Player <<<<<Object.GAME, 30, 120, 1, 1>,\ 
               GameObject.PLAYER>,\
               <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
               <FALSE, 0, 200, 0, standingPlayerFrames>>,\
               TRUE, 0, 0, TRUE>,\
-              FALSE, bullets, TRUE, FALSE, FALSE, -1, 5000, -1, 2000
+              FALSE, 0, TRUE, TRUE, FALSE, -1, 5000, -1, 2000
               
 proc Player.ChangeAnimation\
      refPlayer

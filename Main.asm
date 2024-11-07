@@ -99,7 +99,6 @@ proc WindowProc uses ebx esi edi,\
         stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
         stdcall Move.MoveEntities, entities, objects
         stdcall Player.ChangeAnimation, player
-        stdcall EnemyWithBullets.TimerObject, enemyWithBullets, player
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
@@ -146,35 +145,20 @@ section '.data' data readable writeable
   
   rc RECT
   
-  dirt    Object Object.GAME, 500, 100, 1, 1
-              dd GameObject.BLOCK, 5, Drawing.RIGHT, Drawing.UP, dirtTexture
+  grass GameObjectWithDrawing <<Object.GAME, 0, 0, 10, 1>, GameObject.BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+  testing  GameObjectWithDrawing <<Object.GAME, 400, 100, 1, 1>, GameObject.TOP_BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture> 
   
-  grass   Object Object.GAME, 0, 0, 10, 1
-              dd GameObject.BLOCK, 5, Drawing.RIGHT, Drawing.UP, grassTexture
-              
-  bullet  Object Object.GAME, -1000, -1000, 1, 1
-              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, FALSE, 5, 5, FALSE, TRUE, beeAnimations
-              
-  bullet2  Object Object.GAME, -1000, -1000, 1, 1
-              dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, FALSE, 5, 5, FALSE, TRUE, beeAnimations
-  
-  bullets dd 2, bullet, bullet2            
-  enemyWithBullets Object Object.GAME, 100, 400, 1, 1
-              dd GameObject.ENEMY, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, TRUE, 0, 0, FALSE, 0, 0, 1000, 0, 3000, bullets
-  
-  delete dd Object.GAME, 0, 0, 1000, 10
-  dd GameObject.DELETE
-  
-  objects dd (objectsLength / 4 - 1), player, grass, bullet, bullet2, dirt, enemyWithBullets, delete
+  objects dd (objectsLength / 4 - 1), player, grass, testing
   objectsLength = $ - objects
               
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemyWithBullets, bullet, bullet2, dirt
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, testing
   objectsWithDrawingLength = $ - objectsWithDrawing
   
-  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemyWithBullets, bullet, bullet2
+  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player
   objectsWithAnimationLength = $ - objectsWithAnimation
   
-  entities dd (entitiesLength / 4 - 1), player, enemyWithBullets, bullet, bullet2
+  entities dd (entitiesLength / 4 - 1), player
   entitiesLength = $ - entities
 
 section '.idata' import data readable writeable

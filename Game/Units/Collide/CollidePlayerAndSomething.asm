@@ -1,7 +1,7 @@
 proc Collide.CollidePlayerAndBlock\
-     refEntity, refObject, side
+     refPlayer, refObject, side
 
-        mov     eax, [refEntity]
+        mov     eax, [refPlayer]
         mov     ecx, [refObject]
         mov     edx, [side]
    
@@ -50,8 +50,8 @@ proc Collide.CollidePlayerAndJump\
         
         mov     eax, [refPlayer]
         
-        cmp     DWORD [eax + Entity.speedY], -Move.G
-        jge      .exit
+        cmp     DWORD [eax + Entity.speedY], 0
+        jg      .exit
         
         mov     DWORD [eax + Entity.speedY], 40        
   
@@ -59,17 +59,10 @@ proc Collide.CollidePlayerAndJump\
         ret
 endp
 
-proc Collide.CollidePlayerAndTeleport\
-     refPlayer, refTeleport 
-        
-        stdcall Teleport.TeleportObject, [refTeleport], [refPlayer]
-     
-        ret
-endp
+proc Collide.CollidePlayerAndKill\
+     refPlayer
 
-proc Collide.CollidePlayerAndDelete\
-
-        invoke  ExitProcess, 0
+        stdcall Player.Die, [refPlayer]
 
         ret
 endp
@@ -82,7 +75,7 @@ proc Collide.CollidePlayerAndTopBlock\
         
         mov     eax, [refPlayer]
         
-        cmp     DWORD [eax + Entity.speedY], -Move.G
+        cmp     DWORD [eax + Entity.speedY], 0
         jg      .exit
         
         mov     ecx, [refObject]
@@ -109,10 +102,22 @@ proc Collide.CollidePlayerAndTopBreak\
         ret
 endp
 
+proc Collide.CollidePlayerAndBottomBreak\
+     refObject, side
+     
+        cmp     DWORD [side], Collide.TOP
+        jne     .exit
+        
+        stdcall Object.Delete, [refObject]    
+  
+  .exit:     
+        ret
+endp
+
 proc Collide.CollidePlayerAndBottomLuck\
      refLuck, side
      
-        cmp     DWORD [side], Collide.BOTTOM
+        cmp     DWORD [side], Collide.TOP
         jne     .exit
         
         stdcall Luck.SpawnBonus, [refLuck]     
@@ -121,81 +126,64 @@ proc Collide.CollidePlayerAndBottomLuck\
         ret
 endp
 
-proc Collide.CollidePlayerAndBottomBreak\
-     refObject, side
+proc Collide.CollidePlayerAndTeleport\
+     refPlayer, refTeleport 
+        
+        stdcall Teleport.TeleportObject, [refTeleport], [refPlayer]
      
+        ret
+endp
+
+proc Collide.CollidePlayerAndBonusForLevel
+     refLevel, refBonus     
+        
+        
+                 
+        ret
+endp
+
+proc Collide.CollidePlayerAndBonusForPlayer\
+     refPlayer, refBonus     
+        
+        
+                 
+        ret
+endp
+
+proc Collide.CollidePlayerAndSnail\
+     refPlayer, refSnail, side
+
         cmp     DWORD [side], Collide.BOTTOM
-        jne     .exit
+        je      .bottom 
         
-        stdcall Object.Delete, [refObject]    
-  
-  .exit:     
-        ret
-endp
+        stdcall Player.GetDamage, [refPlayer]
+        jmp     .exit 
+        
+  .bottom:
+        stdcall Snail.GetDamage, [refSnail]
 
-proc Collide.CollidePlayerAndHeart\
-     refPlayer, refObject
-     
-        mov     eax, [refPlayer]
-        
-        mov     [eax + Player.hasHeart], TRUE
-        
-        stdcall Object.Delete, [refObject]    
-  
-  .exit:     
-        ret
-endp
-
-proc Collide.CollidePlayerAndArrow\
-     refPlayer, refObject
-     
-        mov     eax, [refPlayer]
-        
-        mov     [eax + Player.hasArrow], TRUE
-        
-        stdcall Object.Delete, [refObject]    
-  
-  .exit:     
-        ret
-endp
-
-proc Collide.CollidePlayerAndWorld\
-     refPlayer, refObject
-     
-        mov     eax, [refPlayer]
-        
-        mov     [eax + Player.hasWorld], TRUE
-        add     eax, Player.worldTimer
-        stdcall Timer.Start, eax
-        
-        stdcall Object.Delete, [refObject]    
-  
-  .exit:     
+  .exit:   
         ret
 endp
 
 proc Collide.CollidePlayerAndEnemy\
      refPlayer, refEnemy, side
 
-        mov     eax, [refPlayer]
-        mov     ecx, [refEnemy]
-        mov     edx, [side]
-   
-        cmp     edx, Collide.BOTTOM
+        cmp     DWORD [side], Collide.BOTTOM
         je      .bottom 
         
-        stdcall Player.GetDamage, eax
+        stdcall Player.GetDamage, [refPlayer]
         jmp     .exit 
         
   .bottom:
-        stdcall Enemy.GetDamage, ecx
+        stdcall Enemy.GetDamage, [refEnemy]
 
-  .exit:   
+  .exit:    
         ret
 endp
 
 proc Collide.CollidePlayerAndUntochableEnemy\
-     refPlayer, refEnemy, side
+     refPlayer
         
         stdcall Player.GetDamage, [refPlayer] 
  
@@ -203,106 +191,92 @@ proc Collide.CollidePlayerAndUntochableEnemy\
 endp
 
 proc Collide.CollidePlayerAndUnbeatableEnemy\
-     refPlayer, refEnemy, side
+     refPlayer
         
         stdcall Player.GetDamage, [refPlayer] 
  
         ret
 endp
 
-proc Collide.CollidePlayerAndSnail\
-     refPlayer, refEnemy, side
-
-        mov     eax, [refPlayer]
-        mov     ecx, [refEnemy]
-        mov     edx, [side]
-   
-        cmp     edx, Collide.BOTTOM
-        je      .bottom 
-        
-        stdcall Player.GetDamage, eax
-        jmp     .exit 
-        
-  .bottom:
-        stdcall Snail.GetDamage, ecx
-
-  .exit:   
-        ret
-endp
-
-proc Collide.CollidePlayerAndSomething uses ebx esi,\
+proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
      refPlayer, refObject, side
      
         mov     ebx, [refPlayer]
         mov     esi, [refObject]
-     
-        cmp     DWORD [esi + GameObject.collide], GameObject.BLOCK
-        jne     @F
+        mov     edi, [esi + GameObject.collide]
+        
+        test    edi, GameObject.DECORATION
+        jne     .exit
+        test    edi, GameObject.DELETE
+        jne     .exit
+        test    edi, GameObject.REVERSE
+        jne     .exit
+        test    edi, GameObject.ROTATE
+        jne     .exit
+        test    edi, GameObject.ACTIVATE
+        jne     .exit
+        test    edi, GameObject.PLAYER_BULLET
+        jne     .exit
+        test    edi, GameObject.DEAD_ENEMY
+        jne     .exit
+        test    edi, GameObject.DEAD_PLAYER
+        jne     .exit
+             
+        test    edi, GameObject.BLOCK
+        je      @F
         stdcall Collide.CollidePlayerAndBlock, ebx, esi, [side]
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.JUMP
-        jne     @F
-        stdcall Collide.CollidePlayerAndJump, ebx, [side] 
+        test    edi, GameObject.JUMP
+        je      @F
+        stdcall Collide.CollidePlayerAndJump, ebx, [side]
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.TELEPORT
-        jne     @F
-        stdcall Collide.CollidePlayerAndTeleport, ebx, esi
+        test    edi, GameObject.KILL
+        je      @F
+        stdcall Collide.CollidePlayerAndKill, ebx
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.DELETE
-        jne     @F
-        stdcall Collide.CollidePlayerAndDelete
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.TOP_BLOCK
-        jne     @F
+        test    edi, GameObject.TOP_BLOCK
+        je      @F
         stdcall Collide.CollidePlayerAndTopBlock, ebx, esi, [side]
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.TOP_BREAK
-        jne     @F
+        test    edi, GameObject.TOP_BREAK
+        je      @F
         stdcall Collide.CollidePlayerAndTopBreak, esi, [side]
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.BOTTOM_LUCK
-        jne     @F
+        test    edi, GameObject.BOTTOM_BREAK
+        je      @F
+        stdcall Collide.CollidePlayerAndBottomBreak, esi, [side]       
+  @@:
+        test    edi, GameObject.BOTTOM_LUCK
+        je      @F
         stdcall Collide.CollidePlayerAndBottomLuck, esi, [side]
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.BOTTOM_BREAK
-        jne     @F
-        stdcall Collide.CollidePlayerAndBottomBreak, esi, [side]
+        test    edi, GameObject.TELEPORT
+        je      @F
+        stdcall Collide.CollidePlayerAndTeleport, ebx, esi
   @@: 
-        cmp     DWORD [esi + GameObject.collide], GameObject.COIN
-        jne     @F
-        ;stdcall Collide.CollidePlayerAndCoin
+        test    edi, GameObject.BONUS_FOR_LEVEL 
+        je      @F
+        ;stdcall Collide.CollidePlayerAndBonusForLevel, level, esi
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.STAR
-        jne     @F
-        ;stdcall Collide.CollidePlayerAndStar
+        test    edi, GameObject.BONUS_FOR_PLAYER
+        je      @F
+        stdcall Collide.CollidePlayerAndBonusForPlayer, ebx, esi
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.HEART
-        jne     @F
-        stdcall Collide.CollidePlayerAndHeart, ebx, esi
+        test    edi, GameObject.SNAIL
+        je      @F
+        stdcall Collide.CollidePlayerAndSnail, ebx, esi, [side]
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.ARROW
-        jne     @F
-        stdcall Collide.CollidePlayerAndArrow, ebx, esi
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.WORLD
-        jne     @F
-        stdcall Collide.CollidePlayerAndWorld, ebx, esi
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.ENEMY
-        jne     @F
+        test    edi, GameObject.ENEMY
+        je      @F
         stdcall Collide.CollidePlayerAndEnemy, ebx, esi, [side]
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.UNTOCHABLE_ENEMY
-        jne     @F
-        stdcall Collide.CollidePlayerAndUntochableEnemy, ebx, esi, [side]
+        test    edi, GameObject.UNTOCHABLE_ENEMY
+        je      @F
+        stdcall Collide.CollidePlayerAndUntochableEnemy, ebx
   @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.UNBEATABLE_ENEMY
-        jne     @F
-        stdcall Collide.CollidePlayerAndUnbeatableEnemy, ebx, esi, [side]
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.SNAIL
-        jne     .exit
-        stdcall Collide.CollidePlayerAndSnail, ebx, esi, [side]
+        test    edi, GameObject.UNBEATABLE_ENEMY
+        je      .exit
+        stdcall Collide.CollidePlayerAndUnbeatableEnemy, ebx
   
   .exit:   
         ret     
