@@ -150,6 +150,14 @@ proc Collide.CollidePlayerAndBonusForPlayer\
         ret
 endp
 
+proc Collide.CollidePlayerAndEnemyBullet\
+     refPlayer
+    
+        stdcall Player.GetDamage, [refPlayer]
+    
+        ret 
+endp
+
 proc Collide.CollidePlayerAndSnail\
      refPlayer, refSnail, side
 
@@ -244,6 +252,10 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
         test    edi, GameObject.BONUS_FOR_PLAYER
         je      @F
         stdcall Collide.CollidePlayerAndBonusForPlayer, ebx, esi
+  @@:
+        test    edi, GameObject.ENEMY_BULLET
+        je      @F
+        stdcall Collide.CollidePlayerAndEnemyBullet, ebx
   @@:
         test    edi, GameObject.SNAIL
         je      @F

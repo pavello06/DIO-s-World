@@ -1,4 +1,6 @@
 include 'CollidePlayerAndSomething.asm'
+include 'CollideDeadPlayerAndSomething.asm'
+include 'CollidePlayerBulletAndSomething.asm'
 
 Collide.LEFT   = 0
 Collide.TOP    = 1
