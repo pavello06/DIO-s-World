@@ -15,7 +15,7 @@ proc Snail.GetDamage uses ebx,\
         cmp     DWORD [ebx + Enemy.health], 2
         jne     .notStop
         
-        mov     DWORD [ebx + Enemy.speedX], 0
+        mov     DWORD [ebx + Entity.speedX], 0
   
   .notStop:        
         cmp     DWORD [ebx + Enemy.health], 1
@@ -41,7 +41,7 @@ proc Snail.GetDamage uses ebx,\
   .toTheRight:
         mov     ecx, Snail.SNAIL_SPEED_BOOST_X
         mul     ecx
-        mov     DWORD [ebx + Enemy.speedX], eax
+        mov     DWORD [ebx + Entity.speedX], eax
         
   .exit:   
         ret

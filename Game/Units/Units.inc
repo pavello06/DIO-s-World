@@ -13,7 +13,7 @@ include 'Player.asm'
 include 'Snail.asm'
 include 'Teleport.asm'
 
-include 'Collide.asm'
+include 'Collide/Collide.asm'
 include 'Move.asm'
 
 include 'KeyDown.asm'

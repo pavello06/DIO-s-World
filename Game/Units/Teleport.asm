@@ -4,7 +4,7 @@ struct Teleport
   y          dd ?
 ends
 
-proc Teleport.TeleportObject
+proc Teleport.TeleportObject\
      refTeleport, refObject
      
         mov     eax, [refTeleport]

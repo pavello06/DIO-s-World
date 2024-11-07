@@ -22,12 +22,15 @@ player Player <<<<<Object.GAME, 30, 100, 1, 1>,\
               <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
               <FALSE, 0, 200, 0, standingPlayerFrames>>,\
               TRUE, 0, 0, TRUE>,\
-              FALSE, bullets, FALSE, FALSE, FALSE, -1, 5000, -1, 2000
+              FALSE, bullets, TRUE, FALSE, FALSE, -1, 5000, -1, 2000
               
 proc Player.ChangeAnimation\
      refPlayer
      
         mov     eax, [refPlayer]
+        
+        cmp     DWORD [eax + GameObject.collide], GameObject.DEAD_PLAYER
+        je      .exit
         
         cmp     DWORD [eax + Entity.speedY], 0
         jle     .notUpJumpingPlayer
@@ -117,7 +120,11 @@ proc Player.GetDamage\
         mov     ecx, [refPlayer]
      
         cmp     DWORD [ecx + Player.hasWorld], TRUE
-        je      .exit
+        jne     .hasNotWorld
+        
+        mov     DWORD [ecx + Player.hasWorld], FALSE        
+        mov     DWORD [ecx + Player.invulnerabilityTimer], eax
+        jmp     .exit
   
   .hasNotWorld:      
         cmp     DWORD [ecx + Player.hasArrow], TRUE

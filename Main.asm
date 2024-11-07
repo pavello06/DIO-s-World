@@ -159,10 +159,13 @@ section '.data' data readable writeable
               dd GameObject.ENEMY_BULLET, 5, Drawing.RIGHT, Drawing.UP, beeTexture, FALSE, 0, 100, 0, beeFrames, FALSE, 5, 5, FALSE, TRUE, beeAnimations
   
   bullets dd 2, bullet, bullet2            
-  enemyWithBullets Object Object.GAME, 100, 100, 1, 1
-              dd GameObject.BLOCK, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, TRUE, 0, 0, FALSE, 0, 0, 1000, 0, 3000, bullets
+  enemyWithBullets Object Object.GAME, 100, 400, 1, 1
+              dd GameObject.ENEMY, 7, Drawing.RIGHT, Drawing.UP, luckTexture, FALSE, 0, 100, 0, luckFrames, TRUE, 0, 0, FALSE, 0, 0, 1000, 0, 3000, bullets
   
-  objects dd (objectsLength / 4 - 1), player, grass, bullet, bullet2, dirt, enemyWithBullets
+  delete dd Object.GAME, 0, 0, 1000, 10
+  dd GameObject.DELETE
+  
+  objects dd (objectsLength / 4 - 1), player, grass, bullet, bullet2, dirt, enemyWithBullets, delete
   objectsLength = $ - objects
               
   objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemyWithBullets, bullet, bullet2, dirt
