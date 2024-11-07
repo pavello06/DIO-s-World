@@ -1,6 +1,12 @@
-include 'CollidePlayerAndSomething.asm'
-include 'CollideDeadPlayerAndSomething.asm'
+include 'CollideEnemyBulletAndSomething.asm'
 include 'CollidePlayerBulletAndSomething.asm'
+
+include 'CollideDeadEnemyAndSomething.asm'
+include 'CollideEnemyAndSomething.asm'
+include 'CollideBlockableEnemyAndSomething.asm'
+
+include 'CollideDeadPlayerAndSomething.asm'
+include 'CollidePlayerAndSomething.asm'
 
 Collide.LEFT   = 0
 Collide.TOP    = 1
@@ -105,64 +111,49 @@ proc Collide.GetCollisionSide uses ebx esi,\
         ret
 endp
 
-
-
-
-
-
-
-
-
-          
-;-------------------------------------------------------------------------------  
-
-;------------------------------------------------------------------------------- 
-proc Collide.HandleCollisionPlayerBulletAndSomething uses ebx esi,\
-     refPlayerBullet, refObject, side
-     
-        mov     ebx, [refPlayerBullet]
-        mov     esi, [refObject]
-     
-        cmp     DWORD [esi + GameObject.collide], GameObject.BLOCK
-        jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx 
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.ENEMY
-        jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi 
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.UNTOCHABLE_ENEMY
-        jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndEnemyOrUntochableEnemy, ebx, esi
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.UNBEATABLE_ENEMY
-        jne     @F
-        ;stdcall Collide.CollidePlayerBulletAndBlockOrUnbeatableEnemy, ebx
-  @@:
-        cmp     DWORD [esi + GameObject.collide], GameObject.SNAIL
-        jne     .exit
-        ;stdcall Collide.CollidePlayerBulletAndSnail
-  
-  .exit:   
-        ret     
-endp
-
-proc Collide.HandleCollision\
+proc Collide.HandleCollision uses ebx esi edi,\
      refObject1, refObject2, side
 
-        mov     eax, [refObject1]
-        mov     ecx, [refObject2]
+        mov     ebx, [refObject1]
+        mov     esi, [refObject2]
+        mov     edi, [ebx + GameObject.collide]
         
-        cmp     DWORD [eax + GameObject.collide], GameObject.PLAYER_BULLET
-        jne     .notPlayerBullet
-        stdcall Collide.HandleCollisionPlayerBulletAndSomething, eax, ecx, [side]     
-        jmp     .exit        
-  .notPlayerBullet:
-        cmp     DWORD [eax + GameObject.collide], GameObject.PLAYER
-        jne     .notPlayer
-        stdcall Collide.CollidePlayerAndSomething, eax, ecx, [side]           
+        test    edi, GameObject.ENEMY_BULLET
+        je      .notEnemyBullet
+        stdcall Collide.CollideEnemyBulletAndSomething, ebx, esi, [side]
         jmp     .exit
-  .notPlayer:
+         
+  .notEnemyBullet:
+        test    edi, GameObject.PLAYER_BULLET
+        je      .notPlayerBullet
+        stdcall Collide.CollidePlayerBulletAndSomething, ebx, esi, [side]
+        jmp     .exit
+         
+  .notPlayerBullet:
+        test    edi, GameObject.DEAD_PLAYER
+        je      .notDeadPlayer
+        stdcall Collide.CollideDeadPlayerAndSomething, ebx, esi, [side]
+        jmp     .exit
+         
+  .notDeadPlayer:
+        test    edi, GameObject.PLAYER
+        je      .notPlayer
+        stdcall Collide.CollidePlayerAndSomething, ebx, esi, [side]
+        jmp     .exit
+         
+  .notPlayer:  
+        test    edi, GameObject.DEAD_ENEMY
+        je      @F
+        stdcall Collide.CollideDeadEnemyAndSomething, ebx, esi, [side]
+  @@:
+        test    edi, GameObject.ENEMY
+        je      @F
+        stdcall Collide.CollideEnemyAndSomething, ebx, esi, [side]
+  @@:
+        test    edi, GameObject.BLOCKABLE_ENEMY
+        je      @F
+        stdcall Collide.CollideBlockableEnemyAndSomething, ebx, esi, [side]
+  @@:       
              
   .exit: 
         ret

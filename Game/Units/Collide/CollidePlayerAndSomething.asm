@@ -42,6 +42,29 @@ proc Collide.CollidePlayerAndBlock\
         ret
 endp
 
+proc Collide.CollidePlayerAndTopBlock\
+     refPlayer, refObject, side
+     
+        cmp     DWORD [side], Collide.BOTTOM
+        jne     .exit
+        
+        mov     eax, [refPlayer]
+        
+        cmp     DWORD [eax + Entity.speedY], 0
+        jg      .exit
+        
+        mov     ecx, [refObject]
+        
+        mov     edx, [ecx + Object.y]
+        add     edx, [ecx + Object.height]
+        mov     [eax + Object.y], edx
+        mov     [eax + Entity.speedY], 0
+        mov     [eax + Player.canJump], TRUE      
+  
+  .exit:   
+        ret
+endp
+
 proc Collide.CollidePlayerAndJump\
      refPlayer, side
      
@@ -64,29 +87,6 @@ proc Collide.CollidePlayerAndKill\
 
         stdcall Player.Die, [refPlayer]
 
-        ret
-endp
-
-proc Collide.CollidePlayerAndTopBlock\
-     refPlayer, refObject, side
-     
-        cmp     DWORD [side], Collide.BOTTOM
-        jne     .exit
-        
-        mov     eax, [refPlayer]
-        
-        cmp     DWORD [eax + Entity.speedY], 0
-        jg      .exit
-        
-        mov     ecx, [refObject]
-        
-        mov     edx, [ecx + Object.y]
-        add     edx, [ecx + Object.height]
-        mov     [eax + Object.y], edx
-        mov     [eax + Entity.speedY], 0
-        mov     [eax + Player.canJump], TRUE      
-  
-  .exit:   
         ret
 endp
 
@@ -158,22 +158,6 @@ proc Collide.CollidePlayerAndEnemyBullet\
         ret 
 endp
 
-proc Collide.CollidePlayerAndSnail\
-     refPlayer, refSnail, side
-
-        cmp     DWORD [side], Collide.BOTTOM
-        je      .bottom 
-        
-        stdcall Player.GetDamage, [refPlayer]
-        jmp     .exit 
-        
-  .bottom:
-        stdcall Snail.GetDamage, [refSnail]
-
-  .exit:   
-        ret
-endp
-
 proc Collide.CollidePlayerAndEnemy\
      refPlayer, refEnemy, side
 
@@ -187,6 +171,22 @@ proc Collide.CollidePlayerAndEnemy\
         stdcall Enemy.GetDamage, [refEnemy]
 
   .exit:    
+        ret
+endp
+
+proc Collide.CollidePlayerAndSnail\
+     refPlayer, refSnail, side
+
+        cmp     DWORD [side], Collide.BOTTOM
+        je      .bottom 
+        
+        stdcall Player.GetDamage, [refPlayer]
+        jmp     .exit 
+        
+  .bottom:
+        stdcall Snail.GetDamage, [refSnail]
+
+  .exit:   
         ret
 endp
 

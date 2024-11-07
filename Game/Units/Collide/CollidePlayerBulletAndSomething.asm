@@ -6,6 +6,14 @@ proc Collide.CollidePlayerBulletAndBlock\
         ret
 endp
 
+proc Collide.CollidePlayerBulletAndActivate\
+     refBullet
+
+        stdcall Bullet.Activate, [refBullet]
+           
+        ret
+endp
+
 proc Collide.CollidePlayerBulletAndSnail\
      refBullet, refSnail
 
@@ -44,13 +52,17 @@ endp
 proc Collide.CollidePlayerBulletAndSomething uses ebx esi edi,\
      refBullet, refObject, side
      
-        mov     ebx, [refPlayer]
+        mov     ebx, [refBullet]
         mov     esi, [refObject]
         mov     edi, [esi + GameObject.collide]
              
         test    edi, GameObject.BLOCK
         je      @F
         stdcall Collide.CollidePlayerAndBlock, ebx
+  @@:
+        test    edi, GameObject.ACTIVATE
+        je      @F
+        stdcall Collide.CollidePlayerBulletAndActivate, ebx
   @@:
         test    edi, GameObject.SNAIL
         je      @F

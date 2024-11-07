@@ -147,18 +147,22 @@ section '.data' data readable writeable
   
   grass GameObjectWithDrawing <<Object.GAME, 0, 0, 10, 1>, GameObject.BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
-  testing  GameObjectWithDrawing <<Object.GAME, 400, 100, 1, 1>, GameObject.TOP_BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture> 
+  testing  GameObjectWithDrawing <<Object.GAME, 400, 100, 1, 1>, GameObject.TOP_BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
   
-  objects dd (objectsLength / 4 - 1), player, grass, testing
+  enemy dd Object.GAME, 400, 360, 1, 1, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY,\ 
+           Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture, FALSE, 0, 100, 0, owlFrames,\ 
+           TRUE, 0, 0, TRUE, 1, owlAnimations, 100  
+  
+  objects dd (objectsLength / 4 - 1), player, grass, testing, enemy
   objectsLength = $ - objects
               
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, testing
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, testing, enemy
   objectsWithDrawingLength = $ - objectsWithDrawing
   
-  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player
+  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemy
   objectsWithAnimationLength = $ - objectsWithAnimation
   
-  entities dd (entitiesLength / 4 - 1), player
+  entities dd (entitiesLength / 4 - 1), player, enemy
   entitiesLength = $ - entities
 
 section '.idata' import data readable writeable

@@ -7,12 +7,12 @@ GameObject.DECORATION         = 1
 ;blocks
 ;with both
 GameObject.BLOCK              = GameObject.DECORATION * 2
-GameObject.JUMP               = GameObject.BLOCK * 2
+GameObject.TOP_BLOCK          = GameObject.BLOCK * 2
+GameObject.JUMP               = GameObject.TOP_BLOCK * 2
 GameObject.KILL               = GameObject.JUMP * 2
 GameObject.DELETE             = GameObject.KILL * 2
 ;with player
-GameObject.TOP_BLOCK          = GameObject.DELETE * 2
-GameObject.TOP_BREAK          = GameObject.TOP_BLOCK * 2
+GameObject.TOP_BREAK          = GameObject.DELETE * 2
 GameObject.BOTTOM_BREAK       = GameObject.TOP_BREAK * 2
 GameObject.BOTTOM_LUCK        = GameObject.BOTTOM_BREAK * 2
 GameObject.TELEPORT           = GameObject.BOTTOM_LUCK * 2
@@ -30,17 +30,16 @@ GameObject.PLAYER_BULLET      = GameObject.ENEMY_BULLET * 2
 ;enemies
 ;with both
 GameObject.DEAD_ENEMY         = GameObject.PLAYER_BULLET * 2
-GameObject.SNAIL              = GameObject.DEAD_ENEMY * 2
+GameObject.ENEMY              = GameObject.DEAD_ENEMY * 2
+GameObject.SNAIL              = GameObject.ENEMY * 2
 ;with block
-GameObject.DECORATIVE_ENEMY   = GameObject.SNAIL * 2
-GameObject.BLOCKABLE_ENEMY    = GameObject.DECORATIVE_ENEMY * 2
+GameObject.BLOCKABLE_ENEMY    = GameObject.SNAIL * 2
 GameObject.JUMPABLE_ENEMY     = GameObject.BLOCKABLE_ENEMY * 2
 GameObject.REVERSEABLE_ENEMY  = GameObject.JUMPABLE_ENEMY * 2
 GameObject.ROTATEABLE_ENEMY   = GameObject.REVERSEABLE_ENEMY * 2
 GameObject.STOPABLE_ENEMY     = GameObject.ROTATEABLE_ENEMY * 2
 ;with player
-GameObject.ENEMY              = GameObject.STOPABLE_ENEMY * 2
-GameObject.UNTOCHABLE_ENEMY   = GameObject.ENEMY * 2 
+GameObject.UNTOCHABLE_ENEMY   = GameObject.STOPABLE_ENEMY * 2 
 GameObject.UNBEATABLE_ENEMY   = GameObject.UNTOCHABLE_ENEMY * 2
 ;players
 GameObject.DEAD_PLAYER        = GameObject.UNBEATABLE_ENEMY * 2
