@@ -204,23 +204,6 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
         mov     ebx, [refPlayer]
         mov     esi, [refObject]
         mov     edi, [esi + GameObject.collide]
-        
-        test    edi, GameObject.DECORATION
-        jne     .exit
-        test    edi, GameObject.DELETE
-        jne     .exit
-        test    edi, GameObject.REVERSE
-        jne     .exit
-        test    edi, GameObject.ROTATE
-        jne     .exit
-        test    edi, GameObject.ACTIVATE
-        jne     .exit
-        test    edi, GameObject.PLAYER_BULLET
-        jne     .exit
-        test    edi, GameObject.DEAD_ENEMY
-        jne     .exit
-        test    edi, GameObject.DEAD_PLAYER
-        jne     .exit
              
         test    edi, GameObject.BLOCK
         je      @F
