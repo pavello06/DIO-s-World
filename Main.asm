@@ -147,16 +147,17 @@ section '.data' data readable writeable
   
   grass GameObjectWithDrawing <<Object.GAME, 0, 0, 10, 1>, GameObject.BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
-  testing  GameObjectWithDrawing <<Object.GAME, 400, 100, 1, 1>, GameObject.TOP_BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+  testing  GameObject <Object.GAME, 200, 100, 1, 1>, GameObject.REVERSE
+  testing2 GameObject <Object.GAME, 600, 100, 1, 1>, GameObject.JUMP
   
-  enemy dd Object.GAME, 400, 360, 1, 1, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY,\ 
+  enemy dd Object.GAME, 400, 100, 1, 1, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.JUMPABLE_ENEMY,\ 
            Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture, FALSE, 0, 100, 0, owlFrames,\ 
-           TRUE, 0, 0, TRUE, 1, owlAnimations, 100  
+           TRUE, 10, 0, TRUE, 1, owlAnimations, 100  
   
-  objects dd (objectsLength / 4 - 1), player, grass, testing, enemy
+  objects dd (objectsLength / 4 - 1), player, grass, testing, testing2, enemy
   objectsLength = $ - objects
               
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, testing, enemy
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemy
   objectsWithDrawingLength = $ - objectsWithDrawing
   
   objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemy

@@ -3,7 +3,11 @@ include 'CollidePlayerBulletAndSomething.asm'
 
 include 'CollideDeadEnemyAndSomething.asm'
 include 'CollideEnemyAndSomething.asm'
+include 'CollideSnailAndSomething.asm'
 include 'CollideBlockableEnemyAndSomething.asm'
+include 'CollideJumpableEnemyAndSomething.asm'
+include 'CollideReverseableEnemyAndSomething.asm'
+include 'CollideRotateableEnemyAndSomething.asm'
 
 include 'CollideDeadPlayerAndSomething.asm'
 include 'CollidePlayerAndSomething.asm'
@@ -150,10 +154,29 @@ proc Collide.HandleCollision uses ebx esi edi,\
         je      @F
         stdcall Collide.CollideEnemyAndSomething, ebx, esi, [side]
   @@:
+        test    edi, GameObject.SNAIL
+        je      @F
+        stdcall Collide.CollideSnailAndSomething, ebx, esi, [side]
+  @@:
         test    edi, GameObject.BLOCKABLE_ENEMY
         je      @F
         stdcall Collide.CollideBlockableEnemyAndSomething, ebx, esi, [side]
-  @@:       
+  @@:
+        test    edi, GameObject.JUMPABLE_ENEMY
+        je      @F
+        stdcall Collide.CollideJumpableEnemyAndSomething, ebx, esi, [side]
+  @@:
+        test    edi, GameObject.REVERSEABLE_ENEMY
+        je      @F
+        stdcall Collide.CollideReverseableEnemyAndSomething, ebx, esi, [side]
+  @@:
+        test    edi, GameObject.ROTATEABLE_ENEMY
+        je      @F
+        stdcall Collide.CollideRotateableEnemyAndSomething, ebx, esi, [side]
+  @@:
+        test    edi, GameObject.STOPABLE_ENEMY
+        je      .exit
+        ;stdcall Collide.CollideStopableEnemyAndSomething, ebx, esi, [side]     
              
   .exit: 
         ret

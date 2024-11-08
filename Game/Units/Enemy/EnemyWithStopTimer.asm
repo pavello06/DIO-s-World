@@ -1,8 +1,9 @@
 struct EnemyWithStopTimer
-  enemy    Enemy
-  timer    dd ?
-  maxTimer dd ?
-ends
+  enemy     Enemy
+  timer     dd ?
+  maxTimer  dd ?
+  stopAfter dd ?
+ends               
 
 proc EnemyWithStopTimer.Start\
      refEnemyWithStopTimer
