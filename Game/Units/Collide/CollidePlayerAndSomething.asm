@@ -145,8 +145,27 @@ endp
 proc Collide.CollidePlayerAndBonusForPlayer\
      refPlayer, refBonus     
         
+        mov     eax, [refPlayer]
+        mov     ecx, [refBonus]
+        mov     edx, [ecx + Bonus.type]
         
-                 
+        cmp     edx, Bonus.HEART
+        jne     .notHeart
+        
+        mov     [eax + Player.hasHeart], TRUE
+        jmp     .exit
+  
+  .notHeart:
+        cmp     edx, Bonus.Arrow
+        jne     .notArrow
+        
+        mov     [eax + Player.hasArrow], TRUE
+        jmp     .exit
+  
+  .notArrow:
+        mov     [eax + Player.hasWorld], TRUE
+  
+  .exit:                   
         ret
 endp
 
