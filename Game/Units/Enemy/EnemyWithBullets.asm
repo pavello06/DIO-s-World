@@ -1,26 +1,23 @@
 struct EnemyWithBullets
-  enemy        Enemy
-  timer        dd ?
-  maxTimer     dd ?
-  refBullets  dd ?
+  enemyWithTimer EnemyWithTimer
+  refBullets     dd ?
 ends
 
 proc EnemyWithBullets.CanShoot uses ebx,\
-     refEnemyWithBullets, refPlayer
+     refEnemyWithBullets
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall Enemy.IsPlayerNear, ebx, [refPlayer], 0, 1000        
+        stdcall Enemy.IsPlayerNear, ebx, player, 0, 1000        
         cmp     eax, FALSE
         je      .canNotShoot
         
-        mov     eax, [ebx + EnemyWithBullets.refBullets]
-        stdcall Bullet.GetActiveBullet, eax        
+        stdcall Bullet.GetActiveBullet, [ebx + EnemyWithBullets.refBullets]       
         cmp     eax, -1
         je      .canNotShoot
 
-        add     ebx, EnemyWithBullets.timer
-        stdcall Timer.IsTimeUp, ebx, [ebx + sizeof.EnemyWithBullets.timer]         
+        add     ebx, EnemyWithTimer.timer
+        stdcall Timer.IsTimeUp, ebx, [ebx + sizeof.EnemyWithTimer.timer]         
         cmp     eax, FALSE
         je      .canNotShoot                   
   
@@ -39,9 +36,8 @@ proc EnemyWithBullets.Shoot uses ebx,\
      refEnemyWithBullets
      
         mov     ebx, [refEnemyWithBullets]
-        mov     eax, [ebx + EnemyWithBullets.refBullets]
         
-        stdcall Bullet.GetActiveBullet, eax
+        stdcall Bullet.GetActiveBullet, [ebx + EnemyWithBullets.refBullets]
         
         stdcall Bullet.Deactivate, eax, [ebx + Object.x], [ebx + Object.y]
     
@@ -49,11 +45,11 @@ proc EnemyWithBullets.Shoot uses ebx,\
 endp
 
 proc EnemyWithBullets.TimerObject uses ebx,\
-     refEnemyWithBullets, refPlayer
+     refEnemyWithBullets
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall EnemyWithBullets.CanShoot, ebx, [refPlayer]        
+        stdcall EnemyWithBullets.CanShoot, ebx      
         cmp     eax, FALSE
         je      .exit
         
@@ -63,22 +59,10 @@ proc EnemyWithBullets.TimerObject uses ebx,\
         ret
 endp
 
-proc EnemyWithBullets.TimerObjects uses ebx,\
-     refEnemiesWithBullets, refPlayer    
-     
-        mov     ebx, [refEnemiesWithBullets]
+proc EnemyWithBullets.TimerObjects\
+     refEnemiesWithBullets       
         
-        mov     ecx, [ebx + 0]
-        add     ebx, 4
-  
-  .loop:
-        push    ecx                
-        
-        stdcall EnemyWithBullets.TimerObject, [ebx], [refPlayer]
-                      
-        add     ebx, 4                                   
-        pop     ecx
-        loop    .loop    
+        stdcall EnemyWithTimer.TimerObjects, EnemyWithBullets.TimerObject, [refEnemiesWithBullets]
           
         ret
 endp   

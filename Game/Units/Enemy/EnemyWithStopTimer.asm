@@ -1,8 +1,6 @@
 struct EnemyWithStopTimer
-  enemy     Enemy
-  timer     dd ?
-  maxTimer  dd ?
-  stopAfter dd ?
+  enemyWithTimer         EnemyWithTimer
+  stopAfterCollidingWith dd ?
 ends               
 
 proc EnemyWithStopTimer.Start\
@@ -10,7 +8,7 @@ proc EnemyWithStopTimer.Start\
      
         mov     eax, [refEnemyWithStopTimer]     
      
-        add     eax, EnemyWithStopTimer.timer
+        add     eax, EnemyWithTimer.timer
         stdcall Timer.Start, eax
      
         ret
@@ -21,7 +19,7 @@ proc EnemyWithStopTimer.Stop\
      
         mov     eax, [refEnemyWithStopTimer]     
      
-        add     eax, EnemyWithStopTimer.timer 
+        add     eax, EnemyWithTimer.timer 
         stdcall Timer.Stop, eax
      
         ret
@@ -32,8 +30,8 @@ proc EnemyWithStopTimer.CanMove\
      
         mov     eax, [refEnemyWithStopTimer]
      
-        add     eax, EnemyWithStopTimer.timer
-        stdcall Timer.IsTimeUp, eax, [eax + sizeof.EnemyWithStopTimer.timer]
+        add     eax, EnemyWithTimer.timer
+        stdcall Timer.IsTimeUp, eax, [eax + sizeof.EnemyWithTimer.timer]
         cmp     eax, TRUE
         je      .canNotMove
         
@@ -47,7 +45,7 @@ proc EnemyWithStopTimer.CanMove\
         ret
 endp
 
-proc EnemyWithStopTimer.Move\
+proc EnemyWithStopTimer.StartMove\
      refEnemyWithStopTimer
      
         mov     eax, [refEnemyWithStopTimer]
@@ -76,33 +74,20 @@ proc EnemyWithStopTimer.TimerObject uses ebx,\
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall EnemyWithStopTimer.CanMove, ebx
-        
+        stdcall EnemyWithStopTimer.CanMove, ebx        
         cmp     eax, FALSE
         je      .exit
         
-        stdcall EnemyWithStopTimer.Move, ebx
+        stdcall EnemyWithStopTimer.StartMove, ebx
      
   .exit: 
         ret
 endp
 
-proc EnemyWithStopTimer.TimerObjects uses ebx,\
-     refEnemiesWithStopTimer, refPlayer    
-     
-        mov     ebx, [refEnemiesWithStopTimer]
+proc EnemyWithStopTimer.TimerObjects\
+     refEnemiesWithStopTimer      
         
-        mov     ecx, [ebx + 0]
-        add     ebx, 4
-  
-  .loop:
-        push    ecx                
-        
-        stdcall EnemyWithStopTimer.TimerObject, [ebx]
-                      
-        add     ebx, 4                                   
-        pop     ecx
-        loop    .loop    
+        stdcall EnemyWithTimer.TimerObjects, EnemyWithStopTimer.TimerObject, [refEnemiesWithStopTimer]   
           
         ret
 endp 

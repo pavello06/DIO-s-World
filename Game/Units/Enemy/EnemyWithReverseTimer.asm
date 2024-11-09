@@ -1,46 +1,22 @@
 struct EnemyWithReverseTimer
-  enemy     Enemy
-  timer     dd ?
-  maxTimer  dd ?
+  enemyWithTimer EnemyWithTimer
 ends               
-
-proc EnemyWithReverseTimer.Start\
-     refEnemyWithReverseTimer
-     
-        mov     eax, [refEnemyWithReverseTimer]     
-     
-        add     eax, EnemyWithReverseTimer.timer
-        stdcall Timer.Start, eax
-     
-        ret
-endp
-
-proc EnemyWithReverseTimer.Stop\
-     refEnemyWithReverseTimer
-     
-        mov     eax, [refEnemyWithReverseTimer]     
-     
-        add     eax, EnemyWithReverseTimer.timer 
-        stdcall Timer.Stop, eax
-     
-        ret
-endp
 
 proc EnemyWithReverseTimer.CanReverse\
      refEnemyWithReverseTimer
      
         mov     eax, [refEnemyWithReverseTimer]
      
-        add     eax, EnemyWithReverseTimer.timer
-        stdcall Timer.IsTimeUp, eax, [eax + sizeof.EnemyWithReverseTimer.timer]
+        add     eax, EnemyWithTimer.timer
+        stdcall Timer.IsTimeUp, eax, [eax + sizeof.EnemyWithTimer.timer]
         cmp     eax, TRUE
-        je      .canNotMove
+        je      .canNotReverse
         
-  .canMove:
+  .canReverse:
         mov     eax, TRUE
         jmp     .exit
         
-  .canNotMove:
+  .canNotReverse:
         mov     eax, FALSE
      
         ret
@@ -52,19 +28,16 @@ proc EnemyWithReverseTimer.Reverse\
         mov     eax, [refEnemyWithReverseTimer]
      
         neg     DWORD [eax + Entity.speedY]
-        
-        stdcall EnemyWithReverseTimer.Stop, eax
      
         ret
 endp
 
 proc EnemyWithReverseTimer.TimerObject uses ebx,\
-     refEnemyWithStopTimer
+     refEnemyWithReverseTimer
      
-        mov     ebx, [refEnemyWithBullets]
+        mov     ebx, [refEnemyWithReverseTimer]
         
-        stdcall EnemyWithReverseTimer.CanReverse, ebx
-        
+        stdcall EnemyWithReverseTimer.CanReverse, ebx        
         cmp     eax, FALSE
         je      .exit
         
@@ -74,22 +47,10 @@ proc EnemyWithReverseTimer.TimerObject uses ebx,\
         ret
 endp
 
-proc EnemyWithReverseTimer.TimerObjects uses ebx,\
-     refEnemiesWithReverseTimer, refPlayer    
-     
-        mov     ebx, [refEnemiesWithReverseTimer]
+proc EnemyWithReverseTimer.TimerObjects\
+     refEnemiesWithReverseTimer   
         
-        mov     ecx, [ebx + 0]
-        add     ebx, 4
-  
-  .loop:
-        push    ecx                
-        
-        stdcall EnemyWithReverseTimer.TimerObject, [ebx]
-                      
-        add     ebx, 4                                   
-        pop     ecx
-        loop    .loop    
+        stdcall EnemyWithTimer.TimerObjects, EnemyWithReverseTimer.TimerObject, [refEnemiesWithReverseTimer]   
           
         ret
 endp 
