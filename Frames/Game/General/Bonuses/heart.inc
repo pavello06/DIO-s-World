@@ -1,0 +1,1 @@
+heartFrames dd 2, heartTexture, heart2Texture

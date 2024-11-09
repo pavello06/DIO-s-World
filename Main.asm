@@ -99,6 +99,7 @@ proc WindowProc uses ebx esi edi,\
         stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
         stdcall Move.MoveEntities, entities, objects
         stdcall Player.ChangeAnimation, player
+        stdcall Player.TimerObject, player
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
@@ -147,20 +148,24 @@ section '.data' data readable writeable
   
   grass GameObjectWithDrawing <<Object.GAME, 0, 0, 10, 1>, GameObject.BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
-  testing  GameObject <Object.GAME, 200, 100, 1, 1>, GameObject.REVERSE
-  testing2 GameObject <Object.GAME, 600, 100, 1, 1>, GameObject.JUMP
+  testing  GameObject <Object.GAME, 300, 100, 1, 1>, GameObject.REVERSE
+  testing2 GameObject <Object.GAME, 500, 100, 1, 1>, GameObject.REVERSE
   
-  enemy dd Object.GAME, 400, 100, 1, 1, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.JUMPABLE_ENEMY,\ 
+  heart    Bonus <<<<Object.GAME, 600, 100, 1, 1>, GameObject.BONUS_FOR_PLAYER>, <4, Drawing.RIGHT, Drawing.UP, heartTexture>>, <FALSE, 0, 200, 0, heartFrames>>, Bonus.HEART 
+  
+  enemy dd Object.GAME, 400, 100, 1, 1, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY,\ 
            Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture, FALSE, 0, 100, 0, owlFrames,\ 
-           TRUE, 10, 0, TRUE, 1, owlAnimations, 100  
+           TRUE, 7, 0, TRUE, 1, owlAnimations, 100
+           
+  delete dd Object.GAME, 0, -1, 1000, 1, GameObject.DELETE
   
-  objects dd (objectsLength / 4 - 1), player, grass, testing, testing2, enemy
+  objects dd (objectsLength / 4 - 1), player, grass, testing, testing2, enemy, heart, delete
   objectsLength = $ - objects
               
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemy
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemy, heart
   objectsWithDrawingLength = $ - objectsWithDrawing
   
-  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemy
+  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemy, heart
   objectsWithAnimationLength = $ - objectsWithAnimation
   
   entities dd (entitiesLength / 4 - 1), player, enemy

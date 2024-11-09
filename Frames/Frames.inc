@@ -17,7 +17,7 @@ ends
 include 'Game/General/Blocks/luck.inc'
 
 ;Bonuses------------------------------------------------------------------------
-
+include 'Game/General/Bonuses/heart.inc'
 
 ;Player-------------------------------------------------------------------------
 include 'Game/General/Player/standingPlayer.inc'

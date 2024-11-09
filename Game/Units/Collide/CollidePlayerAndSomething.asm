@@ -156,16 +156,19 @@ proc Collide.CollidePlayerAndBonusForPlayer\
         jmp     .exit
   
   .notHeart:
-        cmp     edx, Bonus.Arrow
+        cmp     edx, Bonus.ARROW
         jne     .notArrow
         
         mov     [eax + Player.hasArrow], TRUE
         jmp     .exit
   
   .notArrow:
-        mov     [eax + Player.hasWorld], TRUE
+        add     eax, Player.worldTimer
+        stdcall Timer.Stop, eax
   
-  .exit:                   
+  .exit:
+        stdcall Object.Delete, ecx
+                     
         ret
 endp
 
@@ -181,13 +184,16 @@ proc Collide.CollidePlayerAndEnemy\
      refPlayer, refEnemy, side
 
         cmp     DWORD [side], Collide.BOTTOM
-        je      .bottom 
+        jne     .notBottom
+        mov     eax, [refPlayer]
+        cmp     DWORD [eax + Entity.speedY], -2
+        jge     .notBottom
         
-        stdcall Player.GetDamage, [refPlayer]
+        stdcall Enemy.GetDamage, [refEnemy]
         jmp     .exit 
         
-  .bottom:
-        stdcall Enemy.GetDamage, [refEnemy]
+  .notBottom:
+        stdcall Player.GetDamage, [refPlayer]
 
   .exit:    
         ret

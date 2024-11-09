@@ -4,7 +4,6 @@ struct Player
   refBullets             dd ?
   hasHeart                dd ?
   hasArrow                dd ?
-  hasWorld                dd ?
   worldTimer              dd ?
   maxWorldTimer           dd ?
   invulnerabilityTimer    dd ?
@@ -22,7 +21,7 @@ player Player <<<<<Object.GAME, 30, 120, 1, 1>,\
               <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
               <FALSE, 0, 200, 0, standingPlayerFrames>>,\
               TRUE, 0, 0, TRUE>,\
-              FALSE, 0, TRUE, TRUE, FALSE, -1, 5000, -1, 2000
+              FALSE, 0, FALSE, FALSE, -1, 5000, -1, 10000
               
 proc Player.ChangeAnimation\
      refPlayer
@@ -112,38 +111,47 @@ proc Player.Shoot uses ebx esi,\
         ret     
 endp
               
-proc Player.GetDamage\
+proc Player.GetDamage uses ebx,\
      refPlayer
      
-        invoke  GetTickCount
+        mov     ebx, [refPlayer]
+        
+        cmp     DWORD [ebx + Player.invulnerabilityTimer], -1
+        jne     .exit
      
-        mov     ecx, [refPlayer]
-     
-        cmp     DWORD [ecx + Player.hasWorld], TRUE
+        cmp     DWORD [ebx + Player.worldTimer], TRUE
         jne     .hasNotWorld
         
-        mov     DWORD [ecx + Player.hasWorld], FALSE        
-        mov     DWORD [ecx + Player.invulnerabilityTimer], eax
+        mov     eax, ebx
+        add     eax, Player.worldTimer        
+        stdcall Timer.Stop, eax
+        mov     eax, ebx
+        add     eax, Player.invulnerabilityTimer        
+        stdcall Timer.Start, eax
         jmp     .exit
   
   .hasNotWorld:      
-        cmp     DWORD [ecx + Player.hasArrow], TRUE
+        cmp     DWORD [ebx + Player.hasArrow], TRUE
         jne     .hasNotArrow
         
-        mov     DWORD [ecx + Player.hasArrow], FALSE        
-        mov     DWORD [ecx + Player.invulnerabilityTimer], eax
+        mov     DWORD [ebx + Player.hasArrow], FALSE        
+        mov     eax, ebx
+        add     eax, Player.invulnerabilityTimer        
+        stdcall Timer.Start, eax
         jmp     .exit
         
   .hasNotArrow:      
-        cmp     DWORD [ecx + Player.hasHeart], TRUE
+        cmp     DWORD [ebx + Player.hasHeart], TRUE
         jne     .hasNotHeart
         
-        mov     DWORD [ecx + Player.hasHeart], FALSE
-        mov     DWORD [ecx + Player.invulnerabilityTimer], eax
+        mov     DWORD [ebx + Player.hasHeart], FALSE
+        mov     eax, ebx
+        add     eax, Player.invulnerabilityTimer        
+        stdcall Timer.Start, eax
         jmp     .exit
         
   .hasNotHeart: 
-        stdcall Player.Die, ecx
+        stdcall Player.Die, ebx
         
   .exit:   
         ret
@@ -157,5 +165,49 @@ proc Player.Die\
         mov     DWORD [eax + GameObject.collide], GameObject.DEAD_PLAYER
         mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], dyingPlayerFrames
           
+        ret
+endp
+
+proc BrickWithBreakTimer.TimerObject uses ebx,\
+     refBrickWithBreakTimer
+     
+        mov     ebx, [refBrickWithBreakTimer]
+        
+        stdcall BrickWithBreakTimer.CanBreak, ebx        
+        cmp     eax, FALSE
+        je      .exit
+        
+        stdcall BrickWithBreakTimer.Break, ebx 
+     
+  .exit: 
+        ret
+endp
+proc Player.TimerObject\
+     refPlayer
+     
+        mov     ebx, [refPlayer]
+        
+        mov     eax, ebx
+        add     eax, Player.invulnerabilityTimer
+        stdcall Timer.IsTimeUp, eax, [eax + sizeof.Player.invulnerabilityTimer]
+        cmp     eax, FALSE
+        je      .invulnerabilityTimeIsNotUp
+        
+        mov     eax, ebx
+        add     eax, Player.invulnerabilityTimer
+        stdcall Timer.Stop, eax 
+  
+  .invulnerabilityTimeIsNotUp:
+        mov     eax, ebx
+        add     eax, Player.worldTimer
+        stdcall Timer.IsTimeUp, eax, [eax + sizeof.Player.worldTimer]
+        cmp     eax, FALSE
+        je      .exit
+        
+        mov     eax, ebx
+        add     eax, Player.worldTimer
+        stdcall Timer.Stop, eax 
+        
+  .exit:   
         ret
 endp

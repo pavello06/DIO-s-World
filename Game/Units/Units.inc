@@ -3,6 +3,7 @@ include '../Animations/Animations.inc'
 include 'GameObject.asm'
 include 'Entity/Entity.asm'
 
+include 'Bonus/Bonus.asm'
 include 'BrickWithBreakTimer/BrickWithBreakTimer.asm'
 include 'Bullet/Bullet.asm'
 include 'Enemy/Enemy.asm'

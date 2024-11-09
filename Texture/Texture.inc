@@ -47,7 +47,8 @@ include 'Game/General/Blocks/bottomPipe.inc'
 include 'Game/General/Blocks/topPipe.inc'
 
 ;Bonuses------------------------------------------------------------------------
-
+include 'Game/General/Bonuses/heart.inc'
+include 'Game/General/Bonuses/heart2.inc'
 
 ;Player-------------------------------------------------------------------------
 include 'Game/General/Player/standingPlayer.inc'
