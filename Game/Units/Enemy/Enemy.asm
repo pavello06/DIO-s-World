@@ -4,19 +4,23 @@ struct Enemy
   refAnimations dd ?
   score         dd ?
 ends
+ 
+Enemy.SPEED_Y_AFTER_COLLIDING_WITH_JUMP = 40
+
+Enemy.SPEED_X_AFTER_DEATH = 0
+Enemy.SPEED_Y_AFTER_DEATH = 20
 
 proc Enemy.IsPlayerNear\
-     refEnemy, refPlayer, minDistance, maxDistance
+     refEnemy, minDistance, maxDistance
      
         mov     eax, [refEnemy]
-        mov     ecx, [refPlayer]
         
-        mov     edx, [eax + Object.x]
-        sub     edx, [ecx + Object.x]
+        mov     ecx, [eax + Object.x]
+        sub     ecx, [player + Object.x]
         
-        cmp     edx, [minDistance]
+        cmp     ecx, [minDistance]
         jl      .playerIsNotNear
-        cmp     edx, [maxDistance]
+        cmp     ecx, [maxDistance]
         jg      .playerIsNotNear
   
   .playerIsNear:      
@@ -44,11 +48,6 @@ proc Enemy.GetDamage\
         add     ecx, GameObjectWithAnimation.animation 
         stdcall Animation.Copy, ecx, edx
         
-        mov     eax, [refEnemy]
-        
-        add     eax, GameObjectWithAnimation.animation
-        stdcall Animation.Start, eax
-        
         mov     eax, [refEnemy]       
         
         cmp     DWORD [eax + Enemy.health], 0
@@ -66,7 +65,8 @@ proc Enemy.Die\
         mov     eax, [refEnemy]
      
         mov     DWORD [eax + GameObject.collide], GameObject.DEAD_ENEMY
-                
-  .exit:   
+        mov     DWORD [eax + Entity.speedX], Enemy.SPEED_X_AFTER_DEATH
+        mov     DWORD [eax + Entity.speedY], Enemy.SPEED_Y_AFTER_DEATH
+                 
         ret
 endp

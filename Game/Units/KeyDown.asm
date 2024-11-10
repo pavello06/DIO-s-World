@@ -1,56 +1,55 @@
 proc KeyDown.Move\
-     refPlayer, key
+     key
      
-        mov     eax, [refPlayer]
-        mov     edx, [key]
+        mov     eax, [key]
         
-        cmp     edx, VK_LEFT
+        cmp     eax, VK_LEFT
         je      .VKLeft
-        cmp     edx, 'a'
+        cmp     eax, 'a'
         je      .VKLeft
-        cmp     edx, 'A'
+        cmp     eax, 'A'
         jne     .notVKLeft
         
   .VKLeft:
-        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT        
-        mov     DWORD [eax + Entity.speedX], -Player.PLAYER_SPEED_BOOST_X
+        mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT        
+        mov     DWORD [player + Entity.speedX], -Player.PLAYER_SPEED_BOOST_X
         jmp     .exit     
   
   .notVKLeft:   
-        cmp     edx, VK_UP
+        cmp     eax, VK_UP
         je      .VKUp
-        cmp     edx, 'w'
+        cmp     eax, 'w'
         je      .VKUp
-        cmp     edx, 'W'
+        cmp     eax, 'W'
         jne     .notVKUp
         
   .VKUp:
-        cmp     DWORD [eax + Player.canJump], TRUE
+        cmp     DWORD [player + Player.canJump], TRUE
         jne     .exit
-        cmp     DWORD [eax + Entity.speedY], -2
+        cmp     DWORD [player + Entity.speedY], -2
         jl      .exit
-        mov     DWORD [eax + Player.canJump], FALSE
-        mov     DWORD [eax + Entity.speedY], Player.PLAYER_SPEED_BOOST_Y
+        mov     DWORD [player + Player.canJump], FALSE
+        mov     DWORD [player + Entity.speedY], Player.PLAYER_SPEED_BOOST_Y
         jmp     .exit
    
   .notVKUp:            
-        cmp     edx, VK_RIGHT
+        cmp     eax, VK_RIGHT
         je      .VKRight
-        cmp     edx, 'd'
+        cmp     eax, 'd'
         je      .VKRight
-        cmp     edx, 'D'
+        cmp     eax, 'D'
         jne     .exit
         
   .VKRight:
-        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT  
-        mov     DWORD [eax + Entity.speedX], Player.PLAYER_SPEED_BOOST_X       
+        mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT  
+        mov     DWORD [player + Entity.speedX], Player.PLAYER_SPEED_BOOST_X       
         
   .exit:  
         ret
 endp
 
-proc KeyDown.Shoot uses ebx,\
-     refPlayer, key
+proc KeyDown.Shoot\
+     key
                                                        
         mov     eax, [key]
         
@@ -63,21 +62,32 @@ proc KeyDown.Shoot uses ebx,\
         cmp     eax, 'J'
         jne     .exit
   
-  .shootKey:
-        mov     ebx, [refPlayer]
-        
-        stdcall Player.CanShoot, ebx
+  .shootKey:        
+        stdcall Player.CanShoot, player
         
         cmp     eax, FALSE
         je      .exit
         
-        stdcall Player.Shoot, ebx
+        stdcall Player.Shoot, player
      
   .exit:  
         ret
 endp
 
-proc KeyDown.Pause
+proc KeyDown.Pause\
+     key
+     
+        
+     
+        ret
+endp
+
+proc KeyDown.Game\
+     key
+        
+        stdcall KeyDown.Move, [key]
+        stdcall KeyDown.Shoot, [key]
+        stdcall KeyDown.Pause, [key]
      
         ret
 endp 

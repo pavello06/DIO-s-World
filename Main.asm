@@ -94,9 +94,7 @@ proc WindowProc uses ebx esi edi,\
         jmp     .exit
         
   .wmpaint:
-        stdcall Screen.Clear
-        stdcall Animation.AnimateObjects, objectsWithAnimation, 0, 900, 0, 600
-        stdcall Drawing.DrawObjects, objectsWithDrawing, 0, 900, 0, 600
+        stdcall Paint.Game
         stdcall Move.MoveEntities, entities, objects
         stdcall Player.ChangeAnimation, player
         stdcall Player.TimerObject, player
@@ -106,13 +104,13 @@ proc WindowProc uses ebx esi edi,\
         jmp     .exit
         
   .wmkeydown:
-        stdcall KeyDown.Move, player, [wparam]
-        stdcall KeyDown.Shoot, player, [wparam]
+        stdcall KeyDown.Move, [wparam]
+        stdcall KeyDown.Shoot, [wparam]
         cmp     [wparam], VK_ESCAPE
         jne     .defwndproc
   
   .wmkeyup:
-        stdcall KeyUp.Move, player, [wparam]
+        stdcall KeyUp.Move, [wparam]
         jmp     .exit
         
   .wmdestroy:
@@ -159,10 +157,16 @@ section '.data' data readable writeable
            
   delete dd Object.GAME, 0, -1, 1000, 1, GameObject.DELETE
   
-  objects dd (objectsLength / 4 - 1), player, grass, testing, testing2, enemy, heart, delete
+  dirt1 dd Object.GAME, 100, 100, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
+  dirt2 dd Object.GAME, 200, 200, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
+  dirt3 dd Object.GAME, 300, 300, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
+  dirt4 dd Object.GAME, 400, 400, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
+  dirt5 dd Object.GAME, 500, 500, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture   
+  
+  objects dd (objectsLength / 4 - 1), player, grass, testing, testing2, enemy, heart, delete, dirt1, dirt2, dirt3, dirt4, dirt5
   objectsLength = $ - objects
               
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemy, heart
+  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemy, heart, dirt1, dirt2, dirt3, dirt4, dirt5
   objectsWithDrawingLength = $ - objectsWithDrawing
   
   objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemy, heart

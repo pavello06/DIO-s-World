@@ -3,45 +3,42 @@ struct Snail
   countOfCollides dd ?
 ends
 
-Snail.SNAIL_SPEED_BOOST_X = 20
+Snail.SPEED_X_AFTER_COLLIDING_WITH_PLAYER = 20
 
 proc Snail.GetDamage uses ebx,\
-     refSnail, refPlayer
+     refSnail
      
         stdcall Enemy.GetDamage, [refSnail]
         
-        mov     ebx, [refSnail]
+        mov     eax, [refSnail]
         
-        cmp     DWORD [ebx + Enemy.health], 2
+        cmp     DWORD [eax + Enemy.health], 2
         jne     .notStop
         
-        mov     DWORD [ebx + Entity.speedX], 0
+        mov     DWORD [eax + Entity.speedX], 0
   
   .notStop:        
-        cmp     DWORD [ebx + Enemy.health], 1
+        cmp     DWORD [eax + Enemy.health], 1
         jne     .exit
   
-        mov     ecx, [refPlayer]
-        mov     edx, [ecx + Object.width]
-        shr     edx, 1
-        add     edx, [ecx + Object.x]
-        
-        mov     ecx, [eax + Object.width]
+        mov     ecx, [player + Object.width]
         shr     ecx, 1
-        add     ecx, [eax + Object.x]
+        add     ecx, [player + Object.x]
         
-        mov     eax, 1
+        mov     edx, [eax + Object.width]
+        shr     edx, 1
+        add     edx, [eax + Object.x]
         
-        cmp     edx, ecx
+        mov     ebx, Snail.SPEED_X_AFTER_COLLIDING_WITH_PLAYER
+        
+        cmp     ecx, edx
         jb      .toTheRight
         
   ..toTheLeft:
-        mov     eax, -1
+        neg     ebx
   
   .toTheRight:
-        mov     ecx, Snail.SNAIL_SPEED_BOOST_X
-        mul     ecx
-        mov     DWORD [ebx + Entity.speedX], eax
+        mov     DWORD [eax + Entity.speedX], ebx
         
   .exit:   
         ret

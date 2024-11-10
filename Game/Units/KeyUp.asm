@@ -1,5 +1,5 @@
 proc KeyUp.Move\
-     refPlayer, key
+     key
      
         mov     eax, [key]
         
@@ -16,11 +16,17 @@ proc KeyUp.Move\
         cmp     eax, 'D'
         jne     .exit
         
-  .VKLeftOrVKRight:
-        mov     eax, [refPlayer]
-                
-        mov     DWORD [eax + Player.entity.speedX], 0   
+  .VKLeftOrVKRight:                
+        mov     DWORD [player + Entity.speedX], 0   
                          
   .exit:  
+        ret
+endp
+
+proc KeyUp.Game\
+     key
+        
+        stdcall KeyUp.Move, [key]
+     
         ret
 endp
