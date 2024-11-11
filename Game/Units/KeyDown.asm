@@ -12,7 +12,7 @@ proc KeyDown.Move\
         
   .VKLeft:
         mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT        
-        mov     DWORD [player + Entity.speedX], -Player.PLAYER_SPEED_BOOST_X
+        mov     DWORD [player + Entity.speedX], -Player.SPEED_X_AFTER_MOVE_KEY
         jmp     .exit     
   
   .notVKLeft:   
@@ -26,10 +26,11 @@ proc KeyDown.Move\
   .VKUp:
         cmp     DWORD [player + Player.canJump], TRUE
         jne     .exit
-        cmp     DWORD [player + Entity.speedY], -2
+        cmp     DWORD [player + Entity.speedY], -Move.G
         jl      .exit
+        
         mov     DWORD [player + Player.canJump], FALSE
-        mov     DWORD [player + Entity.speedY], Player.PLAYER_SPEED_BOOST_Y
+        mov     DWORD [player + Entity.speedY], Player.SPEED_Y_AFTER_MOVE_KEY
         jmp     .exit
    
   .notVKUp:            
@@ -42,34 +43,8 @@ proc KeyDown.Move\
         
   .VKRight:
         mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT  
-        mov     DWORD [player + Entity.speedX], Player.PLAYER_SPEED_BOOST_X       
+        mov     DWORD [player + Entity.speedX], Player.SPEED_X_AFTER_MOVE_KEY       
         
-  .exit:  
-        ret
-endp
-
-proc KeyDown.Shoot\
-     key
-                                                       
-        mov     eax, [key]
-        
-        cmp     eax, 'x'
-        je      .shootKey 
-        cmp     eax, 'X'
-        je      .shootKey
-        cmp     eax, 'j'
-        je      .shootKey
-        cmp     eax, 'J'
-        jne     .exit
-  
-  .shootKey:        
-        stdcall Player.CanShoot, player
-        
-        cmp     eax, FALSE
-        je      .exit
-        
-        stdcall Player.Shoot, player
-     
   .exit:  
         ret
 endp
@@ -78,16 +53,6 @@ proc KeyDown.Pause\
      key
      
         
-     
+          
         ret
 endp
-
-proc KeyDown.Game\
-     key
-        
-        stdcall KeyDown.Move, [key]
-        stdcall KeyDown.Shoot, [key]
-        stdcall KeyDown.Pause, [key]
-     
-        ret
-endp 

@@ -23,10 +23,27 @@ proc KeyUp.Move\
         ret
 endp
 
-proc KeyUp.Game\
+proc KeyUp.Shoot\
      key
+                                                       
+        mov     eax, [key]
         
-        stdcall KeyUp.Move, [key]
+        cmp     eax, 'x'
+        je      .shootKey 
+        cmp     eax, 'X'
+        je      .shootKey
+        cmp     eax, 'j'
+        je      .shootKey
+        cmp     eax, 'J'
+        jne     .exit
+  
+  .shootKey:        
+        stdcall Player.CanShoot, player        
+        cmp     eax, FALSE
+        je      .exit
+        
+        stdcall Player.Shoot, player
      
+  .exit:  
         ret
 endp
