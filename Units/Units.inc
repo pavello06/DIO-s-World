@@ -11,3 +11,4 @@ include 'Screen/Screen.asm'
 include 'Timer/Timer.asm'
 
 include '../Game/Game.asm'
+include '../Menu/Menu.asm'
