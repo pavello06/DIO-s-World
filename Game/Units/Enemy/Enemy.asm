@@ -8,7 +8,7 @@ ends
 Enemy.SPEED_Y_AFTER_COLLIDING_WITH_JUMP = 40
 
 Enemy.SPEED_X_AFTER_DEATH = 0
-Enemy.SPEED_Y_AFTER_DEATH = 20
+Enemy.SPEED_Y_AFTER_DEATH = 15
 
 proc Enemy.IsPlayerNear\
      refEnemy, minDistance, maxDistance
@@ -67,6 +67,7 @@ proc Enemy.Die\
         mov     DWORD [eax + GameObject.collide], GameObject.DEAD_ENEMY
         mov     DWORD [eax + Entity.speedX], Enemy.SPEED_X_AFTER_DEATH
         mov     DWORD [eax + Entity.speedY], Enemy.SPEED_Y_AFTER_DEATH
+        mov     DWORD [eax + Entity.canGravitate], TRUE
                  
         ret
 endp

@@ -1,5 +1,7 @@
 Level1:
 
+.delete GameObject <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
+
 .dirt1 GameObjectWithDrawing <<Object.GAME, 0, 0, 21, 2>, GameObject.BLOCK>,\
 			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
                                     
@@ -210,29 +212,29 @@ Level1:
 			                            <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, pinkBlockTexture>
                                    
 .yellowBlock2 GameObjectWithDrawing <<Object.GAME, 991, 33, 1, 1>, GameObject.BLOCK>,\
-			                              <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, yellowBlockTexture>
+			            <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, yellowBlockTexture>
                                   
 .dirt6 GameObjectWithDrawing <<Object.GAME, 1007, 0, 11, 2>, GameObject.BLOCK>,\
-			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
+			     <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
                                     
 .grass6 GameObjectWithDrawing <<Object.GAME, 1007, 32, 11, 1>, GameObject.BLOCK>,\
-			                        <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+			      <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
                               
 .shadow7 GameObjectWithDrawing <<Object.GAME, 1007, 24, 1, 25>, GameObject.DECORATION>,\
-			                         <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+			       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
                                
 .palm7 GameObjectWithDrawing <<Object.GAME, 1027, 49, 1, 1>, GameObject.DECORATION>,\
-			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, palmTexture>
+			     <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, palmTexture>
 
 .reverse7 GameObject <Object.GAME, 1007, 89, 1, 1>, GameObject.REVERSE
 
 .reverse8 GameObject <Object.GAME, 1107, 89, 1, 1>, GameObject.REVERSE
                              
 .bee1 Enemy <<<<<Object.GAME, 1047, 89, 1, 1>, GameObject.ENEMY + GameObject.REVERSEABLE_ENEMY>,\
-			      <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, beeTexture>>,\
+	    <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, beeTexture>>,\
             <FALSE, 0, 100, 0, beeFrames>>,\
             TRUE, 4, 0, FALSE>,\
-            1, owlAnimations, 100
+            1, beeAnimations, 100
              
 
 
@@ -247,7 +249,7 @@ Level1:
             
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
-                                   .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
+                                   .delete, .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
                                    .dirt2, .grass2, .reverse1, .reverse2, .flower2, .owl1,\
                                    .shadow2, .dirt3, .grass3, .palm3, .coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .reverse3, .reverse4, .bush3, .reverse5, .reverse6, .venusFlycatcher1, .bottomPipe2, .topPipe2, .shadow6,\
                                    .dirt4, .grass4, .shadow3, .shadow4, .palm4, .star1, .palm5, .shadow5, .owl2,\

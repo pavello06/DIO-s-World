@@ -201,6 +201,7 @@ proc Collide.CollidePlayerAndEnemy\
         cmp     DWORD [eax + Entity.speedY], -2
         jge     .notBottom
         
+        mov     [eax + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
         stdcall Enemy.GetDamage, [refEnemy]
         jmp     .exit 
         
