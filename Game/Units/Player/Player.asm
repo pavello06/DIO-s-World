@@ -10,11 +10,11 @@ struct Player
   maxInvulnerabilityTimer dd ?    
 ends
 
-Player.PLAYER_SPEED_BOOST_X = 9
-Player.PLAYER_SPEED_BOOST_Y = 29
+Player.SPEED_X_AFTER_MOVE_KEY = 9
+Player.SPEED_Y_AFTER_MOVE_KEY = 29
 
-Player.BULLET_SPEED_BOOST_X = 14
-Player.BULLET_SPEED_BOOST_Y = 0
+Player.BULLET_SPEED_X_AFTER_SHOOT_KEY = 14
+Player.BULLET_SPEED_Y_AFTER_SHOOT_KEY = 0
 
 player Player <<<<<Object.GAME, 30, 100, 1, 1>,\ 
               GameObject.PLAYER>,\
@@ -23,56 +23,50 @@ player Player <<<<<Object.GAME, 30, 100, 1, 1>,\
               TRUE, 0, 0, TRUE>,\
               FALSE, 0, FALSE, FALSE, -1, 5000, -1, 2000
               
-proc Player.ChangeAnimation\
-     refPlayer
-     
-        mov     eax, [refPlayer]
+proc Player.ChangeAnimation
         
-        cmp     DWORD [eax + GameObject.collide], GameObject.DEAD_PLAYER
+        cmp     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
         je      .exit
         
-        cmp     DWORD [eax + Entity.speedY], 0
+        cmp     DWORD [player + Entity.speedY], 0
         jle     .notUpJumpingPlayer
         
   .upJumpingPlayer:
-        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], upJumpingPlayerFrames
+        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 100
+        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], upJumpingPlayerFrames
         jmp     .exit
   
   .notUpJumpingPlayer:
-        cmp     DWORD [eax + Entity.speedY], 0
+        cmp     DWORD [player + Entity.speedY], 0
         je     .notDownJumpingPlayer
         
   .downJumpingPlayer:
-        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], downJumpingPlayerFrames
+        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 100
+        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], downJumpingPlayerFrames
         jmp     .exit
   
   .notDownJumpingPlayer:
-        cmp     DWORD [eax + Entity.speedX], 0
+        cmp     DWORD [player + Entity.speedX], 0
         je      .notRunningPlauer
         
   .runningPlayer:
-        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], runningPlayerFrames
+        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 100
+        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], runningPlayerFrames
         jmp     .exit      
         
   .notRunningPlauer:      
         
   .standingPlayer:
-        mov     DWORD [eax + GameObjectWithAnimation.animation.maxTimer], 250
-        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
+        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 250
+        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
 
   .exit:
         ret     
 endp
 
-proc Player.CanShoot\
-     refPlayer
-     
-        mov     eax, [refPlayer]
+proc Player.CanShoot
         
-        stdcall Bullet.GetActiveBullet, [eax + Player.refBullets]
+        stdcall Bullet.GetActiveBullet, [player + Player.refBullets]
         cmp     eax, -1
         je      .canNotShoot                  
   
@@ -87,127 +81,87 @@ proc Player.CanShoot\
         ret     
 endp
 
-proc Player.Shoot uses ebx esi,\
-     refPlayer
+proc Player.Shoot 
      
-        mov     ebx, [refPlayer]
-        mov     eax, [ebx + Player.refBullets]
+        stdcall Bullet.GetActiveBullet, [player + Player.refBullets]
         
-        stdcall Bullet.GetActiveBullet, eax
+        mov     ecx, eax        
         
-        mov     esi, eax        
+        mov     eax, [ecx + GameObjectWithDrawing.drawing.directionX]
+        mul     DWORD [ecx + Entity.speedX]        
+        mul     DWORD [player + GameObjectWithDrawing.drawing.directionX]  
+        mov     [ecx + Entity.speedX], eax
         
-        mov     eax, [esi + GameObjectWithDrawing.drawing.directionX]
-        mul     DWORD [esi + Entity.speedX]        
-        mul     DWORD [ebx + GameObjectWithDrawing.drawing.directionX]  
-        mov     [esi + Entity.speedX], eax
+        mov     eax, [player + GameObjectWithDrawing.drawing.directionX]
+        mov     [ecx + GameObjectWithDrawing.drawing.directionX], eax        
         
-        mov     eax, [ebx + GameObjectWithDrawing.drawing.directionX]
-        mov     [esi + GameObjectWithDrawing.drawing.directionX], eax        
-        
-        stdcall Bullet.Deactivate, esi, [ebx + Object.x], [ebx + Object.y]
+        stdcall Bullet.Deactivate, ecx, [player + Object.x], [player + Object.y]
   
   .exit:   
         ret     
 endp
               
-proc Player.GetDamage uses ebx,\
-     refPlayer
-     
-        mov     ebx, [refPlayer]
+proc Player.GetDamage 
         
-        cmp     DWORD [ebx + Player.invulnerabilityTimer], -1
+        cmp     DWORD [player + Player.invulnerabilityTimer], -1
         jne     .exit
      
-        cmp     DWORD [ebx + Player.worldTimer], TRUE
+        cmp     DWORD [player + Player.worldTimer], TRUE
         jne     .hasNotWorld
-        
-        mov     eax, ebx
-        add     eax, Player.worldTimer        
-        stdcall Timer.Stop, eax
-        mov     eax, ebx
-        add     eax, Player.invulnerabilityTimer        
-        stdcall Timer.Start, eax
+              
+        stdcall Timer.Stop, player + Player.worldTimer       
+        stdcall Timer.Start, player + Player.invulnerabilityTimer 
         jmp     .exit
   
   .hasNotWorld:      
-        cmp     DWORD [ebx + Player.hasArrow], TRUE
+        cmp     DWORD [player + Player.hasArrow], TRUE
         jne     .hasNotArrow
         
-        mov     DWORD [ebx + Player.hasArrow], FALSE        
-        mov     eax, ebx
-        add     eax, Player.invulnerabilityTimer        
-        stdcall Timer.Start, eax
+        mov     DWORD [player + Player.hasArrow], FALSE        
+        stdcall Timer.Start, player + Player.invulnerabilityTimer
         jmp     .exit
         
   .hasNotArrow:      
-        cmp     DWORD [ebx + Player.hasHeart], TRUE
+        cmp     DWORD [player + Player.hasHeart], TRUE
         jne     .hasNotHeart
         
-        mov     DWORD [ebx + Player.hasHeart], FALSE
-        mov     eax, ebx
-        add     eax, Player.invulnerabilityTimer        
-        stdcall Timer.Start, eax
+        mov     DWORD [player + Player.hasHeart], FALSE
+        stdcall Timer.Start, player + Player.invulnerabilityTimer
         jmp     .exit
         
   .hasNotHeart: 
-        stdcall Player.Die, ebx
+        stdcall Player.Die
         
   .exit:   
         ret
 endp
 
-proc Player.Die\
-     refPlayer
+proc Player.Die
      
-        mov     eax, [refPlayer]
-     
-        mov     DWORD [eax + GameObject.collide], GameObject.DEAD_PLAYER
-        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], dyingPlayerFrames
+        mov     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
+        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], dyingPlayerFrames
           
         ret
 endp
 
-proc BrickWithBreakTimer.TimerObject uses ebx,\
-     refBrickWithBreakTimer
+proc Player.TimerObject
+
+        stdcall Player.ChangeAnimation
      
-        mov     ebx, [refBrickWithBreakTimer]
-        
-        stdcall BrickWithBreakTimer.CanBreak, ebx        
-        cmp     eax, FALSE
-        je      .exit
-        
-        stdcall BrickWithBreakTimer.Break, ebx 
-     
-  .exit: 
-        ret
-endp
-proc Player.TimerObject\
-     refPlayer
-     
-        mov     ebx, [refPlayer]
-        
-        mov     eax, ebx
-        add     eax, Player.invulnerabilityTimer
-        stdcall Timer.IsTimeUp, eax, [eax + sizeof.Player.invulnerabilityTimer]
+        stdcall Timer.IsTimeUp, player + Player.invulnerabilityTimer, [player + Player.invulnerabilityTimer + sizeof.Player.invulnerabilityTimer]
         cmp     eax, FALSE
         je      .invulnerabilityTimeIsNotUp
         
-        mov     eax, ebx
-        add     eax, Player.invulnerabilityTimer
-        stdcall Timer.Stop, eax 
+        stdcall Timer.Stop, player + Player.invulnerabilityTimer 
   
   .invulnerabilityTimeIsNotUp:
-        mov     eax, ebx
-        add     eax, Player.worldTimer
-        stdcall Timer.IsTimeUp, eax, [eax + sizeof.Player.worldTimer]
+        stdcall Timer.IsTimeUp, player + Player.worldTimer, [player + Player.worldTimer + sizeof.Player.worldTimer]
         cmp     eax, FALSE
-        je      .exit
-        
-        mov     eax, ebx
-        add     eax, Player.worldTimer
-        stdcall Timer.Stop, eax 
-        
+        je      .worldTimeIsNotUp
+
+        stdcall Timer.Stop, player + Player.worldTimer
+  
+  .worldTimeIsNotUp:      
   .exit:   
         ret
 endp
