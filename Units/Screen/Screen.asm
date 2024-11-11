@@ -49,7 +49,7 @@ proc Screen.IsObjectOnScreen\
         ret
 endp
 
-proc Screen.FocusOnLevel
+proc Screen.FocusOnGame
   
         stdcall Timer.IsTimeUp, Screen.timer, Screen.MAX_TIMER
         cmp     eax, FALSE
@@ -66,7 +66,8 @@ proc Screen.FocusOnLevel
         mov     ecx, [player + Object.x]
         sub     ecx, eax
         mov     [Screen.screen + Object.x], ecx
-        
+  
+  .borders:      
         mov     ecx, 0;[level + Level.xMin]
         add     ecx, [player + Object.x]
                 

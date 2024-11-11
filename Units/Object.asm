@@ -7,8 +7,8 @@ struct Object
 ends
 
 Object.GENERAL = 0
-Object.MENU    = 1
-Object.GAME    = 2
+Object.GAME    = 1
+Object.MENU    = 2
 
 Object.TRASH_X = -1000
 

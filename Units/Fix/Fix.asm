@@ -43,22 +43,28 @@ proc Fix.FixObjectSizes uses ebx esi,\
         ret
 endp
 
-proc Fix.FixObjects uses ebx,\
-     refObjects, refObjectsWithDrawing
+proc Fix.FixObjectsCoordinates uses ebx,\
+     refObjects
      
         mov     ebx, [refObjects] 
         
         mov     ecx, [ebx + 0]
         add     ebx, 4
   
-  .loop1:
+  .loop:
         push    ecx     
         
         stdcall Fix.FixObjectCoordinates, [ebx]
                                 
         add     ebx, 4
         pop     ecx                                   
-        loop    .loop1
+        loop    .loop
+                
+        ret
+endp
+
+proc Fix.FixObjectsSizes uses ebx,\
+     refObjectsWithDrawing
         
         mov     ebx, [refObjectsWithDrawing] 
         
@@ -73,6 +79,15 @@ proc Fix.FixObjects uses ebx,\
         add     ebx, 4
         pop     ecx                                   
         loop    .loop2
+        
+        ret
+endp 
+
+proc Fix.FixObjects\
+     refObjects, refObjectsWithDrawing
+     
+        stdcall Fix.FixObjectsCoordinates, [refObjects]
+        stdcall Fix.FixObjectsSizes, [refObjectsWithDrawing]        
                     
         ret
 endp
