@@ -1,4 +1,5 @@
 Move.MAX_TIMER = 17
+
 Move.G = 2
 
 Move.timer    dd 0
@@ -79,17 +80,21 @@ endp
 proc Move.MoveEntities uses ebx,\
      refEntities, refObjects
      
-        invoke	GetTickCount
-        
-	      sub	    eax, [Move.timer]
-	      cmp	    eax, Move.MAX_TIMER
-	      jb	    .exit
-        
-        add	    [Move.timer], eax
+        stdcall Timer.IsTimeUp, Move.timer, Move.MAX_TIMER
+	      cmp	    eax, FALSE 
+	      je	    .exit
      
         mov     ebx, [refEntities] 
         
         mov     ecx, [ebx + 0]
+        
+        cmp     [player + Player.worldTimer], -1
+        je      .notWorldTimer
+  
+  .worldTimer:      
+        mov     ecx, 1      
+        
+  .notWorldTimer:      
         add     ebx, 4
   
   .loop:
