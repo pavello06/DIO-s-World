@@ -97,7 +97,8 @@ proc BrickWithBreakTimer.TimerObjects uses ebx,\
                       
         add     ebx, 4                                   
         pop     ecx
-        loop    .loop    
-          
+        loop    .loop
+            
+  .exit:        
         ret
 endp                                          

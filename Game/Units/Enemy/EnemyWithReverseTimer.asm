@@ -19,6 +19,7 @@ proc EnemyWithReverseTimer.CanReverse\
   .canNotReverse:
         mov     eax, FALSE
      
+  .exit:
         ret
 endp
 

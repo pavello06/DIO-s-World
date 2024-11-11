@@ -9,7 +9,10 @@ proc Game.Timer
         
         stdcall Move.MoveEntities, [level1.gameObjects.refEntities], [level1.gameObjects.refGameObjects]
         
-        stdcall Player.TimerObject        
+        stdcall BrickWithBreakTimer.TimerObjects, [level1.gameObjects.refBricksWithBreakTimer]
+        stdcall Player.TimerObject
+        stdcall EnemyWithBullets.TimerObjects, [level1.gameObjects.refEnemiesWithBullets]
+        stdcall EnemyWithReverseTimer.TimerObjects, [level1.gameObjects.refEnemiesWithReverseTimer]        
         stdcall EnemyWithStopTimer.TimerObjects, [level1.gameObjects.refEnemiesWithStopTimer]
 
         ret
@@ -31,7 +34,7 @@ proc Game.Paint uses ebx esi
         ret
 endp
 
-proc Game.KeyDown
+proc Game.KeyDown\
      key
         
         stdcall KeyDown.Move, [key]
@@ -40,7 +43,7 @@ proc Game.KeyDown
         ret
 endp
 
-proc Game.KeyUp
+proc Game.KeyUp\
      key
         
         stdcall KeyUp.Move, [key]
