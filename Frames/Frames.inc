@@ -16,8 +16,14 @@ ends
 ;Blocks-------------------------------------------------------------------------
 include 'Game/General/Blocks/luck.inc'
 
+include 'Game/General/Blocks/spring.inc'
+
 ;Bonuses------------------------------------------------------------------------
+include 'Game/General/Bonuses/coin.inc'
+include 'Game/General/Bonuses/star.inc'
 include 'Game/General/Bonuses/heart.inc'
+include 'Game/General/Bonuses/arrow.inc'
+include 'Game/General/Bonuses/world.inc'
 
 ;Player-------------------------------------------------------------------------
 include 'Game/General/Player/standingPlayer.inc'

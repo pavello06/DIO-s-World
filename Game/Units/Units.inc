@@ -16,9 +16,12 @@ include 'Player/Player.asm'
 include 'Enemy/Snail.asm'
 include 'Teleport/Teleport.asm'
 
+include '../Levels/Levels.inc'
+
 include 'Collide/Collide.asm'
 include 'Move/Move.asm'
 
 include 'KeyDown.asm'
 include 'KeyUp.asm'
 include 'Paint.asm'
+include 'Timer.asm'

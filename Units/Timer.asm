@@ -27,6 +27,9 @@ proc Timer.IsTimeUp\
         
         mov     ecx, [refTimer]
         
+        cmp     DWORD [ecx], -1
+        je      .TimeIsUp
+        
 	      sub	    eax, [ecx]
 	      cmp	    eax, [maxTimer]
 	      jb	    .TimeIsNotUp

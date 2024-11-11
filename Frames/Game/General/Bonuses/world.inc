@@ -1,0 +1,1 @@
+worldFrames dd 2, worldTexture, world2Texture

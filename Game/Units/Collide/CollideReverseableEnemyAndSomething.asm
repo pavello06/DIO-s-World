@@ -3,10 +3,20 @@ proc Collide.CollideReverseableEnemyAndReverse\
 
         mov     eax, [refEnemy]
         
-        neg     DWORD [eax + GameObjectWithDrawing.drawing.directionX]
-        
+        cmp     DWORD [eax + Entity.speedX], 0
+        je      .negOnY
+  
+  .negOnX:
+        neg     DWORD [eax + GameObjectWithDrawing.drawing.directionX]        
         neg     DWORD [eax + Entity.speedX]
-
+        
+        jmp     .exit
+        
+  .negOnY: 
+        neg     DWORD [eax + Entity.speedY]
+        mov     DWORD [eax + Object.y], 150      
+        
+  .exit:
         ret
 endp
 

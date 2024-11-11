@@ -1,0 +1,1 @@
+springFrames dd 3, springTexture, spring2Texture, spring3Texture

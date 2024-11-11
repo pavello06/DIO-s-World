@@ -46,9 +46,31 @@ include 'Game/General/Blocks/yellowBlock.inc'
 include 'Game/General/Blocks/bottomPipe.inc'
 include 'Game/General/Blocks/topPipe.inc'
 
+include 'Game/General/Blocks/spring.inc'
+include 'Game/General/Blocks/spring2.inc'
+include 'Game/General/Blocks/spring3.inc'
+
 ;Bonuses------------------------------------------------------------------------
+include 'Game/General/Bonuses/coin.inc'
+include 'Game/General/Bonuses/coin2.inc'
+include 'Game/General/Bonuses/coin3.inc'
+include 'Game/General/Bonuses/coin4.inc'
+include 'Game/General/Bonuses/coin5.inc'
+include 'Game/General/Bonuses/coin6.inc'
+
+include 'Game/General/Bonuses/star.inc'
+
 include 'Game/General/Bonuses/heart.inc'
 include 'Game/General/Bonuses/heart2.inc'
+
+include 'Game/General/Bonuses/arrow.inc'
+include 'Game/General/Bonuses/arrow2.inc'
+include 'Game/General/Bonuses/arrow3.inc'
+include 'Game/General/Bonuses/arrow4.inc'
+include 'Game/General/Bonuses/arrow5.inc'
+
+include 'Game/General/Bonuses/world.inc'
+include 'Game/General/Bonuses/world2.inc'
 
 ;Player-------------------------------------------------------------------------
 include 'Game/General/Player/standingPlayer.inc'

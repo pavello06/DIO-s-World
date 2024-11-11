@@ -1,7 +1,7 @@
 struct Player
   entity                  Entity
   canJump                 dd ?
-  refBullets             dd ?
+  refBullets              dd ?
   hasHeart                dd ?
   hasArrow                dd ?
   worldTimer              dd ?
@@ -10,18 +10,18 @@ struct Player
   maxInvulnerabilityTimer dd ?    
 ends
 
-Player.PLAYER_SPEED_BOOST_X = 12
-Player.PLAYER_SPEED_BOOST_Y = 33
+Player.PLAYER_SPEED_BOOST_X = 9
+Player.PLAYER_SPEED_BOOST_Y = 29
 
 Player.BULLET_SPEED_BOOST_X = 14
 Player.BULLET_SPEED_BOOST_Y = 0
 
-player Player <<<<<Object.GAME, 30, 120, 1, 1>,\ 
+player Player <<<<<Object.GAME, 30, 100, 1, 1>,\ 
               GameObject.PLAYER>,\
               <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
               <FALSE, 0, 200, 0, standingPlayerFrames>>,\
               TRUE, 0, 0, TRUE>,\
-              FALSE, 0, FALSE, FALSE, -1, 5000, -1, 10000
+              FALSE, 0, FALSE, FALSE, -1, 5000, -1, 2000
               
 proc Player.ChangeAnimation\
      refPlayer

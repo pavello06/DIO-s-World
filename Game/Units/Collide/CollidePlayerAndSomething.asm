@@ -66,17 +66,21 @@ proc Collide.CollidePlayerAndTopBlock\
 endp
 
 proc Collide.CollidePlayerAndJump\
-     refPlayer, side
+     refPlayer, refObject, side
      
         cmp     DWORD [side], Collide.BOTTOM
         jne     .exit
         
         mov     eax, [refPlayer]
+        mov     ecx, [refObject]
         
         cmp     DWORD [eax + Entity.speedY], 0
         jg      .exit
         
-        mov     DWORD [eax + Entity.speedY], 40        
+        mov     DWORD [eax + Entity.speedY], 35
+        
+        add     ecx, GameObjectWithAnimation.animation
+        stdcall Animation.Start, ecx        
   
   .exit:   
         ret
@@ -120,6 +124,13 @@ proc Collide.CollidePlayerAndBottomLuck\
         cmp     DWORD [side], Collide.TOP
         jne     .exit
         
+        mov     eax, [refLuck]
+        
+        xor     [eax + GameObject.collide], GameObject.BOTTOM_LUCK
+        mov     [eax + GameObjectWithDrawing.drawing.refTexture], blockTexture
+        add     eax, GameObjectWithAnimation.animation
+        stdcall Animation.Stop, eax
+        
         stdcall Luck.SpawnBonus, [refLuck]     
   
   .exit:     
@@ -134,10 +145,11 @@ proc Collide.CollidePlayerAndTeleport\
         ret
 endp
 
-proc Collide.CollidePlayerAndBonusForLevel
+proc Collide.CollidePlayerAndBonusForLevel\
      refLevel, refBonus     
         
-        
+        mov     ecx, [refBonus]
+        stdcall Object.Delete, ecx
                  
         ret
 endp
@@ -244,7 +256,7 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
   @@:
         test    edi, GameObject.JUMP
         je      @F
-        stdcall Collide.CollidePlayerAndJump, ebx, [side]
+        stdcall Collide.CollidePlayerAndJump, ebx, esi, [side]
   @@:
         test    edi, GameObject.KILL
         je      @F
@@ -272,7 +284,7 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
   @@: 
         test    edi, GameObject.BONUS_FOR_LEVEL 
         je      @F
-        ;stdcall Collide.CollidePlayerAndBonusForLevel, level, esi
+        stdcall Collide.CollidePlayerAndBonusForLevel, ebx, esi
   @@:
         test    edi, GameObject.BONUS_FOR_PLAYER
         je      @F

@@ -22,7 +22,6 @@ proc Collide.CollideBlockableEnemyAndBlock\
         mov     edx, [ecx + Object.y]
         sub     edx, [eax + Object.height]
         mov     [eax + Object.y], edx
-        mov     [eax + Entity.speedY], 0
         jmp     .exit      
              
   .right:
@@ -35,7 +34,6 @@ proc Collide.CollideBlockableEnemyAndBlock\
         mov     edx, [ecx + Object.y]
         add     edx, [ecx + Object.height]
         mov     [eax + Object.y], edx        
-        mov     [eax + Entity.speedY], 0
 
   .exit:   
         ret

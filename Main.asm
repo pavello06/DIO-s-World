@@ -18,7 +18,7 @@ section '.text' code readable executable
         invoke  RegisterClass, wc
         invoke  CreateWindowEx, 0, class, title,\
                                 WS_VISIBLE + WS_OVERLAPPEDWINDOW + WS_CLIPCHILDREN + WS_CLIPSIBLINGS,\ 
-                                100, 100, 900, 600,\ 
+                                20, 20, 1300, 800,\ 
                                 NULL, NULL, [wc.hInstance], NULL
                                 
         mov     [hwnd], eax
@@ -76,7 +76,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
-        stdcall Fix.FixObjects, objectsWithDrawing
+        stdcall Fix.FixObjects, [level1.gameObjects.refGameObjects], [level1.gameObjects.refGameObjectsWithDrawing]
               
         xor     eax, eax
         jmp     .exit
@@ -95,9 +95,7 @@ proc WindowProc uses ebx esi edi,\
         
   .wmpaint:
         stdcall Paint.Game
-        stdcall Move.MoveEntities, entities, objects
-        stdcall Player.ChangeAnimation, player
-        stdcall Player.TimerObject, player
+        stdcall Timer.Game
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
@@ -143,37 +141,6 @@ section '.data' data readable writeable
   hrc dd ?
   
   rc RECT
-  
-  grass GameObjectWithDrawing <<Object.GAME, 0, 0, 10, 1>, GameObject.BLOCK>, <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
-
-  testing  GameObject <Object.GAME, 300, 100, 1, 1>, GameObject.REVERSE
-  testing2 GameObject <Object.GAME, 500, 100, 1, 1>, GameObject.REVERSE
-  
-  heart    Bonus <<<<Object.GAME, 600, 100, 1, 1>, GameObject.BONUS_FOR_PLAYER>, <4, Drawing.RIGHT, Drawing.UP, heartTexture>>, <FALSE, 0, 200, 0, heartFrames>>, Bonus.HEART 
-  
-  enemy dd Object.GAME, 400, 100, 1, 1, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY,\ 
-           Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture, FALSE, 0, 100, 0, owlFrames,\ 
-           TRUE, 7, 0, TRUE, 1, owlAnimations, 100
-           
-  delete dd Object.GAME, 0, -1, 1000, 1, GameObject.DELETE
-  
-  dirt1 dd Object.GAME, 100, 100, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
-  dirt2 dd Object.GAME, 200, 200, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
-  dirt3 dd Object.GAME, 300, 300, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
-  dirt4 dd Object.GAME, 400, 400, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture
-  dirt5 dd Object.GAME, 500, 500, 1, 1, GameObject.BLOCK, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture   
-  
-  objects dd (objectsLength / 4 - 1), player, grass, testing, testing2, enemy, heart, delete, dirt1, dirt2, dirt3, dirt4, dirt5
-  objectsLength = $ - objects
-              
-  objectsWithDrawing dd (objectsWithDrawingLength / 4 - 1), player, grass, enemy, heart, dirt1, dirt2, dirt3, dirt4, dirt5
-  objectsWithDrawingLength = $ - objectsWithDrawing
-  
-  objectsWithAnimation dd (objectsWithAnimationLength / 4 - 1), player, enemy, heart
-  objectsWithAnimationLength = $ - objectsWithAnimation
-  
-  entities dd (entitiesLength / 4 - 1), player, enemy
-  entitiesLength = $ - entities
 
 section '.idata' import data readable writeable
 

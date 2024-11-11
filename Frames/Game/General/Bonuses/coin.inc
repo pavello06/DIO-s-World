@@ -1,0 +1,1 @@
+coinFrames dd 6, coinTexture, coin2Texture, coin3Texture, coin4Texture, coin5Texture, coin6Texture

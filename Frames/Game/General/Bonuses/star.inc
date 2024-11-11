@@ -1,0 +1,1 @@
+starFrames dd 1, starTexture

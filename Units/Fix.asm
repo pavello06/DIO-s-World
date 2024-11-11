@@ -1,4 +1,20 @@
-proc Fix.FixObject uses ebx esi,\
+proc Fix.FixObjectCoordinates\
+     refObject
+     
+        mov     ecx, [refObject]
+        
+        mov     eax, Drawing.NORMAL 
+        mul     DWORD [ecx + Object.x]
+        mov     [ecx + Object.x], eax
+     
+        mov     eax, Drawing.NORMAL 
+        mul     DWORD [ecx + Object.y]
+        mov     [ecx + Object.y], eax
+                
+        ret
+endp     
+
+proc Fix.FixObjectSizes uses ebx esi,\
      refObjectWithDrawing
         
         mov     ecx, [refObjectWithDrawing]
@@ -23,27 +39,40 @@ proc Fix.FixObject uses ebx esi,\
         mul     [esi + Texture.height]
         mul     [ecx + ebx + Drawing.pixelSize]
         mov     [ecx + Object.height], eax
-  
-  .exit:            
+             
         ret
 endp
 
 proc Fix.FixObjects uses ebx,\
-     refObjectsWithDrawing
+     refObjects, refObjectsWithDrawing
      
+        mov     ebx, [refObjects] 
+        
+        mov     ecx, [ebx + 0]
+        add     ebx, 4
+  
+  .loop1:
+        push    ecx     
+        
+        stdcall Fix.FixObjectCoordinates, [ebx]
+                                
+        add     ebx, 4
+        pop     ecx                                   
+        loop    .loop1
+        
         mov     ebx, [refObjectsWithDrawing] 
         
         mov     ecx, [ebx + 0]
         add     ebx, 4
   
-  .loop:
+  .loop2:
         push    ecx     
         
-        stdcall Fix.FixObject, [ebx]
+        stdcall Fix.FixObjectSizes, [ebx]
                                 
         add     ebx, 4
         pop     ecx                                   
-        loop    .loop
+        loop    .loop2
                     
         ret
 endp

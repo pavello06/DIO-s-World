@@ -6,7 +6,7 @@ ends
 proc EnemyWithStopTimer.Start\
      refEnemyWithStopTimer
      
-        mov     eax, [refEnemyWithStopTimer]     
+        mov     eax, [refEnemyWithStopTimer] 
      
         add     eax, EnemyWithTimer.timer
         stdcall Timer.Start, eax
@@ -32,7 +32,7 @@ proc EnemyWithStopTimer.CanMove\
      
         add     eax, EnemyWithTimer.timer
         stdcall Timer.IsTimeUp, eax, [eax + sizeof.EnemyWithTimer.timer]
-        cmp     eax, TRUE
+        cmp     eax, FALSE
         je      .canNotMove
         
   .canMove:
@@ -41,7 +41,8 @@ proc EnemyWithStopTimer.CanMove\
         
   .canNotMove:
         mov     eax, FALSE
-     
+  
+  .exit:   
         ret
 endp
 
@@ -72,7 +73,7 @@ endp
 proc EnemyWithStopTimer.TimerObject uses ebx,\
      refEnemyWithStopTimer
      
-        mov     ebx, [refEnemyWithBullets]
+        mov     ebx, [refEnemyWithStopTimer]
         
         stdcall EnemyWithStopTimer.CanMove, ebx        
         cmp     eax, FALSE

@@ -8,6 +8,7 @@ include 'CollideBlockableEnemyAndSomething.asm'
 include 'CollideJumpableEnemyAndSomething.asm'
 include 'CollideReverseableEnemyAndSomething.asm'
 include 'CollideRotateableEnemyAndSomething.asm'
+include 'CollideStopableEnemyAndSomething.asm'
 
 include 'CollideDeadPlayerAndSomething.asm'
 include 'CollidePlayerAndSomething.asm'
@@ -176,7 +177,7 @@ proc Collide.HandleCollision uses ebx esi edi,\
   @@:
         test    edi, GameObject.STOPABLE_ENEMY
         je      .exit
-        ;stdcall Collide.CollideStopableEnemyAndSomething, ebx, esi, [side]     
+        stdcall Collide.CollideStopableEnemyAndSomething, ebx, esi, [side]     
              
   .exit: 
         ret

@@ -78,7 +78,7 @@ proc Screen.FocusOnLevel
         mov     [Screen.screen + Object.x], ecx
         
   .notLeft:
-        mov     ecx, 1000;[level + Level.xMax]        
+        mov     ecx, 50000;[level + Level.xMax]        
         sub     ecx, [player + Object.x]
         sub     ecx, [player + Object.width]
         
@@ -86,7 +86,7 @@ proc Screen.FocusOnLevel
         jl      .notRight
         
   .right:
-        mov     ecx, 1000;[level + Level.xMax]
+        mov     ecx, 50000;[level + Level.xMax]
         sub     ecx, [Screen.screen + Object.width]
         mov     [Screen.screen + Object.x], ecx
         
