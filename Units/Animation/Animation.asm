@@ -53,13 +53,13 @@ proc Animation.AnimateObject uses ebx,\
         
         mov     ebx, sizeof.GameObject + sizeof.Drawing 
         
-        cmp     DWORD [eax + Object.type], Object.MENU
-        je      .GameObject
+        cmp     DWORD [eax + Object.type], Object.GAME
+        je      .gameObject
         
-  .GameObject:
+  .menuObject:
         add     ebx, sizeof.MenuObject - sizeof.GameObject
   
-  .MenuObject:      
+  .gameObject:      
         cmp     DWORD [eax + ebx + Animation.timer], -1
         je      .exit
 	      

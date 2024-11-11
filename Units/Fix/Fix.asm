@@ -21,13 +21,13 @@ proc Fix.FixObjectSizes uses ebx esi,\
         
         mov     ebx, sizeof.GameObject
         
-        cmp     DWORD [ecx + Object.type], Object.MENU
-        je     .GameObject
+        cmp     DWORD [ecx + Object.type], Object.GAME
+        je     .gameObject
 
-  .GameObject:
+  .menuObject:
         add     ebx, sizeof.MenuObject - sizeof.GameObject
   
-  .MenuObject:      
+  .gameObject:      
         mov     esi, [ecx + ebx + Drawing.refTexture]
         
         mov     eax, [ecx + Object.width]
