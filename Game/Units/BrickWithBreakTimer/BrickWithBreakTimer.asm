@@ -36,9 +36,6 @@ proc BrickWithBreakTimer.CanBreak\
      
         mov     eax, [refBrickWithBreakTimer]
         
-        cmp     DWORD [eax + BrickWithBreakTimer.timer], -1
-        je      .canNotBreak
-        
         add     eax, BrickWithBreakTimer.timer
         stdcall Timer.IsTimeUp, eax, [eax + sizeof.BrickWithBreakTimer.timer]        
 	      cmp     eax, FALSE
@@ -88,6 +85,9 @@ proc BrickWithBreakTimer.TimerObjects uses ebx,\
         mov     ebx, [refBricksWithBreakTimers]
         
         mov     ecx, [ebx + 0]
+        cmp     ecx, 0
+        je      .exit
+        
         add     ebx, 4
   
   .loop:
