@@ -28,3 +28,10 @@ proc WindowProcFunctions.ChangeToGame
 
         ret
 endp
+
+proc WindowProcFunctions.ChangeToMenu
+
+        stdcall WindowProcFunctions.ChangeTo, Menu.Paint, Menu.Timer, Menu.KeyDown, Menu.KeyUp
+
+        ret
+endp
