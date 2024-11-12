@@ -21,3 +21,10 @@ proc WindowProcFunctions.ChangeTo\
 
         ret
 endp
+
+proc WindowProcFunctions.ChangeToGame
+
+        stdcall WindowProcFunctions.ChangeTo, Game.Paint, Game.Timer, Game.KeyDown, Game.KeyUp
+
+        ret
+endp
