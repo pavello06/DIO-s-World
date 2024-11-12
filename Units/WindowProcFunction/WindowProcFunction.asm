@@ -1,5 +1,6 @@
-struct WindowProcFunction
-  paint dd ?
-  timer dd ?
-  
+struct WindowProcFunctions
+  refPaint   dd ?
+  refTimer   dd ?
+  refKeyDown dd ?
+  refKeyUp   dd ?
 ends
