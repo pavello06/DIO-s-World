@@ -42,6 +42,8 @@ proc WindowProc uses ebx esi edi,\
         je      .wmsize
         cmp     [wmsg], WM_PAINT
         je      .wmpaint
+        cmp     [wmsg], WM_TIMER
+        je      .wmtimer
         cmp     [wmsg], WM_KEYDOWN
         je      .wmkeydown
         cmp     [wmsg], WM_KEYUP
@@ -101,6 +103,10 @@ proc WindowProc uses ebx esi edi,\
         xor     eax, eax
         jmp     .exit
         
+  .wmtimer:
+        
+        jmp     .exit
+              
   .wmkeydown:
         stdcall Game.KeyDown, [wparam]
         jmp     .exit
@@ -164,7 +170,9 @@ section '.idata' import data readable writeable
          GetClientRect, 'GetClientRect',\
          GetDC, 'GetDC',\
          ReleaseDC, 'ReleaseDC',\
-         PostQuitMessage, 'PostQuitMessage'
+         PostQuitMessage, 'PostQuitMessage',\
+         SetTimer, 'SetTimer',\
+         KillTimer, 'KillTimer'
 
   import gdi,\
          ChoosePixelFormat, 'ChoosePixelFormat',\
