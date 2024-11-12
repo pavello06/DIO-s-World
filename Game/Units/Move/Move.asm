@@ -11,7 +11,7 @@ proc Move.MoveEntityCoordinate uses ebx esi edi,\
         
         mov     esi, [coordinate] 
      
-        mov     edi, 1
+        mov     edi, 2
         mov     ecx, [ebx + esi + Entity.speedX]
         cmp     ecx, 0
         jg      .loop
@@ -19,20 +19,19 @@ proc Move.MoveEntityCoordinate uses ebx esi edi,\
         neg     ecx
     
   .loop:
-        cmp     DWORD [ebx + esi + Entity.speedX], 0
-        je      .exit
         mov     eax, [ebx + esi + Entity.speedX]
         mul     edi
         cmp     eax, 0
-        jl      .exit
+        jle     .exit
         
         push    ecx
         
         add     [ebx + esi + Object.x], edi
         stdcall Collide.HandleCollisions, ebx, [refObjects]
              
-        pop     ecx                
-        loop    .loop
+        pop     ecx
+        sub     ecx, 2
+        jg      .loop                
 
   .exit:     
         ret
