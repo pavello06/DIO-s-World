@@ -96,8 +96,8 @@ proc WindowProc uses ebx esi edi,\
         jmp     .exit
         
   .wmpaint:
-        stdcall Game.Paint
-        stdcall Game.Timer
+        stdcall [windowProcFunctions.refPaint]
+        stdcall [windowProcFunctions.refTimer]
         
         invoke  SwapBuffers, [hdc]        
         xor     eax, eax
@@ -108,11 +108,11 @@ proc WindowProc uses ebx esi edi,\
         jmp     .exit
               
   .wmkeydown:
-        stdcall Game.KeyDown, [wparam]
+        stdcall [windowProcFunctions.refKeyDown], [wparam]
         jmp     .exit
   
   .wmkeyup:
-        stdcall Game.KeyUp, [wparam]
+        stdcall [windowProcFunctions.refKeyUp], [wparam]
         jmp     .exit
         
   .wmdestroy:
