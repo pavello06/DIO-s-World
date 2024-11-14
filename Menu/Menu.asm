@@ -18,6 +18,8 @@ endp
 proc Menu.KeyDown\
      key
         
+        stdcall KeyDown.Click, [key]
+        
         ret
 endp
 
