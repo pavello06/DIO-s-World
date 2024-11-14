@@ -78,7 +78,8 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
-        stdcall Fix.FixObjects, [level1.gameObjects.refGameObjects], [level1.gameObjects.refGameObjectsWithDrawing]
+        stdcall WindowProcFunctions.ChangeToGame
+        stdcall Fix.FixAllObjects
               
         xor     eax, eax
         jmp     .exit
