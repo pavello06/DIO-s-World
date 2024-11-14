@@ -104,8 +104,8 @@ proc Animation.AnimateObjects uses ebx,\
      
         mov     ebx, [refObjectsWithAnimation]
         
-        mov     ecx, [ebx + 0]
-        add     ebx, 4
+        mov     ecx, [ebx + Array.length]
+        add     ebx, sizeof.Array.length
   
   .loop:
         push    ecx
@@ -117,7 +117,7 @@ proc Animation.AnimateObjects uses ebx,\
         stdcall Animation.AnimateObject, [ebx] 
   
   .endLoop:                     
-        add     ebx, 4                                   
+        add     ebx, sizeof.Array.elements                                   
         pop     ecx
         loop    .loop    
           

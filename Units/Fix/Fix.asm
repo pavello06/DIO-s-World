@@ -46,19 +46,7 @@ endp
 proc Fix.FixObjectsCoordinates uses ebx,\
      refObjects
      
-        mov     ebx, [refObjects] 
-        
-        mov     ecx, [ebx + 0]
-        add     ebx, 4
-  
-  .loop:
-        push    ecx     
-        
-        stdcall Fix.FixObjectCoordinates, [ebx]
-                                
-        add     ebx, 4
-        pop     ecx                                   
-        loop    .loop
+        stdcall Array.Iterate, Fix.FixObjectCoordinates, [refObjects] 
                 
         ret
 endp
@@ -66,19 +54,7 @@ endp
 proc Fix.FixObjectsSizes uses ebx,\
      refObjectsWithDrawing
         
-        mov     ebx, [refObjectsWithDrawing] 
-        
-        mov     ecx, [ebx + 0]
-        add     ebx, 4
-  
-  .loop:
-        push    ecx     
-        
-        stdcall Fix.FixObjectSizes, [ebx]
-                                
-        add     ebx, 4
-        pop     ecx                                   
-        loop    .loop
+        stdcall Array.Iterate, Fix.FixObjectSizes, [refObjectsWithDrawing] 
         
         ret
 endp
@@ -88,8 +64,8 @@ proc Fix.FixObjects uses ebx esi,\
 
         mov     ebx, [refScreens] 
         
-        mov     ecx, [ebx + 0]
-        add     ebx, 4
+        mov     ecx, [ebx + Array.length]
+        add     ebx, sizeof.Array.length
   
   .loop:
         push    ecx
@@ -100,7 +76,7 @@ proc Fix.FixObjects uses ebx esi,\
         stdcall Fix.FixObjectsCoordinates, [esi]
         stdcall Fix.FixObjectsSizes, [esi + 4]
                                 
-        add     ebx, 4
+        add     ebx, sizeof.Array.elements
         pop     ecx                                   
         loop    .loop
 
