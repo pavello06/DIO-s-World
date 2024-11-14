@@ -11,7 +11,7 @@ ends
 
 include 'LevelsMenu/LevelsMenu.inc'
 
-currentMenu dd ?
+currentMenu dd levelsMenu
 
 menus       dd menusLength / 4 - 1
 menusLength = $ - menus
