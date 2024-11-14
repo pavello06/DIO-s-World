@@ -8,3 +8,8 @@ ends
 struct Menu
   menuObjects     MenuObjects
 ends
+
+menu        dd ?
+
+menus       dd menusLength / 4 - 1
+menusLength = $ - menus
