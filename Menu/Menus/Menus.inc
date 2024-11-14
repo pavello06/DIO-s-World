@@ -9,6 +9,8 @@ struct Menu
   menuObjects MenuObjects
 ends
 
+include 'LevelsMenu/LevelsMenu.inc'
+
 currentMenu dd ?
 
 menus       dd menusLength / 4 - 1
