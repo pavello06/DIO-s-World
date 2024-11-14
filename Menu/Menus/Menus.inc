@@ -4,3 +4,7 @@ struct MenuObjects
   refMenuObjectsWithAnimation dd ?
   refButtons                  dd ?
 ends
+
+struct Menu
+  menuObjects     MenuObjects
+ends
