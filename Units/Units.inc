@@ -4,6 +4,7 @@ include '../Texture/Texture.inc'
 include 'Object.asm'
 
 include 'Animation/Animation.asm'
+include 'Array/Array.asm'
 include 'Drawing/Drawing.asm'
 include 'Fix/Fix.asm'
 include 'Normalize/Normalize.asm'
