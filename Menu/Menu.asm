@@ -10,7 +10,18 @@ proc Menu.Timer
         ret
 endp
 
-proc Menu.Paint 
+proc Menu.Paint uses ebx esi edi 
+
+        mov     ebx, [currentMenu]
+
+        mov     esi, [Screen.screen + Object.x]
+        add     esi, [Screen.screen + Object.width]
+        mov     edi, [Screen.screen + Object.y]
+        add     edi, [Screen.screen + Object.height]
+        
+        stdcall Screen.Clear 
+        stdcall Drawing.DrawObjects, [ebx + Menu.menuObjects.refMenuObjectsWithDrawing], [Screen.screen + Object.x], esi, [Screen.screen + Object.y], edi
+        stdcall Animation.AnimateObjects, [ebx + Menu.menuObjects.refMenuObjectsWithAnimation], [Screen.screen + Object.x], esi, [Screen.screen + Object.y], edi
 
         ret
 endp

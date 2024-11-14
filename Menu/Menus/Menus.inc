@@ -13,5 +13,5 @@ include 'LevelsMenu/LevelsMenu.inc'
 
 currentMenu dd levelsMenu
 
-menus       dd menusLength / 4 - 1
+menus       dd menusLength / 4 - 1, levelsMenu
 menusLength = $ - menus

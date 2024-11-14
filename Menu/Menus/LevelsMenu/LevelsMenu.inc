@@ -6,12 +6,12 @@ LevelsMenu:
 
 
 
-.menuObjects                    dd .menuObjectsLength / 4 - 1
-
+.menuObjects                    dd .menuObjectsLength / 4 - 1,\
+                                   LevelsMenu.level1
 .menuObjectsLength              = $ - .menuObjects
 
-.menuObjectsWithDrawing         dd .menuObjectsWithDrawingLength / 4 - 1
-
+.menuObjectsWithDrawing         dd .menuObjectsWithDrawingLength / 4 - 1,\
+                                   LevelsMenu.level1
 .menuObjectsWithDrawingLength   = $ - .menuObjectsWithDrawing
 
 .menuObjectsWithAnimation       dd .menuObjectsWithAnimationLength / 4 - 1
