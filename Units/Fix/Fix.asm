@@ -71,23 +71,60 @@ proc Fix.FixObjectsSizes uses ebx,\
         mov     ecx, [ebx + 0]
         add     ebx, 4
   
-  .loop2:
+  .loop:
         push    ecx     
         
         stdcall Fix.FixObjectSizes, [ebx]
                                 
         add     ebx, 4
         pop     ecx                                   
-        loop    .loop2
+        loop    .loop
         
+        ret
+endp
+
+proc Fix.FixObjects uses ebx esi,\
+     refScreens, offset
+
+        mov     ebx, [refScreens] 
+        
+        mov     ecx, [ebx + 0]
+        add     ebx, 4
+  
+  .loop:
+        push    ecx
+        
+        mov     esi, [ebx]
+        add     esi, [offset]     
+        
+        stdcall Fix.FixObjectsCoordinates, [esi]
+        stdcall Fix.FixObjectsSizes, [esi + 4]
+                                
+        add     ebx, 4
+        pop     ecx                                   
+        loop    .loop
+
+        ret
+endp
+
+proc Fix.FixGameObjects
+
+        stdcall Fix.FixObjects, levels, Level.gameObjects.refGameObjects
+
         ret
 endp 
 
-proc Fix.FixObjects\
-     refObjects, refObjectsWithDrawing
+proc Fix.FixMenuObjects
+
+        stdcall Fix.FixObjects, menus, Menu.menuObjects.refMenuObjects
+
+        ret
+endp
+
+proc Fix.FixAllObjects
      
-        stdcall Fix.FixObjectsCoordinates, [refObjects]
-        stdcall Fix.FixObjectsSizes, [refObjectsWithDrawing]        
+        stdcall Fix.FixGameObjects
+        ;stdcall Fix.FixMenuObjects        
                     
         ret
 endp
