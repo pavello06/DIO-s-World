@@ -1,5 +1,10 @@
 LevelsMenu:
 
+.level1 ScreenButton <<<Object.MenuObject, 10, 10, 1, 1>,\ 
+	             <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, levelButton>>,\
+		     TRUE, ScreenButton.Game>,\
+		     level1
+
 
 
 .menuObjects                    dd .menuObjectsLength / 4 - 1
@@ -17,3 +22,5 @@ LevelsMenu:
 .buttons			dd .buttonsLength / 4 - 1
 
 .buttonsLength			= $ - .buttons
+
+levelsMenu Menu <LevelsMenu.menuObjects, LevelsMenu.menuObjectsWithDrawing, LevelsMenu.menuObjectsWithAnimation, LevelsMenu.buttons>
