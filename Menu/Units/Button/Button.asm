@@ -5,6 +5,30 @@ struct Button
   argument              dd ?
 ends
 
+proc Button.GetActiveButton\                     
+     refButtons
+
+        mov     eax, [refButtons]
+                                                           
+        mov     ecx, [eax + 0]
+        add     eax, 4
+        
+  .loop:        
+        mov     edx, [eax]
+        
+        cmp     DWORD [edx + Button.isActive], TRUE
+        je      .activeButton
+       
+        add     eax, 4
+        loop    .loop
+       
+  .activeButton:      
+        mov     eax, edx                                            
+        
+  .exit:
+        ret
+endp
+
 proc Button.Game\
      refScreen
 
