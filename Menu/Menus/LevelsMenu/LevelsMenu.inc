@@ -17,3 +17,5 @@ LevelsMenu:
 .buttons			dd .buttonsLength / 4 - 1
 
 .buttonsLength			= $ - .buttons
+
+levelsMenu Menu <LevelsMenu.menuObjects, LevelsMenu.menuObjectsWithDrawing, LevelsMenu.menuObjectsWithAnimation, LevelsMenu.buttons>
