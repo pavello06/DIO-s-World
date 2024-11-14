@@ -1,10 +1,11 @@
 proc KeyDown.Click\
      key
         
-        cmp     DWORD [key], VK_ENTER
+        cmp     DWORD [key], VK_RETURN
         jne     .exit
-        
-        stdcall Button.GetActiveButton, [currentMenu + Menu.menuObjects.refButtons]
+          
+        mov     eax, [currentMenu]
+        stdcall Button.GetActiveButton, [eax + Menu.menuObjects.refButtons]
                
         stdcall [eax + Button.refAction], [eax + Button.argument]
 

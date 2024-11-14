@@ -9,7 +9,9 @@ struct Menu
   menuObjects MenuObjects
 ends
 
-currentMenu dd ?
+include 'LevelsMenu/LevelsMenu.inc'
 
-menus       dd menusLength / 4 - 1
+currentMenu dd levelsMenu
+
+menus       dd menusLength / 4 - 1, levelsMenu
 menusLength = $ - menus

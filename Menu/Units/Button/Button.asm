@@ -16,7 +16,7 @@ proc Button.GetActiveButton\
   .loop:        
         mov     edx, [eax]
         
-        cmp     DWORD [edx + Button.isActive], TRUE
+        ;cmp     DWORD [edx + Button.isActive], TRUE
         je      .activeButton
        
         add     eax, 4
@@ -35,7 +35,7 @@ proc Button.Game\
         stdcall WindowProcFunctions.ChangeToGame
         
         mov     eax, [refScreen]
-        mov     [level], eax
+        mov     [currentLevel], eax
 
         ret
 endp
@@ -46,7 +46,7 @@ proc Button.Menu\
         stdcall WindowProcFunctions.ChangeToMenu
         
         mov     eax, [refScreen]
-        mov     [menu], eax
+        mov     [currentMenu], eax
 
         ret
 endp
