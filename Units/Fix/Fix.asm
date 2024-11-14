@@ -100,7 +100,7 @@ endp
 proc Fix.FixAllObjects
      
         stdcall Fix.FixGameObjects
-        ;stdcall Fix.FixMenuObjects        
+        stdcall Fix.FixMenuObjects        
                     
         ret
 endp
