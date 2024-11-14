@@ -1,7 +1,7 @@
 include 'MenuObject.asm'
 
 include 'Button/Button.asm'
-include 'ScreenButton/ScreenButton.asm'
+include 'Button/ScreenButton.asm'
 
 include '../Menus/Menus.inc'
 

@@ -6,10 +6,10 @@ struct MenuObjects
 ends
 
 struct Menu
-  menuObjects     MenuObjects
+  menuObjects MenuObjects
 ends
 
-menu        dd ?
+currentMenu dd ?
 
 menus       dd menusLength / 4 - 1
 menusLength = $ - menus
