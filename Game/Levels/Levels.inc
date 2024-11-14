@@ -29,7 +29,7 @@ ends
 
 include '../Levels/Location1/Level1/Level1.inc'
 
-level        dd ?
+currentLevel dd ?
 
 levels       dd levelsLength / 4 - 1, level1
 levelsLength = $ - levels
