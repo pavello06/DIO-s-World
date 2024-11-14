@@ -1,9 +1,8 @@
 LevelsMenu:
 
-.level1 ScreenButton <<<Object.MenuObject, 10, 10, 1, 1>,\ 
-	             <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, levelButton>>,\
-		     TRUE, ScreenButton.Game>,\
-		     level1
+.level1 Button <<<Object.MenuObject, 10, 10, 1, 1>>,\ 
+	             <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, beeTexture>>,\
+		           TRUE, Button.Game, level1
 
 
 
