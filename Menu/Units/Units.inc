@@ -1,5 +1,10 @@
 include 'MenuObject.asm'
 
+include 'Button/Button.asm'
+include 'Button/ScreenButton.asm'
+
+include '../Menus/Menus.inc'
+
 include 'KeyDown.asm'
 include 'KeyUp.asm'
 include 'Paint.asm'
