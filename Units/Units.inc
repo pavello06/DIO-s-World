@@ -9,6 +9,7 @@ include 'Fix/Fix.asm'
 include 'Normalize/Normalize.asm'
 include 'Screen/Screen.asm'
 include 'Timer/Timer.asm'
+include 'WindowProcFunctions/WindowProcFunctions.asm'
 
 include '../Game/Game.asm'
 include '../Menu/Menu.asm'
