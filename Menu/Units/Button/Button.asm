@@ -5,25 +5,22 @@ struct Button
   argument              dd ?
 ends
 
-proc Button.GetActiveButton\                     
+proc Button.GetActiveButtonInArray\                     
      refButtons
 
         mov     eax, [refButtons]
                                                            
-        mov     ecx, [eax + 0]
-        add     eax, 4
+        mov     ecx, [eax + Array.length]
+        add     eax, sizeof.Array.length
         
   .loop:        
         mov     edx, [eax]
         
-        ;cmp     DWORD [edx + Button.isActive], TRUE
-        je      .activeButton
+        cmp     DWORD [edx + Button.isActive], TRUE
+        je      .exit
        
-        add     eax, 4
-        loop    .loop
-       
-  .activeButton:      
-        mov     eax, edx                                            
+        add     eax, sizeof.Array.elements
+        loop    .loop                                            
         
   .exit:
         ret
