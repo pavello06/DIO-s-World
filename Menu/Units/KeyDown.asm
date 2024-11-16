@@ -32,6 +32,7 @@ proc KeyDown.PreviousAndNext\
         sub     eax, 4
         mov     ecx, [eax]
         mov     DWORD [ecx + Button.isActive], TRUE
+        stdcall ActiveButtonElement.ChangeActiveButton, ecx
         jmp     .exit     
   
   .notPrevious:   
@@ -48,7 +49,8 @@ proc KeyDown.PreviousAndNext\
         add     eax, 4
         mov     ecx, [eax]
         mov     DWORD [ecx + Button.isActive], TRUE          
+        stdcall ActiveButtonElement.ChangeActiveButton, ecx
         
   .exit:
-
+        ret
 endp

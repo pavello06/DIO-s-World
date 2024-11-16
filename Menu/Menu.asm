@@ -30,6 +30,7 @@ proc Menu.KeyDown\
      key
         
         stdcall KeyDown.Click, [key]
+        stdcall KeyDown.PreviousAndNext, [key]
         
         ret
 endp
