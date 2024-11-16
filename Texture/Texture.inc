@@ -12,6 +12,32 @@ ends
 
 ;General------------------------------------------------------------------------
 ;Alphabet-----------------------------------------------------------------------
+include 'General/Alphabet/a.inc'
+include 'General/Alphabet/b.inc'
+include 'General/Alphabet/c.inc'
+include 'General/Alphabet/d.inc'
+include 'General/Alphabet/e.inc'
+include 'General/Alphabet/f.inc'
+include 'General/Alphabet/g.inc'
+include 'General/Alphabet/h.inc'
+include 'General/Alphabet/i.inc'
+include 'General/Alphabet/j.inc'
+include 'General/Alphabet/k.inc'
+include 'General/Alphabet/l.inc'
+include 'General/Alphabet/m.inc'
+include 'General/Alphabet/n.inc'
+include 'General/Alphabet/o.inc'
+include 'General/Alphabet/p.inc'
+include 'General/Alphabet/q.inc'
+include 'General/Alphabet/r.inc'
+include 'General/Alphabet/s.inc'
+include 'General/Alphabet/t.inc'
+include 'General/Alphabet/u.inc'
+include 'General/Alphabet/v.inc'
+include 'General/Alphabet/w.inc'
+include 'General/Alphabet/x.inc'
+include 'General/Alphabet/y.inc'
+include 'General/Alphabet/z.inc'
 
 ;Digits-------------------------------------------------------------------------
 include 'General/Digits/zero.inc'
