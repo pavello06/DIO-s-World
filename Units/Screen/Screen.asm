@@ -12,9 +12,19 @@ Screen.screen Screen <Object.GENERAL, 0, 0, 500, 500>, 0, 0
 
 Screen.timer dd 0 
 
-proc Screen.Clear
+proc Screen.Fill\
+     red, green, blue
 
-        invoke glColor3f, 1.0, 1.0, 1.0
+        stdcall Normalize.NormalizeColor, [blue]
+        push    eax
+        
+        stdcall Normalize.NormalizeColor, [green]
+        push    eax
+        
+        stdcall Normalize.NormalizeColor, [red]
+        push    eax
+        
+        invoke  glColor3f
         invoke glRectf, -1.0, -1.0, 1.0, 1.0
         
         ret
