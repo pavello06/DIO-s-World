@@ -7,6 +7,7 @@ ends
 
 Drawing.LITTLE = 3
 Drawing.NORMAL = 4
+Drawing.BIG    = 6
 
 Drawing.LEFT  = -1
 Drawing.RIGHT = 1
