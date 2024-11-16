@@ -11,7 +11,7 @@ proc Button.GetActiveButtonInArray\
         mov     eax, [refButtons]
                                                            
         mov     ecx, [eax + Array.length]
-        add     eax, sizeof.Array.length
+        add     eax, sizeof.Array.length * 2
         
   .loop:        
         mov     edx, [eax]
