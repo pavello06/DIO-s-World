@@ -78,7 +78,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
-        stdcall WindowProcFunctions.ChangeToGame
+        stdcall WindowProcFunctions.ChangeToMenu
         stdcall Fix.FixAllObjects
               
         xor     eax, eax

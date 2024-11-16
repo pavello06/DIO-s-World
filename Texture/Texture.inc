@@ -16,8 +16,22 @@ ends
 ;Void---------------------------------------------------------------------------
 include 'General/Void/void.inc'
 
-;Menu---------------------------------------------------------------------------
+include 'General/Digits/one.inc'
+include 'General/Digits/two.inc'
+include 'General/Digits/tree.inc'
+include 'General/Digits/four.inc'
+include 'General/Digits/five.inc'
+include 'General/Digits/six.inc'
+include 'General/Digits/seven.inc'
+include 'General/Digits/eight.inc'
+include 'General/Digits/nine.inc'
+include 'General/Digits/zero.inc'
 
+;Menu---------------------------------------------------------------------------
+include 'Menu/Buttons/levelButton.inc'
+
+include 'Menu/ActiveButtonElements/activeButtonElement.inc'
+include 'Menu/ActiveButtonElements/activeButtonElement2.inc'
 
 ;Game---------------------------------------------------------------------------
 ;General------------------------------------------------------------------------
