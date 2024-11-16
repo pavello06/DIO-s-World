@@ -3,7 +3,6 @@ format PE GUI 4.0
 entry start
 
 include 'win32a.inc'
-
 include 'Units/Units.inc'
 
 section '.text' code readable executable
@@ -17,11 +16,13 @@ section '.text' code readable executable
         mov     [wc.hCursor], eax
         invoke  RegisterClass, wc
         invoke  CreateWindowEx, 0, class, title,\
-                                WS_VISIBLE + WS_OVERLAPPEDWINDOW + WS_CLIPCHILDREN + WS_CLIPSIBLINGS,\ 
-                                20, 20, 1300, 800,\ 
-                                NULL, NULL, [wc.hInstance], NULL
-                                
+                                WS_VISIBLE + WS_POPUP,\ 
+                                0, 0, 0, 0,\ 
+                                NULL, NULL, [wc.hInstance], NULL                                
         mov     [hwnd], eax
+        
+        invoke  ShowWindow, [hwnd], SW_SHOWMAXIMIZED
+        invoke  UpdateWindow, [hwnd]
 
   msgLoop:
         invoke  GetMessage, msg, NULL, 0, 0
@@ -100,7 +101,8 @@ proc WindowProc uses ebx esi edi,\
         stdcall [windowProcFunctions.refPaint]
         stdcall [windowProcFunctions.refTimer]
         
-        invoke  SwapBuffers, [hdc]        
+        invoke  SwapBuffers, [hdc]
+           
         xor     eax, eax
         jmp     .exit
         
@@ -121,6 +123,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglDeleteContext, [hrc]
         invoke  ReleaseDC, [hwnd], [hdc]
         invoke  PostQuitMessage, 0
+        
         xor     eax, eax
         
   .exit:
@@ -164,6 +167,8 @@ section '.idata' import data readable writeable
          CreateWindowEx, 'CreateWindowExA',\
          DefWindowProc, 'DefWindowProcA',\
          GetMessage, 'GetMessageA',\
+         ShowWindow, 'ShowWindow',\
+         UpdateWindow, 'UpdateWindow',\
          TranslateMessage, 'TranslateMessage',\
          DispatchMessage, 'DispatchMessageA',\
          LoadCursor, 'LoadCursorA',\
