@@ -9,6 +9,9 @@ proc Array.Iterate uses ebx,\
         mov     ebx, [refArray] 
         
         mov     ecx, [ebx + Array.length]
+        cmp     ecx, 0
+        je      .exit
+        
         add     ebx, sizeof.Array.length
   
   .loop:
@@ -20,5 +23,6 @@ proc Array.Iterate uses ebx,\
         pop     ecx                                   
         loop    .loop        
 
+  .exit:
         ret
 endp

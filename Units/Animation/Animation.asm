@@ -105,6 +105,9 @@ proc Animation.AnimateObjects uses ebx,\
         mov     ebx, [refObjectsWithAnimation]
         
         mov     ecx, [ebx + Array.length]
+        cmp     ecx, 0
+        je      .exit
+        
         add     ebx, sizeof.Array.length
   
   .loop:
@@ -120,6 +123,7 @@ proc Animation.AnimateObjects uses ebx,\
         add     ebx, sizeof.Array.elements                                   
         pop     ecx
         loop    .loop    
-          
+
+  .exit:          
         ret
 endp

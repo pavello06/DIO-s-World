@@ -65,6 +65,9 @@ proc Fix.FixObjects uses ebx esi,\
         mov     ebx, [refScreens] 
         
         mov     ecx, [ebx + Array.length]
+        cmp     ecx, 0
+        je      .exit
+        
         add     ebx, sizeof.Array.length
   
   .loop:
@@ -80,6 +83,7 @@ proc Fix.FixObjects uses ebx esi,\
         pop     ecx                                   
         loop    .loop
 
+  .exit:
         ret
 endp
 

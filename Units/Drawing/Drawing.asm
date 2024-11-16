@@ -174,6 +174,9 @@ proc Drawing.DrawObjects uses ebx,\
         mov     ebx, [refObjectsWithDrawing]
         
         mov     ecx, [ebx + Array.length]
+        cmp     ecx, 0
+        je      .exit
+        
         add     ebx, sizeof.Array.length
   
   .loop:
@@ -189,6 +192,7 @@ proc Drawing.DrawObjects uses ebx,\
         add     ebx, sizeof.Array.elements                                     
         pop     ecx
         loop    .loop    
-          
+  
+  .exit:        
         ret
 endp
