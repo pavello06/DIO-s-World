@@ -1,4 +1,3 @@
-;-------------------------------------------------------------------------------
 struct Color
   red   db ?
   green db ?
@@ -10,12 +9,12 @@ struct Texture
   height dd ?
   colors Color 
 ends
-;-------------------------------------------------------------------------------
 
 ;General------------------------------------------------------------------------
-;Void---------------------------------------------------------------------------
-include 'General/Void/void.inc'
+;Alphabet-----------------------------------------------------------------------
 
+;Digits-------------------------------------------------------------------------
+include 'General/Digits/zero.inc'
 include 'General/Digits/one.inc'
 include 'General/Digits/two.inc'
 include 'General/Digits/tree.inc'
@@ -25,13 +24,9 @@ include 'General/Digits/six.inc'
 include 'General/Digits/seven.inc'
 include 'General/Digits/eight.inc'
 include 'General/Digits/nine.inc'
-include 'General/Digits/zero.inc'
 
-;Menu---------------------------------------------------------------------------
-include 'Menu/Buttons/levelButton.inc'
-
-include 'Menu/ActiveButtonElements/activeButtonElement.inc'
-include 'Menu/ActiveButtonElements/activeButtonElement2.inc'
+;Void---------------------------------------------------------------------------
+include 'General/Void/void.inc'
 
 ;Game---------------------------------------------------------------------------
 ;General------------------------------------------------------------------------
@@ -105,9 +100,6 @@ include 'Game/General/Player/downJumpingPlayer.inc'
 include 'Game/General/Player/dyingPlayer.inc'
 
 ;Location1----------------------------------------------------------------------
-;Background---------------------------------------------------------------------
-
-
 ;Blocks-------------------------------------------------------------------------
 include 'Game/Location1/Blocks/grass.inc'
 
@@ -137,3 +129,19 @@ include 'Game/Location1/Mobs/bee.inc'
 include 'Game/Location1/Mobs/bee2.inc'
 
 include 'Game/Location1/Mobs/deadBee.inc'
+
+;Menu---------------------------------------------------------------------------
+;ActiveButtonElements-----------------------------------------------------------
+include 'Menu/ActiveButtonElements/activeButtonElement.inc'
+include 'Menu/ActiveButtonElements/activeButtonElement2.inc'
+
+;Buttons------------------------------------------------------------------------
+include 'Menu/Buttons/levelButton.inc'
+
+include 'Menu/Buttons/menu.inc'
+
+include 'Menu/Buttons/next.inc'
+
+include 'Menu/Buttons/restart.inc'
+
+include 'Menu/Buttons/screenButton.inc'
