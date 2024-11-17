@@ -7,7 +7,6 @@ struct MenuObjects
 ends
 
 struct Menu
-  refStart    dd ?
   menuObjects MenuObjects
 ends
 
