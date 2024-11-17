@@ -2,6 +2,7 @@ include 'MenuObject.asm'
 
 include 'ActiveButtonElement/ActiveButtonElement.asm'
 include 'Button/Button.asm'
+include 'Star/Star.asm'
 
 include '../Menus/Menus.inc'
 
