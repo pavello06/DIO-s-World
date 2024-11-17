@@ -24,7 +24,7 @@ proc Star.CanLight\
   
   .exit:   
         ret     
-ends
+endp
 
 proc Star.Light\
      refStar
@@ -34,17 +34,17 @@ proc Star.Light\
         mov     [eax + menuObjectWithDrawing.drawing.refTexture], starTexture   
    
         ret     
-ends
+endp
 
 proc Star.Extinguish\
      refStar
      
         mov     eax, [refStar]
      
-        mov     [eax + menuObjectWithDrawing.drawing.refTexture], voidStarTexture   
+        ;mov     [eax + menuObjectWithDrawing.drawing.refTexture], voidStarTexture   
    
         ret     
-ends
+endp
 
 proc Star.ProcessObject\
      refStar
@@ -62,7 +62,7 @@ proc Star.ProcessObject\
 
   .exit:         
         ret     
-ends
+endp
 
 proc Star.ProcessObjects\
      refStars
@@ -70,4 +70,4 @@ proc Star.ProcessObjects\
         stdcall Array.Iterate, [refStars] 
         
         ret     
-ends
+endp
