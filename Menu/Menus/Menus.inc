@@ -3,9 +3,11 @@ struct MenuObjects
   refMenuObjectsWithDrawing   dd ?
   refMenuObjectsWithAnimation dd ?
   refButtons                  dd ?
+  refStars                    dd ?
 ends
 
 struct Menu
+  refStart    dd ?
   menuObjects MenuObjects
 ends
 
