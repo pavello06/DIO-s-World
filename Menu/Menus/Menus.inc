@@ -4,6 +4,8 @@ struct MenuObjects
   refMenuObjectsWithAnimation dd ?
   refButtons                  dd ?
   refStars                    dd ?
+  refWords                    dd ?
+  refNumbers                  dd ?
 ends
 
 struct Menu
