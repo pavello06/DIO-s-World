@@ -1,5 +1,3 @@
-ONE_WIDTH  = 4
-ONE_HEIGHT = 5
 oneTexture dd 4, 5
 db\
  -1, -1, -1,  254,255,255,  254,255,255,   -1, -1, -1,  \
