@@ -24,7 +24,7 @@ proc String.ProcessObject uses ebx esi edi,\
   
         mov     ebx, [esi]
         sub     ebx, 'A'
-        imul    ebx, 9 * 8 * 3 + 8
+        imul    ebx, A_SIZE
         add     ebx, aTexture
         
         mov     [edi + Object.x], eax
