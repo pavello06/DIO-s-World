@@ -6,8 +6,8 @@ struct Drawing
 ends
 
 Drawing.LITTLE = 3
-Drawing.NORMAL = 4
-Drawing.BIG    = 6
+Drawing.NORMAL = 5
+Drawing.BIG    = 7
 
 Drawing.LEFT  = -1
 Drawing.RIGHT = 1

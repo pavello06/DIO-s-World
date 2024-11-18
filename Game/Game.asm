@@ -27,7 +27,7 @@ proc Game.Paint uses ebx esi
         mov     esi, [Screen.screen + Object.y]
         add     esi, [Screen.screen + Object.height]
         
-        stdcall Screen.Clear
+        stdcall Screen.Fill, 1.0, 1.0, 1.0
         stdcall Drawing.DrawObjects, [level1.gameObjects.refGameObjectsWithDrawing], [Screen.screen + Object.x], ebx, [Screen.screen + Object.y], esi
         stdcall Animation.AnimateObjects, [level1.gameObjects.refGameObjectsWithAnimation], [Screen.screen + Object.x], ebx, [Screen.screen + Object.y], esi
 
