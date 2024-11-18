@@ -1,5 +1,5 @@
-ZERO_WIDTH  = 4 * Drawing.NORMAL
-ZERO_HEIGHT = 5  * Drawing.NORMAL
+ZERO_WIDTH  = 4
+ZERO_HEIGHT = 5
 zeroTexture dd 4, 5
 db\
 254,255,255,  254,255,255,  254,255,255,  254,255,255,  \

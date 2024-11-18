@@ -1,5 +1,5 @@
-SIX_WIDTH  = 4 * Drawing.NORMAL
-SIX_HEIGHT = 5  * Drawing.NORMAL
+SIX_WIDTH  = 4
+SIX_HEIGHT = 5
 sixTexture dd 4, 5
 db\
 254,255,255,  254,255,255,  254,255,255,  254,255,255,  \

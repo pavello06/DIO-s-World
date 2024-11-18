@@ -1,5 +1,5 @@
-ARROW_WIDTH  = 8 * Drawing.NORMAL
-ARROW_HEIGHT = 14  * Drawing.NORMAL
+ARROW_WIDTH  = 8
+ARROW_HEIGHT = 14
 arrowTexture dd 8, 14
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

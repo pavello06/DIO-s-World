@@ -1,5 +1,5 @@
-DOWNJUMPINGPLAYER_WIDTH  = 13 * Drawing.NORMAL
-DOWNJUMPINGPLAYER_HEIGHT = 16  * Drawing.NORMAL
+DOWN_JUMPING_PLAYER_WIDTH  = 13
+DOWN_JUMPING_PLAYER_HEIGHT = 16
 downJumpingPlayerTexture dd 13, 16
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

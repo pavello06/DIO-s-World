@@ -1,5 +1,5 @@
-GREENBLOCK_WIDTH  = 16 * Drawing.NORMAL
-GREENBLOCK_HEIGHT = 16  * Drawing.NORMAL
+GREEN_BLOCK_WIDTH  = 16
+GREEN_BLOCK_HEIGHT = 16
 greenBlockTexture dd 16, 16
 db\
  -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,  \

@@ -1,5 +1,5 @@
-DYINGPLAYER_WIDTH  = 13 * Drawing.NORMAL
-DYINGPLAYER_HEIGHT = 16  * Drawing.NORMAL
+DYING_PLAYER_WIDTH  = 13
+DYING_PLAYER_HEIGHT = 16
 dyingPlayerTexture dd 13, 16
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

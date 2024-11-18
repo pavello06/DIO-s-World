@@ -1,5 +1,5 @@
-LEVELBUTTON_WIDTH  = 20 * Drawing.NORMAL
-LEVELBUTTON_HEIGHT = 22  * Drawing.NORMAL
+LEVEL_BUTTON_WIDTH  = 20
+LEVEL_BUTTON_HEIGHT = 22
 levelButtonTexture dd 20, 22
 db\
  -1, -1, -1,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   51, 50, 61,   -1, -1, -1,  \

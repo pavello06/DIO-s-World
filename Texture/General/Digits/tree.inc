@@ -1,5 +1,5 @@
-TREE_WIDTH  = 4 * Drawing.NORMAL
-TREE_HEIGHT = 5  * Drawing.NORMAL
+TREE_WIDTH  = 4
+TREE_HEIGHT = 5
 treeTexture dd 4, 5
 db\
 254,255,255,  254,255,255,  254,255,255,  254,255,255,  \

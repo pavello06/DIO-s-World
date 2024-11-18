@@ -1,5 +1,5 @@
-BLUEBLOCK_WIDTH  = 16 * Drawing.NORMAL
-BLUEBLOCK_HEIGHT = 16  * Drawing.NORMAL
+BLUE_BLOCK_WIDTH  = 16
+BLUE_BLOCK_HEIGHT = 16
 blueBlockTexture dd 16, 16
 db\
  -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,  \

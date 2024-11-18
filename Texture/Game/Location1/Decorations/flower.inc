@@ -1,5 +1,5 @@
-FLOWER_WIDTH  = 13 * Drawing.NORMAL
-FLOWER_HEIGHT = 14  * Drawing.NORMAL
+FLOWER_WIDTH  = 13
+FLOWER_HEIGHT = 14
 flowerTexture dd 13, 14
 db\
  -1, -1, -1,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

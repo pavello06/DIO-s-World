@@ -1,5 +1,5 @@
-COIN_WIDTH  = 10 * Drawing.NORMAL
-COIN_HEIGHT = 13  * Drawing.NORMAL
+COIN_WIDTH  = 10
+COIN_HEIGHT = 13
 coinTexture dd 10, 13
 db\
  -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,  \

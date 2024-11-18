@@ -1,5 +1,5 @@
-PINKBLOCK_WIDTH  = 16 * Drawing.NORMAL
-PINKBLOCK_HEIGHT = 16  * Drawing.NORMAL
+PINK_BLOCK_WIDTH  = 16
+PINK_BLOCK_HEIGHT = 16
 pinkBlockTexture dd 16, 16
 db\
  -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,  \

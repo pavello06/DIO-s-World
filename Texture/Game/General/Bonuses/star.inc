@@ -1,5 +1,5 @@
-STAR_WIDTH  = 15 * Drawing.NORMAL
-STAR_HEIGHT = 16  * Drawing.NORMAL
+STAR_WIDTH  = 15
+STAR_HEIGHT = 16
 starTexture dd 15, 16
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

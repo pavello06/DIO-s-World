@@ -1,5 +1,5 @@
-FOUR_WIDTH  = 4 * Drawing.NORMAL
-FOUR_HEIGHT = 5  * Drawing.NORMAL
+FOUR_WIDTH  = 4
+FOUR_HEIGHT = 5
 fourTexture dd 4, 5
 db\
 254,255,255,   -1, -1, -1,   -1, -1, -1,  254,255,255,  \

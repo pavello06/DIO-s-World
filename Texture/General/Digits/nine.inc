@@ -1,5 +1,5 @@
-NINE_WIDTH  = 4 * Drawing.NORMAL
-NINE_HEIGHT = 5  * Drawing.NORMAL
+NINE_WIDTH  = 4
+NINE_HEIGHT = 5
 nineTexture dd 4, 5
 db\
 254,255,255,  254,255,255,  254,255,255,  254,255,255,  \

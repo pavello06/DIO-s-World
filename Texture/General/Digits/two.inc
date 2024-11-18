@@ -1,5 +1,5 @@
-TWO_WIDTH  = 4 * Drawing.NORMAL
-TWO_HEIGHT = 5  * Drawing.NORMAL
+TWO_WIDTH  = 4
+TWO_HEIGHT = 5
 twoTexture dd 4, 5
 db\
 254,255,255,  254,255,255,  254,255,255,  254,255,255,  \

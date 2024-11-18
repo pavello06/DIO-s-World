@@ -1,5 +1,5 @@
-DEADOWL_WIDTH  = 13 * Drawing.NORMAL
-DEADOWL_HEIGHT = 12  * Drawing.NORMAL
+DEAD_OWL_WIDTH  = 13
+DEAD_OWL_HEIGHT = 12
 deadOwlTexture dd 13, 12
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

@@ -1,5 +1,5 @@
-BUSH_WIDTH  = 12 * Drawing.NORMAL
-BUSH_HEIGHT = 8  * Drawing.NORMAL
+BUSH_WIDTH  = 12
+BUSH_HEIGHT = 8
 bushTexture dd 12, 8
 db\
  -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

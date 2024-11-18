@@ -1,5 +1,5 @@
-OWL_WIDTH  = 13 * Drawing.NORMAL
-OWL_HEIGHT = 12  * Drawing.NORMAL
+OWL_WIDTH  = 13
+OWL_HEIGHT = 12
 owlTexture dd 13, 12
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

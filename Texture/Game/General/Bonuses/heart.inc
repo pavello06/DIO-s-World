@@ -1,5 +1,5 @@
-HEART_WIDTH  = 15 * Drawing.NORMAL
-HEART_HEIGHT = 14  * Drawing.NORMAL
+HEART_WIDTH  = 15
+HEART_HEIGHT = 14
 heartTexture dd 15, 14
 db\
  -1, -1, -1,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,   -1, -1, -1,  \

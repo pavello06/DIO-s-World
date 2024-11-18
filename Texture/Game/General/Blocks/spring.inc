@@ -1,5 +1,5 @@
-SPRING_WIDTH  = 16 * Drawing.NORMAL
-SPRING_HEIGHT = 16  * Drawing.NORMAL
+SPRING_WIDTH  = 16
+SPRING_HEIGHT = 16
 springTexture dd 16, 16
 db\
  -1, -1, -1,   -1, -1, -1,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,    0,  0,  0,   -1, -1, -1,   -1, -1, -1,  \

@@ -1,5 +1,5 @@
-SEVEN_WIDTH  = 4 * Drawing.NORMAL
-SEVEN_HEIGHT = 5  * Drawing.NORMAL
+SEVEN_WIDTH  = 4
+SEVEN_HEIGHT = 5
 sevenTexture dd 4, 5
 db\
 254,255,255,  254,255,255,  254,255,255,  254,255,255,  \
