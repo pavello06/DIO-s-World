@@ -41,7 +41,7 @@ proc Star.Extinguish\
      
         mov     eax, [refStar]
      
-        ;mov     [eax + menuObjectWithDrawing.drawing.refTexture], voidStarTexture   
+        mov     [eax + menuObjectWithDrawing.drawing.refTexture], voidStarTexture   
    
         ret     
 endp
