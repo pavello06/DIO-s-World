@@ -408,8 +408,16 @@ TRUE, Button.Game, level1
                                    .wBACK, 0
 .buttonsLength			            = $ - .buttons
 
+.stars                          dd .starsLength / 4 - 1
+                                    
+.starsLength                    = $ - .stars
+
 .words                          dd .wordsLength / 4 - 1,\
                                    .wLEVEL, .wSELECT, .wBACK 
 .wordsLength                    = $ - .words
 
-levelsMenu Menu <LevelsMenu.menuObjects, LevelsMenu.menuObjectsWithDrawing, LevelsMenu.menuObjectsWithAnimation, LevelsMenu.buttons>
+.numbers                        dd .numbersLength / 4 - 1
+                                    
+.numbersLength                  = $ - .numbers
+
+levelsMenu Menu <LevelsMenu.menuObjects, LevelsMenu.menuObjectsWithDrawing, LevelsMenu.menuObjectsWithAnimation, LevelsMenu.buttons, LevelsMenu.stars, LevelsMenu.words, LevelsMenu.numbers>
