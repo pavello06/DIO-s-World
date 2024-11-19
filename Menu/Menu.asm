@@ -17,7 +17,7 @@ proc Menu.Timer uses ebx
 
         mov     ebx, [currentMenu]
         
-        ;stdcall Number.TimerObjects, [ebx + Menu.menuObjects.refNumbers]
+        stdcall Number.TimerObjects, [ebx + Menu.menuObjects.refNumbers]
 
         ret
 endp
