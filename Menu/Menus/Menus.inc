@@ -13,8 +13,9 @@ struct Menu
 ends
 
 include 'LevelsMenu/LevelsMenu.inc'
+include 'StartMenu/StartMenu.inc'
 
-currentMenu dd levelsMenu
+currentMenu dd startMenu
 
 menus       dd menusLength / 4 - 1, levelsMenu
 menusLength = $ - menus
