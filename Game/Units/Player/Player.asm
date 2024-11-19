@@ -18,7 +18,7 @@ Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY = 20
 Player.BULLET_SPEED_X_AFTER_SHOOT_KEY = 14
 Player.BULLET_SPEED_Y_AFTER_SHOOT_KEY = 0
 
-player Player <<<<<Object.GAME, 30, 100, 1, 1>,\ 
+player Player <<<<<Object.GAME, 700 * Drawing.NORMAL, 100 * Drawing.NORMAL, STANDING_PLAYER_WIDTH * Drawing.NORMAL, STANDING_PLAYER_HEIGHT * Drawing.NORMAL>,\ 
               GameObject.PLAYER>,\
               <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
               <FALSE, 0, 200, 0, standingPlayerFrames>>,\

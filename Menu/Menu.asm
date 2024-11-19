@@ -1,11 +1,20 @@
 include 'Units/Units.inc'
          
-proc Menu.Start
+proc Menu.Start uses ebx
+
+        mov     ebx, [currentMenu]
+        
+        stdcall Star.ProcessObjects, [ebx + Menu.menuObjects.refStars]
+        stdcall String.ProcessObjects, [ebx + Menu.menuObjects.refWords]
 
         ret
 endp
 
-proc Menu.Timer
+proc Menu.Timer uses ebx
+
+        mov     ebx, [currentMenu]
+        
+        ;stdcall Number.TimerObjects, [ebx + Menu.menuObjects.refNumbers]
 
         ret
 endp

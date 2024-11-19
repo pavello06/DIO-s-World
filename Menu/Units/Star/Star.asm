@@ -13,7 +13,7 @@ proc Star.CanLight\
         mov     ecx, [ecx + Level.levelStatistics.bestStars]
         
         cmp     [eax + Star.neededCountToLight], ecx
-        jb      .canNotLight
+        ja      .canNotLight
      
   .canLight:
         mov     eax, TRUE
@@ -31,7 +31,7 @@ proc Star.Light\
      
         mov     eax, [refStar]
      
-        mov     [eax + menuObjectWithDrawing.drawing.refTexture], starTexture   
+        mov     [eax + MenuObjectWithDrawing.drawing.refTexture], starTexture   
    
         ret     
 endp
@@ -41,7 +41,7 @@ proc Star.Extinguish\
      
         mov     eax, [refStar]
      
-        mov     [eax + menuObjectWithDrawing.drawing.refTexture], voidStarTexture   
+        mov     [eax + MenuObjectWithDrawing.drawing.refTexture], voidStarTexture   
    
         ret     
 endp
@@ -67,7 +67,7 @@ endp
 proc Star.ProcessObjects\
      refStars
      
-        stdcall Array.Iterate, [refStars] 
+        stdcall Array.Iterate, Star.ProcessObject, [refStars] 
         
         ret     
 endp

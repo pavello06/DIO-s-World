@@ -408,8 +408,10 @@ TRUE, Button.Game, level1
                                    .wBACK, 0
 .buttonsLength			            = $ - .buttons
 
-.stars                          dd .starsLength / 4 - 1
-                                    
+.stars                          dd .starsLength / 4 - 1,\
+                                   .levelStar11, .levelStar12, .levelStar13, .levelStar21, .levelStar22, .levelStar23, .levelStar31, .levelStar32, .levelStar33, .levelStar41, .levelStar42, .levelStar43, .levelStar51, .levelStar52, .levelStar53,\
+                                   .levelStar61, .levelStar62, .levelStar63, .levelStar71, .levelStar72, .levelStar73, .levelStar81, .levelStar82, .levelStar83, .levelStar91, .levelStar92, .levelStar93, .levelStar101, .levelStar102, .levelStar103,\
+                                   .levelStar111, .levelStar112, .levelStar113, .levelStar121, .levelStar122, .levelStar123, .levelStar131, .levelStar132, .levelStar133, .levelStar141, .levelStar142, .levelStar143, .levelStar151, .levelStar152, .levelStar153 
 .starsLength                    = $ - .stars
 
 .words                          dd .wordsLength / 4 - 1,\

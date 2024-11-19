@@ -80,7 +80,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  GetClientRect, [hwnd], rc
         
         stdcall WindowProcFunctions.ChangeToMenu
-        stdcall String.ProcessObjects, LevelsMenu.words
+        stdcall Menu.Start
               
         xor     eax, eax
         jmp     .exit
