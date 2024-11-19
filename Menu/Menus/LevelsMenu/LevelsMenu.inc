@@ -169,198 +169,198 @@ TRUE, Button.Game, level1
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, fiveTexture>
 ;-------------------------------------------------------------------------------
 .levelStar11 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar12 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar13 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar21 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar22 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar23 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar31 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar32 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar33 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar41 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar42 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar43 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar51 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar52 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar53 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 550, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar61 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar62 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar63 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar71 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar72 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar73 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar81 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar82 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar83 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar91 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar92 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar93 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar101 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar102 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar103 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 330, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 330, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar111 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar112 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar113 Star\
-<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar121 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar122 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar123 Star\
-<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar131 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar132 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar133 Star\
-<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar141 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar142 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar143 Star\
-<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 
 .levelStar151 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 1, level1
 .levelStar152 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 2, level1
 .levelStar153 Star\
-<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.LITTLE, 110, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>>,\ 
-<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
+<<<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 110, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
+<Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 ;-------------------------------------------------------------------------------                                   
 .wBACK String <Object.MENU, 625, 20, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, <'B', 'A', 'C', 'K', 0, 0, 0, 0, 0, 0>, .wBACK1           

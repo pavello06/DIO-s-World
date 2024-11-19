@@ -5,6 +5,7 @@ struct Drawing
   refTexture dd ?
 ends
 
+Drawing.SMALL  = 3
 Drawing.LITTLE = 4
 Drawing.NORMAL = 5
 Drawing.BIG    = 7

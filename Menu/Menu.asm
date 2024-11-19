@@ -6,6 +6,9 @@ proc Menu.Start uses ebx
         
         stdcall Star.ProcessObjects, [ebx + Menu.menuObjects.refStars]
         stdcall String.ProcessObjects, [ebx + Menu.menuObjects.refWords]
+        
+        stdcall Menu.KeyDown, VK_RIGHT
+        stdcall Menu.KeyDown, VK_LEFT
 
         ret
 endp
