@@ -47,3 +47,11 @@ proc Button.Menu\
 
         ret
 endp
+
+proc Button.Exit\
+     arg
+
+        invoke  ExitProcess, 0
+
+        ret
+endp
