@@ -17,7 +17,7 @@ Drawing.DOWN  = -1
 Drawing.UP    = 1
 
 proc Drawing.DrawPixel\
-     red, green, blue, x, xMin, xMax, y, yMin, yMax, pixelSize
+     red, green, blue, x, y, pixelSize
         
         stdcall Normalize.NormalizeColor, [blue]
         push    eax
@@ -30,20 +30,20 @@ proc Drawing.DrawPixel\
         
         invoke  glColor3f
         
-        mov     eax, [y]
-        add     eax, [pixelSize]
-        stdcall Normalize.NormalizeCoordinate, eax, [yMin], [yMax]
+        mov     ecx, [y]
+        add     ecx, [pixelSize]
+        stdcall Normalize.NormalizeCoordinate, ecx, [Screen.yMin], [Screen.yMax]
         push    eax
         
-        mov     eax, [x]
-        add     eax, [pixelSize]
-        stdcall Normalize.NormalizeCoordinate, eax, [xMin], [xMax]
+        mov     edx, [x]
+        add     edx, [pixelSize]
+        stdcall Normalize.NormalizeCoordinate, edx, [Screen.xMin], [Screen.xMax]
         push    eax
         
-        stdcall Normalize.NormalizeCoordinate, [y], [yMin], [yMax]
+        stdcall Normalize.NormalizeCoordinate, [y], [Screen.yMin], [Screen.yMax]
         push    eax
         
-        stdcall Normalize.NormalizeCoordinate, [x], [xMin], [xMax]
+        stdcall Normalize.NormalizeCoordinate, [x], [Screen.xMin], [Screen.xMax]
         push    eax
 
         invoke  glRectf
@@ -52,7 +52,7 @@ proc Drawing.DrawPixel\
 endp
 
 proc Drawing.DrawObject uses ebx esi edi,\
-     refObjectWithDrawing, xMin, xMax, yMin, yMax 
+     refObjectWithDrawing 
         locals               
           objectPixelX  dd ?
           texturePixelX dd ?          
@@ -61,6 +61,10 @@ proc Drawing.DrawObject uses ebx esi edi,\
         endl
         
         mov     ebx, [refObjectWithDrawing]
+        
+        stdcall Screen.IsObjectOnScreen, ebx
+        cmp     eax, FALSE
+        je      .exit
         
         mov     esi, sizeof.GameObject
         
@@ -135,7 +139,7 @@ proc Drawing.DrawObject uses ebx esi edi,\
         movzx   ecx, BYTE [eax + Texture.colors.green]
         movzx   eax, BYTE [eax + Texture.colors.blue]
 
-        stdcall Drawing.DrawPixel, edx, ecx, eax, [objectPixelX], [xMin], [xMax], [objectPixelY], [yMin], [yMax], [ebx + esi + Drawing.pixelSize]
+        stdcall Drawing.DrawPixel, edx, ecx, eax, [objectPixelX], [objectPixelY], [ebx + esi + Drawing.pixelSize]
 
   .invisiblePixel:
         mov     eax, [ebx + esi + Drawing.pixelSize]
@@ -166,34 +170,14 @@ proc Drawing.DrawObject uses ebx esi edi,\
         cmp     ecx, 0
         jne     .yLoop
 
+  .exit:
         ret
 endp
 
-proc Drawing.DrawObjects uses ebx,\
-     refObjectsWithDrawing, xMin, xMax, yMin, yMax     
+proc Drawing.DrawObjects\
+     refObjectsWithDrawing     
      
-        mov     ebx, [refObjectsWithDrawing]
-        
-        mov     ecx, [ebx + Array.length]
-        cmp     ecx, 0
-        je      .exit
-        
-        add     ebx, sizeof.Array.length
-  
-  .loop:
-        push    ecx
-        
-        stdcall Screen.IsObjectOnScreen, [ebx], [xMin], [xMax], [yMin], [yMax]        
-        cmp     eax, FALSE
-        je      .endLoop                 
-        
-        stdcall Drawing.DrawObject, [ebx], [xMin], [xMax], [yMin], [yMax] 
-  
-  .endLoop:                     
-        add     ebx, sizeof.Array.elements                                     
-        pop     ecx
-        loop    .loop    
-  
-  .exit:        
+        stdcall Array.Iterate, Drawing.DrawObject, [refObjectsWithDrawing] 
+                
         ret
 endp

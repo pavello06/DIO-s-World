@@ -49,84 +49,62 @@ proc Animation.Copy\
         ret
 endp
 
-proc Animation.AnimateObject uses ebx,\
+proc Animation.AnimateObject uses ebx esi,\
      refObjectWithAnimation
+     
+        mov     ebx, [refObjectWithAnimation]
+     
+        stdcall Screen.IsObjectOnScreen, ebx
+        cmp     eax, FALSE
+        je      .exit
         
-        mov     eax, [refObjectWithAnimation]
+        mov     esi, sizeof.GameObject + sizeof.Drawing 
         
-        mov     ebx, sizeof.GameObject + sizeof.Drawing 
-        
-        cmp     DWORD [eax + Object.type], Object.GAME
+        cmp     DWORD [ebx + Object.type], Object.GAME
         je      .gameObject
         
   .menuObject:
-        add     ebx, sizeof.MenuObject - sizeof.GameObject
+        add     esi, sizeof.MenuObject - sizeof.GameObject
   
   .gameObject:      
-        cmp     DWORD [eax + ebx + Animation.timer], -1
+        cmp     DWORD [ebx + esi + Animation.timer], -1
         je      .exit
 	      
-        add     eax, ebx
-        add     eax, Animation.timer
+        lea     eax, [ebx + esi + Animation.timer]
         stdcall Timer.IsTimeUp, eax, [eax + sizeof.Animation.timer]       
         cmp     eax, FALSE
         je      .exit
         
-        mov     ecx, [refObjectWithAnimation] 
-        
-        mov     eax, [ecx + ebx + Animation.currentFrame]
+        mov     eax, [ebx + esi + Animation.currentFrame]
         inc     eax
         
-        mov     ecx, [ecx + ebx + Animation.refFrames]
+        mov     ecx, [ebx + esi + Animation.refFrames]
         
         xor     edx, edx
-        div     DWORD [ecx + Frames.totalFrames]
+        div     DWORD [ebx + Frames.totalFrames]
         
-        mov     eax, [refObjectWithAnimation]
-        
-        mov     [eax + ebx + Animation.currentFrame], edx
+        mov     [ebx + esi + Animation.currentFrame], edx
                 
         shl     edx, 2
         mov     ecx, [ecx + edx + Frames.refTextures]
-        mov     [eax + ebx - sizeof.Drawing + Drawing.refTexture], ecx
+        mov     [ebx + esi - sizeof.Drawing + Drawing.refTexture], ecx
         
-        cmp     DWORD [eax + ebx + Animation.isFinite], TRUE
+        cmp     DWORD [ebx + esi + Animation.isFinite], TRUE
         jne     .exit
-        cmp     DWORD [eax + ebx + Animation.currentFrame], 0
+        cmp     DWORD [ebx + esi + Animation.currentFrame], 0
         jne     .exit
         
-        add     eax, ebx
-        stdcall Animation.Stop, eax
+        add     ebx, esi
+        stdcall Animation.Stop, ebx
   
   .exit:            
         ret
 endp
 
-proc Animation.AnimateObjects uses ebx,\
-     refObjectsWithAnimation, xMin, xMax, yMin, yMax    
+proc Animation.AnimateObjects\
+     refObjectsWithAnimation   
      
-        mov     ebx, [refObjectsWithAnimation]
-        
-        mov     ecx, [ebx + Array.length]
-        cmp     ecx, 0
-        je      .exit
-        
-        add     ebx, sizeof.Array.length
-  
-  .loop:
-        push    ecx
-        
-        stdcall Screen.IsObjectOnScreen, [ebx], [xMin], [xMax], [yMin], [yMax]        
-        cmp     eax, FALSE
-        je      .endLoop                 
-        
-        stdcall Animation.AnimateObject, [ebx] 
-  
-  .endLoop:                     
-        add     ebx, sizeof.Array.elements                                   
-        pop     ecx
-        loop    .loop    
-
-  .exit:          
+        stdcall Array.Iterate, Animation.AnimateObject, [refObjectsWithAnimation] 
+          
         ret
 endp
