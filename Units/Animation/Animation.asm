@@ -6,13 +6,18 @@ struct Animation
   refFrames    dd ?
 ends
 
-proc Animation.Start\
+proc Animation.Start uses ebx,\
      refAnimation
      
-        mov     eax, [refAnimation]
+        mov     ebx, [refAnimation]
         
-        add     eax, Animation.timer
+        lea     eax, [ebx + Animation.timer]
         stdcall Timer.Start, eax
+
+        mov     eax, [ebx + Animation.maxTimer]
+        sub     [ebx + Animation.timer], eax
+        
+        mov     DWORD [ebx + Animation.currentFrame], 0
 
         ret
 endp
@@ -38,8 +43,6 @@ proc Animation.Copy\
         mov     [eax + Animation.isFinite], edx
         mov     edx, [ecx + Animation.maxTimer]
         mov     [eax + Animation.maxTimer], edx
-        mov     edx, [ecx + Animation.currentFrame]
-        mov     [eax + Animation.currentFrame], edx
         mov     edx, [ecx + Animation.refFrames]
         mov     [eax + Animation.refFrames], edx
      

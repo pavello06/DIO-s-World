@@ -1,16 +1,21 @@
 struct Screen
   object Object
-  speedX dd ?
   speedY dd ?
 ends
 
 Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER = 10
 
 Screen.MAX_TIMER = 17
+Screen.timer     dd 0
 
-Screen.screen Screen <Object.GENERAL, 0, 0, 500, 500>, 0, 0
+Screen.xMin dd ?
+Screen.xMax dd ?
+Screen.yMin dd ?
+Screen.yMax dd ?
 
-Screen.timer dd 0 
+Screen.screen Screen\
+<Object.GENERAL, 0, 0, 1920, 1080>,\
+0, 0 
 
 proc Screen.Fill\
      red, green, blue
@@ -30,22 +35,36 @@ proc Screen.Fill\
         ret
 endp
 
+proc Screen.UpdateCoordinates
+
+        mov     eax, [Screen.screen + Object.x]
+        mov     [Screen.xMin], eax 
+        add     eax, [Screen.screen + Object.width]
+        mov     [Screen.xMax], eax
+        mov     ecx, [Screen.screen + Object.y]
+        mov     [Screen.yMin], ecx
+        add     ecx, [Screen.screen + Object.height]
+        mov     [Screen.yMax], ecx
+
+        ret
+endp
+
 proc Screen.IsObjectOnScreen\
-     refObject, xMin, xMax, yMin, yMax
+     refObject
      
         mov     eax, [refObject]
      
         mov     ecx, [eax + Object.x]
-        cmp     ecx, [xMax]
+        cmp     ecx, [Screen.xMax]
         jg      .objectIsNotOnScreen
         add     ecx, [eax + Object.width]
-        cmp     ecx, [xMin]
+        cmp     ecx, [Screen.xMin]
         jl      .objectIsNotOnScreen
-        mov     ecx, [eax + Object.y]
-        cmp     ecx, [yMax]
+        mov     edx, [eax + Object.y]
+        cmp     edx, [Screen.yMax]
         jg      .objectIsNotOnScreen        
-        add     ecx, [eax + Object.height]
-        cmp     ecx, [yMin]
+        add     edx, [eax + Object.height]
+        cmp     edx, [Screen.yMin]
         jl      .objectIsNotOnScreen
   
   .objectIsOnScreen: 
@@ -59,16 +78,19 @@ proc Screen.IsObjectOnScreen\
         ret
 endp
 
-proc Screen.FocusOnGame
+proc Screen.FocusOnGame uses ebx
   
         stdcall Timer.IsTimeUp, Screen.timer, Screen.MAX_TIMER
         cmp     eax, FALSE
         je      .notMove
 
+  .move:
         mov     eax, [Screen.screen + Screen.speedY]
         add     [Screen.screen + Object.y], eax
 
   .notMove:
+        mov     ebx, [currentLevel]
+  
         mov     eax, [Screen.screen + Object.width]
         sub     eax, [player + Object.width]
         shr     eax, 1
@@ -78,18 +100,18 @@ proc Screen.FocusOnGame
         mov     [Screen.screen + Object.x], ecx
   
   .borders:      
-        mov     ecx, 0;[level + Level.xMin]
+        mov     ecx, [ebx + Level.xMin]
         add     ecx, [player + Object.x]
                 
         cmp     eax, ecx
         jl      .notLeft
         
   .left:
-        mov     ecx, 0;[level + Level.xMin]
+        mov     ecx, [ebx + Level.xMin]
         mov     [Screen.screen + Object.x], ecx
         
   .notLeft:
-        mov     ecx, 50000;[level + Level.xMax]        
+        mov     ecx, [ebx + Level.xMax]        
         sub     ecx, [player + Object.x]
         sub     ecx, [player + Object.width]
         
@@ -97,30 +119,24 @@ proc Screen.FocusOnGame
         jl      .notRight
         
   .right:
-        mov     ecx, 50000;[level + Level.xMax]
+        mov     ecx, [ebx + Level.xMax]
         sub     ecx, [Screen.screen + Object.width]
         mov     [Screen.screen + Object.x], ecx
         
   .notRight:
-        mov     eax, 0;[level + Level.yMin]
+        mov     eax, [ebx + Level.yMin]
         add     eax, [Screen.screen + Object.height]
         
-        cmp     eax, [player + Object.y]
-        jg      .greaterThenTopScreen
-  
-        mov     [Screen.screen + Screen.speedY], Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
+        cmp     [player + Object.y], eax, 
+        jl      .notGreaterThenTopScreen
   
   .greaterThenTopScreen:
-        mov     eax, 0;[level + Level.yMin]
-        add     eax, [Screen.screen + Object.height]
-        
-        cmp     eax, [player + Object.y]
-        jl      .lowerThenTopScreen
+        mov     [Screen.screen + Screen.speedY], Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
   
+  .notGreaterThenTopScreen:
         mov     [Screen.screen + Screen.speedY], -Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
-  
-  .lowerThenTopScreen:
-        mov     eax, 0;[level + Level.yMin]
+        
+        mov     eax, [ebx + Level.yMin]
   
         cmp     eax, [Screen.screen + Object.y]
         jl      .notBottom
@@ -129,7 +145,7 @@ proc Screen.FocusOnGame
         mov     [Screen.screen + Object.y], eax
               
   .notBottom:     
-        mov     eax, 900;[level + Level.yMax]
+        mov     eax, [ebx + Level.yMax]
         sub     eax, [Screen.screen + Object.height]
         
         cmp     eax, [Screen.screen + Object.y]
@@ -138,7 +154,19 @@ proc Screen.FocusOnGame
   .top:      
         mov     [Screen.screen + Object.y], eax
         
-  .notTop:   
+  .notTop:
+        stdcall Screen.UpdateCoordinates
+     
+  .exit:
+        ret
+endp
+
+proc Screen.FocusOnMenu
+
+        mov     DWORD [Screen.screen + Object.x], 0
+        mov     DWORD [Screen.screen + Object.y], 0
+        
+        stdcall Screen.UpdateCoordinates
 
         ret
 endp

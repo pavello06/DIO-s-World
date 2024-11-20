@@ -10,20 +10,44 @@ struct Player
   maxInvulnerabilityTimer dd ?    
 ends
 
-Player.SPEED_X_AFTER_MOVE_KEY = 9
-Player.SPEED_Y_AFTER_MOVE_KEY = 29
+Player.START_X = 1
+Player.START_Y = 1
 
-Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY = 20
+Player.SPEED_X_AFTER_MOVE_KEY = 12
+Player.SPEED_Y_AFTER_MOVE_KEY = 32
+
+Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY = 28
 
 Player.BULLET_SPEED_X_AFTER_SHOOT_KEY = 14
 Player.BULLET_SPEED_Y_AFTER_SHOOT_KEY = 0
 
-player Player <<<<<Object.GAME, 700 * Drawing.NORMAL, 100 * Drawing.NORMAL, STANDING_PLAYER_WIDTH * Drawing.NORMAL, STANDING_PLAYER_HEIGHT * Drawing.NORMAL>,\ 
-              GameObject.PLAYER>,\
-              <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
-              <FALSE, 0, 200, 0, standingPlayerFrames>>,\
-              TRUE, 0, 0, TRUE>,\
-              FALSE, 0, FALSE, FALSE, -1, 5000, -1, 2000
+player Player\
+<<<<<Object.GAME, 30 * Drawing.NORMAL, 100 * Drawing.NORMAL, STANDING_PLAYER_WIDTH * Drawing.NORMAL, STANDING_PLAYER_HEIGHT * Drawing.NORMAL>,\ 
+GameObject.PLAYER>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
+<FALSE, 0, 200, 0, standingPlayerFrames>>,\
+TRUE, 0, 0, TRUE>,\
+FALSE, 0, FALSE, FALSE, -1, 11000, -1, 2000
+
+proc Player.Reset
+  
+        mov     DWORD [player + Object.x], Player.START_X 
+        mov     DWORD [player + Object.y], Player.START_Y
+        
+        mov     DWORD [player + GameObject.collide], GameObject.PLAYER
+        
+        mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT
+        mov     DWORD [player + GameObjectWithDrawing.drawing.directionY], Drawing.UP
+        mov     DWORD [player + GameObjectWithDrawing.drawing.refTexture], standingPlayerTexture
+        
+        stdcall Timer.Start, player + GameObjectWithAnimation.animation.timer
+        mov     DWORD [player + GameObjectWithAnimation.animation.currentFrame], 0
+        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
+        
+        
+  
+        ret
+endp
               
 proc Player.ChangeAnimation
         
