@@ -174,3 +174,10 @@ include 'Menu/Buttons/screenButton.inc'
 
 ;Star---------------------------------------------------------------------------
 include 'Menu/Star/voidStar.inc'
+
+;Decorations--------------------------------------------------------------------
+include 'Menu/Decorations/dandelion.inc'
+include 'Menu/Decorations/dandelion2.inc'
+include 'Menu/Decorations/dandelion3.inc'
+include 'Menu/Decorations/dandelion4.inc'
+include 'Menu/Decorations/dandelion5.inc'
