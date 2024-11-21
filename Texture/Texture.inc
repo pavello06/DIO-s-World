@@ -172,6 +172,8 @@ include 'Menu/Buttons/next.inc'
 
 include 'Menu/Buttons/restart.inc'
 
+include 'Menu/Buttons/continue.inc'
+
 include 'Menu/Buttons/screenButton.inc'
 
 ;Star---------------------------------------------------------------------------
