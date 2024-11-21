@@ -52,7 +52,11 @@ endp
 proc KeyDown.Pause\
      key
      
-        
-          
+        cmp     DWORD [key], VK_ESCAPE
+        jne     .exit 
+
+        stdcall Button.Menu, pauseMenu
+  
+  .exit:        
         ret
 endp
