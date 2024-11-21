@@ -22,11 +22,19 @@ proc String.ProcessObject uses ebx esi edi,\
         cmp     DWORD [esi], 0
         je      .exit
   
+        cmp     DWORD [esi], ''''
+        jne     .letter
+        
+        mov     ebx, quotationMarkTexture
+        jmp     .changeTexture 
+  
+  .letter:
         mov     ebx, [esi]
         sub     ebx, 'A'
         imul    ebx, A_SIZE
         add     ebx, aTexture
-        
+  
+  .changeTexture:      
         mov     [edi + Object.x], eax
         mov     [edi + Object.y], edx
         mov     [edi + MenuObjectWithDrawing.drawing.refTexture], ebx

@@ -9,6 +9,7 @@ Drawing.SMALL  = 3
 Drawing.LITTLE = 4
 Drawing.NORMAL = 5
 Drawing.BIG    = 7
+Drawing.HUGE   = 13
 
 Drawing.LEFT  = -1
 Drawing.RIGHT = 1

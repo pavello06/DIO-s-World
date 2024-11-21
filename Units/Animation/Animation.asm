@@ -81,7 +81,7 @@ proc Animation.AnimateObject uses ebx esi,\
         mov     ecx, [ebx + esi + Animation.refFrames]
         
         xor     edx, edx
-        div     DWORD [ebx + Frames.totalFrames]
+        div     DWORD [ecx + Frames.totalFrames]
         
         mov     [ebx + esi + Animation.currentFrame], edx
                 
