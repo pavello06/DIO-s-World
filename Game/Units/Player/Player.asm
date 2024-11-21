@@ -40,11 +40,22 @@ proc Player.Reset
         mov     DWORD [player + GameObjectWithDrawing.drawing.directionY], Drawing.UP
         mov     DWORD [player + GameObjectWithDrawing.drawing.refTexture], standingPlayerTexture
         
+        mov     DWORD [player + GameObjectWithAnimation.animation.isFinite], FALSE
         stdcall Timer.Start, player + GameObjectWithAnimation.animation.timer
+        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 200
         mov     DWORD [player + GameObjectWithAnimation.animation.currentFrame], 0
         mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
         
+        mov     DWORD [player + Entity.canMove], TRUE
+        mov     DWORD [player + Entity.speedX], 0
+        mov     DWORD [player + Entity.speedY], 0
+        mov     DWORD [player + Entity.canGravitate], TRUE
         
+        mov     DWORD [player.canJump], FALSE
+        mov     DWORD [player.hasHeart], FALSE
+        mov     DWORD [player.hasArrow], FALSE
+        stdcall Timer.Stop, player.worldTimer
+        stdcall Timer.Stop, player.invulnerabilityTimer
   
         ret
 endp
