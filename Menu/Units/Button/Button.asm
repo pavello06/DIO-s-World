@@ -26,13 +26,33 @@ proc Button.GetActiveButtonInArray\
         ret
 endp
 
-proc Button.Game\
+proc Button.GameStart\
      refScreen
 
         stdcall WindowProcFunctions.ChangeToGame
         
         mov     eax, [refScreen]
         mov     [currentLevel], eax
+        
+        stdcall Game.Start
+
+        ret
+endp
+
+proc Button.GameRestart\
+     refScreen
+
+        stdcall WindowProcFunctions.ChangeToGame
+        
+        stdcall Game.Start
+
+        ret
+endp
+
+proc Button.GameContinue\
+     refScreen
+
+        stdcall WindowProcFunctions.ChangeToGame
 
         ret
 endp
@@ -44,6 +64,8 @@ proc Button.Menu\
         
         mov     eax, [refScreen]
         mov     [currentMenu], eax
+        
+        stdcall Menu.Start
 
         ret
 endp
