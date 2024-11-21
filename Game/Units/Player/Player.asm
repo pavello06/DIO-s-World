@@ -10,8 +10,8 @@ struct Player
   maxInvulnerabilityTimer dd ?    
 ends
 
-Player.START_X = 1
-Player.START_Y = 1
+Player.START_X = 30 * Drawing.NORMAL
+Player.START_Y = 100 * Drawing.NORMAL
 
 Player.SPEED_X_AFTER_MOVE_KEY = 12
 Player.SPEED_Y_AFTER_MOVE_KEY = 32
