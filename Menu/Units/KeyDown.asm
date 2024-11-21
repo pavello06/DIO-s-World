@@ -21,7 +21,7 @@ proc KeyDown.PreviousAndNext\
         
         cmp     eax, VK_LEFT
         je      .previous
-        cmp     eax, VK_DOWN
+        cmp     eax, VK_UP
         jne     .notPrevious
         
   .previous:
@@ -41,7 +41,7 @@ proc KeyDown.PreviousAndNext\
   .notPrevious:   
         cmp     eax, VK_RIGHT
         je      .next
-        cmp     eax, VK_UP
+        cmp     eax, VK_DOWN
         jne     .exit
         
   .next:
