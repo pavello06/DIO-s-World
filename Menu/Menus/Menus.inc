@@ -14,6 +14,7 @@ struct Menu
 ends
 
 include 'LevelsMenu/LevelsMenu.inc'
+include 'PauseMenu/PauseMenu.inc'
 include 'StartMenu/StartMenu.inc'
 
 currentMenu dd startMenu
