@@ -8,9 +8,6 @@ ends
 ;General------------------------------------------------------------------------
 
 
-;Menu---------------------------------------------------------------------------
-include 'Menu/ActiveButtonElements/activeButtonElement.inc'
-
 ;Game---------------------------------------------------------------------------
 ;General------------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------
@@ -58,3 +55,10 @@ include 'Game/Location1/Mobs/deadVenusFlycatcher.inc'
 include 'Game/Location1/Mobs/bee.inc'
 
 include 'Game/Location1/Mobs/deadBee.inc'
+
+;Menu---------------------------------------------------------------------------
+;ActiveButtonElements-----------------------------------------------------------
+include 'Menu/ActiveButtonElements/activeButtonElement.inc'
+
+;Decorations--------------------------------------------------------------------
+include 'Menu/Decorations/dandelion.inc'
