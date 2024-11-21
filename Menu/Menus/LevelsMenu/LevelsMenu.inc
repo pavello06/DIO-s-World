@@ -18,7 +18,7 @@ LevelsMenu:
 .levelButton1 Button\                     
 <<<Object.MENU, 150 + 270 * 0, 600, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+TRUE, Button.GameStart, level1
                                           
 .levelDigit1 MenuObjectWithDrawing\
 <<Object.MENU, 150 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 600 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -27,7 +27,7 @@ TRUE, Button.Game, level1
 .levelButton2 Button\
 <<<Object.MENU, 150 + 270 * 1, 600, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit2 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 600 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -36,7 +36,7 @@ TRUE, Button.Game, level1
 .levelButton3 Button\
 <<<Object.MENU, 150 + 270 * 2, 600, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit3 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 600 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -45,7 +45,7 @@ TRUE, Button.Game, level1
 .levelButton4 Button\
 <<<Object.MENU, 150 + 270 * 3, 600, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit4 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 600 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -54,7 +54,7 @@ TRUE, Button.Game, level1
 .levelButton5 Button\
 <<<Object.MENU, 150 + 270 * 4, 600, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit5 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 600 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -63,7 +63,7 @@ TRUE, Button.Game, level1
 .levelButton6 Button\
 <<<Object.MENU, 150  + 270 * 0, 380, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit6 MenuObjectWithDrawing\
 <<Object.MENU, 150 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 380 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -72,7 +72,7 @@ TRUE, Button.Game, level1
 .levelButton7 Button\
 <<<Object.MENU, 150 + 270 * 1, 380, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit7 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 380 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -81,7 +81,7 @@ TRUE, Button.Game, level1
 .levelButton8 Button\
 <<<Object.MENU, 150 + 270 * 2, 380, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit8 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 380 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -90,7 +90,7 @@ TRUE, Button.Game, level1
 .levelButton9 Button\
 <<<Object.MENU, 150 + 270 * 3, 380, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit9 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 380 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -99,7 +99,7 @@ TRUE, Button.Game, level1
 .levelButton10 Button\
 <<<Object.MENU, 150 + 270 * 4, 380, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit101 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH - 2 * ZERO_WIDTH) / 2 * Drawing.BIG, 380 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -111,7 +111,7 @@ TRUE, Button.Game, level1
 .levelButton11 Button\
 <<<Object.MENU, 150  + 270 * 0, 160, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit111 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 0 + (LEVEL_BUTTON_WIDTH - 2 * ZERO_WIDTH) / 2 * Drawing.BIG, 160 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -123,7 +123,7 @@ TRUE, Button.Game, level1
 .levelButton12 Button\
 <<<Object.MENU, 150 + 270 * 1, 160, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit121 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH - 2 * ZERO_WIDTH) / 2 * Drawing.BIG, 160 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -135,7 +135,7 @@ TRUE, Button.Game, level1
 .levelButton13 Button\
 <<<Object.MENU, 150 + 270 * 2, 160, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit131 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH - 2 * ZERO_WIDTH) / 2 * Drawing.BIG, 160 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -147,7 +147,7 @@ TRUE, Button.Game, level1
 .levelButton14 Button\
 <<<Object.MENU, 150 + 270 * 3, 160, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit141 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 3 + (LEVEL_BUTTON_WIDTH - 2 * ZERO_WIDTH) / 2 * Drawing.BIG, 160 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -159,7 +159,7 @@ TRUE, Button.Game, level1
 .levelButton15 Button\
 <<<Object.MENU, 150 + 270 * 4, 160, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-TRUE, Button.Game, level1
+FALSE, Button.GameStart, level1
 
 .levelDigit151 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 4 + (LEVEL_BUTTON_WIDTH - 2 * ZERO_WIDTH) / 2 * Drawing.BIG, 160 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 
@@ -363,6 +363,11 @@ TRUE, Button.Game, level1
 <Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
 3, level1
 ;-------------------------------------------------------------------------------                                   
+.backButton Button\
+<<<Object.MENU, 625, 20, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>>,\
+<Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>>,\
+FALSE, Button.Menu, startMenu
+
 .wBACK String <Object.MENU, 625, 20, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, <'B', 'A', 'C', 'K', 0, 0, 0, 0, 0, 0>, .wBACK1           
 .wBACK1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wBACK2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
@@ -403,7 +408,7 @@ TRUE, Button.Game, level1
                                    0, .levelButton1, .levelButton2, .levelButton3, .levelButton4, .levelButton5,\
                                    .levelButton6, .levelButton7, .levelButton8, .levelButton9, .levelButton10,\
                                    .levelButton11, .levelButton12, .levelButton13, .levelButton14, .levelButton15,\
-                                   .wBACK, 0
+                                   .backButton, 0
 .buttonsLength			            = $ - .buttons
 
 .stars                          dd .starsLength / 4 - 1,\
