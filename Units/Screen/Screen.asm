@@ -15,7 +15,7 @@ Screen.yMax dd ?
 
 Screen.screen Screen\
 <Object.GENERAL, 0, 0, 1920, 1080>,\
-0, 0 
+0 
 
 proc Screen.Fill\
      red, green, blue
@@ -78,7 +78,9 @@ proc Screen.IsObjectOnScreen\
         ret
 endp
 
-proc Screen.FocusOnGame uses ebx
+proc Screen.UpdateForGame uses ebx
+
+        mov     ebx, [currentLevel]
   
         stdcall Timer.IsTimeUp, Screen.timer, Screen.MAX_TIMER
         cmp     eax, FALSE
@@ -89,8 +91,20 @@ proc Screen.FocusOnGame uses ebx
         add     [Screen.screen + Object.y], eax
 
   .notMove:
-        mov     ebx, [currentLevel]
+  .speedY:      
+        mov     eax, [ebx + Level.yMin]
+        add     eax, [Screen.screen + Object.height]
+        
+        cmp     [player + Object.y], eax 
+        jl      .notGreaterThenTopScreen
   
+  .greaterThenTopScreen:
+        mov     [Screen.screen + Screen.speedY], Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
+  
+  .notGreaterThenTopScreen:
+        mov     [Screen.screen + Screen.speedY], -Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
+  
+  .borders:
         mov     eax, [Screen.screen + Object.width]
         sub     eax, [player + Object.width]
         shr     eax, 1
@@ -98,8 +112,7 @@ proc Screen.FocusOnGame uses ebx
         mov     ecx, [player + Object.x]
         sub     ecx, eax
         mov     [Screen.screen + Object.x], ecx
-  
-  .borders:      
+        
         mov     ecx, [ebx + Level.xMin]
         add     ecx, [player + Object.x]
                 
@@ -125,18 +138,6 @@ proc Screen.FocusOnGame uses ebx
         
   .notRight:
         mov     eax, [ebx + Level.yMin]
-        add     eax, [Screen.screen + Object.height]
-        
-        cmp     [player + Object.y], eax, 
-        jl      .notGreaterThenTopScreen
-  
-  .greaterThenTopScreen:
-        mov     [Screen.screen + Screen.speedY], Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
-  
-  .notGreaterThenTopScreen:
-        mov     [Screen.screen + Screen.speedY], -Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
-        
-        mov     eax, [ebx + Level.yMin]
   
         cmp     eax, [Screen.screen + Object.y]
         jl      .notBottom
@@ -156,17 +157,28 @@ proc Screen.FocusOnGame uses ebx
         
   .notTop:
         stdcall Screen.UpdateCoordinates
+        
+        movzx   eax, BYTE [ebx + Level.background.red]
+        movzx   ecx, BYTE [ebx + Level.background.green]
+        movzx   edx, BYTE [ebx + Level.background.blue]
+        stdcall Screen.Fill, eax, ecx, edx
      
-  .exit:
         ret
 endp
 
-proc Screen.FocusOnMenu
+proc Screen.UpdateForMenu uses ebx
+
+        mov     ebx, [currentMenu]
 
         mov     DWORD [Screen.screen + Object.x], 0
         mov     DWORD [Screen.screen + Object.y], 0
         
         stdcall Screen.UpdateCoordinates
+        
+        movzx   eax, BYTE [ebx + Menu.background.red]
+        movzx   ecx, BYTE [ebx + Menu.background.green]
+        movzx   edx, BYTE [ebx + Menu.background.blue]
+        stdcall Screen.Fill, eax, ecx, edx 
 
         ret
 endp
