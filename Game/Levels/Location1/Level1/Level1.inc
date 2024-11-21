@@ -111,7 +111,7 @@ Level1:
 .bottomPipe1 GameObjectWithDrawing <<Object.GAME, 521 * Drawing.NORMAL, 49 * Drawing.NORMAL, 1 * BOTTOM_PIPE_WIDTH * Drawing.LITTLE, 20  * BOTTOM_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
 			                             <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, bottomPipeTexture>                               
                               
-.topPipe1 GameObjectWithDrawing <<Object.GAME, 519 * Drawing.NORMAL, 61 * Drawing.NORMAL, TOP_PIPE_WIDTH * Drawing.LITTLE, TOP_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
+.topPipe1 GameObjectWithDrawing <<Object.GAME, 518 * Drawing.NORMAL + 3, 61 * Drawing.NORMAL, TOP_PIPE_WIDTH * Drawing.LITTLE, TOP_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
 			                          <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, topPipeTexture>
                                 
 .reverse3 GameObject <Object.GAME, 547 * Drawing.NORMAL, 52 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
@@ -133,7 +133,7 @@ Level1:
                                      -1, 2000>,\
                                      GameObject.REVERSE
  
-.bottomPipe2 GameObjectWithDrawing <<Object.GAME, 775 * Drawing.NORMAL, 49 * Drawing.NORMAL, 1 * BOTTOM_PIPE_WIDTH * Drawing.LITTLE, 20  * BOTTOM_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
+.bottomPipe2 GameObjectWithDrawing <<Object.GAME, 775 * Drawing.NORMAL + 3, 49 * Drawing.NORMAL, 1 * BOTTOM_PIPE_WIDTH * Drawing.LITTLE, 20  * BOTTOM_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
 			                             <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, bottomPipeTexture>                               
                               
 .topPipe2 GameObjectWithDrawing <<Object.GAME, 773 * Drawing.NORMAL, 64 * Drawing.NORMAL, TOP_PIPE_WIDTH * Drawing.LITTLE, TOP_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
@@ -298,4 +298,4 @@ Level1:
                                    .venusFlycatcher1
 .enemiesWithStopTimerLength     = $ - .enemiesWithStopTimer
 
-level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 50000, 1300, <255, 255, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer>
+level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 50000, 1300, <255, 255, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer>, Level1, BufferLevel1

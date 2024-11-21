@@ -2,15 +2,8 @@ include 'Units/Units.inc'
 
 proc Game.Start
 
-        ;player
-        ;mov     [player + Object.x], 30 * Drawing.NORMAL
-        ;mov     [player + Object.y], 100 * Drawing.NORMAL
-        ;mov     [player + GameObject.collide], GameObject.Player
-        ;mov     [player + GameObjectWithDrawing.drawing.refTexture], standingPlayerTexture
-        ;stdcall Timer.Start, player + GameObjectWithAniamtion.animation.timer
-        ;mov     [player + GameObjectWithAniamtion.animation.refFrames], standingPlayerFrames
-        
-
+        stdcall Levels.CopyFromBuffer
+        stdcall Player.Reset
 
         ret
 endp
