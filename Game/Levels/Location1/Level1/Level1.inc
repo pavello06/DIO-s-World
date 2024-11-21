@@ -298,4 +298,4 @@ Level1:
                                    .venusFlycatcher1
 .enemiesWithStopTimerLength     = $ - .enemiesWithStopTimer
 
-level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 50000, 1300, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer>
+level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 50000, 1300, <255, 255, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer>

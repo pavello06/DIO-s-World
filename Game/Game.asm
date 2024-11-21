@@ -28,18 +28,14 @@ proc Game.Timer
         ret
 endp
 
-proc Game.Paint uses ebx esi
+proc Game.Paint uses ebx 
 
-        stdcall Screen.FocusOnGame                
+        mov     ebx, [currentLevel]
+
+        stdcall Screen.UpdateForGame                
         
-        mov     ebx, [Screen.screen + Object.x]
-        add     ebx, [Screen.screen + Object.width]
-        mov     esi, [Screen.screen + Object.y]
-        add     esi, [Screen.screen + Object.height]
-        
-        stdcall Screen.Fill, 1.0, 1.0, 1.0
-        stdcall Drawing.DrawObjects, [level1.gameObjects.refGameObjectsWithDrawing], [Screen.screen + Object.x], ebx, [Screen.screen + Object.y], esi
-        stdcall Animation.AnimateObjects, [level1.gameObjects.refGameObjectsWithAnimation], [Screen.screen + Object.x], ebx, [Screen.screen + Object.y], esi
+        stdcall Drawing.DrawObjects, [ebx + Level.gameObjects.refGameObjectsWithDrawing]
+        stdcall Animation.AnimateObjects, [ebx + Level.gameObjects.refGameObjectsWithAnimation]
 
         ret
 endp

@@ -24,12 +24,13 @@ struct Level
   yMin            dd ?
   xMax            dd ?
   yMax            dd ?
+  background      Color
   gameObjects     GameObjects
 ends
 
 include '../Levels/Location1/Level1/Level1.inc'
 
-currentLevel dd ?
+currentLevel dd level1
 
 levels       dd levelsLength / 4 - 1, level1
 levelsLength = $ - levels
