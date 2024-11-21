@@ -9,6 +9,7 @@ struct MenuObjects
 ends
 
 struct Menu
+  background  Color
   menuObjects MenuObjects
 ends
 

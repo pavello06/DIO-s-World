@@ -22,18 +22,14 @@ proc Menu.Timer uses ebx
         ret
 endp
 
-proc Menu.Paint uses ebx esi edi 
+proc Menu.Paint uses ebx
 
         mov     ebx, [currentMenu]
-
-        mov     esi, [Screen.screen + Object.x]
-        add     esi, [Screen.screen + Object.width]
-        mov     edi, [Screen.screen + Object.y]
-        add     edi, [Screen.screen + Object.height]
         
-        stdcall Screen.Fill, 80, 187, 255
-        stdcall Drawing.DrawObjects, [ebx + Menu.menuObjects.refMenuObjectsWithDrawing], [Screen.screen + Object.x], esi, [Screen.screen + Object.y], edi
-        stdcall Animation.AnimateObjects, [ebx + Menu.menuObjects.refMenuObjectsWithAnimation], [Screen.screen + Object.x], esi, [Screen.screen + Object.y], edi
+        stdcall Screen.UpdateForMenu
+        
+        stdcall Drawing.DrawObjects, [ebx + Menu.menuObjects.refMenuObjectsWithDrawing]
+        stdcall Animation.AnimateObjects, [ebx + Menu.menuObjects.refMenuObjectsWithAnimation]
 
         ret
 endp

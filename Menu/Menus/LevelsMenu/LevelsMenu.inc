@@ -420,4 +420,4 @@ TRUE, Button.Game, level1
                                     
 .numbersLength                  = $ - .numbers
 
-levelsMenu Menu <LevelsMenu.menuObjects, LevelsMenu.menuObjectsWithDrawing, LevelsMenu.menuObjectsWithAnimation, LevelsMenu.buttons, LevelsMenu.stars, LevelsMenu.words, LevelsMenu.numbers>
+levelsMenu Menu <80, 187, 255>, <LevelsMenu.menuObjects, LevelsMenu.menuObjectsWithDrawing, LevelsMenu.menuObjectsWithAnimation, LevelsMenu.buttons, LevelsMenu.stars, LevelsMenu.words, LevelsMenu.numbers>
