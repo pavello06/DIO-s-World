@@ -6,7 +6,7 @@ ends
 
 STRING_MAX_LENGTH = 10
 
-proc String.ProcessObject uses ebx esi edi,\
+proc String.TimerObject uses ebx esi edi,\
      refString
 
         mov     ebx, [refString]
@@ -51,10 +51,10 @@ proc String.ProcessObject uses ebx esi edi,\
         ret
 endp
 
-proc String.ProcessObjects\
+proc String.TimerObjects\
      refStrings
      
-        stdcall Array.Iterate, String.ProcessObject, [refStrings]
+        stdcall Array.Iterate, String.TimerObject, [refStrings]
      
         ret
 endp
