@@ -16,6 +16,8 @@ struct GameObjects
   refEnemiesWithBullets       dd ?
   refEnemiesWithReverseTimer  dd ?
   refEnemiesWithStopTimer     dd ?
+  refWords                    dd ?
+  refNumbers                  dd ?
 ends
 
 struct Level
