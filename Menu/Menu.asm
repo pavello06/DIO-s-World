@@ -5,7 +5,6 @@ proc Menu.Start uses ebx
         mov     ebx, [currentMenu]
         
         stdcall Star.ProcessObjects, [ebx + Menu.menuObjects.refStars]
-        stdcall String.ProcessObjects, [ebx + Menu.menuObjects.refWords]
         
         stdcall Menu.KeyDown, VK_RIGHT
         stdcall Menu.KeyDown, VK_LEFT
@@ -27,6 +26,8 @@ proc Menu.Paint uses ebx
         mov     ebx, [currentMenu]
         
         stdcall Screen.UpdateForMenu
+        
+        stdcall String.TimerObjects, [ebx + Menu.menuObjects.refWords]
         
         stdcall Drawing.DrawObjects, [ebx + Menu.menuObjects.refMenuObjectsWithDrawing]
         stdcall Animation.AnimateObjects, [ebx + Menu.menuObjects.refMenuObjectsWithAnimation]
