@@ -100,6 +100,7 @@ proc Screen.UpdateForGame uses ebx
   
   .greaterThenTopScreen:
         mov     [Screen.screen + Screen.speedY], Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
+        jmp     .borders
   
   .notGreaterThenTopScreen:
         mov     [Screen.screen + Screen.speedY], -Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
