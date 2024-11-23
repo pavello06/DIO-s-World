@@ -1,5 +1,30 @@
 Level1:
 
+.wSCORE String\
+<Object.MENU, 30 * Drawing.LITTLE, 100 * Drawing.LITTLE, 5 * (A_WIDTH + 1) * Drawing.LITTLE - Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE>,\
+<'S', 'C', 'O', 'R', 'E', 0, 0, 0, 0, 0>, .wSCORE1
+
+.wSCORE1 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture                            
+.wSCORE2 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
+.wSCORE3 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
+.wSCORE4 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
+.wSCORE5 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture
+
+.nSCORE Number\
+<Object.MENU, 30 * Drawing.NORMAL, 100 * Drawing.NORMAL, 5 * (ZERO_WIDTH + 1) * Drawing.NORMAL - Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL>,\
+0, <'0', '0', '0', '0', '0'>, .nSCORE1
+
+.nSCORE1 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture                            
+.nSCORE2 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture  
+.nSCORE3 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture  
+.nSCORE4 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture  
+.nSCORE5 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture
+
+.bonus dd Object.MENU, 0, 0, HEART_WIDTH * Drawing.LITTLE, HEART_HEIGHT * Drawing.LITTLE,\
+Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, heartTexture,\
+FALSE, 0, 150, 0, heartFrames 
+
+
 .delete GameObject <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
 
 .dirt1 GameObjectWithDrawing <<Object.GAME, 0, 0, 21 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -173,7 +198,7 @@ Level1:
             
 .shadow6 GameObjectWithDrawing <<Object.GAME, 879 * Drawing.NORMAL, 24 * Drawing.NORMAL, 1 * Drawing.NORMAL, 25 * Drawing.NORMAL>, GameObject.DECORATION>,\
 			                         <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
-                               
+;-------------------------------------------------------------------------------                               
 .dirt5 GameObjectWithDrawing <<Object.GAME, 880 * Drawing.NORMAL, 0 * Drawing.NORMAL, 8 * DIRT_WIDTH * Drawing.NORMAL, DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
                                     
@@ -213,7 +238,7 @@ Level1:
                                    
 .yellowBlock2 GameObjectWithDrawing <<Object.GAME, 991 * Drawing.NORMAL, 33 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 			            <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, yellowBlockTexture>
-                                  
+;-------------------------------------------------------------------------------                                  
 .dirt6 GameObjectWithDrawing <<Object.GAME, 1007 * Drawing.NORMAL, 0, 11 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 			     <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
                                     
@@ -226,24 +251,277 @@ Level1:
 .palm7 GameObjectWithDrawing <<Object.GAME, 1027 * Drawing.NORMAL, 49 * Drawing.NORMAL, PALM_WIDTH * Drawing.NORMAL, PALM_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 			     <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, palmTexture>
 
-.reverse7 GameObject <Object.GAME, 1007 * Drawing.NORMAL, 89 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
+.reverse7 GameObject <Object.GAME, 1007 * Drawing.NORMAL, 89 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE      
 
-.reverse8 GameObject <Object.GAME, 1107 * Drawing.NORMAL, 89 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
+.reverse8 GameObject <Object.GAME, 1107 * Drawing.NORMAL, 89 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
                              
 .bee1 Enemy <<<<<Object.GAME, 1047 * Drawing.NORMAL, 89 * Drawing.NORMAL, BEE_WIDTH * Drawing.NORMAL, BEE_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.REVERSEABLE_ENEMY>,\
 	    <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, beeTexture>>,\
             <FALSE, 0, 100, 0, beeFrames>>,\
             TRUE, 4, 0, FALSE>,\
             1, beeAnimations, 100
-             
+;-------------------------------------------------------------------------------             
+.dirt7 GameObjectWithDrawing\
+<<Object.GAME, 1107 * Drawing.NORMAL, 102 * Drawing.NORMAL, 3 * DIRT_WIDTH * Drawing.NORMAL, 5 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.DOWN, dirtTexture>
+                                    
+.grass7 GameObjectWithDrawing\
+<<Object.GAME, 1107 * Drawing.NORMAL, 85 * Drawing.NORMAL, 3 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.DOWN, grassTexture>
+
+.shadow8 GameObjectWithDrawing\
+<<Object.GAME, 1107 * Drawing.NORMAL, 85 * Drawing.NORMAL, 1 * Drawing.NORMAL, 105 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow9 GameObjectWithDrawing\
+<<Object.GAME, 1155 * Drawing.NORMAL, 85 * Drawing.NORMAL, 1 * Drawing.NORMAL, 66 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+;-------------------------------------------------------------------------------
+.dirt8 GameObjectWithDrawing\
+<<Object.GAME, 1155 * Drawing.NORMAL, 160 * Drawing.NORMAL, 4 * DIRT_WIDTH * Drawing.NORMAL, 1 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.DOWN, dirtTexture>
+                                    
+.grass8 GameObjectWithDrawing\
+<<Object.GAME, 1155 * Drawing.NORMAL, 143 * Drawing.NORMAL, 4 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.DOWN, grassTexture>
+
+.shadow10 GameObjectWithDrawing\
+<<Object.GAME, 1219 * Drawing.NORMAL, 143 * Drawing.NORMAL, 1 * Drawing.NORMAL, 35 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.flower4 GameObjectWithDrawing\
+<<Object.GAME, 1160 * Drawing.NORMAL, 49 * Drawing.NORMAL, FLOWER_WIDTH * Drawing.NORMAL, FLOWER_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture>
+;-------------------------------------------------------------------------------
+.dirt9 GameObjectWithDrawing\
+<<Object.GAME, 1183 * Drawing.NORMAL, 0, 12 * DIRT_WIDTH * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
+                                    
+.grass9 GameObjectWithDrawing\
+<<Object.GAME, 1183 * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL, 12 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow11 GameObjectWithDrawing\
+<<Object.GAME, 1183 * Drawing.NORMAL, (3 * DIRT_HEIGHT - 8) * Drawing.NORMAL, 1 * Drawing.NORMAL, 25 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow12 GameObjectWithDrawing\
+<<Object.GAME, 1375 * Drawing.NORMAL, (3 * DIRT_HEIGHT - 7) * Drawing.NORMAL, 1 * Drawing.NORMAL, 24 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.palm8 GameObjectWithDrawing\
+<<Object.GAME, 1200 * Drawing.NORMAL, 65 * Drawing.NORMAL, PALM_WIDTH * Drawing.NORMAL, PALM_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, palmTexture>
+
+.reverse9 GameObject\
+<Object.GAME, 1183 * Drawing.NORMAL, 65 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse10 GameObject\
+<Object.GAME, 1370 * Drawing.NORMAL, 65 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+          
+.bush4 GameObjectWithDrawing\
+<<Object.GAME, 1230 * Drawing.NORMAL, 65 * Drawing.NORMAL, BUSH_WIDTH * Drawing.NORMAL, BUSH_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, bushTexture>
+
+.flower5 GameObjectWithDrawing\
+<<Object.GAME, 1350 * Drawing.NORMAL, 65 * Drawing.NORMAL, FLOWER_WIDTH * Drawing.NORMAL, FLOWER_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture>
+
+.owl3 Enemy\
+<<<<<Object.GAME, 1190 * Drawing.NORMAL, 65 * Drawing.NORMAL, OWL_WIDTH * Drawing.NORMAL, OWL_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture>>,\
+<FALSE, 0, 100, 0, owlFrames>>,\
+TRUE, 5, 0, TRUE>,\
+1, owlAnimations, 100
+
+.brick3 GameObjectWithDrawing\
+<<Object.GAME, 1250 * Drawing.NORMAL, 95 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
+ 
+.coin8 Bonus\
+<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, COIN_WIDTH * Drawing.LITTLE, COIN_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, coinTexture>>,\
+<FALSE, 0, 90, 0, coinFrames>>,\
+Bonus.COIN
+                              
+.luck2 Luck\
+<<<<Object.GAME, 1266 * Drawing.NORMAL, 95 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
+<FALSE, 0, 150, 0, luckFrames>>,\
+.coin8
+
+.brick4 GameObjectWithDrawing\
+<<Object.GAME, 1282 * Drawing.NORMAL, 95 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
+
+.brick5 GameObjectWithDrawing\
+<<Object.GAME, 1298 * Drawing.NORMAL, 95 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
+
+.reverse11 GameObject\
+<Object.GAME, 1246 * Drawing.NORMAL, 116 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse12 GameObject\
+<Object.GAME, 1318 * Drawing.NORMAL, 116 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+
+.owl4 Enemy\
+<<<<<Object.GAME, 1260 * Drawing.NORMAL, 111 * Drawing.NORMAL, OWL_WIDTH * Drawing.NORMAL, OWL_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture>>,\
+<FALSE, 0, 100, 0, owlFrames>>,\
+TRUE, 5, 0, TRUE>,\
+1, owlAnimations, 100
+;-------------------------------------------------------------------------------
+.dirt10 GameObjectWithDrawing\
+<<Object.GAME, 1375 * Drawing.NORMAL, 0, 4 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
+                                    
+.grass10 GameObjectWithDrawing\
+<<Object.GAME, 1375 * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL, 4 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.coin9 Bonus\
+<<<<Object.GAME, 1400 * Drawing.NORMAL, 54 * Drawing.NORMAL, COIN_WIDTH * Drawing.LITTLE, COIN_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, coinTexture>>,\
+<FALSE, 0, 90, 0, coinFrames>>,\
+Bonus.COIN
+
+.coin10 Bonus\
+<<<<Object.GAME, 1415 * Drawing.NORMAL, 54 * Drawing.NORMAL, COIN_WIDTH * Drawing.LITTLE, COIN_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, coinTexture>>,\
+<FALSE, 0, 90, 0, coinFrames>>,\
+Bonus.COIN
+
+.reverse13 GameObject\
+<Object.GAME, 1407 * Drawing.NORMAL, 65 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse14 GameObject\
+<Object.GAME, 1407 * Drawing.NORMAL, 100 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+
+.bee2 Enemy\
+<<<<<Object.GAME, 1404 * Drawing.NORMAL, 70 * Drawing.NORMAL, BEE_WIDTH * Drawing.NORMAL, BEE_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.REVERSEABLE_ENEMY>,\
+<Drawing.NORMAL, Drawing.LEFT, Drawing.UP, beeTexture>>,\
+<FALSE, 0, 100, 0, beeFrames>>,\
+TRUE, 0, 2, FALSE>,\
+1, beeAnimations, 100
+;-------------------------------------------------------------------------------
+.dirt11 GameObjectWithDrawing\
+<<Object.GAME, 1439 * Drawing.NORMAL, 0, 4 * DIRT_WIDTH * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
+                                    
+.grass11 GameObjectWithDrawing\
+<<Object.GAME, 1439 * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL, 4 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>                                                  
+
+.palm9 GameObjectWithDrawing\
+<<Object.GAME, 1460 * Drawing.NORMAL, 65 * Drawing.NORMAL, PALM_WIDTH * Drawing.NORMAL, PALM_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, palmTexture>
+
+.flower6 GameObjectWithDrawing\
+<<Object.GAME, 1485 * Drawing.NORMAL, 65 * Drawing.NORMAL, FLOWER_WIDTH * Drawing.NORMAL, FLOWER_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture>                              
+                              
+.shadow13 GameObjectWithDrawing\
+<<Object.GAME, 1439 * Drawing.NORMAL, (3 * DIRT_HEIGHT - 8) * Drawing.NORMAL, 1 * Drawing.NORMAL, 25 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>                              
+
+.pinkBlock3 GameObjectWithDrawing\
+<<Object.GAME, 1503 * Drawing.NORMAL, 1 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, pinkBlockTexture>
+
+.yellowBlock3 GameObjectWithDrawing\
+<<Object.GAME, 1519 * Drawing.NORMAL, 1 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, yellowBlockTexture>
+                              
+.greenBlock3 GameObjectWithDrawing\
+<<Object.GAME, 1535 * Drawing.NORMAL, 1 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, greenBlockTexture>
+
+.greenBlock4 GameObjectWithDrawing\
+<<Object.GAME, 1503 * Drawing.NORMAL, 17 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, greenBlockTexture>
+                                   
+.blueBlock4 GameObjectWithDrawing\
+<<Object.GAME, 1519 * Drawing.NORMAL, 17 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, blueBlockTexture>
+
+.yellowBlock4 GameObjectWithDrawing\
+<<Object.GAME, 1535 * Drawing.NORMAL, 17 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, yellowBlockTexture>
+
+.pinkBlock5 GameObjectWithDrawing\
+<<Object.GAME, 1503 * Drawing.NORMAL, 33 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, pinkBlockTexture>
+                                   
+.yellowBlock5 GameObjectWithDrawing\
+<<Object.GAME, 1519 * Drawing.NORMAL, 33 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, yellowBlockTexture>
+
+.greenBlock5 GameObjectWithDrawing\
+<<Object.GAME, 1535 * Drawing.NORMAL, 33 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, greenBlockTexture>
+
+.greenBlock6 GameObjectWithDrawing\
+<<Object.GAME, 1503 * Drawing.NORMAL, 49 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, greenBlockTexture>
+                                   
+.blueBlock6 GameObjectWithDrawing\
+<<Object.GAME, 1519 * Drawing.NORMAL, 49 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, blueBlockTexture>
+
+.yellowBlock6 GameObjectWithDrawing\
+<<Object.GAME, 1535 * Drawing.NORMAL, 49 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, yellowBlockTexture>
+
+.coin11 Bonus\
+<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, COIN_WIDTH * Drawing.LITTLE, COIN_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, coinTexture>>,\
+<FALSE, 0, 90, 0, coinFrames>>,\
+Bonus.COIN
+                              
+.luck3 Luck\
+<<<<Object.GAME, 1503 * Drawing.NORMAL, 95 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
+<FALSE, 0, 150, 0, luckFrames>>,\
+.coin11
+
+.brick6 GameObjectWithDrawing\
+<<Object.GAME, 1519 * Drawing.NORMAL, 95 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
+;-------------------------------------------------------------------------------
+.dirt12 GameObjectWithDrawing\
+<<Object.GAME, 1551 * Drawing.NORMAL, 0, 3 * DIRT_WIDTH * Drawing.NORMAL, 4 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
+                                    
+.grass12 GameObjectWithDrawing\
+<<Object.GAME, 1551 * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL, 3 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>  
+
+.bottomPipe3 GameObjectWithDrawing\
+<<Object.GAME, 1571 * Drawing.NORMAL + 2, 65 * Drawing.NORMAL, 1 * BOTTOM_PIPE_WIDTH * Drawing.LITTLE, 20  * BOTTOM_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
+<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, bottomPipeTexture>                               
+                              
+.topPipe3 GameObjectWithDrawing\
+<<Object.GAME, 1569 * Drawing.NORMAL, 79 * Drawing.NORMAL, TOP_PIPE_WIDTH * Drawing.LITTLE, TOP_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
+<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, topPipeTexture>
+
+.venusFlycatcher2 EnemyWithStopTimer\
+<<<<<<<Object.GAME, 1574 * Drawing.NORMAL, 66 * Drawing.NORMAL, VENUS_FLYCATCHER_WIDTH * Drawing.LITTLE, VENUS_FLYCATCHER_HEIGHT * Drawing.LITTLE>, GameObject.UNTOCHABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.STOPABLE_ENEMY>,\
+<Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, venusFlycatcherTexture>>,\
+<FALSE, 0, 300, 0, venusFlycatcherFrames>>,\
+TRUE, 0, 2, FALSE>,\
+1, venusFlycatcherAnimations, 200>,\
+-1, 2000>,\
+GameObject.REVERSE
+
+.reverse15 GameObject\
+<Object.GAME, 1574 * Drawing.NORMAL, 65 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse16 GameObject\
+<Object.GAME, 1574 * Drawing.NORMAL, 113 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
 
 
-                                                  
 
-                              
-                              
-                              
-                              
+
                               
 
             
@@ -251,10 +529,16 @@ Level1:
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
                                    .delete, .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
                                    .dirt2, .grass2, .reverse1, .reverse2, .flower2, .owl1,\
-                                   .shadow2, .dirt3, .grass3, .palm3, .coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .reverse3, .reverse4, .bush3, .reverse5, .reverse6, .venusFlycatcher1, .bottomPipe2, .topPipe2, .shadow6,\
+                                   .shadow2, .dirt3, .grass3, .palm3, .coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .reverse3, .reverse4, .bush3, .reverse5, .reverse6, .bottomPipe2, .topPipe2, .venusFlycatcher1, .shadow6,\
                                    .dirt4, .grass4, .shadow3, .shadow4, .palm4, .star1, .palm5, .shadow5, .owl2,\
                                    .dirt5, .grass5, .spring1, .palm6, .flower3, .greenBlock1, .blueBlock1, .pinkBlock1, .yellowBlock1, .greenBlock2, .blueBlock2, .pinkBlock2, .yellowBlock2,\
                                    .dirt6, .grass6, .shadow7, .palm7, .reverse7, .reverse8, .bee1,\
+                                   .dirt7, .grass7, .shadow8, .shadow9, .dirt8, .grass8, .shadow10, .flower4,\
+                                   .dirt9, .grass9, .shadow11, .shadow12, .palm8, .bush4, .flower5, .reverse9, .reverse10, .owl3, .brick3, .coin8, .luck2, .brick4, .brick5, .reverse11, .reverse12, .owl4,\
+                                   .dirt10, .grass10, .coin9, .coin10, .reverse13, .reverse14, .bee2,\
+                                   .dirt11, .grass11, .palm9, .flower6, .shadow13,\
+                                   .pinkBlock3, .yellowBlock3, .greenBlock3, .greenBlock4, .blueBlock4, .yellowBlock4, .pinkBlock5, .yellowBlock5, .greenBlock5, .greenBlock6, .blueBlock6, .yellowBlock6, .brick6, .luck3, .coin11,\
+                                   .dirt12, .grass12, .venusFlycatcher2, .bottomPipe3, .topPipe3, .reverse15, .reverse16,\
                                    player
 .gameObjectsLength              = $ - .gameObjects
 
@@ -265,6 +549,13 @@ Level1:
                                    .dirt4, .grass4, .shadow3, .shadow4, .palm4, .star1, .palm5, .shadow5, .owl2,\
                                    .dirt5, .grass5, .spring1, .palm6, .flower3, .greenBlock1, .blueBlock1, .pinkBlock1, .yellowBlock1, .greenBlock2, .blueBlock2, .pinkBlock2, .yellowBlock2,\
                                    .dirt6, .grass6, .shadow7, .palm7, .bee1,\
+                                   .dirt7, .grass7, .shadow8, .dirt8, .grass8, .shadow9, .shadow10, .flower4,\
+                                   .dirt9, .grass9, .shadow11, .palm8, .bush4, .flower5, .owl3, .brick3, .coin8, .luck2, .brick4, .brick5, .owl4,\
+                                   .dirt10, .grass10, .shadow12, .coin9, .coin10,  .bee2,\
+                                   .dirt11, .grass11, .palm9, .flower6, .shadow13,\
+                                   .pinkBlock3, .yellowBlock3, .greenBlock3, .greenBlock4, .blueBlock4, .yellowBlock4, .pinkBlock5, .yellowBlock5, .greenBlock5, .greenBlock6, .blueBlock6, .yellowBlock6, .luck3, .coin11, .brick6,\
+                                   .dirt12, .grass12, .venusFlycatcher2, .bottomPipe3, .topPipe3,\
+                                   .wSCORE1, .wSCORE2, .wSCORE3, .wSCORE4, .wSCORE5, .nSCORE1, .nSCORE2, .nSCORE3, .nSCORE4, .nSCORE5, .bonus,\
                                    player
 .gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
 
@@ -272,13 +563,14 @@ Level1:
                                    .coin1, .coin2, .coin3, .coin4, .heart1, .luck1,\
                                    .owl1,\
                                    .coin5, .coin6, .coin7, .owl2, .venusFlycatcher1,\
-                                   .spring1, .bee1,\
+                                   .spring1, .bee1, .owl3, .bonus, .luck2, .coin8, .owl4, .coin9, .coin10,  .bee2, .venusFlycatcher2, .coin11,\
+                                   .luck3,\
                                    player
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
 .entities                       dd .entitiesLength / 4 - 1,\
                                    .owl1,\
-                                   .owl2, .venusFlycatcher1, .bee1,\
+                                   .owl2, .venusFlycatcher1, .bee1, .owl3, .owl4, .bee2, .venusFlycatcher2,\
                                    player
 .entitiesLength                 = $ - .entities
 
@@ -295,7 +587,15 @@ Level1:
 .enemiesWithReverseTimerLength  = $ - .enemiesWithReverseTimer
 
 .enemiesWithStopTimer           dd .enemiesWithStopTimerLength / 4 - 1,\
-                                   .venusFlycatcher1
+                                   .venusFlycatcher1, .venusFlycatcher2
 .enemiesWithStopTimerLength     = $ - .enemiesWithStopTimer
 
-level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 50000, 1300, <255, 255, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer>, Level1, BufferLevel1
+.words                          dd .wordsLength / 4 - 1,\
+                                   .wSCORE
+.wordsLength                    = $ - .words
+
+.numbers                        dd .numbersLength / 4 - 1,\
+                                   .nSCORE 
+.numbersLength                  = $ - .numbers
+
+level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 50000, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.words, Level1.numbers>, Level1, BufferLevel1
