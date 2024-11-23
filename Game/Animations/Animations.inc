@@ -1,9 +1,16 @@
+;General------------------------------------------------------------------------
+heartAnimation dd FALSE, 0, 150, 0, heartFrames
+
+arrowAnimation dd FALSE, 0, 150, 0, arrowFrames
+
+worldAnimation dd FALSE, 0, 150, 0, worldFrames
+
 ;Location1----------------------------------------------------------------------
-owlAnimations dd FALSE, 0, 100, 0, deadOwlFrames, FALSE, 100, 0, 0, owlFrames
+owlAnimations dd TRUE, 0, 10, 0, deadOwlFrames, FALSE, 100, 0, 0, owlFrames
 
-venusFlycatcherAnimations dd 1000, 0, 0, deadVenusFlycatcherFrames, 120, 0, 0, venusFlycatcherFrames
+venusFlycatcherAnimations dd TRUE, 0, 10, 0, deadVenusFlycatcherFrames, FALSE, 0, 120, 0, venusFlycatcherFrames
 
-beeAnimations dd FALSE, 0, 100, 0, deadBeeFrames, FALSE, 0, 120, 0, beeFrames
+beeAnimations dd TRUE, 0, 10, 0, deadBeeFrames, FALSE, 0, 120, 0, beeFrames
 
 ;Location2----------------------------------------------------------------------
 
