@@ -5,7 +5,7 @@ proc Game.Start uses ebx
         mov     ebx, [currentLevel]
 
         ;stdcall Levels.CopyFromBuffer
-        stdcall Player.Reset
+        ;stdcall Player.Reset
 
         ret
 endp
@@ -25,16 +25,18 @@ proc Game.Timer uses ebx
         ret
 endp
 
-proc Game.Paint uses ebx 
+proc Game.Paint uses ebx esi 
 
         mov     ebx, [currentLevel]
 
         stdcall Screen.UpdateForGame
         
-        mov     eax, [ebx + Level.refLevel]
-        lea     ecx, [eax + Level1.wSCORE - Level1]
-        lea     edx, [eax + Level1.nSCORE - Level1]
-        stdcall Statistic.UpdateScore, ecx, edx
+        mov     esi, [ebx + Level.refLevel]
+        lea     eax, [esi + Level1.wSCORE - Level1]
+        lea     ecx, [esi + Level1.nSCORE - Level1]
+        stdcall Statistic.UpdateScore, eax, ecx
+        lea     edx, [esi + Level1.bonus - Level1]
+        stdcall Statistic.UpdateBonus, edx 
         stdcall String.TimerObjects, [ebx + Level.gameObjects.refWords]
         stdcall Number.TimerObjects, [ebx + Level.gameObjects.refNumbers]                
         
