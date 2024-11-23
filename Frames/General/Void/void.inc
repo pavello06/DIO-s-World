@@ -1,0 +1,1 @@
+voidFrames dd 1, voidTexture
