@@ -86,7 +86,7 @@ proc Animation.AnimateObject uses ebx esi,\
         mov     [ebx + esi + Animation.currentFrame], edx
                 
         shl     edx, 2
-        mov     ecx, [ecx + edx + Frames.refTextures]
+        mov     ecx, [ecx + edx + Frames.refTexture]
         mov     [ebx + esi - sizeof.Drawing + Drawing.refTexture], ecx
         
         cmp     DWORD [ebx + esi + Animation.isFinite], TRUE

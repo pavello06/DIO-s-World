@@ -1,1 +1,1 @@
-arrowFrames dd 5, arrowTexture, arrow2Texture, arrow3Texture, arrow4Texture, arrow5Texture
+arrowFrames dd 1, arrowTexture
