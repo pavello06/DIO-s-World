@@ -20,31 +20,22 @@ Drawing.UP    = 1
 proc Drawing.DrawPixel\
      red, green, blue, x, y, pixelSize
         
-        stdcall Normalize.NormalizeColor, [blue]
-        push    eax
-        
-        stdcall Normalize.NormalizeColor, [green]
-        push    eax
-        
-        stdcall Normalize.NormalizeColor, [red]
-        push    eax
-        
-        invoke  glColor3f
+        stdcall Color.Change, [red], [green], [blue]
         
         mov     ecx, [y]
         add     ecx, [pixelSize]
-        stdcall Normalize.NormalizeCoordinate, ecx, [Screen.yMin], [Screen.yMax]
+        stdcall Normalize.NormalizeCoordinateY, ecx
         push    eax
         
         mov     edx, [x]
         add     edx, [pixelSize]
-        stdcall Normalize.NormalizeCoordinate, edx, [Screen.xMin], [Screen.xMax]
+        stdcall Normalize.NormalizeCoordinateX, edx
         push    eax
         
-        stdcall Normalize.NormalizeCoordinate, [y], [Screen.yMin], [Screen.yMax]
+        stdcall Normalize.NormalizeCoordinateY, [y]
         push    eax
         
-        stdcall Normalize.NormalizeCoordinate, [x], [Screen.xMin], [Screen.xMax]
+        stdcall Normalize.NormalizeCoordinateX, [x]
         push    eax
 
         invoke  glRectf
@@ -129,16 +120,16 @@ proc Drawing.DrawObject uses ebx esi edi,\
   
   .right:
         add     eax, edx
-        mov     edx, 3 * 1
+        mov     edx, sizeof.Color
         mul     edx
         add     eax, edi
         
-        cmp     BYTE [eax + Texture.colors.red], -1
+        cmp     BYTE [eax + Texture.color.red], -1
         je      .invisiblePixel                
 
-        movzx   edx, BYTE [eax + Texture.colors.red]
-        movzx   ecx, BYTE [eax + Texture.colors.green]
-        movzx   eax, BYTE [eax + Texture.colors.blue]
+        movzx   edx, BYTE [eax + Texture.color.red]
+        movzx   ecx, BYTE [eax + Texture.color.green]
+        movzx   eax, BYTE [eax + Texture.color.blue]
 
         stdcall Drawing.DrawPixel, edx, ecx, eax, [objectPixelX], [objectPixelY], [ebx + esi + Drawing.pixelSize]
 
@@ -153,9 +144,7 @@ proc Drawing.DrawObject uses ebx esi edi,\
         mov     [texturePixelX], edx
         
         pop     ecx
-        dec     ecx
-        cmp     ecx, 0
-        jne     .xLoop
+        loop    .xLoop
         
         mov     eax, [ebx + esi + Drawing.pixelSize]
         sub     [objectPixelY], eax
