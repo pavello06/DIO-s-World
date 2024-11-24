@@ -25,18 +25,13 @@ proc Game.Timer uses ebx
         ret
 endp
 
-proc Game.Paint uses ebx esi 
+proc Game.Paint uses ebx
 
         mov     ebx, [currentLevel]
 
         stdcall Screen.UpdateForGame
         
-        mov     esi, [ebx + Level.refLevel]
-        lea     eax, [esi + Level1.wSCORE - Level1]
-        lea     ecx, [esi + Level1.nSCORE - Level1]
-        stdcall Statistic.UpdateScore, eax, ecx
-        lea     edx, [esi + Level1.bonus - Level1]
-        stdcall Statistic.UpdateBonus, edx 
+        stdcall Statistic.Update 
         stdcall String.TimerObjects, [ebx + Level.gameObjects.refWords]
         stdcall Number.TimerObjects, [ebx + Level.gameObjects.refNumbers]                
         
