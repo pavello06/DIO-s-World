@@ -14,8 +14,8 @@ proc Animation.Start uses ebx,\
         lea     eax, [ebx + Animation.timer]
         stdcall Timer.Start, eax
 
-        mov     eax, [ebx + Animation.maxTimer]
-        sub     [ebx + Animation.timer], eax
+        mov     ecx, [ebx + Animation.maxTimer]
+        sub     [ebx + Animation.timer], ecx
         
         mov     DWORD [ebx + Animation.currentFrame], 0
 
