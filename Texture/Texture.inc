@@ -50,9 +50,6 @@ include 'General/Digits/9.inc'
 ;Void---------------------------------------------------------------------------
 include 'General/Void/void.inc'
 
-;Border-------------------------------------------------------------------------
-include 'General/Border/border.inc'
-
 ;Game---------------------------------------------------------------------------
 ;General------------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------
@@ -85,6 +82,8 @@ include 'Game/General/Blocks/spring2.inc'
 include 'Game/General/Blocks/spring3.inc'
 
 ;Bonuses------------------------------------------------------------------------
+include 'Game/General/Bonuses/border.inc'
+
 include 'Game/General/Bonuses/coin.inc'
 include 'Game/General/Bonuses/coin2.inc'
 include 'Game/General/Bonuses/coin3.inc'
@@ -98,13 +97,14 @@ include 'Game/General/Bonuses/heart.inc'
 include 'Game/General/Bonuses/heart2.inc'
 
 include 'Game/General/Bonuses/arrow.inc'
-include 'Game/General/Bonuses/arrow2.inc'
-include 'Game/General/Bonuses/arrow3.inc'
-include 'Game/General/Bonuses/arrow4.inc'
-include 'Game/General/Bonuses/arrow5.inc'
 
 include 'Game/General/Bonuses/world.inc'
-include 'Game/General/Bonuses/world2.inc'
+
+;Mobs---------------------------------------------------------------------------
+include 'Game/General/Mobs/venusFlycatcher.inc'
+include 'Game/General/Mobs/venusFlycatcher2.inc'
+
+include 'Game/General/Mobs/deadVenusFlycatcher.inc'
 
 ;Player-------------------------------------------------------------------------
 include 'Game/General/Player/standingPlayer.inc'
@@ -145,22 +145,15 @@ include 'Game/Location1/Mobs/owl6.inc'
 
 include 'Game/Location1/Mobs/deadOwl.inc'
 
-include 'Game/Location1/Mobs/venusFlycatcher.inc'
-include 'Game/Location1/Mobs/venusFlycatcher2.inc'
-
-include 'Game/Location1/Mobs/deadVenusFlycatcher.inc'
-
 include 'Game/Location1/Mobs/bee.inc'
 include 'Game/Location1/Mobs/bee2.inc'
 
 include 'Game/Location1/Mobs/deadBee.inc'
 
 ;Menu---------------------------------------------------------------------------
-;ActiveButtonElements-----------------------------------------------------------
-include 'Menu/ActiveButtonElements/activeButtonElement.inc'
-include 'Menu/ActiveButtonElements/activeButtonElement2.inc'
-
 ;Buttons------------------------------------------------------------------------
+include 'Menu/Buttons/continue.inc'
+
 include 'Menu/Buttons/levelButton.inc'
 
 include 'Menu/Buttons/menu.inc'
@@ -169,16 +162,16 @@ include 'Menu/Buttons/next.inc'
 
 include 'Menu/Buttons/restart.inc'
 
-include 'Menu/Buttons/continue.inc'
-
 include 'Menu/Buttons/screenButton.inc'
 
-;Star---------------------------------------------------------------------------
-include 'Menu/Star/voidStar.inc'
-
 ;Decorations--------------------------------------------------------------------
+include 'Menu/Decorations/activeButtonElement.inc'
+include 'Menu/Decorations/activeButtonElement2.inc'
+
 include 'Menu/Decorations/dandelion.inc'
 include 'Menu/Decorations/dandelion2.inc'
 include 'Menu/Decorations/dandelion3.inc'
 include 'Menu/Decorations/dandelion4.inc'
 include 'Menu/Decorations/dandelion5.inc'
+
+include 'Menu/Decorations/voidStar.inc'
