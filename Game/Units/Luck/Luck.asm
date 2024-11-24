@@ -18,6 +18,7 @@ proc Luck.SpawnBonus\
         
         mov     edx, [eax + Object.y]
         add     edx, [eax + Object.height]
+        add     edx, 2 * Drawing.NORMAL
         
         mov     [ecx + Object.y], edx
      
