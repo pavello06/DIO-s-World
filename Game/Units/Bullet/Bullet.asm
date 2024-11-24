@@ -4,20 +4,20 @@ struct Bullet
   refAnimations dd ?
 ends
 
-proc Bullet.ActivateOrDeactivate\
+proc Bullet.ActivateOrDeactivate uses ebx,\
      refBullet, x, y, isActive
      
-        mov     eax, [refBullet]
+        mov     ebx, [refBullet]
         
-        mov     ecx, [x]
-        mov     DWORD [eax + Object.x], ecx
+        mov     eax, [x]
+        mov     DWORD [ebx + Object.x], eax
         mov     ecx, [y]
-        mov     DWORD [eax + Object.y], ecx
-        mov     ecx, [isActive]
-        mov     DWORD [eax + Entity.canMove], ecx
-        xor     DWORD [eax + Entity.canMove], 1
-        mov     ecx, [isActive]
-        mov     DWORD [eax + Bullet.isActive], ecx
+        mov     DWORD [ebx + Object.y], ecx
+        mov     edx, [isActive]
+        mov     DWORD [ebx + Entity.canMove], edx
+        xor     DWORD [ebx + Entity.canMove], 1
+        mov     eax, [isActive]
+        mov     DWORD [ebx + Bullet.isActive], eax
         
         mov     ecx, sizeof.Animation
         
@@ -28,13 +28,11 @@ proc Bullet.ActivateOrDeactivate\
         mov     ecx, 0
         
   .notActive:          
-        add     ecx, [eax + Bullet.refAnimations]
-        add     eax, GameObjectWithAnimation.animation
-        stdcall Animation.Copy, eax, ecx       
+        add     ecx, [ebx + Bullet.refAnimations]
+        lea     edx, [ebx + GameObjectWithAnimation.animation]
+        stdcall Animation.Copy, edx, ecx       
         
-        mov     eax, [refBullet]
-        
-        add     eax, GameObjectWithAnimation.animation
+        lea     eax, [ebx + GameObjectWithAnimation.animation]
         stdcall Animation.Start, eax
      
         ret
@@ -63,8 +61,8 @@ proc Bullet.GetActiveBullet\
 
         mov     eax, [refBullets]
                                                            
-        mov     ecx, [eax + 0]
-        add     eax, 4
+        mov     ecx, [eax + Array.length]
+        lea     eax, [eax + Array.element]
         
   .loop:        
         mov     edx, [eax]
@@ -72,7 +70,7 @@ proc Bullet.GetActiveBullet\
         cmp     DWORD [edx + Bullet.isActive], TRUE
         je      .hasActiveBullet
        
-        add     eax, 4
+        add     eax, sizeof.Array.element
         loop    .loop
   
   .hasNotActiveBullet:      
