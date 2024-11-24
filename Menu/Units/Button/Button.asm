@@ -11,7 +11,7 @@ proc Button.GetActiveButtonInArray\
         mov     eax, [refButtons]
                                                            
         mov     ecx, [eax + Array.length]
-        add     eax, sizeof.Array.length * 2
+        lea     eax, [eax + Array.element + sizeof.Array.element]
         
   .loop:        
         mov     edx, [eax]
@@ -19,7 +19,7 @@ proc Button.GetActiveButtonInArray\
         cmp     DWORD [edx + Button.isActive], TRUE
         je      .exit
        
-        add     eax, sizeof.Array.elements
+        add     eax, sizeof.Array.element
         loop    .loop                                            
         
   .exit:
