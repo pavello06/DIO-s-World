@@ -1,30 +1,5 @@
 Level1:
 
-.wSCORE String\
-<Object.MENU, 30 * Drawing.LITTLE, 100 * Drawing.LITTLE, 5 * (A_WIDTH + 1) * Drawing.LITTLE - Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE>,\
-<'S', 'C', 'O', 'R', 'E', 0, 0, 0, 0, 0>, .wSCORE1
-
-.wSCORE1 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture                            
-.wSCORE2 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
-.wSCORE3 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
-.wSCORE4 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
-.wSCORE5 dd Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture
-
-.nSCORE Number\
-<Object.MENU, 30 * Drawing.NORMAL, 100 * Drawing.NORMAL, 5 * (ZERO_WIDTH + 1) * Drawing.NORMAL - Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL>,\
-0, <'0', '0', '0', '0', '0'>, .nSCORE1
-
-.nSCORE1 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture                            
-.nSCORE2 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture  
-.nSCORE3 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture  
-.nSCORE4 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture  
-.nSCORE5 dd Object.MENU, 0, 0, ZERO_WIDTH * Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, voidTexture
-
-.bonus dd Object.MENU, 0, 0, HEART_WIDTH * Drawing.LITTLE, HEART_HEIGHT * Drawing.LITTLE,\
-Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, heartTexture,\
-FALSE, 0, 150, 0, heartFrames 
-
-
 .delete GameObject <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
 
 .dirt1 GameObjectWithDrawing <<Object.GAME, 0, 0, 21 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -901,7 +876,7 @@ Bonus.STAR
                                    .dirt17, .grass17, .owl7, .brick8, .coin20, .luck6, .brick9,\
                                    .dirt18, .grass18, .star3, .dirt181, .shadow24,\
                                    .dirt19, .grass19, .shadow25, .palm12, .flower9,\
-                                   .wSCORE1, .wSCORE2, .wSCORE3, .wSCORE4, .wSCORE5, .nSCORE1, .nSCORE2, .nSCORE3, .nSCORE4, .nSCORE5, .bonus,\
+                                   Statistic.wSCORE1, Statistic.wSCORE2, Statistic.wSCORE3, Statistic.wSCORE4, Statistic.wSCORE5, Statistic.nSCORE1, Statistic.nSCORE2, Statistic.nSCORE3, Statistic.nSCORE4, Statistic.nSCORE5, Statistic.border, Statistic.bonus, Statistic.stars,\
                                    player
 .gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
 
@@ -909,7 +884,7 @@ Bonus.STAR
                                    .coin1, .coin2, .coin3, .coin4, .heart1, .luck1,\
                                    .owl1,\
                                    .coin5, .coin6, .coin7, .owl2, .venusFlycatcher1,\
-                                   .spring1, .bee1, .owl3, .bonus, .luck2, .coin8, .owl4, .coin9, .coin10,  .bee2,\  
+                                   .spring1, .bee1, .owl3, Statistic.bonus, .luck2, .coin8, .owl4, .coin9, .coin10,  .bee2,\  
                                    .coin11, .luck3, .venusFlycatcher2, .star2, .coin12, .luck4,\
                                    .owl5, .coin13, .coin14, .coin15, .coin16,\
                                    .owl6,\
@@ -945,11 +920,11 @@ Bonus.STAR
 .enemiesWithStopTimerLength     = $ - .enemiesWithStopTimer
 
 .words                          dd .wordsLength / 4 - 1,\
-                                   .wSCORE
+                                   Statistic.wSCORE
 .wordsLength                    = $ - .words
 
 .numbers                        dd .numbersLength / 4 - 1,\
-                                   .nSCORE 
+                                   Statistic.nSCORE 
 .numbersLength                  = $ - .numbers
 
-level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 12475, 3300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.words, Level1.numbers>, Level1, BufferLevel1
+level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 12475, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.words, Level1.numbers>, Level1, BufferLevel1
