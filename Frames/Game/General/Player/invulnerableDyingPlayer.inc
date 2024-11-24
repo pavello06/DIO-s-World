@@ -1,0 +1,1 @@
+invulnerableDyingPlayerFrames dd 2, dyingPlayerTexture, voidTexture

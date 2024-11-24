@@ -1,0 +1,1 @@
+invulnerableStandingPlayerFrames dd 6, standingPlayerTexture, voidTexture, standingPlayer2Texture, voidTexture, standingPlayer3Texture, voidTexture

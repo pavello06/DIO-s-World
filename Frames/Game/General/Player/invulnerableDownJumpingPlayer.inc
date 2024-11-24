@@ -1,0 +1,1 @@
+invulnerableDownJumpingPlayerFrames dd 2, downJumpingPlayerTexture, voidTexture

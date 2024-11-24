@@ -45,6 +45,16 @@ include 'Game/General/Player/downJumpingPlayer.inc'
 
 include 'Game/General/Player/dyingPlayer.inc'
 
+include 'Game/General/Player/invulnerableStandingPlayer.inc'
+
+include 'Game/General/Player/invulnerableRunningPlayer.inc'
+
+include 'Game/General/Player/invulnerableUpJumpingPlayer.inc'
+
+include 'Game/General/Player/invulnerableDownJumpingPlayer.inc'
+
+include 'Game/General/Player/invulnerableDyingPlayer.inc'
+
 ;Location1----------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------
 
