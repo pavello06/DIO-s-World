@@ -11,17 +11,20 @@ Enemy.SPEED_X_AFTER_DEATH = 0
 Enemy.SPEED_Y_AFTER_DEATH = 15
 
 proc Enemy.IsPlayerNear\
-     refEnemy, minDistance, maxDistance
+     refEnemy, distance
      
         mov     eax, [refEnemy]
         
         mov     ecx, [eax + Object.x]
         sub     ecx, [player + Object.x]
         
-        cmp     ecx, [minDistance]
-        jl      .playerIsNotNear
-        cmp     ecx, [maxDistance]
+        mov     edx, [distance]
+        
+        cmp     ecx, edx
         jg      .playerIsNotNear
+        neg     edx
+        cmp     ecx, edx
+        jl      .playerIsNotNear
   
   .playerIsNear:      
         mov     eax, TRUE
