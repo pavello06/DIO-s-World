@@ -1,8 +1,7 @@
 Move.MAX_TIMER = 17
+Move.timer     dd 0
 
 Move.G = 2
-
-Move.timer    dd 0
 
 proc Move.MoveEntityCoordinate uses ebx esi edi,\
      refEntity, refObjects, coordinate
