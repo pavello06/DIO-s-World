@@ -4,17 +4,15 @@ struct BrickWithBreakTimer
   maxTimer                dd ?
 ends
 
-proc BrickWithBreakTimer.Start\
+proc BrickWithBreakTimer.Start uses ebx,\
      refBrickWithBreakTimer
      
-        mov     eax, [refBrickWithBreakTimer]     
+        mov     ebx, [refBrickWithBreakTimer]     
      
-        add     eax, BrickWithBreakTimer.timer
-        stdcall Timer.Start, eax
+        lea     eax, [ebx + BrickWithBreakTimer.timer]
+        stdcall Timer.Start, eax 
         
-        mov     eax, [refBrickWithBreakTimer] 
-        
-        add     eax, GameObjectWithAnimation.animation 
+        lea     eax, [ebx + GameObjectWithAnimation.animation] 
         stdcall Animation.Start, eax 
      
         ret
@@ -79,26 +77,10 @@ proc BrickWithBreakTimer.TimerObject uses ebx,\
         ret
 endp
 
-proc BrickWithBreakTimer.TimerObjects uses ebx,\
-     refBricksWithBreakTimers    
+proc BrickWithBreakTimer.TimerObjects\
+     refBricksWithBreakTimers
      
-        mov     ebx, [refBricksWithBreakTimers]
-        
-        mov     ecx, [ebx + 0]
-        cmp     ecx, 0
-        je      .exit
-        
-        add     ebx, 4
-  
-  .loop:
-        push    ecx                
-        
-        stdcall BrickWithBreakTimer.TimerObject, [ebx]
-                      
-        add     ebx, 4                                   
-        pop     ecx
-        loop    .loop
+        stdcall Array.Iterate, BrickWithBreakTimer.TimerObject, [refBricksWithBreakTimers]    
             
-  .exit:        
         ret
 endp                                          

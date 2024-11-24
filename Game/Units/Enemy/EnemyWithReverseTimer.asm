@@ -51,7 +51,7 @@ endp
 proc EnemyWithReverseTimer.TimerObjects\
      refEnemiesWithReverseTimer   
         
-        stdcall EnemyWithTimer.TimerObjects, EnemyWithReverseTimer.TimerObject, [refEnemiesWithReverseTimer]   
+        stdcall Array.Iterate, EnemyWithReverseTimer.TimerObject, [refEnemiesWithReverseTimer]   
           
         ret
 endp 

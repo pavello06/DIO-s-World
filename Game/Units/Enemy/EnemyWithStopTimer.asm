@@ -88,7 +88,7 @@ endp
 proc EnemyWithStopTimer.TimerObjects\
      refEnemiesWithStopTimer      
         
-        stdcall EnemyWithTimer.TimerObjects, EnemyWithStopTimer.TimerObject, [refEnemiesWithStopTimer]   
+        stdcall Array.Iterate, EnemyWithStopTimer.TimerObject, [refEnemiesWithStopTimer]   
           
         ret
 endp 

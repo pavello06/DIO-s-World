@@ -62,7 +62,7 @@ endp
 proc EnemyWithBullets.TimerObjects\
      refEnemiesWithBullets       
         
-        stdcall EnemyWithTimer.TimerObjects, EnemyWithBullets.TimerObject, [refEnemiesWithBullets]
+        stdcall Array.Iterate, EnemyWithBullets.TimerObject, [refEnemiesWithBullets]
           
         ret
 endp   
