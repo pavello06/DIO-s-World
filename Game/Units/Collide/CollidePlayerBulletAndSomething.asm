@@ -60,9 +60,9 @@ proc Collide.CollidePlayerBulletAndSomething uses ebx esi edi,\
         je      @F
         stdcall Collide.CollidePlayerAndBlock, ebx
   @@:
-        test    edi, GameObject.ACTIVATE
-        je      @F
-        stdcall Collide.CollidePlayerBulletAndActivate, ebx
+        ;test    edi, GameObject.ACTIVATE
+        ;je      @F
+        ;stdcall Collide.CollidePlayerBulletAndActivate, ebx
   @@:
         test    edi, GameObject.SNAIL
         je      @F

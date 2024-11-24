@@ -13,9 +13,9 @@ proc Collide.CollideEnemyBulletAndSomething uses ebx esi edi,\
         mov     esi, [refObject]
         mov     edi, [esi + GameObject.collide]
              
-        test    edi, GameObject.ACTIVATE
-        je      .exit
-        stdcall Collide.CollideEnemyBulletAndActivate, ebx
+        ;test    edi, GameObject.ACTIVATE
+        ;je      .exit
+        ;stdcall Collide.CollideEnemyBulletAndActivate, ebx
   
   .exit:   
         ret     

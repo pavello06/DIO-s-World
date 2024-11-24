@@ -19,10 +19,8 @@ GameObject.TELEPORT           = GameObject.BOTTOM_LUCK * 2
 ;with enemy
 GameObject.REVERSE            = GameObject.TELEPORT * 2
 GameObject.ROTATE             = GameObject.REVERSE * 2
-;with bullets
-GameObject.ACTIVATE           = GameObject.ROTATE * 2
 ;bonuses
-GameObject.BONUS_FOR_LEVEL    = GameObject.ACTIVATE * 2
+GameObject.BONUS_FOR_LEVEL    = GameObject.ROTATE * 2
 GameObject.BONUS_FOR_PLAYER   = GameObject.BONUS_FOR_LEVEL * 2
 ;bullets
 GameObject.ENEMY_BULLET       = GameObject.BONUS_FOR_PLAYER  * 2
