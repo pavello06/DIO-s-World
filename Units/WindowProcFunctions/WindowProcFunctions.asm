@@ -12,10 +12,10 @@ proc WindowProcFunctions.ChangeTo\
 
         mov       eax, [refKeyDown]
         mov       [windowProcFunctions.refKeyDown], eax
-        mov       eax, [refKeyUp]
-        mov       [windowProcFunctions.refKeyUp], eax
-        mov       eax, [refPaint]
-        mov       [windowProcFunctions.refPaint], eax
+        mov       ecx, [refKeyUp]
+        mov       [windowProcFunctions.refKeyUp], ecx
+        mov       edx, [refPaint]
+        mov       [windowProcFunctions.refPaint], edx
         mov       eax, [refTimer]
         mov       [windowProcFunctions.refTimer], eax
 
