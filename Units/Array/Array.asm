@@ -1,6 +1,6 @@
 struct Array
   length   dd ?
-  elements dd ?
+  element  dd ?
 ends
 
 proc Array.Iterate uses ebx,\
@@ -12,14 +12,14 @@ proc Array.Iterate uses ebx,\
         cmp     ecx, 0
         je      .exit
         
-        lea     ebx, [ebx + Array.elements]
+        lea     ebx, [ebx + Array.element]
   
   .loop:
         push    ecx     
         
         stdcall [refAction], [ebx]
                                 
-        add     ebx, sizeof.Array.elements
+        add     ebx, sizeof.Array.element
         pop     ecx                                   
         loop    .loop        
 
