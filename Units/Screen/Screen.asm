@@ -4,9 +4,8 @@ struct Screen
 ends
 
 Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER = 10
-
-Screen.MAX_TIMER = 17
-Screen.timer     dd 0
+Screen.MAX_TIMER                           = 17
+Screen.timer                               dd 0
 
 Screen.xMin dd ?
 Screen.xMax dd ?
@@ -20,16 +19,8 @@ Screen.screen Screen\
 proc Screen.Fill\
      red, green, blue
 
-        stdcall Normalize.NormalizeColor, [blue]
-        push    eax
+        stdcall Color.Change, [red], [green], [blue]
         
-        stdcall Normalize.NormalizeColor, [green]
-        push    eax
-        
-        stdcall Normalize.NormalizeColor, [red]
-        push    eax
-        
-        invoke  glColor3f
         invoke glRectf, -1.0, -1.0, 1.0, 1.0
         
         ret
@@ -90,8 +81,7 @@ proc Screen.UpdateForGame uses ebx
         mov     eax, [Screen.screen + Screen.speedY]
         add     [Screen.screen + Object.y], eax
 
-  .notMove:
-  .speedY:      
+  .notMove:      
         mov     eax, [ebx + Level.yMin]
         add     eax, [Screen.screen + Object.height]
         
