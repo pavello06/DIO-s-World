@@ -148,7 +148,21 @@ endp
 proc Collide.CollidePlayerAndBonusForLevel\
      refLevel, refBonus     
         
+        mov     eax, [currentLevel]
         mov     ecx, [refBonus]
+        
+        cmp     DWORD [ecx + Bonus.type], Bonus.STAR
+        je      .star
+  
+  .coin:
+        add     [eax + Level.levelStatistics.score], 10 
+        jmp     .delete     
+ 
+  .star:
+        add     [eax + Level.levelStatistics.score], 400
+        inc     [eax + Level.levelStatistics.stars]        
+        
+  .delete:
         stdcall Object.Delete, ecx
                  
         ret
