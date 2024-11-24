@@ -40,3 +40,19 @@ proc Normalize.NormalizeCoordinate\
         
         ret
 endp
+
+proc Normalize.NormalizeCoordinateX\
+     old
+     
+        stdcall Normalize.NormalizeCoordinate, [old], [Screen.xMin], [Screen.xMax]
+        
+        ret
+endp
+
+proc Normalize.NormalizeCoordinateY\
+     old
+     
+        stdcall Normalize.NormalizeCoordinate, [old], [Screen.yMin], [Screen.yMax]
+        
+        ret
+endp
