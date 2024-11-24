@@ -1,13 +1,7 @@
-struct Color
-  red   db ?
-  green db ?
-  blue  db ?
-ends
-
 struct Texture
   width  dd ?
   height dd ?
-  colors Color 
+  color  Color 
 ends
 
 ;General------------------------------------------------------------------------
