@@ -4,8 +4,9 @@ proc Game.Start uses ebx
 
         mov     ebx, [currentLevel]
 
-        ;stdcall Levels.CopyFromBuffer
-        ;stdcall Player.Reset
+        stdcall Levels.CopyFromBuffer
+        stdcall Player.Reset
+        stdcall Statistic.Reset
 
         ret
 endp
@@ -14,7 +15,18 @@ proc Game.Timer uses ebx
         
         mov     ebx, [currentLevel]
         
-        stdcall Move.MoveEntities, [ebx + Level.gameObjects.refEntities], [level1.gameObjects.refGameObjects]
+        cmp     DWORD [player.worldTimer], -1
+        je      .notWorldTimer
+        
+  .worldTimer: 
+        push    onlyPlayer
+        jmp     @F
+        
+  .notWorldTimer: 
+        push    [ebx + Level.gameObjects.refEntities]
+  
+  @@:
+        stdcall Move.MoveEntities 
         
         stdcall BrickWithBreakTimer.TimerObjects, [ebx + Level.gameObjects.refBricksWithBreakTimer]
         stdcall Player.TimerObject
@@ -36,7 +48,18 @@ proc Game.Paint uses ebx
         stdcall Number.TimerObjects, [ebx + Level.gameObjects.refNumbers]                
         
         stdcall Drawing.DrawObjects, [ebx + Level.gameObjects.refGameObjectsWithDrawing]
-        stdcall Animation.AnimateObjects, [ebx + Level.gameObjects.refGameObjectsWithAnimation]
+        cmp     DWORD [player.worldTimer], -1
+        je      .notWorldTimer
+  
+  .worldTimer: 
+        push    onlyPlayer
+        jmp     @F
+        
+  .notWorldTimer: 
+        push    [ebx + Level.gameObjects.refGameObjectsWithAnimation]
+  
+  @@:     
+        stdcall Animation.AnimateObjects 
 
         ret
 endp
