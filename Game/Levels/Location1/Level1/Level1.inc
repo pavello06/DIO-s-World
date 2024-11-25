@@ -894,13 +894,13 @@ Bonus.STAR
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
 .entities                       dd .entitiesLength / 4 - 1,\
+                                   player,\
                                    .owl1,\
                                    .owl2, .venusFlycatcher1, .bee1, .owl3, .owl4, .bee2,\
                                    .venusFlycatcher2,\
                                    .owl5,\
                                    .owl6,\
-                                   .owl7,\
-                                   player
+                                   .owl7
 .entitiesLength                 = $ - .entities
 
 .bricksWithBreakTimer           dd .bricksWithBreakTimerLength / 4 - 1
