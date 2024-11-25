@@ -12,7 +12,7 @@ Bonus.WORLD = 4
 Bonus.COIN_SCORE = 10
 Bonus.STAR_SCORE = 400
 
-proc Bonus.GetCoin
+proc Bonus.GetCoin\
      refBonus
      
         mov     eax, [currentLevel]
@@ -24,7 +24,7 @@ proc Bonus.GetCoin
         ret
 endp
 
-proc Bonus.GetStar
+proc Bonus.GetStar\
      refBonus
      
         mov     eax, [currentLevel] 
@@ -37,7 +37,7 @@ proc Bonus.GetStar
         ret
 endp
 
-proc Bonus.GetHeart
+proc Bonus.GetHeart\
      refBonus
         
         mov     [player.hasHeart], TRUE
@@ -47,7 +47,7 @@ proc Bonus.GetHeart
         ret
 endp
 
-proc Bonus.GetArrow
+proc Bonus.GetArrow\
      refBonus
         
         mov     [player.hasArrow], TRUE
@@ -57,10 +57,10 @@ proc Bonus.GetArrow
         ret
 endp
 
-proc Bonus.GetWorld
+proc Bonus.GetWorld\
      refBonus
      
-        stdcall Timer.Stop, player.worldTimer
+        stdcall Timer.Start, player.worldTimer
         
         stdcall Object.Delete, [refBonus]
 
