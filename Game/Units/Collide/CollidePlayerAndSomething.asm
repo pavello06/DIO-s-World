@@ -77,7 +77,7 @@ proc Collide.CollidePlayerAndJump\
         cmp     DWORD [eax + Entity.speedY], 0
         jg      .exit
         
-        mov     DWORD [eax + Entity.speedY], 35
+        mov     DWORD [eax + Entity.speedY], 45
         
         add     ecx, GameObjectWithAnimation.animation
         stdcall Animation.Start, ecx        
@@ -155,16 +155,13 @@ proc Collide.CollidePlayerAndBonusForLevel\
         je      .star
   
   .coin:
-        add     [eax + Level.levelStatistics.score], 10 
-        jmp     .delete     
+        stdcall Bonus.GetCoin, ecx
+        jmp     .exit    
  
   .star:
-        add     [eax + Level.levelStatistics.score], 400
-        inc     [eax + Level.levelStatistics.stars]        
-        
-  .delete:
-        stdcall Object.Delete, ecx
-                 
+        stdcall Bonus.GetStar, ecx        
+  
+  .exit:               
         ret
 endp
 
@@ -178,23 +175,20 @@ proc Collide.CollidePlayerAndBonusForPlayer\
         cmp     edx, Bonus.HEART
         jne     .notHeart
         
-        mov     [eax + Player.hasHeart], TRUE
+        stdcall Bonus.GetHeart, ecx
         jmp     .exit
   
   .notHeart:
         cmp     edx, Bonus.ARROW
         jne     .notArrow
         
-        mov     [eax + Player.hasArrow], TRUE
+        stdcall Bonus.GetArrow, ecx
         jmp     .exit
   
   .notArrow:
-        add     eax, Player.worldTimer
-        stdcall Timer.Stop, eax
+        stdcall Bonus.GetWorld, ecx
   
-  .exit:
-        stdcall Object.Delete, ecx
-                     
+  .exit:            
         ret
 endp
 

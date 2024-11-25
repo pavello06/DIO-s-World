@@ -184,10 +184,11 @@ proc Collide.HandleCollision uses ebx esi edi,\
 endp
 
 proc Collide.HandleCollisions uses ebx esi edi,\
-     refObject, refObjects
+     refObject
         
         mov     ebx, [refObject]
-        mov     esi, [refObjects]
+        mov     eax, [currentLevel]
+        mov     esi, [eax + Level.gameObjects.refGameObjects]
         
         xor     eax, eax
         mov     ecx, [esi + 0]
