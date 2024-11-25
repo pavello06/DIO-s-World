@@ -7,16 +7,26 @@ struct Player
   worldTimer              dd ?
   maxWorldTimer           dd ?
   invulnerabilityTimer    dd ?
-  maxInvulnerabilityTimer dd ?    
+  maxInvulnerabilityTimer dd ?
+  refAnimations           dd ?    
 ends
 
 Player.START_X = 30 * Drawing.NORMAL
 Player.START_Y = 100 * Drawing.NORMAL
 
-Player.SPEED_X_AFTER_MOVE_KEY = 12
+Player.STANDING     = 0 * sizeof.Animation
+Player.RUNNING      = 1 * sizeof.Animation
+Player.UP_JUMPING   = 2 * sizeof.Animation
+Player.DOWN_JUMPING = 3 * sizeof.Animation
+Player.DYING        = 4 * sizeof.Animation
+
+Player.SPEED_X_AFTER_MOVE_KEY = 11
 Player.SPEED_Y_AFTER_MOVE_KEY = 32
 
 Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY = 28
+
+Player.SPEED_X_AFTER_DEATH = 0
+Player.SPEED_Y_AFTER_DEATH = 20
 
 Player.BULLET_SPEED_X_AFTER_SHOOT_KEY = 14
 Player.BULLET_SPEED_Y_AFTER_SHOOT_KEY = 0
@@ -27,7 +37,9 @@ GameObject.PLAYER>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
 <FALSE, 0, 200, 0, standingPlayerFrames>>,\
 TRUE, 0, 0, TRUE>,\
-FALSE, 0, FALSE, FALSE, -1, 11000, -1, 2000
+FALSE, 0, FALSE, FALSE, -1, 7000, -1, 1500, playerAnimations
+
+onlyPlayer dd 1, player
 
 proc Player.Reset
   
@@ -60,43 +72,52 @@ proc Player.Reset
         ret
 endp
               
-proc Player.ChangeAnimation
+proc Player.ChangeAnimation uses ebx
         
         cmp     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
         je      .exit
+        
+        mov     ebx, [player + GameObjectWithAnimation.animation.refFrames] 
+        
+        mov     eax, [player.refAnimations]
+        add     eax, 4
         
         cmp     DWORD [player + Entity.speedY], 0
         jle     .notUpJumpingPlayer
         
   .upJumpingPlayer:
-        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], upJumpingPlayerFrames
-        jmp     .exit
+        add     eax, Player.UP_JUMPING
+        jmp     .animation
   
   .notUpJumpingPlayer:
         cmp     DWORD [player + Entity.speedY], 0
         je     .notDownJumpingPlayer
         
   .downJumpingPlayer:
-        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], downJumpingPlayerFrames
-        jmp     .exit
+        add     eax, Player.DOWN_JUMPING
+        jmp     .animation
   
   .notDownJumpingPlayer:
         cmp     DWORD [player + Entity.speedX], 0
-        je      .notRunningPlauer
+        je      .notRunningPlayer
         
   .runningPlayer:
-        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 100
-        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], runningPlayerFrames
-        jmp     .exit      
+        add     eax, Player.RUNNING
+        jmp     .animation      
         
-  .notRunningPlauer:      
+  .notRunningPlayer:      
         
   .standingPlayer:
-        mov     DWORD [player + GameObjectWithAnimation.animation.maxTimer], 250
-        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], standingPlayerFrames
-
+        add     eax, Player.STANDING
+  
+  .animation:
+        stdcall Animation.Copy, player + GameObjectWithAnimation.animation, eax
+        
+        cmp     ebx, [player + GameObjectWithAnimation.animation.refFrames]
+        je      .exit
+        
+        stdcall Animation.Start, player + GameObjectWithAnimation.animation
+  
   .exit:
         ret     
 endp
@@ -140,14 +161,20 @@ endp
               
 proc Player.GetDamage 
         
-        cmp     DWORD [player + Player.invulnerabilityTimer], -1
-        jne     .exit
-     
-        cmp     DWORD [player + Player.worldTimer], TRUE
+        stdcall Timer.IsTimeUp, player.invulnerabilityTimer, [player.maxInvulnerabilityTimer]
+        cmp     eax, FALSE
+        jne     .hasNotInvulnerability
+
+        mov     DWORD [player.refAnimations], invulnerablePlayerAnimations
+        jmp     .exit        
+        
+  .hasNotInvulnerability:     
+        stdcall Timer.IsTimeUp, player.worldTimer, [player.maxWorldTimer]
+        cmp     eax, FALSE
         jne     .hasNotWorld
               
-        stdcall Timer.Stop, player + Player.worldTimer       
-        stdcall Timer.Start, player + Player.invulnerabilityTimer 
+        stdcall Timer.Stop, player.worldTimer       
+        stdcall Timer.Start, player.invulnerabilityTimer 
         jmp     .exit
   
   .hasNotWorld:      
@@ -155,7 +182,7 @@ proc Player.GetDamage
         jne     .hasNotArrow
         
         mov     DWORD [player + Player.hasArrow], FALSE        
-        stdcall Timer.Start, player + Player.invulnerabilityTimer
+        stdcall Timer.Start, player.invulnerabilityTimer
         jmp     .exit
         
   .hasNotArrow:      
@@ -163,7 +190,7 @@ proc Player.GetDamage
         jne     .hasNotHeart
         
         mov     DWORD [player + Player.hasHeart], FALSE
-        stdcall Timer.Start, player + Player.invulnerabilityTimer
+        stdcall Timer.Start, player.invulnerabilityTimer
         jmp     .exit
         
   .hasNotHeart: 
@@ -176,6 +203,8 @@ endp
 proc Player.Die
      
         mov     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
+        mov     DWORD [player + Entity.speedX], Player.SPEED_X_AFTER_DEATH
+        mov     DWORD [player + Entity.speedY], Player.SPEED_Y_AFTER_DEATH
         mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], dyingPlayerFrames
           
         ret
@@ -185,18 +214,19 @@ proc Player.TimerObject
 
         stdcall Player.ChangeAnimation
      
-        stdcall Timer.IsTimeUp, player + Player.invulnerabilityTimer, [player + Player.invulnerabilityTimer + sizeof.Player.invulnerabilityTimer]
+        stdcall Timer.IsTimeUp, player.invulnerabilityTimer, [player.invulnerabilityTimer + sizeof.Player.invulnerabilityTimer]
         cmp     eax, FALSE
         je      .invulnerabilityTimeIsNotUp
         
-        stdcall Timer.Stop, player + Player.invulnerabilityTimer 
+        stdcall Timer.Stop, player.invulnerabilityTimer
+        mov     DWORD [player.refAnimations], playerAnimations 
   
   .invulnerabilityTimeIsNotUp:
-        stdcall Timer.IsTimeUp, player + Player.worldTimer, [player + Player.worldTimer + sizeof.Player.worldTimer]
+        stdcall Timer.IsTimeUp, player.worldTimer, [player.worldTimer + sizeof.Player.worldTimer]
         cmp     eax, FALSE
         je      .worldTimeIsNotUp
 
-        stdcall Timer.Stop, player + Player.worldTimer
+        stdcall Timer.Stop, player.worldTimer
   
   .worldTimeIsNotUp:      
   .exit:   
