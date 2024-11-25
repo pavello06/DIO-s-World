@@ -25,6 +25,9 @@ endp
 
 proc KeyUp.Shoot\
      key
+        
+        cmp     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
+        je      .exit
                                                        
         mov     eax, [key]
         

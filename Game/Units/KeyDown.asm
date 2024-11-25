@@ -1,6 +1,9 @@
 proc KeyDown.Move\
      key
      
+        cmp     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
+        je      .exit
+     
         mov     eax, [key]
         
         cmp     eax, VK_LEFT
@@ -51,6 +54,9 @@ endp
 
 proc KeyDown.Pause\
      key
+     
+        cmp     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
+        je      .exit
      
         cmp     DWORD [key], VK_ESCAPE
         jne     .exit 
