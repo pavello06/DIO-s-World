@@ -54,7 +54,9 @@ proc Statistic.UpdateScore
         ret
 endp
 
-proc Statistic.UpdateBorderAndBonus
+proc Statistic.UpdateBorderAndBonus uses ebx
+
+        mov     ebx, [Statistic.bonus + MenuObjectWithAnimation.animation.refFrames]
   
   .bonus:      
         cmp     DWORD [player.worldTimer], -1
@@ -88,6 +90,11 @@ proc Statistic.UpdateBorderAndBonus
         mov     DWORD [Statistic.bonus + MenuObjectWithAnimation.animation], voidFrames
   
   .borderAndBonus:
+        cmp     ebx, [Statistic.bonus + MenuObjectWithAnimation.animation.refFrames]
+        je      @F
+        
+        stdcall Animation.Start, Statistic.bonus + MenuObjectWithAnimation.animation
+  @@:
         mov     eax, [Screen.xMin]
         add     eax, 45 * Drawing.NORMAL
         mov     [Statistic.border + Object.x], eax
@@ -133,6 +140,16 @@ proc Statistic.Update
         stdcall Statistic.UpdateScore
         stdcall Statistic.UpdateBorderAndBonus
         stdcall Statistic.UpdateStars
+
+        ret
+endp
+
+proc Statistic.Reset
+
+        mov     eax, [currentLevel]
+        
+        mov     DWORD [eax + Level.levelStatistics.score], 0
+        mov     DWORD [eax + Level.levelStatistics.stars], 0
 
         ret
 endp
