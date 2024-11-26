@@ -37,7 +37,7 @@ GameObject.PLAYER>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
 <FALSE, 0, 200, 0, standingPlayerFrames>>,\
 TRUE, 0, 0, TRUE>,\
-FALSE, 0, FALSE, FALSE, -1, 7000, -1, 1500, playerAnimations
+FALSE, 0, FALSE, FALSE, -1, 10000, -1, 1500, playerAnimations
 
 onlyPlayer dd 1, player
 
@@ -74,14 +74,19 @@ endp
               
 proc Player.ChangeAnimation uses ebx
         
-        cmp     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
-        je      .exit
-        
         mov     ebx, [player + GameObjectWithAnimation.animation.refFrames] 
         
         mov     eax, [player.refAnimations]
         add     eax, 4
         
+        cmp     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
+        jne     .notDyingPlayer
+  
+  .dyingPlayer:
+        add     eax, Player.DYING
+        jmp     .animation
+        
+  .notDyingPlayer:        
         cmp     DWORD [player + Entity.speedY], 0
         jle     .notUpJumpingPlayer
         
@@ -205,7 +210,6 @@ proc Player.Die
         mov     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
         mov     DWORD [player + Entity.speedX], Player.SPEED_X_AFTER_DEATH
         mov     DWORD [player + Entity.speedY], Player.SPEED_Y_AFTER_DEATH
-        mov     DWORD [player + GameObjectWithAnimation.animation.refFrames], dyingPlayerFrames
           
         ret
 endp
