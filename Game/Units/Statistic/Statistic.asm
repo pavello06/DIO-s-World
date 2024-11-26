@@ -26,8 +26,8 @@ Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, borderTexture
 
 .bonus dd\
 Object.MENU, 0, 0, HEART_WIDTH * Drawing.SMALL, HEART_HEIGHT * Drawing.SMALL,\
-Drawing.SMALL, Drawing.RIGHT, Drawing.UP, heartTexture,\
-FALSE, 0, 150, 0, heartFrames
+Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidTexture,\
+TRUE, 0, 10, 0, voidFrames
 
 .stars dd\
 Object.MENU, 0, 0, Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL,\
@@ -63,8 +63,8 @@ proc Statistic.UpdateBorderAndBonus uses ebx
         je      .notWorld
         
         mov     DWORD [Statistic.bonus + Object.width], WORLD_WIDTH * Drawing.SMALL
-        mov     DWORD [Statistic.bonus + Object.height], WORLD_HEIGHT * Drawing.SMALL        
-        stdcall Animation.Copy, Statistic.bonus + MenuObjectWithAnimation.animation, worldAnimation
+        mov     DWORD [Statistic.bonus + Object.height], WORLD_HEIGHT * Drawing.SMALL
+        mov     [Statistic.bonus + MenuObjectWithDrawing.drawing.refTexture], worldTexture       
         jmp     .borderAndBonus
 
   .notWorld:
