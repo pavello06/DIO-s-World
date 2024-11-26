@@ -154,6 +154,7 @@ section '.idata' import data readable writeable
 
   library kernel, 'KERNEL32.DLL',\
           user, 'USER32.DLL',\
+          winmm, 'WINMM.DLL',\
           gdi, 'GDI32.DLL',\
           opengl, 'OPENGL32.DLL'
 
@@ -179,6 +180,9 @@ section '.idata' import data readable writeable
          PostQuitMessage, 'PostQuitMessage',\
          SetTimer, 'SetTimer',\
          KillTimer, 'KillTimer'
+         
+  import winmm,\
+         PlaySound, 'PlaySound'
 
   import gdi,\
          ChoosePixelFormat, 'ChoosePixelFormat',\
