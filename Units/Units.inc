@@ -12,7 +12,8 @@ include 'Timer/Timer.asm'
 include 'WindowProcFunctions/WindowProcFunctions.asm'
 
 include '../Frames/Frames.inc'
+include '../Music/Music.inc'
 include '../Texture/Texture.inc'
 
 include '../Game/Game.asm'
-include '../Menu/Menu.asm'
+include '../Menu/Menu.asm'                 
