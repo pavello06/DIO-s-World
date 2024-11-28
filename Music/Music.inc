@@ -1,6 +1,6 @@
 proc Music.Play\
      refMusic
-
+        
         invoke PlaySound, [refMusic], 0, 0x00020000 or 0x0001
 
         ret
@@ -34,7 +34,7 @@ worldMusic db 'Music/Game/General/Bonuses/world.wav', 0
 mobMusic db 'Music/Game/General/Bonuses/mob.wav', 0
 
 ;Player-------------------------------------------------------------------------
-upJumpingPlayer db 'Music/Game/General/Player/upJumpingPlayer.wav', 0
+upJumpingPlayerMusic db 'Music/Game/General/Player/upJumpingPlayer.wav', 0
 
 ;Location1----------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------
