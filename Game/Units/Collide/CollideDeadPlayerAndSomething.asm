@@ -1,6 +1,6 @@
 proc Collide.CollideDeadPlayerAndDelete
 
-        invoke  ExitProcess, 0
+        stdcall Result.Lose
 
         ret
 endp
