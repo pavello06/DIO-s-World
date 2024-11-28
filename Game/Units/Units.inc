@@ -20,6 +20,7 @@ include '../Levels/Levels.inc'
 
 include 'Collide/Collide.asm'
 include 'Move/Move.asm'
+include 'Result/Result.asm'
 include 'Statistic/Statistic.asm'
 
 include 'KeyDown.asm'
