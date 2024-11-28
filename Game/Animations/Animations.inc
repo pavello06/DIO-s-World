@@ -14,7 +14,7 @@ venusFlycatcherAnimations dd TRUE, 0, 10, 0, deadVenusFlycatcherFrames, FALSE, 0
 ;Player-------------------------------------------------------------------------
 playerAnimations dd 5,\
 FALSE, 0, 200, 0, standingPlayerFrames,\
-FALSE, 0, 150, 0, runningPlayerFrames,\
+FALSE, 0, 100, 0, runningPlayerFrames,\
 TRUE, 0, 100, 0, upJumpingPlayerFrames,\
 TRUE, 0, 100, 0, downJumpingPlayerFrames,\
 TRUE, 0, 100, 0, dyingPlayerFrames
