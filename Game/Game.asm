@@ -33,7 +33,18 @@ proc Game.Timer uses ebx
         stdcall EnemyWithBullets.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithBullets]
         stdcall EnemyWithReverseTimer.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithReverseTimer]        
         stdcall EnemyWithStopTimer.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithStopTimer]
+        
+        stdcall Result.IsWin
+        cmp     eax, FALSE
+        je      .notWin
+        
+  .win:
+        stdcall Result.Win
+        jmp     .exit
+  
+  .notWin:
 
+  .exit:
         ret
 endp
 
