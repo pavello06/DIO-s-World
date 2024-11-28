@@ -34,10 +34,12 @@ ends
 
 include '../Levels/Location1/Level1/Level1.inc'
 include '../Levels/Location1/Level1/Buffer.inc'
+include '../Levels/Location1/Level2/Level2.inc'
+include '../Levels/Location1/Level2/Buffer.inc'
 
 currentLevel dd level1
 
-levels       dd levelsLength / 4 - 1, level1
+levels       dd levelsLength / 4 - 1, level1, level2
 levelsLength = $ - levels
 
 proc Levels.CopyFromBuffer uses ebx esi edi
@@ -52,5 +54,23 @@ proc Levels.CopyFromBuffer uses ebx esi edi
         mov     ecx, [edx + 0]
         rep     movsd      
      
+        ret
+endp
+
+proc Levels.GetCurrentLevelInArray                     
+                                                           
+        mov     ecx, [levels + Array.length]
+        lea     eax, [levels + sizeof.Array.length]
+        
+  .loop:        
+        mov     edx, [eax]
+        
+        cmp     edx, [currentLevel]
+        je      .exit
+       
+        add     eax, sizeof.Array.element
+        loop    .loop                                            
+        
+  .exit:
         ret
 endp

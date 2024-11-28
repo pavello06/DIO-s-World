@@ -1,26 +1,11 @@
-BufferLevel1:
-dd BufferLevel1Length / 4 - 1             
-
-.border1 GameObject\
-<Object.GAME, -1, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
-
-.border2 GameObject\
-<Object.GAME, 12476, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
-
-.spawn1 GameObjectWithDrawing\
-<<Object.GAME, 24 * Drawing.NORMAL, 49 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
-<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
-
-.spawn2 GameObjectWithDrawing\
-<<Object.GAME, 12476 - 35 * Drawing.NORMAL, 97 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
-<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
+Level2:
 
 .delete GameObject <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
 
 .dirt1 GameObjectWithDrawing <<Object.GAME, 0, 0, 21 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
                                     
-.grass1 GameObjectWithDrawing <<Object.GAME, 0, 32 * Drawing.NORMAL, 21 * GRASS_WIDTH * Drawing.NORMAL, GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+.grass1 GameObjectWithDrawing <<Object.GAME, 0, 32 * Drawing.NORMAL, 21 * GRASS_WIDTH * Drawing.NORMAL, 2 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 			                        <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
 .bush1 GameObjectWithDrawing <<Object.GAME, 80 * Drawing.NORMAL, 49 * Drawing.NORMAL, BUSH_WIDTH * Drawing.NORMAL, BUSH_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
@@ -69,7 +54,7 @@ dd BufferLevel1Length / 4 - 1
 .luck1 Luck <<<<Object.GAME, 305 * Drawing.NORMAL, 80 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
 			      <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
             <FALSE, 0, 150, 0, luckFrames>>,\
-            Level1.heart1
+            .heart1
              
 .bush2 GameObjectWithDrawing <<Object.GAME, 308 * Drawing.NORMAL, 49 * Drawing.NORMAL, BUSH_WIDTH * Drawing.NORMAL, BUSH_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, bushTexture>
@@ -338,7 +323,7 @@ Bonus.COIN
 <<<<Object.GAME, 1266 * Drawing.NORMAL, 95 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
 <FALSE, 0, 150, 0, luckFrames>>,\
-Level1.coin8
+.coin8
 
 .brick4 GameObjectWithDrawing\
 <<Object.GAME, 1282 * Drawing.NORMAL, 95 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
@@ -472,7 +457,7 @@ Bonus.COIN
 <<<<Object.GAME, 1503 * Drawing.NORMAL, 95 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
 <FALSE, 0, 150, 0, luckFrames>>,\
-Level1.coin11
+.coin11
 
 .brick6 GameObjectWithDrawing\
 <<Object.GAME, 1519 * Drawing.NORMAL, 95 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
@@ -551,7 +536,7 @@ Bonus.COIN
 <<<<Object.GAME, 1615 * Drawing.NORMAL, 49 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
 <FALSE, 0, 150, 0, luckFrames>>,\
-Level1.coin12
+.coin12
 
 .brick7 GameObjectWithDrawing\
 <<Object.GAME, 1631 * Drawing.NORMAL, 49 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
@@ -741,7 +726,7 @@ Bonus.COIN
 <<<<Object.GAME, 2106 * Drawing.NORMAL, 145 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
 <FALSE, 0, 150, 0, luckFrames>>,\
-Level1.coin19
+.coin19
 
 .star2 Bonus\
 <<<<Object.GAME, 2000 * Drawing.NORMAL, 180 * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
@@ -800,7 +785,7 @@ Bonus.COIN
 <<<<Object.GAME, 2266 * Drawing.NORMAL, 113 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
 <FALSE, 0, 150, 0, luckFrames>>,\
-Level1.coin12
+.coin12
 
 .brick9 GameObjectWithDrawing\
 <<Object.GAME, 2282 * Drawing.NORMAL, 113 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
@@ -846,6 +831,100 @@ Bonus.STAR
 
 .flower9 GameObjectWithDrawing\
 <<Object.GAME, 2430 * Drawing.NORMAL, 97 * Drawing.NORMAL, FLOWER_WIDTH * Drawing.NORMAL, FLOWER_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
-<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture> 
-            
-BufferLevel1Length = $ - BufferLevel1
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture>            
+
+.gameObjects                    dd .gameObjectsLength / 4 - 1,\
+                                   .delete, .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
+                                   .dirt2, .grass2, .reverse1, .reverse2, .flower2, .owl1,\
+                                   .shadow2, .dirt3, .grass3, .palm3, .coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .reverse3, .reverse4, .bush3, .reverse5, .reverse6, .bottomPipe2, .topPipe2, .venusFlycatcher1, .shadow6,\
+                                   .dirt4, .grass4, .shadow3, .shadow4, .palm4, .star1, .palm5, .shadow5, .owl2,\
+                                   .dirt5, .grass5, .spring1, .palm6, .flower3, .greenBlock1, .blueBlock1, .pinkBlock1, .yellowBlock1, .greenBlock2, .blueBlock2, .pinkBlock2, .yellowBlock2,\
+                                   .dirt6, .grass6, .shadow7, .palm7, .reverse7, .reverse8, .bee1,\
+                                   .dirt7, .grass7, .shadow8, .shadow9, .dirt8, .grass8, .shadow10, .flower4,\
+                                   .dirt9, .grass9, .shadow11, .shadow12, .palm8, .bush4, .flower5, .reverse9, .reverse10, .owl3, .brick3, .coin8, .luck2, .brick4, .brick5, .reverse11, .reverse12, .owl4,\
+                                   .dirt10, .grass10, .coin9, .coin10, .reverse13, .reverse14, .bee2,\
+                                   .dirt11, .grass11, .palm9, .flower6, .shadow13,\
+                                   .pinkBlock3, .yellowBlock3, .greenBlock3, .greenBlock4, .blueBlock4, .yellowBlock4, .pinkBlock5, .yellowBlock5, .greenBlock5, .greenBlock6, .blueBlock6, .yellowBlock6, .brick6, .luck3, .coin11,\
+                                   .dirt12, .grass12, .shadow14, .shadow15, .venusFlycatcher2, .bottomPipe3, .topPipe3, .reverse15, .reverse16, .greenBlock7, .blueBlock7, .yellowBlock7, .pinkBlock8, .greenBlock8, .star2, .block1, .coin12, .luck4, .brick7,\
+                                   .dirt13, .grass13, .shadow16, .shadow17, .flower7, .owl5, .reverse17, .reverse18, .pinkBlock9, .yellowBlock9, .greenBlock9, .blueBlock9, .pinkBlock10, .pinkBlock11, .pinkBlock12, .pinkBlock13, .pinkBlock14, .pinkBlock15, .coin13, .coin14, .coin15, .coin16,\
+                                   .dirt14, .grass14, .shadow18, .palm10, .bush5, .owl6, .reverse19, .reverse20,\
+                                   .dirt15, .grass15, .shadow19, .shadow20, .shadow21, .palm11, .coin17, .coin18, .flower8, .block2, .coin19, .luck5,\
+                                   .dirt16, .grass16, .shadow22, .shadow23,\
+                                   .dirt17, .grass17, .owl7, .reverse21, .reverse22, .brick8, .coin20, .luck6, .brick9,\
+                                   .dirt18, .grass18, .star3, .dirt181, .shadow24,\
+                                   .dirt19, .grass19, .shadow25, .palm12, .flower9,\
+                                   player
+.gameObjectsLength              = $ - .gameObjects
+
+.gameObjectsWithDrawing         dd .gameObjectsWithDrawingLength / 4 - 1,\
+                                   .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
+                                   .dirt2, .grass2, .flower2, .owl1,\
+                                   .dirt3, .grass3, .shadow2, .palm3,.coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .bush3, .venusFlycatcher1, .bottomPipe2, .topPipe2, .shadow6,\
+                                   .dirt4, .grass4, .shadow3, .shadow4, .palm4, .star1, .palm5, .shadow5, .owl2,\
+                                   .dirt5, .grass5, .spring1, .palm6, .flower3, .greenBlock1, .blueBlock1, .pinkBlock1, .yellowBlock1, .greenBlock2, .blueBlock2, .pinkBlock2, .yellowBlock2,\
+                                   .dirt6, .grass6, .shadow7, .palm7, .bee1,\
+                                   .dirt7, .grass7, .shadow8, .dirt8, .grass8, .shadow9, .shadow10, .flower4,\
+                                   .dirt9, .grass9, .shadow11, .palm8, .bush4, .flower5, .owl3, .brick3, .coin8, .luck2, .brick4, .brick5, .owl4,\
+                                   .dirt10, .grass10, .shadow12, .coin9, .coin10,  .bee2,\
+                                   .dirt11, .grass11, .palm9, .flower6, .shadow13,\
+                                   .pinkBlock3, .yellowBlock3, .greenBlock3, .greenBlock4, .blueBlock4, .yellowBlock4, .pinkBlock5, .yellowBlock5, .greenBlock5, .greenBlock6, .blueBlock6, .yellowBlock6, .luck3, .coin11, .brick6,\
+                                   .dirt12, .grass12, .shadow14, .shadow15, .venusFlycatcher2, .bottomPipe3, .topPipe3, .greenBlock7, .blueBlock7, .yellowBlock7, .pinkBlock8, .greenBlock8, .star2, .block1, .coin12, .luck4, .brick7,\
+                                   .dirt13, .grass13, .shadow16, .shadow17, .flower7, .owl5, .pinkBlock9, .yellowBlock9, .greenBlock9, .blueBlock9, .pinkBlock10, .pinkBlock11, .pinkBlock12, .pinkBlock13, .pinkBlock14, .pinkBlock15, .coin13, .coin14, .coin15, .coin16,\
+                                   .dirt14, .grass14, .shadow18, .palm10, .bush5,\
+                                   .dirt15, .grass15, .shadow19, .shadow20, .shadow21, .owl6, .palm11, .coin17, .coin18, .flower8, .block2, .coin19, .luck5,\
+                                   .dirt16, .grass16, .shadow22, .shadow23,\
+                                   .dirt17, .grass17, .owl7, .brick8, .coin20, .luck6, .brick9,\
+                                   .dirt18, .grass18, .star3, .dirt181, .shadow24,\
+                                   .dirt19, .grass19, .shadow25, .palm12, .flower9,\
+                                   Statistic.wSCORE1, Statistic.wSCORE2, Statistic.wSCORE3, Statistic.wSCORE4, Statistic.wSCORE5, Statistic.nSCORE1, Statistic.nSCORE2, Statistic.nSCORE3, Statistic.nSCORE4, Statistic.nSCORE5, Statistic.border, Statistic.bonus, Statistic.stars,\
+                                   player
+.gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
+
+.gameObjectsWithAnimation       dd .gameObjectsWithAnimationLength / 4 - 1,\
+                                   .coin1, .coin2, .coin3, .coin4, .heart1, .luck1,\
+                                   .owl1,\
+                                   .coin5, .coin6, .coin7, .owl2, .venusFlycatcher1,\
+                                   .spring1, .bee1, .owl3, Statistic.bonus, .luck2, .coin8, .owl4, .coin9, .coin10,  .bee2,\  
+                                   .coin11, .luck3, .venusFlycatcher2, .star2, .coin12, .luck4,\
+                                   .owl5, .coin13, .coin14, .coin15, .coin16,\
+                                   .owl6,\
+                                   .coin17, .coin18, .coin19, .luck5,\
+                                   .owl7, .coin20, .luck6,\
+                                   player
+.gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
+
+.entities                       dd .entitiesLength / 4 - 1,\
+                                   player,\
+                                   .owl1,\
+                                   .owl2, .venusFlycatcher1, .bee1, .owl3, .owl4, .bee2,\
+                                   .venusFlycatcher2,\
+                                   .owl5,\
+                                   .owl6,\
+                                   .owl7
+.entitiesLength                 = $ - .entities
+
+.bricksWithBreakTimer           dd .bricksWithBreakTimerLength / 4 - 1
+                                  
+.bricksWithBreakTimerLength     = $ - .bricksWithBreakTimer
+
+.enemiesWithBullets             dd .enemiesWithBulletsLength / 4 - 1
+                                   
+.enemiesWithBulletsLength       = $ - .enemiesWithBullets
+
+.enemiesWithReverseTimer        dd .enemiesWithReverseTimerLength / 4 - 1
+                                   
+.enemiesWithReverseTimerLength  = $ - .enemiesWithReverseTimer
+
+.enemiesWithStopTimer           dd .enemiesWithStopTimerLength / 4 - 1,\
+                                   .venusFlycatcher1, .venusFlycatcher2
+.enemiesWithStopTimerLength     = $ - .enemiesWithStopTimer
+
+.words                          dd .wordsLength / 4 - 1,\
+                                   Statistic.wSCORE
+.wordsLength                    = $ - .words
+
+.numbers                        dd .numbersLength / 4 - 1,\
+                                   Statistic.nSCORE 
+.numbersLength                  = $ - .numbers
+
+level2 Level <TRUE, FALSE, 0, 0, 0, 0>, 0, 0, 12475, 1300, <80, 187, 255>, <Level2.gameObjects, Level2.gameObjectsWithDrawing, Level2.gameObjectsWithAnimation, Level2.entities, Level2.bricksWithBreakTimer, Level2.enemiesWithBullets, Level2.enemiesWithReverseTimer, Level2.enemiesWithStopTimer, Level2.words, Level2.numbers>, Level2, BufferLevel2

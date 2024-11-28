@@ -1,5 +1,19 @@
 Level1:
 
+.border1 GameObject\
+<Object.GAME, -1, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
+
+.border2 GameObject\
+<Object.GAME, 12476, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
+
+.spawn1 GameObjectWithDrawing\
+<<Object.GAME, 24 * Drawing.NORMAL, 49 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
+
+.spawn2 GameObjectWithDrawing\
+<<Object.GAME, 12476 - 35 * Drawing.NORMAL, 97 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
+
 .delete GameObject <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
 
 .dirt1 GameObjectWithDrawing <<Object.GAME, 0, 0, 21 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -834,7 +848,7 @@ Bonus.STAR
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture>            
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
-                                   .delete, .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
+                                   .border1, .border2, .spawn1, .spawn2, .delete, .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
                                    .dirt2, .grass2, .reverse1, .reverse2, .flower2, .owl1,\
                                    .shadow2, .dirt3, .grass3, .palm3, .coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .reverse3, .reverse4, .bush3, .reverse5, .reverse6, .bottomPipe2, .topPipe2, .venusFlycatcher1, .shadow6,\
                                    .dirt4, .grass4, .shadow3, .shadow4, .palm4, .star1, .palm5, .shadow5, .owl2,\
@@ -857,7 +871,7 @@ Bonus.STAR
 .gameObjectsLength              = $ - .gameObjects
 
 .gameObjectsWithDrawing         dd .gameObjectsWithDrawingLength / 4 - 1,\
-                                   .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
+                                   .spawn1, .spawn2, .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
                                    .dirt2, .grass2, .flower2, .owl1,\
                                    .dirt3, .grass3, .shadow2, .palm3,.coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .bush3, .venusFlycatcher1, .bottomPipe2, .topPipe2, .shadow6,\
                                    .dirt4, .grass4, .shadow3, .shadow4, .palm4, .star1, .palm5, .shadow5, .owl2,\
@@ -926,5 +940,5 @@ Bonus.STAR
 .numbers                        dd .numbersLength / 4 - 1,\
                                    Statistic.nSCORE 
 .numbersLength                  = $ - .numbers
-
-level1 Level <TRUE, FALSE, 0, 0, 0, 2>, 0, 0, 12475, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.words, Level1.numbers>, Level1, BufferLevel1
+                                             
+level1 Level <TRUE, FALSE, 0, 0, 0, 0>, 0, 0, 12475, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.words, Level1.numbers>, Level1, BufferLevel1

@@ -1,26 +1,12 @@
-BufferLevel1:
-dd BufferLevel1Length / 4 - 1             
-
-.border1 GameObject\
-<Object.GAME, -1, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
-
-.border2 GameObject\
-<Object.GAME, 12476, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
-
-.spawn1 GameObjectWithDrawing\
-<<Object.GAME, 24 * Drawing.NORMAL, 49 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
-<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
-
-.spawn2 GameObjectWithDrawing\
-<<Object.GAME, 12476 - 35 * Drawing.NORMAL, 97 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
-<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
+BufferLevel2:
+dd BufferLevel2Length / 4 - 1             
 
 .delete GameObject <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
 
 .dirt1 GameObjectWithDrawing <<Object.GAME, 0, 0, 21 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
                                     
-.grass1 GameObjectWithDrawing <<Object.GAME, 0, 32 * Drawing.NORMAL, 21 * GRASS_WIDTH * Drawing.NORMAL, GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+.grass1 GameObjectWithDrawing <<Object.GAME, 0, 32 * Drawing.NORMAL, 21 * GRASS_WIDTH * Drawing.NORMAL, 2 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 			                        <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
 .bush1 GameObjectWithDrawing <<Object.GAME, 80 * Drawing.NORMAL, 49 * Drawing.NORMAL, BUSH_WIDTH * Drawing.NORMAL, BUSH_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
@@ -848,4 +834,4 @@ Bonus.STAR
 <<Object.GAME, 2430 * Drawing.NORMAL, 97 * Drawing.NORMAL, FLOWER_WIDTH * Drawing.NORMAL, FLOWER_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture> 
             
-BufferLevel1Length = $ - BufferLevel1
+BufferLevel2Length = $ - BufferLevel2
