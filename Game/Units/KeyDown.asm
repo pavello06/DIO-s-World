@@ -32,6 +32,8 @@ proc KeyDown.Move\
         cmp     DWORD [player + Entity.speedY], -Move.G
         jl      .exit
         
+        stdcall Music.Play, upJumpingPlayerMusic
+        
         mov     DWORD [player + Player.canJump], FALSE
         mov     DWORD [player + Entity.speedY], Player.SPEED_Y_AFTER_MOVE_KEY
         jmp     .exit
