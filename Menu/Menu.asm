@@ -15,8 +15,6 @@ endp
 proc Menu.Timer uses ebx
 
         mov     ebx, [currentMenu]
-        
-        stdcall Number.TimerObjects, [ebx + Menu.menuObjects.refNumbers]
 
         ret
 endp
@@ -28,6 +26,7 @@ proc Menu.Paint uses ebx
         stdcall Screen.UpdateForMenu
         
         stdcall String.TimerObjects, [ebx + Menu.menuObjects.refWords]
+        stdcall Number.TimerObjects, [ebx + Menu.menuObjects.refNumbers]
         
         stdcall Drawing.DrawObjects, [ebx + Menu.menuObjects.refMenuObjectsWithDrawing]
         stdcall Animation.AnimateObjects, [ebx + Menu.menuObjects.refMenuObjectsWithAnimation]

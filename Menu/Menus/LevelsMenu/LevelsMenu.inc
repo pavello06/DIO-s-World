@@ -27,7 +27,7 @@ TRUE, Button.GameStart, level1
 .levelButton2 Button\
 <<<Object.MENU, 150 + 270 * 1, 600, LEVEL_BUTTON_WIDTH * Drawing.BIG, LEVEL_BUTTON_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, levelButtonTexture>>,\
-FALSE, Button.GameStart, level1
+FALSE, Button.GameStart, level2
 
 .levelDigit2 MenuObjectWithDrawing\
 <<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH - ZERO_WIDTH) / 2 * Drawing.BIG, 600 + ((LEVEL_BUTTON_HEIGHT - ZERO_HEIGHT) / 2 + 2) * Drawing.BIG, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG>>,\ 

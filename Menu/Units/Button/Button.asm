@@ -57,6 +57,21 @@ proc Button.GameContinue\
         ret
 endp
 
+proc Button.GameNext\
+     arg
+
+        stdcall Levels.GetCurrentLevelInArray
+        add     eax, 4    
+        
+        mov     eax, [eax]
+        mov     [currentLevel], eax
+
+        stdcall WindowProcFunctions.ChangeToGame
+        stdcall Game.Start
+
+        ret
+endp
+
 proc Button.Menu\
      refScreen
 
