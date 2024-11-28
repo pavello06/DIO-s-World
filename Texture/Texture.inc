@@ -81,6 +81,8 @@ include 'Game/General/Blocks/spring.inc'
 include 'Game/General/Blocks/spring2.inc'
 include 'Game/General/Blocks/spring3.inc'
 
+include 'Game/General/Blocks/spawn.inc'
+
 ;Bonuses------------------------------------------------------------------------
 include 'Game/General/Bonuses/border.inc'
 
