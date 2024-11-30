@@ -79,6 +79,8 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
+        stdcall File.ReadLevelStatistics
+        
         stdcall WindowProcFunctions.ChangeToMenu
         stdcall Menu.Start
               
@@ -161,7 +163,12 @@ section '.idata' import data readable writeable
   import kernel,\
          GetModuleHandle, 'GetModuleHandleA',\
          GetTickCount, 'GetTickCount',\
-         ExitProcess, 'ExitProcess'
+         ExitProcess, 'ExitProcess',\
+         CreateFile, 'CreateFileA',\
+         WriteFile, 'WriteFile',\
+         ReadFile, 'ReadFile',\
+         CloseHandle, 'CloseHandle',\
+         SetFilePointer, 'SetFilePointer'
 
   import user,\
          RegisterClass, 'RegisterClassA',\
