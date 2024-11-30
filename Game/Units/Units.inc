@@ -19,6 +19,7 @@ include 'Teleport/Teleport.asm'
 include '../Levels/Levels.inc'
 
 include 'Collide/Collide.asm'
+include 'File/File.asm'
 include 'Move/Move.asm'
 include 'Result/Result.asm'
 include 'Statistic/Statistic.asm'

@@ -88,6 +88,8 @@ endp
 proc Button.Exit\
      arg
 
+        stdcall File.WriteLevelStatistics
+
         invoke  ExitProcess, 0
 
         ret
