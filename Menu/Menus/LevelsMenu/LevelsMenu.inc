@@ -184,15 +184,15 @@ FALSE, Button.GameStart, level1
 .levelStar21 Star\
 <<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
 <Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
-1, level1
+1, level2
 .levelStar22 Star\
 <<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (STAR_WIDTH / 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
 <Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
-2, level1
+2, level2
 .levelStar23 Star\
 <<<Object.MENU, 150 + 270 * 1 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG + (STAR_WIDTH / 2 + 2) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 
 <Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
-3, level1
+3, level2
 
 .levelStar31 Star\
 <<<Object.MENU, 150 + 270 * 2 + (LEVEL_BUTTON_WIDTH / 2) * Drawing.BIG - (3 * STAR_WIDTH / 2 + 1) * Drawing.SMALL, 550, STAR_WIDTH * Drawing.SMALL, STAR_HEIGHT * Drawing.SMALL>>,\ 

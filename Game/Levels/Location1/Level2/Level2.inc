@@ -927,4 +927,4 @@ Bonus.STAR
                                    Statistic.nSCORE 
 .numbersLength                  = $ - .numbers
 
-level2 Level <TRUE, FALSE, 0, 0, 0, 0>, 0, 0, 12475, 1300, <80, 187, 255>, <Level2.gameObjects, Level2.gameObjectsWithDrawing, Level2.gameObjectsWithAnimation, Level2.entities, Level2.bricksWithBreakTimer, Level2.enemiesWithBullets, Level2.enemiesWithReverseTimer, Level2.enemiesWithStopTimer, Level2.words, Level2.numbers>, Level2, BufferLevel2
+level2 Level <TRUE, FALSE, 0, 0, 0, 0>, 0, 0, 5475, 1300, <80, 187, 255>, <Level2.gameObjects, Level2.gameObjectsWithDrawing, Level2.gameObjectsWithAnimation, Level2.entities, Level2.bricksWithBreakTimer, Level2.enemiesWithBullets, Level2.enemiesWithReverseTimer, Level2.enemiesWithStopTimer, Level2.words, Level2.numbers>, Level2, BufferLevel2
