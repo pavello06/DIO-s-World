@@ -205,12 +205,18 @@ proc Collide.CollidePlayerAndEnemy\
 
         cmp     DWORD [side], Collide.BOTTOM
         jne     .notBottom
-        mov     eax, [refPlayer]
-        cmp     DWORD [eax + Entity.speedY], -2
+        cmp     DWORD [player + Entity.speedY], -2
         jge     .notBottom
         
-        mov     [eax + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
-        stdcall Enemy.GetDamage, [refEnemy]
+        mov     [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
+        
+        mov     eax, [refEnemy]        
+        mov     ecx, [currentLevel]
+        
+        mov     edx, [eax + Enemy.score]
+        add     DWORD [ecx + Level.levelStatistics.score], edx
+        
+        stdcall Enemy.GetDamage, eax
         jmp     .exit 
         
   .notBottom:
@@ -224,13 +230,23 @@ proc Collide.CollidePlayerAndSnail\
      refPlayer, refSnail, side
 
         cmp     DWORD [side], Collide.BOTTOM
-        je      .bottom 
+        jne     .notBottom
+        cmp     DWORD [player + Entity.speedY], -2
+        jge     .notBottom
         
-        stdcall Player.GetDamage, [refPlayer]
+        mov     [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
+        
+        mov     eax, [refSnail]        
+        mov     ecx, [currentLevel]
+        
+        mov     edx, [eax + Enemy.score]
+        add     DWORD [ecx + Level.levelStatistics.score], edx
+        
+        stdcall Snail.GetDamage, eax
         jmp     .exit 
         
-  .bottom:
-        stdcall Snail.GetDamage, [refSnail]
+  .notBottom:
+        stdcall Player.GetDamage, [refPlayer]
 
   .exit:   
         ret

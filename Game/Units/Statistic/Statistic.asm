@@ -25,7 +25,7 @@ Object.MENU, 200, 200, BORDER_WIDTH * Drawing.LITTLE, BORDER_HEIGHT * Drawing.LI
 Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, borderTexture
 
 .bonus dd\
-Object.MENU, 0, 0, HEART_WIDTH * Drawing.SMALL, HEART_HEIGHT * Drawing.SMALL,\
+Object.MENU, 0, 0, Drawing.SMALL, Drawing.SMALL,\
 Drawing.SMALL, Drawing.RIGHT, Drawing.UP, voidTexture,\
 TRUE, 0, 10, 0, voidFrames
 
@@ -74,6 +74,7 @@ proc Statistic.UpdateBorderAndBonus uses ebx
         mov     DWORD [Statistic.bonus + Object.width], ARROW_WIDTH * Drawing.SMALL
         mov     DWORD [Statistic.bonus + Object.height], ARROW_HEIGHT * Drawing.SMALL        
         stdcall Animation.Copy, Statistic.bonus + MenuObjectWithAnimation.animation, arrowAnimation
+        mov     [Statistic.bonus + MenuObjectWithDrawing.drawing.refTexture], arrowTexture
         jmp     .borderAndBonus
 
   .notArrow:
