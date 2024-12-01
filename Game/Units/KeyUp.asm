@@ -41,11 +41,11 @@ proc KeyUp.Shoot\
         jne     .exit
   
   .shootKey:        
-        stdcall Player.CanShoot, player        
+        stdcall Player.CanShoot       
         cmp     eax, FALSE
         je      .exit
         
-        stdcall Player.Shoot, player
+        stdcall Player.Shoot
      
   .exit:  
         ret

@@ -19,18 +19,18 @@ proc Bullet.ActivateOrDeactivate uses ebx,\
         mov     eax, [isActive]
         mov     DWORD [ebx + Bullet.isActive], eax
         
-        mov     ecx, sizeof.Animation
+        mov     ecx, 4 + sizeof.Animation
         
         cmp     [isActive], FALSE
         je      .notActive
   
   .active:
-        mov     ecx, 0
+        mov     ecx, 4
         
   .notActive:          
         add     ecx, [ebx + Bullet.refAnimations]
         lea     edx, [ebx + GameObjectWithAnimation.animation]
-        stdcall Animation.Copy, edx, ecx       
+        stdcall Animation.Copy, edx, ecx     
         
         lea     eax, [ebx + GameObjectWithAnimation.animation]
         stdcall Animation.Start, eax
@@ -81,5 +81,43 @@ proc Bullet.GetActiveBullet\
         mov     eax, edx                                            
         
   .exit:
+        ret
+endp
+
+proc Bullet.TimerObject\
+     refBullet
+     
+        mov     eax, [refBullet]
+        
+        mov     ecx, [eax + Object.x]
+        cmp     ecx, [Screen.xMax]
+        jg      .activate
+        
+        add     ecx, [eax + Object.width]
+        cmp     ecx, [Screen.xMin]
+        jl      .activate
+        
+        mov     edx, [eax + Object.y]
+        cmp     edx, [Screen.yMax]
+        jg      .activate
+        
+        add     edx, [eax + Object.height]
+        cmp     edx, [Screen.yMin]
+        jl      .activate
+        
+        jmp     .exit        
+        
+  .activate:
+        stdcall Bullet.Activate, eax
+  
+  .exit:   
+        ret
+endp
+
+proc Bullet.TimerObjects\
+     refBullets
+     
+        stdcall Array.Iterate, Bullet.TimerObject, [refBullets]
+          
         ret
 endp

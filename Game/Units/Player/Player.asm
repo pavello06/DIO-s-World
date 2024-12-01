@@ -31,13 +31,39 @@ Player.SPEED_Y_AFTER_DEATH = 20
 Player.BULLET_SPEED_X_AFTER_SHOOT_KEY = 14
 Player.BULLET_SPEED_Y_AFTER_SHOOT_KEY = 0
 
+playerBullet1 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, PLAYER_BULLET_WIDTH * Drawing.NORMAL, PLAYER_BULLET_HEIGHT * Drawing.NORMAL>,\ 
+GameObject.PLAYER_BULLET>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, playerBulletTexture>>,\
+<FALSE, 0, 120, 0, playerBulletFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, playerBulletAnimations
+
+playerBullet2 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, PLAYER_BULLET_WIDTH * Drawing.NORMAL, PLAYER_BULLET_HEIGHT * Drawing.NORMAL>,\ 
+GameObject.PLAYER_BULLET>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, playerBulletTexture>>,\
+<FALSE, 0, 120, 0, playerBulletFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, playerBulletAnimations
+
+playerBullet3 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, PLAYER_BULLET_WIDTH * Drawing.NORMAL, PLAYER_BULLET_HEIGHT * Drawing.NORMAL>,\ 
+GameObject.PLAYER_BULLET>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, playerBulletTexture>>,\
+<FALSE, 0, 120, 0, playerBulletFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, playerBulletAnimations
+
+playerBullets dd 3, playerBullet1, playerBullet2, playerBullet3
+
 player Player\
 <<<<<Object.GAME, 30 * Drawing.NORMAL, 100 * Drawing.NORMAL, STANDING_PLAYER_WIDTH * Drawing.NORMAL, STANDING_PLAYER_HEIGHT * Drawing.NORMAL>,\ 
 GameObject.PLAYER>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
 <FALSE, 0, 200, 0, standingPlayerFrames>>,\
 TRUE, 0, 0, TRUE>,\
-FALSE, 0, FALSE, FALSE, -1, 10000, -1, 1500, playerAnimations
+FALSE, playerBullets, FALSE, FALSE, -1, 10000, -1, 1500, playerAnimations
 
 onlyPlayer dd 1, player
 
@@ -68,6 +94,19 @@ proc Player.Reset
         mov     DWORD [player.hasArrow], FALSE
         stdcall Timer.Stop, player.worldTimer
         stdcall Timer.Stop, player.invulnerabilityTimer
+        
+        mov     [playerBullet1 + Object.x], Object.TRASH_X
+        mov     [playerBullet2 + Object.x], Object.TRASH_X
+        mov     [playerBullet3 + Object.x], Object.TRASH_X
+        mov     [playerBullet1 + Object.y], Object.TRASH_Y
+        mov     [playerBullet2 + Object.y], Object.TRASH_Y
+        mov     [playerBullet3 + Object.y], Object.TRASH_Y
+        mov     [playerBullet1 + Entity.canMove], FALSE
+        mov     [playerBullet2 + Entity.canMove], FALSE
+        mov     [playerBullet3 + Entity.canMove], FALSE
+        mov     [playerBullet1 + Bullet.isActive], FALSE
+        mov     [playerBullet2 + Bullet.isActive], FALSE
+        mov     [playerBullet3 + Bullet.isActive], FALSE
   
         ret
 endp
@@ -129,7 +168,7 @@ endp
 
 proc Player.CanShoot
         
-        stdcall Bullet.GetActiveBullet, [player + Player.refBullets]
+        stdcall Bullet.GetActiveBullet, [player.refBullets]
         cmp     eax, -1
         je      .canNotShoot                  
   
@@ -146,7 +185,7 @@ endp
 
 proc Player.Shoot 
      
-        stdcall Bullet.GetActiveBullet, [player + Player.refBullets]
+        stdcall Bullet.GetActiveBullet, [player.refBullets]
         
         mov     ecx, eax        
         
@@ -158,7 +197,11 @@ proc Player.Shoot
         mov     eax, [player + GameObjectWithDrawing.drawing.directionX]
         mov     [ecx + GameObjectWithDrawing.drawing.directionX], eax        
         
-        stdcall Bullet.Deactivate, ecx, [player + Object.x], [player + Object.y]
+        mov     eax, [player + Object.height]
+        sub     eax, [playerBullet1 + Object.height]
+        shr     eax, 1
+        add     eax, [player + Object.y] 
+        stdcall Bullet.Deactivate, ecx, [player + Object.x], eax
   
   .exit:   
         ret     
