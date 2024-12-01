@@ -1,0 +1,1 @@
+playerBulletFrames dd 2, playerBulletTexture, playerBullet2Texture

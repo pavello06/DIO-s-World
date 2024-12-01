@@ -55,6 +55,8 @@ include 'Game/General/Player/invulnerableDownJumpingPlayer.inc'
 
 include 'Game/General/Player/invulnerableDyingPlayer.inc'
 
+include 'Game/General/Player/playerBullet.inc'
+
 ;Location1----------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------
 

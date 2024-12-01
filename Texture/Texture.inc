@@ -126,6 +126,9 @@ include 'Game/General/Player/downJumpingPlayer.inc'
 
 include 'Game/General/Player/dyingPlayer.inc'
 
+include 'Game/General/Player/playerBullet.inc'
+include 'Game/General/Player/playerBullet2.inc'
+
 ;Location1----------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------
 include 'Game/Location1/Blocks/grass.inc'
