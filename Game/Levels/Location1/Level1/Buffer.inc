@@ -136,17 +136,16 @@ dd BufferLevel1Length / 4 - 1
 .bush3 GameObjectWithDrawing <<Object.GAME, 755 * Drawing.NORMAL, 49 * Drawing.NORMAL, BUSH_WIDTH * Drawing.NORMAL, BUSH_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 			                       <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, bushTexture>
                              
-.reverse5 GameObject <Object.GAME, 780 * Drawing.NORMAL, 55 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
+.reverse5 GameObject <Object.GAME, 780 * Drawing.NORMAL, 55 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE + GameObject.SPECIAL
 
-.reverse6 GameObject <Object.GAME, 780 * Drawing.NORMAL, 97 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
+.reverse6 GameObject <Object.GAME, 780 * Drawing.NORMAL, 97 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE + GameObject.SPECIAL
                              
 .venusFlycatcher1 EnemyWithStopTimer <<<<<<<Object.GAME, 777 * Drawing.NORMAL, 55 * Drawing.NORMAL, VENUS_FLYCATCHER_WIDTH * Drawing.LITTLE, VENUS_FLYCATCHER_HEIGHT * Drawing.LITTLE>, GameObject.UNTOCHABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.STOPABLE_ENEMY>,\
 			                               <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, venusFlycatcherTexture>>,\
                                      <FALSE, 0, 300, 0, venusFlycatcherFrames>>,\
                                      TRUE, 0, 2, FALSE>,\
                                      1, venusFlycatcherAnimations, 200>,\
-                                     -1, 2000>,\
-                                     GameObject.REVERSE
+                                     -1, 2000>
  
 .bottomPipe2 GameObjectWithDrawing <<Object.GAME, 775 * Drawing.NORMAL + 3, 49 * Drawing.NORMAL, 1 * BOTTOM_PIPE_WIDTH * Drawing.LITTLE, 20  * BOTTOM_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
 			                             <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, bottomPipeTexture>                               
@@ -508,14 +507,13 @@ Level1.coin11
 <FALSE, 0, 300, 0, venusFlycatcherFrames>>,\
 TRUE, 0, 2, FALSE>,\
 1, venusFlycatcherAnimations, 200>,\
--1, 2000>,\
-GameObject.REVERSE
+-1, 2000>
 
 .reverse15 GameObject\
-<Object.GAME, 1574 * Drawing.NORMAL, 65 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, 1574 * Drawing.NORMAL, 65 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE + GameObject.SPECIAL
 
 .reverse16 GameObject\
-<Object.GAME, 1574 * Drawing.NORMAL, 113 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, 1574 * Drawing.NORMAL, 113 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE + GameObject.SPECIAL
 
 .greenBlock7 GameObjectWithDrawing\
 <<Object.GAME, 1599 * Drawing.NORMAL, 2 * Drawing.NORMAL, GREEN_BLOCK_WIDTH * Drawing.NORMAL, GREEN_BLOCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\

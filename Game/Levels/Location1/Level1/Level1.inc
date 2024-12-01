@@ -144,8 +144,7 @@ Level1:
                                      <FALSE, 0, 300, 0, venusFlycatcherFrames>>,\
                                      TRUE, 0, 2, FALSE>,\
                                      1, venusFlycatcherAnimations, 200>,\
-                                     -1, 2000>,\
-                                     GameObject.REVERSE
+                                     -1, 2000>
  
 .bottomPipe2 GameObjectWithDrawing <<Object.GAME, 775 * Drawing.NORMAL + 3, 49 * Drawing.NORMAL, 1 * BOTTOM_PIPE_WIDTH * Drawing.LITTLE, 20  * BOTTOM_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
 			                             <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, bottomPipeTexture>                               
@@ -507,8 +506,7 @@ Bonus.COIN
 <FALSE, 0, 300, 0, venusFlycatcherFrames>>,\
 TRUE, 0, 2, FALSE>,\
 1, venusFlycatcherAnimations, 200>,\
--1, 2000>,\
-GameObject.REVERSE
+-1, 2000>
 
 .reverse15 GameObject\
 <Object.GAME, 1574 * Drawing.NORMAL, 65 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
