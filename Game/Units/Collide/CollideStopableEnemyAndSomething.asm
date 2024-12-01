@@ -11,17 +11,10 @@ proc Collide.CollideStopableEnemyAndSomething uses ebx esi edi,\
      
         mov     ebx, [refEnemy]
         mov     esi, [refObject]
-        mov     edi, [esi + GameObject.collide]
-        and     edi, [ebx + EnemyWithStopTimer.stopAfterCollidingWith]        
+        mov     edi, [esi + GameObject.collide]        
              
-        test    edi, GameObject.JUMP
-        jne     .stop
-        test    edi, GameObject.REVERSE
-        jne     .stop
-        cmp     DWORD [side], Collide.BOTTOM
-        jne     .exit
-        test    edi, GameObject.BLOCK
-        je      .exit      
+        test    edi, GameObject.SPECIAL
+        je      .exit     
         
   .stop:
         stdcall Collide.CollideStopableEnemyAndStop, ebx

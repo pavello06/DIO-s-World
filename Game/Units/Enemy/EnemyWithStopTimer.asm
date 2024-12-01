@@ -1,6 +1,5 @@
 struct EnemyWithStopTimer
   enemyWithTimer         EnemyWithTimer
-  stopAfterCollidingWith dd ?
 ends               
 
 proc EnemyWithStopTimer.Start\

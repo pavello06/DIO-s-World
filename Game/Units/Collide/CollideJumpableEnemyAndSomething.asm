@@ -15,7 +15,7 @@ proc Collide.CollideJumpableEnemyAndSomething uses ebx esi edi,\
         mov     esi, [refObject]
         mov     edi, [esi + GameObject.collide]
              
-        test    edi, GameObject.JUMP
+        test    edi, GameObject.SPECIAL
         je      .exit
         stdcall Collide.CollideJumpableEnemyAndJump, ebx
   
