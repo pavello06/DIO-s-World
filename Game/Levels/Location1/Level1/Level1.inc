@@ -137,12 +137,12 @@ Level1:
                              
 .reverse5 GameObject <Object.GAME, 780 * Drawing.NORMAL, 55 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
 
-.reverse6 GameObject <Object.GAME, 780 * Drawing.NORMAL, 95 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
+.reverse6 GameObject <Object.GAME, 780 * Drawing.NORMAL, 97 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
                              
 .venusFlycatcher1 EnemyWithStopTimer <<<<<<<Object.GAME, 777 * Drawing.NORMAL, 55 * Drawing.NORMAL, VENUS_FLYCATCHER_WIDTH * Drawing.LITTLE, VENUS_FLYCATCHER_HEIGHT * Drawing.LITTLE>, GameObject.UNTOCHABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.STOPABLE_ENEMY>,\
 			                               <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, venusFlycatcherTexture>>,\
                                      <FALSE, 0, 300, 0, venusFlycatcherFrames>>,\
-                                     TRUE, 0, 1, FALSE>,\
+                                     TRUE, 0, 2, FALSE>,\
                                      1, venusFlycatcherAnimations, 200>,\
                                      -1, 2000>,\
                                      GameObject.REVERSE
@@ -933,6 +933,10 @@ Bonus.STAR
                                    .venusFlycatcher1, .venusFlycatcher2
 .enemiesWithStopTimerLength     = $ - .enemiesWithStopTimer
 
+.bullets                         dd .bulletsLength / 4 - 1,\
+                                   playerBullet1, playerBullet2, playerBullet3
+.bulletsLength                   = $ - .bullets
+
 .words                          dd .wordsLength / 4 - 1,\
                                    Statistic.wSCORE
 .wordsLength                    = $ - .words
@@ -941,4 +945,4 @@ Bonus.STAR
                                    Statistic.nSCORE 
 .numbersLength                  = $ - .numbers
                                              
-level1 Level <TRUE, FALSE, 0, 0, 0, 0>, 0, 0, 12475, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.words, Level1.numbers>, Level1, BufferLevel1
+level1 Level <TRUE, 0, 0, 0, 0>, 0, 0, 12475, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.bullets, Level1.words, Level1.numbers>, Level1, BufferLevel1

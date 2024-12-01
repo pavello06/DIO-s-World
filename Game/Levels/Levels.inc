@@ -1,6 +1,5 @@
 struct LevelStatistics
   isAvailable dd ?
-  isCompleted dd ?
   score       dd ?
   bestScore   dd ?
   stars       dd ?
@@ -16,6 +15,7 @@ struct GameObjects
   refEnemiesWithBullets       dd ?
   refEnemiesWithReverseTimer  dd ?
   refEnemiesWithStopTimer     dd ?
+  refBullets                  dd ?
   refWords                    dd ?
   refNumbers                  dd ?
 ends
@@ -37,7 +37,7 @@ include '../Levels/Location1/Level1/Buffer.inc'
 include '../Levels/Location1/Level2/Level2.inc'
 include '../Levels/Location1/Level2/Buffer.inc'
 
-currentLevel dd level1
+currentLevel dd level2
 
 levels       dd levelsLength / 4 - 1, level1, level2
 levelsLength = $ - levels

@@ -138,12 +138,12 @@ dd BufferLevel1Length / 4 - 1
                              
 .reverse5 GameObject <Object.GAME, 780 * Drawing.NORMAL, 55 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
 
-.reverse6 GameObject <Object.GAME, 780 * Drawing.NORMAL, 95 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
+.reverse6 GameObject <Object.GAME, 780 * Drawing.NORMAL, 97 * Drawing.NORMAL, 1, 1>, GameObject.REVERSE
                              
 .venusFlycatcher1 EnemyWithStopTimer <<<<<<<Object.GAME, 777 * Drawing.NORMAL, 55 * Drawing.NORMAL, VENUS_FLYCATCHER_WIDTH * Drawing.LITTLE, VENUS_FLYCATCHER_HEIGHT * Drawing.LITTLE>, GameObject.UNTOCHABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.STOPABLE_ENEMY>,\
 			                               <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, venusFlycatcherTexture>>,\
                                      <FALSE, 0, 300, 0, venusFlycatcherFrames>>,\
-                                     TRUE, 0, 1, FALSE>,\
+                                     TRUE, 0, 2, FALSE>,\
                                      1, venusFlycatcherAnimations, 200>,\
                                      -1, 2000>,\
                                      GameObject.REVERSE
