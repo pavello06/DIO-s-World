@@ -74,6 +74,8 @@ include 'Game/General/Blocks/pinkBlock.inc'
 
 include 'Game/General/Blocks/yellowBlock.inc'
 
+include 'Game/General/Blocks/bigBlock.inc'
+
 include 'Game/General/Blocks/bottomPipe.inc'
 include 'Game/General/Blocks/topPipe.inc'
 
@@ -107,6 +109,8 @@ include 'Game/General/Mobs/venusFlycatcher.inc'
 include 'Game/General/Mobs/venusFlycatcher2.inc'
 
 include 'Game/General/Mobs/deadVenusFlycatcher.inc'
+
+include 'Game/General/Mobs/spike.inc'
 
 ;Player-------------------------------------------------------------------------
 include 'Game/General/Player/standingPlayer.inc'
