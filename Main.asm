@@ -81,7 +81,6 @@ proc WindowProc uses ebx esi edi,\
         
         stdcall File.ReadLevelStatistics
         
-        stdcall WindowProcFunctions.ChangeToMenu
         stdcall Menu.Start
               
         xor     eax, eax

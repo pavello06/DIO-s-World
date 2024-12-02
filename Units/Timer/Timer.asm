@@ -29,7 +29,7 @@ proc Timer.IsTimeUp\
         
         mov     edx, [ecx]
         
-        cmp     DWORD edx, -1
+        cmp     edx, -1
         je      .TimeIsUpWhenNotStart
         
 	      sub	    eax, edx

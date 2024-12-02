@@ -5,7 +5,7 @@ struct WindowProcFunctions
   refTimer   dd ?
 ends
 
-windowProcFunctions WindowProcFunctions
+windowProcFunctions WindowProcFunctions Menu.KeyDown, Menu.KeyUp, Menu.Paint, Menu.Timer
 
 proc WindowProcFunctions.ChangeTo\
      refKeyDown, refKeyUp, refPaint, refTimer
