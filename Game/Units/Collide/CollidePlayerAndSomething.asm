@@ -106,13 +106,30 @@ proc Collide.CollidePlayerAndTopBreak\
         ret
 endp
 
-proc Collide.CollidePlayerAndBottomBreak\
+proc Collide.CollidePlayerAndBottomBreak uses ebx,\
      refObject, side
      
         cmp     DWORD [side], Collide.TOP
         jne     .exit
         
-        stdcall Object.Delete, [refObject]    
+        mov     eax, [refObject]
+        mov     ecx, [eax + Object.x]
+        mov     edx, ecx
+        add     edx, [eax + Object.width]
+        mov     ebx, [eax + Object.y]
+        add     ebx, [eax + Object.height]
+        sub     ebx, 2
+        
+        mov     eax, [currentLevel]
+
+        stdcall Enemy.GetEnemyInRange, [eax + Level.gameObjects.refEntities], ecx, edx, ebx
+        cmp     eax, -1
+        je      .hasNotEnemy
+        
+        stdcall Enemy.GetDamage, eax        
+        
+  .hasNotEnemy:
+        stdcall Object.Delete, [refObject]     
   
   .exit:     
         ret
@@ -131,7 +148,25 @@ proc Collide.CollidePlayerAndBottomLuck\
         add     eax, GameObjectWithAnimation.animation
         stdcall Animation.Stop, eax
         
-        stdcall Luck.SpawnBonus, [refLuck]     
+        stdcall Luck.SpawnBonus, [refLuck]
+        
+        mov     eax, [refLuck]
+        mov     ecx, [eax + Object.x]
+        mov     edx, ecx
+        add     edx, [eax + Object.width]
+        mov     ebx, [eax + Object.y]
+        add     ebx, [eax + Object.height]
+        sub     ebx, 2
+        
+        mov     eax, [currentLevel]
+
+        stdcall Enemy.GetEnemyInRange, [eax + Level.gameObjects.refEntities], ecx, edx, ebx
+        cmp     eax, -1
+        je      .hasNotEnemy
+        
+        stdcall Enemy.GetDamage, eax        
+        
+  .hasNotEnemy:     
   
   .exit:     
         ret

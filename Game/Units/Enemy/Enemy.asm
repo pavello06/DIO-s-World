@@ -37,6 +37,37 @@ proc Enemy.IsPlayerNear\
         ret 
 endp
 
+proc Enemy.GetEnemyInRange uses ebx,\
+     refEnemies, xMin, xMax, yMin
+     
+        mov     ebx, [refEnemies]
+        
+        mov     ecx, [ebx + Array.length]
+        lea     ebx, [ebx + Array.element]
+        
+  .loop:
+        mov     eax, [ebx]
+        
+        mov     edx, [eax + Object.x]        
+        cmp     edx, [xMax]
+        jg      .endLoop
+        add     edx, [eax + Object.width]
+        cmp     edx, [xMin]
+        jl      .endLoop
+        mov     edx, [eax + Object.y]
+        cmp     edx, [yMin]
+        jg      .exit    
+  
+  .endLoop:
+        add     ebx, sizeof.Array.element
+        loop    .loop
+        
+        mov     eax, -1
+          
+  .exit:   
+        ret
+endp
+
 proc Enemy.GetDamage\
      refEnemy
      
