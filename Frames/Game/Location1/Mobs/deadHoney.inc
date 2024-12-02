@@ -1,0 +1,1 @@
+deadHoneyFrames dd 1, deadHoneyTexture

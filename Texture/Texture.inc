@@ -159,6 +159,15 @@ include 'Game/Location1/Mobs/bee2.inc'
 
 include 'Game/Location1/Mobs/deadBee.inc'
 
+include 'Game/Location1/Mobs/honey.inc'
+include 'Game/Location1/Mobs/honey2.inc'
+include 'Game/Location1/Mobs/honey3.inc'
+include 'Game/Location1/Mobs/honey4.inc'
+include 'Game/Location1/Mobs/honey5.inc'
+include 'Game/Location1/Mobs/honey6.inc'
+
+include 'Game/Location1/Mobs/deadHoney.inc'
+
 ;Menu---------------------------------------------------------------------------
 ;Buttons------------------------------------------------------------------------
 include 'Menu/Buttons/continue.inc'

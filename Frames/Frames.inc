@@ -71,6 +71,10 @@ include 'Game/Location1/Mobs/bee.inc'
 
 include 'Game/Location1/Mobs/deadBee.inc'
 
+include 'Game/Location1/Mobs/honey.inc'
+
+include 'Game/Location1/Mobs/deadHoney.inc'
+
 ;Menu---------------------------------------------------------------------------
 ;Buttons------------------------------------------------------------------------
 

@@ -39,3 +39,5 @@ FALSE, 0, 120, 0, playerBulletFrames
 owlAnimations dd TRUE, 0, 10, 0, deadOwlFrames, FALSE, 100, 0, 0, owlFrames
 
 beeAnimations dd TRUE, 0, 10, 0, deadBeeFrames, FALSE, 0, 120, 0, beeFrames
+
+honeyAnimations dd TRUE, 0, 10, 0, deadHoneyFrames, FALSE, 0, 100, 0, honeyFrames
