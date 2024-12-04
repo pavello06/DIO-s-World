@@ -523,6 +523,12 @@ Level2.coin15
 .reverse12 GameObject\
 <Object.GAME, 119 * DIRT_WIDTH * Drawing.NORMAL, (6 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
  
+.reverse11_1 GameObject\
+<Object.GAME, 101 * DIRT_WIDTH * Drawing.NORMAL, (3 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse12_1 GameObject\
+<Object.GAME, 118 * DIRT_WIDTH * Drawing.NORMAL, (3 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+ 
 .owl1 Enemy\
 <<<<<Object.GAME, 114 * DIRT_WIDTH * Drawing.NORMAL, (6 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, OWL_WIDTH * Drawing.NORMAL, OWL_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture>>,\
