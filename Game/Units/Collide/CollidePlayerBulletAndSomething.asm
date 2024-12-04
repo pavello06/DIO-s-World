@@ -6,14 +6,6 @@ proc Collide.CollidePlayerBulletAndBlock\
         ret
 endp
 
-proc Collide.CollidePlayerBulletAndActivate\
-     refBullet
-
-        stdcall Bullet.Activate, [refBullet]
-           
-        ret
-endp
-
 proc Collide.CollidePlayerBulletAndSnail\
      refBullet, refSnail
 
@@ -58,11 +50,7 @@ proc Collide.CollidePlayerBulletAndSomething uses ebx esi edi,\
              
         test    edi, GameObject.BLOCK
         je      @F
-        stdcall Collide.CollidePlayerAndBlock, ebx
-  @@:
-        ;test    edi, GameObject.ACTIVATE
-        ;je      @F
-        ;stdcall Collide.CollidePlayerBulletAndActivate, ebx
+        stdcall Collide.CollidePlayerBulletAndBlock, ebx
   @@:
         test    edi, GameObject.SNAIL
         je      @F
@@ -74,7 +62,7 @@ proc Collide.CollidePlayerBulletAndSomething uses ebx esi edi,\
   @@:
         test    edi, GameObject.UNTOCHABLE_ENEMY
         je      @F
-        stdcall Collide.CollidePlayerBulletAndUntochableEnemy, ebx
+        stdcall Collide.CollidePlayerBulletAndUntochableEnemy, ebx, esi
   @@:
         test    edi, GameObject.UNBEATABLE_ENEMY
         je      .exit

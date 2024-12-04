@@ -80,7 +80,9 @@ proc Collide.CollidePlayerAndJump\
         mov     DWORD [eax + Entity.speedY], 45
         
         add     ecx, GameObjectWithAnimation.animation
-        stdcall Animation.Start, ecx        
+        stdcall Animation.Start, ecx
+        
+        stdcall Music.Play, springMusic        
   
   .exit:   
         ret
@@ -246,10 +248,6 @@ proc Collide.CollidePlayerAndEnemy\
         mov     [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
         
         mov     eax, [refEnemy]        
-        mov     ecx, [currentLevel]
-        
-        mov     edx, [eax + Enemy.score]
-        add     DWORD [ecx + Level.levelStatistics.score], edx
         
         stdcall Enemy.GetDamage, eax
         jmp     .exit 
