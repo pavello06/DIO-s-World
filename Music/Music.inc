@@ -26,12 +26,12 @@ starMusic db 'Music/Game/General/Bonuses/star.wav', 0
 
 heartMusic db 'Music/Game/General/Bonuses/heart.wav', 0
 
-arrowMusic db 'Music/Game/General/Bonuses/coin.wav', 0
+arrowMusic db 'Music/Game/General/Bonuses/arrow.wav', 0
 
 worldMusic db 'Music/Game/General/Bonuses/world.wav', 0
 
 ;Mobs---------------------------------------------------------------------------
-mobMusic db 'Music/Game/General/Bonuses/mob.wav', 0
+mobMusic db 'Music/Game/General/Mobs/mob.wav', 0
 
 ;Player-------------------------------------------------------------------------
 upJumpingPlayerMusic db 'Music/Game/General/Player/upJumpingPlayer.wav', 0
