@@ -71,6 +71,8 @@ endp
 proc Enemy.GetDamage\
      refEnemy
      
+        stdcall Music.Play, mobMusic
+     
         mov     ecx, [refEnemy]
      
         dec     DWORD [ecx + Enemy.health]
@@ -99,9 +101,15 @@ proc Enemy.Die\
         mov     eax, [refEnemy]
      
         mov     DWORD [eax + GameObject.collide], GameObject.DEAD_ENEMY
+        mov     DWORD [eax + Entity.canMove], TRUE
         mov     DWORD [eax + Entity.speedX], Enemy.SPEED_X_AFTER_DEATH
         mov     DWORD [eax + Entity.speedY], Enemy.SPEED_Y_AFTER_DEATH
         mov     DWORD [eax + Entity.canGravitate], TRUE
+        
+        mov     ecx, [currentLevel]
+        
+        mov     edx, [eax + Enemy.score]
+        add     DWORD [ecx + Level.levelStatistics.score], edx
                  
         ret
 endp
