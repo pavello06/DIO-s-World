@@ -29,6 +29,12 @@ endp
 proc Button.GameStart\
      refScreen
 
+        mov     eax, [refScreen]
+        mov     [currentLevel], eax
+        
+        cmp     DWORD [eax + Level.levelStatistics.isAvailable], FALSE
+        je      .exit
+
         stdcall WindowProcFunctions.ChangeToGame
         
         mov     eax, [refScreen]
@@ -36,6 +42,7 @@ proc Button.GameStart\
         
         stdcall Game.Start
 
+  .exit:
         ret
 endp
 
@@ -61,6 +68,10 @@ proc Button.GameNext\
      arg
 
         stdcall Levels.GetCurrentLevelInArray
+        
+        cmp     DWORD [eax], level4
+        je      .exit
+        
         add     eax, 4    
         
         mov     eax, [eax]
@@ -69,6 +80,7 @@ proc Button.GameNext\
         stdcall WindowProcFunctions.ChangeToGame
         stdcall Game.Start
 
+  .exit:
         ret
 endp
 

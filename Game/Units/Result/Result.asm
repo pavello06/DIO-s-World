@@ -58,7 +58,17 @@ proc Result.Win
         mov     [WinMenu.star2.refLevel], eax
         mov     [WinMenu.star3.refLevel], eax
         
-        stdcall Menu.Start         
+        stdcall Menu.Start
+        
+        stdcall Levels.GetCurrentLevelInArray
+        
+        cmp     DWORD [eax], level4
+        je      .exit
+        
+        add     eax, 4    
+        
+        mov     eax, [eax]
+        mov     DWORD [eax + Level.levelStatistics.isAvailable], TRUE         
 
   .exit:
         ret
