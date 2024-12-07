@@ -28,6 +28,8 @@ endp
 
 proc Button.GameStart\
      refScreen
+     
+        stdcall Music.Play, buttonMusic
 
         mov     eax, [refScreen]
         mov     [currentLevel], eax
@@ -48,6 +50,8 @@ endp
 
 proc Button.GameRestart\
      refScreen
+     
+        stdcall Music.Play, buttonMusic
 
         stdcall WindowProcFunctions.ChangeToGame
         
@@ -58,6 +62,8 @@ endp
 
 proc Button.GameContinue\
      refScreen
+     
+        stdcall Music.Play, buttonMusic
 
         stdcall WindowProcFunctions.ChangeToGame
 
@@ -66,10 +72,12 @@ endp
 
 proc Button.GameNext\
      arg
+     
+        stdcall Music.Play, buttonMusic
 
         stdcall Levels.GetCurrentLevelInArray
         
-        cmp     DWORD [eax], level4
+        cmp     DWORD [eax], level3
         je      .exit
         
         add     eax, 4    
@@ -86,6 +94,8 @@ endp
 
 proc Button.Menu\
      refScreen
+     
+        stdcall Music.Play, buttonMusic
 
         stdcall WindowProcFunctions.ChangeToMenu
         
@@ -99,6 +109,8 @@ endp
 
 proc Button.Exit\
      arg
+     
+        stdcall Music.Play, buttonMusic
 
         stdcall File.WriteLevelStatistics
 
