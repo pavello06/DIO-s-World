@@ -1,3 +1,5 @@
+include 'win32a.inc'
+
 include 'Object.asm'
 
 include 'Animation/Animation.asm'
