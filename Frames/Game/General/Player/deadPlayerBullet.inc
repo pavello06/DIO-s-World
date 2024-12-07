@@ -1,0 +1,1 @@
+deadPlayerBulletFrames dd 3, voidTexture, deadPlayerBulletTexture, deadPlayerBullet2Texture

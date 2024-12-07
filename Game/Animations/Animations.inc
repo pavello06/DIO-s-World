@@ -27,7 +27,7 @@ FALSE, 0, 200, 0, invulnerableDownJumpingPlayerFrames,\
 FALSE, 0, 200, 0, invulnerableDyingPlayerFrames
 
 playerBulletAnimations dd 2,\
-TRUE, 0, 10, 0, voidFrames,\
+TRUE, 0, 100, 0, deadPlayerBulletFrames,\
 FALSE, 0, 120, 0, playerBulletFrames
 
 ;Location1----------------------------------------------------------------------

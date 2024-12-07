@@ -46,7 +46,7 @@ winMusic db winMusicLength - 1, 'open Music/Game/General/win.wav type waveaudio 
 winMusicLength = $ - winMusic
 
 loseMusic db loseMusicLength - 1, 'open Music/Game/General/lose.wav type waveaudio alias sound', 0
-loseMusicLength = $ - loseMusic
+loseMusicLength = $ - loseMusic                                            
 ;Blocks-------------------------------------------------------------------------
 springMusic db springMusicLength - 1, 'open Music/Game/General/Blocks/spring.wav type waveaudio alias sound', 0
 springMusicLength = $ - springMusic
@@ -80,6 +80,9 @@ upJumpingPlayerMusicLength = $ - upJumpingPlayerMusic
 
 dyingPlayerMusic db dyingPlayerMusicLength, 'open Music/Game/General/Player/dyingPlayer.wav type waveaudio alias sound', 0
 dyingPlayerMusicLength = $ - dyingPlayerMusic
+
+playerBulletMusic db playerBulletMusicLength, 'open Music/Game/General/Player/playerBullet.wav type waveaudio alias sound', 0
+playerBulletMusicLength = $ - playerBulletMusic
 
 ;Location1----------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------

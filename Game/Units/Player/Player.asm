@@ -188,6 +188,8 @@ endp
 
 proc Player.Shoot 
      
+        stdcall Music.Play, playerBulletMusic
+     
         stdcall Bullet.GetActiveBullet, [player.refBullets]
         
         mov     ecx, eax        
