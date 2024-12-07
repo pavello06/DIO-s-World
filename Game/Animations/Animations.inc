@@ -41,3 +41,7 @@ owlAnimations dd TRUE, 0, 10, 0, deadOwlFrames, FALSE, 100, 0, 0, owlFrames
 beeAnimations dd TRUE, 0, 10, 0, deadBeeFrames, FALSE, 0, 120, 0, beeFrames
 
 honeyAnimations dd TRUE, 0, 10, 0, deadHoneyFrames, FALSE, 0, 100, 0, honeyFrames
+
+snailAnimations dd TRUE, 0, 10, 0, deadSnailFrames, TRUE, 0, 10, 0, deadSnailFrames, TRUE, 0, 10, 0, deadSnailFrames, FALSE, 0, 100, 0, snailFrames
+
+coreAnimations dd 2, TRUE, 0, 10, 0, voidFrames, FALSE, 0, 10, 0, coreFrames

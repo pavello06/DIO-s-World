@@ -75,6 +75,12 @@ include 'Game/Location1/Mobs/honey.inc'
 
 include 'Game/Location1/Mobs/deadHoney.inc'
 
+include 'Game/Location1/Mobs/snail.inc'
+
+include 'Game/Location1/Mobs/deadSnail.inc'
+
+include 'Game/Location1/Mobs/core.inc'
+
 ;Menu---------------------------------------------------------------------------
 ;Buttons------------------------------------------------------------------------
 

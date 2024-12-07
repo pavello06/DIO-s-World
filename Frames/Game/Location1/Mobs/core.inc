@@ -1,0 +1,1 @@
+coreFrames dd 1, coreTexture

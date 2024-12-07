@@ -1,0 +1,1 @@
+snailFrames dd 2, snailTexture, snail2Texture

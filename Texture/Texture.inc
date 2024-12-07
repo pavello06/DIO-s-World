@@ -168,6 +168,15 @@ include 'Game/Location1/Mobs/honey6.inc'
 
 include 'Game/Location1/Mobs/deadHoney.inc'
 
+include 'Game/Location1/Mobs/snail.inc'
+include 'Game/Location1/Mobs/snail2.inc'
+
+include 'Game/Location1/Mobs/deadSnail.inc'
+
+include 'Game/Location1/Mobs/cannon.inc'
+
+include 'Game/Location1/Mobs/core.inc'
+
 ;Menu---------------------------------------------------------------------------
 ;Buttons------------------------------------------------------------------------
 include 'Menu/Buttons/continue.inc'

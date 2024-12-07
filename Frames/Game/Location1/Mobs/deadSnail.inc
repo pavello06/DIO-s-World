@@ -1,0 +1,1 @@
+deadSnailFrames dd 1, deadSnailTexture
