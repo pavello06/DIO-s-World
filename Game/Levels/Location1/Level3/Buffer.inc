@@ -849,7 +849,7 @@ TRUE, coreAnimations
 FALSE, -11, 0, FALSE>,\
 TRUE, coreAnimations
 
-.cores dd 3, .core1, .core2, .core3
+.cores dd 3, Level3.core1, Level3.core2, Level3.core3
 
 .cannon EnemyWithBullets\
 <<<<<<<Object.GAME, 171 * DIRT_WIDTH * Drawing.NORMAL, 6 *  DIRT_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
