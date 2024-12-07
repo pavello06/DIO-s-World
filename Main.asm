@@ -125,6 +125,8 @@ proc WindowProc uses ebx esi edi,\
         invoke  ReleaseDC, [hwnd], [hdc]
         invoke  PostQuitMessage, 0
         
+        stdcall File.WriteLevelStatistics
+        
         xor     eax, eax
         
   .exit:
@@ -167,7 +169,8 @@ section '.idata' import data readable writeable
          WriteFile, 'WriteFile',\
          ReadFile, 'ReadFile',\
          CloseHandle, 'CloseHandle',\
-         SetFilePointer, 'SetFilePointer'
+         SetFilePointer, 'SetFilePointer',\
+         CreateThread, 'CreateThread'
 
   import user,\
          RegisterClass, 'RegisterClassA',\
@@ -188,7 +191,8 @@ section '.idata' import data readable writeable
          KillTimer, 'KillTimer'
          
   import winmm,\
-         PlaySound, 'PlaySound'
+         PlaySound, 'PlaySound',\
+         mciSendStringA, 'mciSendStringA'
 
   import gdi,\
          ChoosePixelFormat, 'ChoosePixelFormat',\

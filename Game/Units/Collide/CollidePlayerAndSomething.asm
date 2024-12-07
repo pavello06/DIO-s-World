@@ -71,6 +71,8 @@ proc Collide.CollidePlayerAndJump\
         cmp     DWORD [side], Collide.BOTTOM
         jne     .exit
         
+        mov     DWORD [player + Player.canJump], FALSE
+        
         mov     eax, [refPlayer]
         mov     ecx, [refObject]
         
@@ -114,6 +116,8 @@ proc Collide.CollidePlayerAndBottomBreak uses ebx,\
         cmp     DWORD [side], Collide.TOP
         jne     .exit
         
+        stdcall Music.Play, brickMusic
+        
         mov     eax, [refObject]
         mov     ecx, [eax + Object.x]
         mov     edx, ecx
@@ -124,7 +128,7 @@ proc Collide.CollidePlayerAndBottomBreak uses ebx,\
         
         mov     eax, [currentLevel]
 
-        stdcall Enemy.GetEnemyInRange, [eax + Level.gameObjects.refEntities], ecx, edx, ebx
+        stdcall Enemy.GetEnemyInRange, [eax + Level.gameObjects.refEnemies], ecx, edx, ebx
         cmp     eax, -1
         je      .hasNotEnemy
         
@@ -162,7 +166,7 @@ proc Collide.CollidePlayerAndBottomLuck\
         
         mov     eax, [currentLevel]
 
-        stdcall Enemy.GetEnemyInRange, [eax + Level.gameObjects.refEntities], ecx, edx, ebx
+        stdcall Enemy.GetEnemyInRange, [eax + Level.gameObjects.refEnemies], ecx, edx, ebx
         cmp     eax, -1
         je      .hasNotEnemy
         
@@ -264,16 +268,11 @@ proc Collide.CollidePlayerAndSnail\
 
         cmp     DWORD [side], Collide.BOTTOM
         jne     .notBottom
-        cmp     DWORD [player + Entity.speedY], -2
-        jge     .notBottom
         
         mov     [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
+        add     [player + Object.y], 10
         
         mov     eax, [refSnail]        
-        mov     ecx, [currentLevel]
-        
-        mov     edx, [eax + Enemy.score]
-        add     DWORD [ecx + Level.levelStatistics.score], edx
         
         stdcall Snail.GetDamage, eax
         jmp     .exit 
@@ -315,6 +314,7 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
         test    edi, GameObject.JUMP
         je      @F
         stdcall Collide.CollidePlayerAndJump, ebx, esi, [side]
+        jmp     .exit
   @@:
         test    edi, GameObject.KILL
         je      @F

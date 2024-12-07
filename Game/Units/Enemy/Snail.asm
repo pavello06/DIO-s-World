@@ -16,6 +16,7 @@ proc Snail.GetDamage uses ebx,\
         jne     .notStop
         
         mov     DWORD [eax + Entity.speedX], 0
+        xor     DWORD [eax + GameObject.collide], GameObject.REVERSEABLE_ENEMY
   
   .notStop:        
         cmp     DWORD [eax + Enemy.health], 1

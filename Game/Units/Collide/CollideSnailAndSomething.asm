@@ -1,10 +1,16 @@
-proc Collide.CollideSnailAndReverse\
-     refSnail
+proc Collide.CollideSnailAndBlock\
+     refSnail, side
 
         mov     eax, [refSnail]
         
+        cmp     DWORD [side], Collide.BOTTOM
+        je      .exit
+        
         cmp     DWORD [eax + Enemy.health], 1
         jne     .exit
+        
+        stdcall Collide.CollideReverseableEnemyAndReverse, [refSnail]
+        mov     eax, [refSnail]
         
         dec     DWORD [eax + Snail.countOfCollides]
         
@@ -24,9 +30,9 @@ proc Collide.CollideSnailAndSomething uses ebx esi edi,\
         mov     esi, [refObject]
         mov     edi, [esi + GameObject.collide]
              
-        test    edi, GameObject.REVERSE
+        test    edi, GameObject.BLOCK
         je      .exit
-        stdcall Collide.CollideSnailAndReverse, ebx
+        stdcall Collide.CollideSnailAndBlock, ebx , [side]
   
   .exit:   
         ret     

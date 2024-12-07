@@ -36,7 +36,7 @@ playerBullet1 Bullet\
 GameObject.PLAYER_BULLET>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, playerBulletTexture>>,\
 <FALSE, 0, 120, 0, playerBulletFrames>>,\
-FALSE, 13, 0, FALSE>,\
+FALSE, 14, 0, FALSE>,\
 TRUE, playerBulletAnimations
 
 playerBullet2 Bullet\
@@ -44,7 +44,7 @@ playerBullet2 Bullet\
 GameObject.PLAYER_BULLET>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, playerBulletTexture>>,\
 <FALSE, 0, 120, 0, playerBulletFrames>>,\
-FALSE, 13, 0, FALSE>,\
+FALSE, 14, 0, FALSE>,\
 TRUE, playerBulletAnimations
 
 playerBullet3 Bullet\
@@ -52,7 +52,7 @@ playerBullet3 Bullet\
 GameObject.PLAYER_BULLET>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, playerBulletTexture>>,\
 <FALSE, 0, 120, 0, playerBulletFrames>>,\
-FALSE, 13, 0, FALSE>,\
+FALSE, 14, 0, FALSE>,\
 TRUE, playerBulletAnimations
 
 playerBullets dd 3, playerBullet1, playerBullet2, playerBullet3
@@ -63,7 +63,7 @@ GameObject.PLAYER>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
 <FALSE, 0, 200, 0, standingPlayerFrames>>,\
 TRUE, 0, 0, TRUE>,\
-FALSE, playerBullets, FALSE, FALSE, -1, 10000, -1, 1500, playerAnimations
+FALSE, playerBullets, FALSE, FALSE, -1, 9000, -1, 1500, playerAnimations
 
 onlyPlayer dd 1, player
 
@@ -168,6 +168,9 @@ endp
 
 proc Player.CanShoot
         
+        cmp     DWORD [player.hasArrow], FALSE
+        je      .canNotShoot
+        
         stdcall Bullet.GetActiveBullet, [player.refBullets]
         cmp     eax, -1
         je      .canNotShoot                  
@@ -249,6 +252,8 @@ proc Player.GetDamage
 endp
 
 proc Player.Die
+
+        stdcall Music.Play, dyingPlayerMusic
      
         mov     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
         mov     DWORD [player + Entity.speedX], Player.SPEED_X_AFTER_DEATH

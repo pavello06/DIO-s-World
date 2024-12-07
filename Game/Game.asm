@@ -7,6 +7,8 @@ proc Game.Start uses ebx
         stdcall Levels.CopyFromBuffer
         stdcall Player.Reset
         stdcall Statistic.Reset
+        
+        stdcall Music.Play, startAndEndMusic
 
         ret
 endp
@@ -40,6 +42,7 @@ proc Game.Timer uses ebx
         je      .notWin
         
   .win:
+        stdcall Music.Play, startAndEndMusic
         stdcall Result.Win
         jmp     .exit
   

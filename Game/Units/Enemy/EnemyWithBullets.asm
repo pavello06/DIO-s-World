@@ -8,7 +8,7 @@ proc EnemyWithBullets.CanShoot uses ebx,\
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall Enemy.IsPlayerNear, ebx, player, 0, 1000        
+        stdcall Enemy.IsPlayerNear, ebx, 1000        
         cmp     eax, FALSE
         je      .canNotShoot
         
@@ -39,7 +39,9 @@ proc EnemyWithBullets.Shoot uses ebx,\
         
         stdcall Bullet.GetActiveBullet, [ebx + EnemyWithBullets.refBullets]
         
-        stdcall Bullet.Deactivate, eax, [ebx + Object.x], [ebx + Object.y]
+        mov     ecx, [ebx + Object.y]
+        add     ecx, 24
+        stdcall Bullet.Deactivate, eax, [ebx + Object.x], ecx
     
         ret     
 endp

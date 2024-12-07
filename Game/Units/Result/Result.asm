@@ -24,6 +24,8 @@ endp
 
 proc Result.Win
 
+        stdcall Music.Play, winMusic
+
         mov     eax, [currentLevel]
         
         mov     ecx, [eax + Level.levelStatistics.score]
@@ -75,6 +77,8 @@ proc Result.Win
 endp
 
 proc Result.Lose
+
+        stdcall Music.Play, loseMusic
 
         mov     [currentMenu], loseMenu  
         stdcall WindowProcFunctions.ChangeToMenu
