@@ -86,9 +86,9 @@ proc Result.Lose
         mov     eax, [currentLevel]
         
         mov     ecx, [eax + Level.levelStatistics.score]
-        mov     [WinMenu.nSCORE.number], ecx
+        mov     [LoseMenu.nSCORE.number], ecx
         mov     edx, [eax + Level.levelStatistics.bestScore]
-        mov     [WinMenu.nBEST.number], edx 
+        mov     [LoseMenu.nBEST.number], edx 
         
         mov     [LoseMenu.star1.refLevel], eax
         mov     [LoseMenu.star2.refLevel], eax
