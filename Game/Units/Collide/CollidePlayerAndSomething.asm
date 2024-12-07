@@ -249,7 +249,8 @@ proc Collide.CollidePlayerAndEnemy\
         cmp     DWORD [player + Entity.speedY], -2
         jge     .notBottom
         
-        mov     [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
+        mov     DWORD [player + Player.canJump], FALSE
+        mov     DWORD [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
         
         mov     eax, [refEnemy]        
         
