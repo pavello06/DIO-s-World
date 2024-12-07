@@ -3,6 +3,9 @@ Level2:
 .delete GameObject\
 <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
 
+.kill GameObject\
+<Object.GAME, 0, 0, 100000, 1>, GameObject.KILL
+
 .border1 GameObject\
 <Object.GAME, -1, 0, 1, 100000>, GameObject.BLOCK
 ;===============================================================================
@@ -15,7 +18,7 @@ Level2:
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
 .shadow1_1 GameObjectWithDrawing\
-<<Object.GAME, 0 * DIRT_WIDTH * Drawing.NORMAL, (32 + 8) * Drawing.NORMAL, Drawing.NORMAL, (5 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 9) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<<Object.GAME, 0 * DIRT_WIDTH * Drawing.NORMAL, (32 + 8) * Drawing.NORMAL, Drawing.NORMAL, (9) * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .shadow1_2 GameObjectWithDrawing\
@@ -992,7 +995,7 @@ TRUE, 8, 0, TRUE>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
-                                   .delete, .border1,\
+                                   .delete, .kill, .border1,\
                                    .dirt1, .grass1, .spawn1, .brick1, .arrow1, .luck1, .blueBlock1, .yellowBlock1, .blueBlock2,\
                                    .dirt2, .grass2, .dirt3, .grass3, .spike1, .dirt4, .grass4, .reverse1, .special1, .special2, .reverse2, .honey1,\
                                    .dirt5, .grass5, .grass51, .grass52, .bigBlock1, .coin1, .coin2, .coin3, .coin4, .coin5, .coin6, .reverse1_1, .reverse2_1, .owl1_1, .bigBlock2, .star1, .bigBlock3, .reverse3, .special3, .special4, .reverse4, .honey2, .honey3,\
@@ -1062,6 +1065,19 @@ TRUE, 8, 0, TRUE>,\
                                   
 .bricksWithBreakTimerLength     = $ - .bricksWithBreakTimer
 
+.enemies                        dd .enemiesLength / 4 - 1,\
+                                   .honey1,\
+                                   .owl1_1, .honey2, .honey3,\
+                                   .bee1,\
+                                   .venusFlycatcher1,\
+                                   .bee2,\
+                                   .owl1,\
+                                   .honey4, .bee3,\
+                                   .venusFlycatcher2,\
+                                   .owl2, .owl3, .owl4,\
+                                   .honey5
+.enemiesLength                  = $ - .enemies
+
 .enemiesWithBullets             dd .enemiesWithBulletsLength / 4 - 1
                                    
 .enemiesWithBulletsLength       = $ - .enemiesWithBullets
@@ -1086,4 +1102,4 @@ TRUE, 8, 0, TRUE>,\
                                    Statistic.nSCORE 
 .numbersLength                  = $ - .numbers
 
-level2 Level <FALSE, 0, 0, 0, 0>, 0, 0, 228 * DIRT_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level2.gameObjects, Level2.gameObjectsWithDrawing, Level2.gameObjectsWithAnimation, Level2.entities, Level2.bricksWithBreakTimer, Level2.enemiesWithBullets, Level2.enemiesWithReverseTimer, Level2.enemiesWithStopTimer, Level2.bullets, Level2.words, Level2.numbers>, Level2, BufferLevel2
+level2 Level <FALSE, 0, 0, 0, 0>, 0, 0, 228 * DIRT_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level2.gameObjects, Level2.gameObjectsWithDrawing, Level2.gameObjectsWithAnimation, Level2.entities, Level2.bricksWithBreakTimer, Level2.enemies, Level2.enemiesWithBullets, Level2.enemiesWithReverseTimer, Level2.enemiesWithStopTimer, Level2.bullets, Level2.words, Level2.numbers>, Level2, BufferLevel2

@@ -30,6 +30,10 @@ Level4:
                                   
 .bricksWithBreakTimerLength     = $ - .bricksWithBreakTimer
 
+.enemies                        dd .enemiesLength / 4 - 1
+
+.enemiesLength                  = $ - .enemies
+
 .enemiesWithBullets             dd .enemiesWithBulletsLength / 4 - 1
                                    
 .enemiesWithBulletsLength       = $ - .enemiesWithBullets
@@ -54,4 +58,4 @@ Level4:
                                    Statistic.nSCORE 
 .numbersLength                  = $ - .numbers
 
-level4 Level <FALSE, 0, 0, 0, 0>, 0, 0, 5475, 1300, <80, 187, 255>, <Level4.gameObjects, Level4.gameObjectsWithDrawing, Level4.gameObjectsWithAnimation, Level4.entities, Level4.bricksWithBreakTimer, Level4.enemiesWithBullets, Level4.enemiesWithReverseTimer, Level4.enemiesWithStopTimer, Level4.bullets, Level4.words, Level4.numbers>, Level4, BufferLevel4
+level4 Level <FALSE, 0, 0, 0, 0>, 0, 0, 5475, 1300, <80, 187, 255>, <Level4.gameObjects, Level4.gameObjectsWithDrawing, Level4.gameObjectsWithAnimation, Level4.entities, Level4.bricksWithBreakTimer, Level4.enemies, Level4.enemiesWithBullets, Level4.enemiesWithReverseTimer, Level4.enemiesWithStopTimer, Level4.bullets, Level4.words, Level4.numbers>, Level4, BufferLevel4

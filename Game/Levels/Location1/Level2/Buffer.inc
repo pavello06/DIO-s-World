@@ -1,8 +1,10 @@
 BufferLevel2:
 dd BufferLevel2Length / 4 - 1             
-
 .delete GameObject\
 <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
+
+.kill GameObject\
+<Object.GAME, 0, 0, 100000, 1>, GameObject.KILL
 
 .border1 GameObject\
 <Object.GAME, -1, 0, 1, 100000>, GameObject.BLOCK
@@ -14,6 +16,14 @@ dd BufferLevel2Length / 4 - 1
 .grass1 GameObjectWithDrawing\
 <<Object.GAME, 0, 2 * DIRT_HEIGHT * Drawing.NORMAL, 11 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow1_1 GameObjectWithDrawing\
+<<Object.GAME, 0 * DIRT_WIDTH * Drawing.NORMAL, (32 + 8) * Drawing.NORMAL, Drawing.NORMAL, (9) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow1_2 GameObjectWithDrawing\
+<<Object.GAME, (11 * DIRT_WIDTH - 1) * Drawing.NORMAL, (32 + 8) * Drawing.NORMAL, Drawing.NORMAL, (0 * DIRT_HEIGHT + 0 * GRASS_HEIGHT + 8) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .spawn1 GameObjectWithDrawing\
 <<Object.GAME, 1 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -63,6 +73,14 @@ Level2.arrow1
 <<Object.GAME, 11 * DIRT_WIDTH * Drawing.NORMAL, 4 * DIRT_HEIGHT * Drawing.NORMAL, 3 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
+.shadow2_1 GameObjectWithDrawing\
+<<Object.GAME, 11 * DIRT_WIDTH * Drawing.NORMAL, (40) * Drawing.NORMAL, Drawing.NORMAL, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 8) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow2_2 GameObjectWithDrawing\
+<<Object.GAME, (14 * DIRT_WIDTH - 1) * Drawing.NORMAL, (40) * Drawing.NORMAL, Drawing.NORMAL, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 8) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
 .dirt3 GameObjectWithDrawing\
 <<Object.GAME, 14 * DIRT_WIDTH * Drawing.NORMAL, 0, 3 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
@@ -70,6 +88,14 @@ Level2.arrow1
 .grass3 GameObjectWithDrawing\
 <<Object.GAME, 14 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL, 3 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow3_1 GameObjectWithDrawing\
+<<Object.GAME, 14 * DIRT_WIDTH * Drawing.NORMAL, 40 * Drawing.NORMAL, Drawing.NORMAL, 8 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow3_2 GameObjectWithDrawing\
+<<Object.GAME, (17 * DIRT_WIDTH - 1) * Drawing.NORMAL, 40 * Drawing.NORMAL, Drawing.NORMAL, 8 * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .spike1 Enemy\
 <<<<<Object.GAME, 14 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, 6 * SPIKE_WIDTH * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.UNBEATABLE_ENEMY>,\
@@ -85,6 +111,14 @@ FALSE, 0, 0, FALSE>,\
 .grass4 GameObjectWithDrawing\
 <<Object.GAME, 17 * DIRT_WIDTH * Drawing.NORMAL, 4 * DIRT_HEIGHT * Drawing.NORMAL, 7 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow4_1 GameObjectWithDrawing\
+<<Object.GAME, 17 * DIRT_WIDTH * Drawing.NORMAL, (40) * Drawing.NORMAL, Drawing.NORMAL, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 8) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow4_2 GameObjectWithDrawing\
+<<Object.GAME, (24 * DIRT_WIDTH - 1) * Drawing.NORMAL, (40) * Drawing.NORMAL, Drawing.NORMAL, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 8) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .reverse1 GameObject\
 <Object.GAME, 11 * DIRT_WIDTH * Drawing.NORMAL, (4 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
@@ -121,6 +155,10 @@ TRUE, 8, 0, TRUE>,\
 .grass52 GameObjectWithDrawing\
 <<Object.GAME, 46 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL, 6 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow5 GameObjectWithDrawing\
+<<Object.GAME, (52 * DIRT_WIDTH - 1) * Drawing.NORMAL, (24) * Drawing.NORMAL, Drawing.NORMAL, (1 * DIRT_HEIGHT + 9) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .bigBlock1 GameObjectWithDrawing\
 <<Object.GAME, 24 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, 1 * BIG_BLOCK_WIDTH * Drawing.NORMAL, BIG_BLOCK_HEIGHT / 2 * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -316,6 +354,14 @@ TRUE, 4, 0, FALSE>,\
 <<Object.GAME, 74 * DIRT_WIDTH * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL, 16 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
+.shadow7 GameObjectWithDrawing\
+<<Object.GAME, (74 * DIRT_WIDTH - 0) * Drawing.NORMAL, (24) * Drawing.NORMAL, Drawing.NORMAL, (1 * DIRT_HEIGHT + 25) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow7_2 GameObjectWithDrawing\
+<<Object.GAME, (90 * DIRT_WIDTH - 1) * Drawing.NORMAL, 0, Drawing.NORMAL, (1 * DIRT_HEIGHT + 49) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
 .bottomPipe2 GameObjectWithDrawing\
 <<Object.GAME, 74 * DIRT_WIDTH * Drawing.NORMAL, (3 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * BOTTOM_PIPE_WIDTH * Drawing.LITTLE, 10 * BOTTOM_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, bottomPipeTexture>                               
@@ -465,6 +511,14 @@ TRUE, 0, 2, FALSE>,\
 <<Object.GAME, 101 * DIRT_WIDTH * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL,22 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
+.shadow8_1 GameObjectWithDrawing\
+<<Object.GAME, (101 * DIRT_WIDTH - 0) * Drawing.NORMAL, 0, Drawing.NORMAL, (3 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow8_2 GameObjectWithDrawing\
+<<Object.GAME, (123 * DIRT_WIDTH - 0) * Drawing.NORMAL, 0, Drawing.NORMAL, (3 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
 .flower4 GameObjectWithDrawing\
 <<Object.GAME, 103 * DIRT_WIDTH * Drawing.NORMAL, (3 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, FLOWER_WIDTH * Drawing.NORMAL, FLOWER_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture>
@@ -522,7 +576,7 @@ Level2.coin15
 
 .reverse12 GameObject\
 <Object.GAME, 119 * DIRT_WIDTH * Drawing.NORMAL, (6 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
- 
+
 .reverse11_1 GameObject\
 <Object.GAME, 101 * DIRT_WIDTH * Drawing.NORMAL, (3 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
@@ -612,6 +666,14 @@ TRUE, 0, 4, FALSE>,\
 .grass9 GameObjectWithDrawing\
 <<Object.GAME, 135 * DIRT_WIDTH * Drawing.NORMAL, 3 * DIRT_HEIGHT * Drawing.NORMAL, 20 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow9_1 GameObjectWithDrawing\
+<<Object.GAME, (135 * DIRT_WIDTH - 0) * Drawing.NORMAL, 0, Drawing.NORMAL, (3 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow9_2 GameObjectWithDrawing\
+<<Object.GAME, (155 * DIRT_WIDTH - 1) * Drawing.NORMAL, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT - 9) * Drawing.NORMAL, Drawing.NORMAL, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 8) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .bigBlock11 GameObjectWithDrawing\
 <<Object.GAME, 135 * DIRT_WIDTH * Drawing.NORMAL, (3 * DIRT_WIDTH + 1 * GRASS_WIDTH) * Drawing.NORMAL, 2 *  BIG_BLOCK_WIDTH / 1 * Drawing.NORMAL, 1 * BIG_BLOCK_HEIGHT / 2 * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -758,6 +820,14 @@ Bonus.COIN
 <<Object.GAME, 161 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL, 18 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
+.shadow11_1 GameObjectWithDrawing\
+<<Object.GAME, (161 * DIRT_WIDTH - 1) * Drawing.NORMAL, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT - 9) * Drawing.NORMAL, Drawing.NORMAL, (1 * GRASS_HEIGHT + 8) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow11_2 GameObjectWithDrawing\
+<<Object.GAME, (179 * DIRT_WIDTH - 1) * Drawing.NORMAL, 0, Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 0) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
 .dirt12 GameObjectWithDrawing\
 <<Object.GAME, 165 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 12 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dirtTexture>
@@ -765,6 +835,14 @@ Bonus.COIN
 .grass12 GameObjectWithDrawing\
 <<Object.GAME, 165 * DIRT_WIDTH * Drawing.NORMAL, (4 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 12 * GRASS_WIDTH * Drawing.NORMAL, (1 * GRASS_HEIGHT - 1) * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow12_1 GameObjectWithDrawing\
+<<Object.GAME, (165 * DIRT_WIDTH - 0) * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT - 1) * Drawing.NORMAL, Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
+.shadow12_2 GameObjectWithDrawing\
+<<Object.GAME, (177 * DIRT_WIDTH - 1) * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT - 1) * Drawing.NORMAL, Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .topBlock1 GameObject\
 <Object.GAME, 165 * DIRT_WIDTH * Drawing.NORMAL, (4 * DIRT_HEIGHT + 2 * GRASS_HEIGHT - 1) * Drawing.NORMAL, 12 * GRASS_WIDTH * Drawing.NORMAL, 1>, GameObject.TOP_BLOCK
@@ -887,6 +965,10 @@ TRUE, 8, 0, TRUE>,\
 .grass13 GameObjectWithDrawing\
 <<Object.GAME, 216 * DIRT_WIDTH * Drawing.NORMAL, 2 * DIRT_HEIGHT * Drawing.NORMAL, 12 * GRASS_WIDTH * Drawing.NORMAL, 1 * GRASS_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+
+.shadow13_1 GameObjectWithDrawing\
+<<Object.GAME, (216 * DIRT_WIDTH - 0) * Drawing.NORMAL, 0, Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 0) * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .flower7 GameObjectWithDrawing\
 <<Object.GAME, 218 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, FLOWER_WIDTH * Drawing.NORMAL, FLOWER_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\

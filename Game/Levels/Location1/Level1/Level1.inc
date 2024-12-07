@@ -919,6 +919,15 @@ Bonus.STAR
                                   
 .bricksWithBreakTimerLength     = $ - .bricksWithBreakTimer
 
+.enemies                        dd .enemiesLength / 4 - 1,\
+                                   .owl1,\
+                                   .owl2, .venusFlycatcher1, .bee1, .owl3, .owl4, .bee2,\
+                                   .venusFlycatcher2,\
+                                   .owl5,\
+                                   .owl6,\
+                                   .owl7
+.enemiesLength                  = $ - .enemies
+
 .enemiesWithBullets             dd .enemiesWithBulletsLength / 4 - 1
                                    
 .enemiesWithBulletsLength       = $ - .enemiesWithBullets
@@ -943,4 +952,4 @@ Bonus.STAR
                                    Statistic.nSCORE 
 .numbersLength                  = $ - .numbers
                                              
-level1 Level <TRUE, 0, 0, 0, 0>, 0, 0, 12475, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.bullets, Level1.words, Level1.numbers>, Level1, BufferLevel1
+level1 Level <TRUE, 0, 0, 0, 0>, 0, 0, 12475, 1300, <80, 187, 255>, <Level1.gameObjects, Level1.gameObjectsWithDrawing, Level1.gameObjectsWithAnimation, Level1.entities, Level1.bricksWithBreakTimer, Level1.enemies, Level1.enemiesWithBullets, Level1.enemiesWithReverseTimer, Level1.enemiesWithStopTimer, Level1.bullets, Level1.words, Level1.numbers>, Level1, BufferLevel1

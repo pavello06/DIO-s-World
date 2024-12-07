@@ -12,6 +12,7 @@ struct GameObjects
   refGameObjectsWithAnimation dd ?
   refEntities                 dd ?
   refBricksWithBreakTimer     dd ?
+  refEnemies                  dd ?
   refEnemiesWithBullets       dd ?
   refEnemiesWithReverseTimer  dd ?
   refEnemiesWithStopTimer     dd ?
@@ -36,10 +37,16 @@ include '../Levels/Location1/Level1/Level1.inc'
 include '../Levels/Location1/Level1/Buffer.inc'
 include '../Levels/Location1/Level2/Level2.inc'
 include '../Levels/Location1/Level2/Buffer.inc'
+include '../Levels/Location1/Level3/Level3.inc'
+include '../Levels/Location1/Level3/Buffer.inc'
+include '../Levels/Location2/Level1/Level4.inc'
+include '../Levels/Location2/Level1/Buffer.inc'
+include '../Levels/Location2/Level2/Level5.inc'
+include '../Levels/Location2/Level2/Buffer.inc'
 
-currentLevel dd level2
+currentLevel dd level3
 
-levels       dd levelsLength / 4 - 1, level1, level2
+levels       dd levelsLength / 4 - 1, level1, level2, level3, level4
 levelsLength = $ - levels
 
 proc Levels.CopyFromBuffer uses ebx esi edi
