@@ -221,7 +221,9 @@ proc Player.GetDamage
         mov     DWORD [player.refAnimations], invulnerablePlayerAnimations
         jmp     .exit        
         
-  .hasNotInvulnerability:     
+  .hasNotInvulnerability:        
+        stdcall Music.Play, dyingPlayerMusic
+       
         stdcall Timer.IsTimeUp, player.worldTimer, [player.maxWorldTimer]
         cmp     eax, FALSE
         jne     .hasNotWorld
@@ -254,8 +256,6 @@ proc Player.GetDamage
 endp
 
 proc Player.Die
-
-        stdcall Music.Play, dyingPlayerMusic
      
         mov     DWORD [player + GameObject.collide], GameObject.DEAD_PLAYER
         mov     DWORD [player + Entity.speedX], Player.SPEED_X_AFTER_DEATH
