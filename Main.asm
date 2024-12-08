@@ -15,12 +15,11 @@ section '.text' code readable executable
         mov     [windowClass.hCursor], eax
         invoke  RegisterClass, windowClass
         invoke  CreateWindowEx, 0, windowClassName, windowTitle,\
-                                WS_VISIBLE + WS_POPUP,\ 
+                                WS_VISIBLE + WS_POPUP + WS_MAXIMIZE,\ 
                                 0, 0, 0, 0,\ 
-                                NULL, NULL, [windowClass.hInstance], NULL                                
-        mov     [windowHandle], eax        
-        invoke  ShowWindow, [windowHandle], SW_SHOWMAXIMIZED
-        invoke  UpdateWindow, [windowHandle]
+                                NULL, NULL, [windowClass.hInstance], NULL
+                                
+        invoke ShowCursor, FALSE                                       
 
   .loop:
         invoke  GetMessage, windowMessage, NULL, 0, 0
@@ -31,6 +30,8 @@ section '.text' code readable executable
         jmp     .loop
 
   .exit:
+        invoke ShowCursor, TRUE
+        
         invoke  ExitProcess, [windowMessage.wParam]
 
 proc WindowProc uses ebx esi edi,\
@@ -119,11 +120,23 @@ proc WindowProc uses ebx esi edi,\
         invoke  GetClientRect, [hwnd], rc
         invoke  glViewport, 0, 0, [rc.right], [rc.bottom]
         
+        cmp     DWORD [rc.right], 1920
+        jne     .forNotMyScale
+        cmp     DWORD [rc.bottom], 1080
+        jne     .forNotMyScale
+  
+  .forMyScale:      
         mov     eax, [rc.right]
         mov     [Screen.screen.object.width], eax
         mov     eax, [rc.bottom]
         mov     [Screen.screen.object.height], eax
-        
+        jmp     @F
+  
+  .forNotMyScale:      
+        mov     [Screen.screen.object.width], 1535
+        mov     [Screen.screen.object.height], 850         
+  
+  @@:      
         xor     eax, eax
         jmp     .exit
         
@@ -140,7 +153,6 @@ section '.data' data readable writeable
   windowClass     WNDCLASS 0, WindowProc, 0, 0, NULL, NULL, NULL, NULL, NULL, windowClassName
   windowClassName db 'Main', 0
   windowTitle     db 'DIO''s World', 0
-  windowHandle    dd ?  
   windowMessage   MSG
   
   hdc dd ?  
