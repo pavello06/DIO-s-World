@@ -64,7 +64,7 @@ proc Result.Win
         
         stdcall Levels.GetCurrentLevelInArray
         
-        cmp     DWORD [eax], level4
+        cmp     DWORD [eax], level3
         je      .exit
         
         add     eax, 4    
