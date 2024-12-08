@@ -1,0 +1,1 @@
+toothlessFrames dd 2, toothlessTexture, toothless2Texture

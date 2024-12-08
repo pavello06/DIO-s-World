@@ -73,10 +73,10 @@ TRUE, Button.Exit, 0
 <<Object.MENU, 30 * Drawing.NORMAL, 2 * (DIRT_HEIGHT + GRASS_HEIGHT) * Drawing.NORMAL, 1 * PALM_WIDTH * Drawing.NORMAL, 1 * PALM_HEIGHT * Drawing.NORMAL>>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, palmTexture>
 
-.player1 MenuObjectWithAnimation\
-<<<Object.MENU, 50 * Drawing.NORMAL, 2 * (DIRT_HEIGHT + GRASS_HEIGHT) * Drawing.NORMAL, 1 * STANDING_PLAYER_WIDTH * Drawing.NORMAL, 1 * STANDING_PLAYER_HEIGHT * Drawing.NORMAL>>,\
-<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
-<FALSE, 0, 200, 0, standingPlayerFrames>
+.toothless1 MenuObjectWithAnimation\
+<<<Object.MENU, 50 * Drawing.NORMAL, 2 * (DIRT_HEIGHT + GRASS_HEIGHT) * Drawing.NORMAL, 1 * TOOTHLESS_WIDTH * Drawing.NORMAL, 1 * TOOTHLESS_HEIGHT * Drawing.NORMAL>>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, toothlessTexture>>,\
+<FALSE, 0, 400, 0, toothlessFrames>
 
 .shadow2 MenuObjectWithDrawing\
 <<Object.MENU, 4 * DIRT_WIDTH * Drawing.NORMAL, 1 * (DIRT_HEIGHT + GRASS_HEIGHT) * Drawing.NORMAL, 1 * SHADOW_WIDTH * Drawing.NORMAL, 1 * (DIRT_HEIGHT + GRASS_HEIGHT) * Drawing.NORMAL>>,\
@@ -137,12 +137,12 @@ TRUE, Button.Exit, 0
                                    activeButtonElement1, activeButtonElement2, activeButtonElement3, activeButtonElement4,\
                                    .wDIOS1, .wDIOS2, .wDIOS3, .wDIOS4, .wDIOS5, .wWORLD1, .wWORLD2, .wWORLD3, .wWORLD4, .wWORLD5,\
                                    .wPLAY1, .wPLAY2, .wPLAY3, .wPLAY4, .wEXIT1, .wEXIT2, .wEXIT3, .wEXIT4,\
-                                   .dirt1, .grass1, .bush1, .dandelion1, .shadow1, .dirt2, .grass2, .flower1, .palm1, .player1, .shadow2, .dirt3, .grass3, .bush2, .dandelion2, .shadow3, .dirt4, .grass4, .flower2, .palm2, .shadow4, .shadow5
+                                   .dirt1, .grass1, .bush1, .dandelion1, .shadow1, .dirt2, .grass2, .flower1, .palm1, .toothless1, .shadow2, .dirt3, .grass3, .bush2, .dandelion2, .shadow3, .dirt4, .grass4, .flower2, .palm2, .shadow4, .shadow5
 .menuObjectsWithDrawingLength   = $ - .menuObjectsWithDrawing
 
 .menuObjectsWithAnimation       dd .menuObjectsWithAnimationLength / 4 - 1,\
                                    activeButtonElement1, activeButtonElement2, activeButtonElement3, activeButtonElement4,\
-                                   .dandelion1, .player1, .dandelion2
+                                   .dandelion1, .toothless1, .dandelion2
 .menuObjectsWithAnimationLength = $ - .menuObjectsWithAnimation
 
 .buttons			                  dd .buttonsLength / 4 - 3,\

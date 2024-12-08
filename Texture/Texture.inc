@@ -205,3 +205,6 @@ include 'Menu/Decorations/dandelion4.inc'
 include 'Menu/Decorations/dandelion5.inc'
 
 include 'Menu/Decorations/voidStar.inc'
+
+include 'Menu/Decorations/toothless.inc'
+include 'Menu/Decorations/toothless2.inc'

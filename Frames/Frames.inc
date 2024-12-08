@@ -90,3 +90,5 @@ include 'Game/Location1/Mobs/core.inc'
 include 'Menu/Decorations/activeButtonElement.inc'
 
 include 'Menu/Decorations/dandelion.inc'
+
+include 'Menu/Decorations/toothless.inc'
