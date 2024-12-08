@@ -20,8 +20,6 @@ library kernel, 'KERNEL32.DLL',\
          CreateWindowEx, 'CreateWindowExA',\
          DefWindowProc, 'DefWindowProcA',\
          GetMessage, 'GetMessageA',\
-         ShowWindow, 'ShowWindow',\
-         UpdateWindow, 'UpdateWindow',\
          TranslateMessage, 'TranslateMessage',\
          DispatchMessage, 'DispatchMessageA',\
          LoadCursor, 'LoadCursorA',\
@@ -30,6 +28,7 @@ library kernel, 'KERNEL32.DLL',\
          GetDC, 'GetDC',\
          ReleaseDC, 'ReleaseDC',\
          PostQuitMessage, 'PostQuitMessage',\
+         ShowCursor, 'ShowCursor',\
          SetTimer, 'SetTimer',\
          KillTimer, 'KillTimer'
          
