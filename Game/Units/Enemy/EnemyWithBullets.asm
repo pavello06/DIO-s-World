@@ -8,7 +8,7 @@ proc EnemyWithBullets.CanShoot uses ebx,\
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall Enemy.IsPlayerNear, ebx, 1500        
+        stdcall Enemy.IsPlayerNear, ebx, 2600        
         cmp     eax, FALSE
         je      .canNotShoot
         
