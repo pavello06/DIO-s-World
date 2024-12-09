@@ -902,12 +902,12 @@ Level3.cores
                                    .dirt12, .grass12, .shadow12_1, .flower4, .palm10,\
                                    .dirt13, .grass13, .shadow13_1, .shadow13_2, .bush14,\
                                    .dirt14, .grass14, .shadow14_2, .bush15, .palm11,\
-                                   .dirt15, .grass15, .shadow15_2, .bottomPipe2, .topPipe2, .venusFlycatcher2, .bottomPipe3, .topPipe3, .brick10, .world1, .luck6, .spring1,\
+                                   .dirt15, .grass15, .shadow15_2, .venusFlycatcher2, .bottomPipe3, .topPipe3, .brick10, .world1, .luck6, .spring1,\
                                    .bigBlock3, .owl6, .honey5, .owl7, .honey6, .bee2, .bee3, .star3,\
                                    .bigBlock4, .bigBlock5, .bigBlock6, .snail1, .bigBlock7, .snail2,\
                                    .bigBlock8, .core1, .core2, .core3, .cannon, .bigBlock9, .spawn2,\
                                    Statistic.wSCORE1, Statistic.wSCORE2, Statistic.wSCORE3, Statistic.wSCORE4, Statistic.wSCORE5, Statistic.nSCORE1, Statistic.nSCORE2, Statistic.nSCORE3, Statistic.nSCORE4, Statistic.nSCORE5, Statistic.border, Statistic.bonus, Statistic.stars,\
-                                   playerBullet1, playerBullet2, playerBullet3, player
+                                   playerBullet1, playerBullet2, playerBullet3, player, .bottomPipe2, .topPipe2
 .gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
 
 .gameObjectsWithAnimation       dd .gameObjectsWithAnimationLength / 4 - 1,\

@@ -328,7 +328,7 @@ Bonus.COIN
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, bushTexture>
 
 .reverse7 GameObject\
-<Object.GAME, 36 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, 40 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .special3 GameObject\
 <Object.GAME, (43 * DIRT_WIDTH + 7) * Drawing.NORMAL, (10 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.SPECIAL
@@ -340,7 +340,7 @@ Bonus.COIN
 <Object.GAME, 51 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
  
 .honey2 EnemyWithStopTimer\
-<<<<<<<Object.GAME, 37 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, HONEY_WIDTH * Drawing.NORMAL, HONEY_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.JUMPABLE_ENEMY>,\
+<<<<<<<Object.GAME, 41 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, HONEY_WIDTH * Drawing.NORMAL, HONEY_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.JUMPABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, honeyTexture>>,\
 <FALSE, 0, 100, 0, honeyFrames>>,\
 TRUE, 8, 0, TRUE>,\
@@ -667,7 +667,7 @@ TRUE, 6, 0, TRUE>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, topPipeTexture>
 
 .block1 GameObject\
-<Object.GAME, 118 * DIRT_WIDTH * Drawing.NORMAL - 12, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 7) * Drawing.NORMAL, 5 * Drawing.NORMAL, TOP_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK
+<Object.GAME, 118 * DIRT_WIDTH * Drawing.NORMAL - 12, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 7) * Drawing.NORMAL, 6 * Drawing.NORMAL, TOP_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK
 
 .block2 GameObject\
 <Object.GAME, 118 * DIRT_WIDTH * Drawing.NORMAL - 50 + TOP_PIPE_WIDTH * Drawing.LITTLE, (1 * DIRT_HEIGHT + 1 * GRASS_HEIGHT + 7) * Drawing.NORMAL, 5 * Drawing.NORMAL, TOP_PIPE_HEIGHT * Drawing.LITTLE>, GameObject.BLOCK
