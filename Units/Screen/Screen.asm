@@ -3,17 +3,17 @@ struct Screen
   speedY dd ?
 ends
 
-Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER = 10
-Screen.MAX_TIMER                           = 17
-Screen.timer                               dd 0
+Screen.SPEED_Y   = 10
+Screen.MAX_TIMER = 17
+Screen.timer     dd 0
 
 Screen.xMin dd ?
 Screen.xMax dd ?
 Screen.yMin dd ?
 Screen.yMax dd ?
 
-Screen.screen Screen\
-<Object.GENERAL, 0, 0, 1920, 1080>,\
+screen Screen\
+<Object.GENERAL, 0, 0, 1535, 850>,\
 0 
 
 proc Screen.Fill\
@@ -28,13 +28,13 @@ endp
 
 proc Screen.UpdateCoordinates
 
-        mov     eax, [Screen.screen + Object.x]
+        mov     eax, [screen + Object.x]
         mov     [Screen.xMin], eax 
-        add     eax, [Screen.screen + Object.width]
+        add     eax, [screen + Object.width]
         mov     [Screen.xMax], eax
-        mov     ecx, [Screen.screen + Object.y]
+        mov     ecx, [screen + Object.y]
         mov     [Screen.yMin], ecx
-        add     ecx, [Screen.screen + Object.height]
+        add     ecx, [screen + Object.height]
         mov     [Screen.yMax], ecx
 
         ret
@@ -78,31 +78,31 @@ proc Screen.UpdateForGame uses ebx
         je      .notMove
 
   .move:
-        mov     eax, [Screen.screen + Screen.speedY]
-        add     [Screen.screen + Object.y], eax
+        mov     eax, [screen + Screen.speedY]
+        add     [screen + Object.y], eax
 
   .notMove:      
         mov     eax, [ebx + Level.yMin]
-        add     eax, [Screen.screen + Object.height]
+        add     eax, [screen + Object.height]
         
         cmp     [player + Object.y], eax 
         jl      .notGreaterThenTopScreen
   
   .greaterThenTopScreen:
-        mov     [Screen.screen + Screen.speedY], Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
+        mov     [screen + Screen.speedY], Screen.SPEED_Y
         jmp     .borders
   
   .notGreaterThenTopScreen:
-        mov     [Screen.screen + Screen.speedY], -Screen.SPEED_Y_AFTER_COLLIDING_WITH_PLAYER
+        mov     [screen + Screen.speedY], -Screen.SPEED_Y
   
   .borders:
-        mov     eax, [Screen.screen + Object.width]
+        mov     eax, [screen + Object.width]
         sub     eax, [player + Object.width]
         shr     eax, 1
         
         mov     ecx, [player + Object.x]
         sub     ecx, eax
-        mov     [Screen.screen + Object.x], ecx
+        mov     [screen + Object.x], ecx
         
         mov     ecx, [ebx + Level.xMin]
         add     ecx, [player + Object.x]
@@ -112,7 +112,7 @@ proc Screen.UpdateForGame uses ebx
         
   .left:
         mov     ecx, [ebx + Level.xMin]
-        mov     [Screen.screen + Object.x], ecx
+        mov     [screen + Object.x], ecx
         
   .notLeft:
         mov     ecx, [ebx + Level.xMax]        
@@ -124,27 +124,27 @@ proc Screen.UpdateForGame uses ebx
         
   .right:
         mov     ecx, [ebx + Level.xMax]
-        sub     ecx, [Screen.screen + Object.width]
-        mov     [Screen.screen + Object.x], ecx
+        sub     ecx, [screen + Object.width]
+        mov     [screen + Object.x], ecx
         
   .notRight:
         mov     eax, [ebx + Level.yMin]
   
-        cmp     eax, [Screen.screen + Object.y]
+        cmp     eax, [screen + Object.y]
         jl      .notBottom
         
   .bottom:
-        mov     [Screen.screen + Object.y], eax
+        mov     [screen + Object.y], eax
               
   .notBottom:     
         mov     eax, [ebx + Level.yMax]
-        sub     eax, [Screen.screen + Object.height]
+        sub     eax, [screen + Object.height]
         
-        cmp     eax, [Screen.screen + Object.y]
+        cmp     eax, [screen + Object.y]
         jg      .notTop
   
   .top:      
-        mov     [Screen.screen + Object.y], eax
+        mov     [screen + Object.y], eax
         
   .notTop:
         stdcall Screen.UpdateCoordinates
@@ -161,8 +161,8 @@ proc Screen.UpdateForMenu uses ebx
 
         mov     ebx, [currentMenu]
 
-        mov     DWORD [Screen.screen + Object.x], 0
-        mov     DWORD [Screen.screen + Object.y], 0
+        mov     DWORD [screen + Object.x], 0
+        mov     DWORD [screen + Object.y], 0
         
         stdcall Screen.UpdateCoordinates
         
