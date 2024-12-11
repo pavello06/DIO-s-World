@@ -1,51 +1,86 @@
 struct String
   object    Object
-  string    dd STRING_MAX_LENGTH dup ?
   refMemory dd ?
+  string    dd ?
 ends
 
-STRING_MAX_LENGTH = 10
+proc String.NumberToString uses ebx esi,\
+     numberLength, number, refString
+
+        mov     edx, [numberLength]
+        mov     ecx, edx
+
+        mov     eax, [number]
+        mov     ebx, [refString]
+        dec     edx
+        shl     edx, 2
+        add     ebx, edx
+        
+  .loop:
+        mov     esi, 10
+        xor     edx, edx
+        div     esi
+        
+        add     edx, '0'
+        mov     [ebx], edx
+    
+        sub     ebx, 4
+        loop    .loop
+
+        ret
+endp
 
 proc String.TimerObject uses ebx esi edi,\
      refString
 
-        mov     ebx, [refString]
-        lea     esi, [ebx + String.string] 
-        mov     edi, [ebx + String.refMemory]
+        mov     eax, [refString]
+        mov     ecx, [eax + String.refMemory]
+        lea     edx, [eax + String.string] 
         
-        mov     eax, [ebx + Object.x]
-        mov     edx, [ebx + Object.y]
-        
-        mov     ecx, STRING_MAX_LENGTH
+        mov     ebx, [eax + Object.x]
+        mov     esi, [eax + Object.y]
         
   .loop:
-        cmp     DWORD [esi], 0
-        je      .exit
-  
-        cmp     DWORD [esi], ''''
-        jne     .letter
+        mov     eax, [edx]
+    
+        cmp     eax, ''''
+        je      .quotationMark
         
-        mov     ebx, quotationMarkTexture
+        cmp     eax, '9'
+        jbe     .digit
+        
+        jmp     .letter
+  
+  .quotationMark:      
+        mov     eax, quotationMarkTexture        
+        mov     edi, A_WIDTH
+        jmp     .changeTexture
+        
+  .digit:
+        sub     eax, '0'
+        imul    eax, ZERO_SIZE
+        add     eax, zeroTexture
+        mov     edi, ZERO_WIDTH
         jmp     .changeTexture 
   
   .letter:
-        mov     ebx, [esi]
-        sub     ebx, 'A'
-        imul    ebx, A_SIZE
-        add     ebx, aTexture
+        sub     eax, 'A'
+        imul    eax, A_SIZE
+        add     eax, aTexture
+        mov     edi, A_WIDTH
   
   .changeTexture:      
-        mov     [edi + Object.x], eax
-        mov     [edi + Object.y], edx
-        mov     [edi + MenuObjectWithDrawing.drawing.refTexture], ebx
+        mov     [ecx + Object.x], ebx
+        mov     [ecx + Object.y], esi
+        mov     [ecx + MenuObjectWithDrawing.drawing.refTexture], eax
   
-        mov     ebx, A_WIDTH
-        imul    ebx, [edi + MenuObjectWithDrawing.drawing.pixelSize]
-        add     ebx, [edi + MenuObjectWithDrawing.drawing.pixelSize]
-        add     eax, ebx
-        add     esi, 4
-        add     edi, sizeof.MenuObjectWithDrawing
-        loop .loop
+        imul    edi, [ecx + MenuObjectWithDrawing.drawing.pixelSize]
+        add     edi, [ecx + MenuObjectWithDrawing.drawing.pixelSize]
+        add     ebx, edi
+        add     edx, 4
+        add     ecx, sizeof.Object + sizeof.Drawing
+        cmp     DWORD [edx], 0
+        jne     .loop
 
   .exit:
         ret
