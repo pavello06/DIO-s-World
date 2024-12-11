@@ -18,30 +18,27 @@ activeButtonElement4 MenuObjectWithAnimation\
 <Drawing.BIG, Drawing.LEFT, Drawing.DOWN, activeButtonElementTexture>>,\
 <FALSE, 0, 200, 0, activeButtonElementFrames>
                                              
-proc ActiveButtonElement.ChangeActiveButton uses ebx,\
+proc ActiveButtonElement.ChangeActiveButton\
      refButton
 
-        mov       ebx, [refButton]
+        mov       eax, [refButton]
         
-        mov       eax, [ebx + Object.x]
-        mov       ecx, [ebx + Object.y]
+        mov       ecx, [eax + Object.x]
+        sub       ecx, Drawing.BIG
+        mov       [activeButtonElement1 + Object.x], ecx        
+        mov       [activeButtonElement3 + Object.x], ecx
         
-        mov       edx, eax
-        sub       edx, Drawing.BIG
-        mov       [activeButtonElement1 + Object.x], edx        
-        mov       [activeButtonElement3 + Object.x], edx
-        
-        add       edx, [ebx + Object.width]
-        sub       edx, ACTIVE_BUTTON_ELEMENT_WIDTH * Drawing.BIG / 2
-        mov       [activeButtonElement2 + Object.x], edx        
-        mov       [activeButtonElement4 + Object.x], edx
+        add       ecx, [eax + Object.width]
+        sub       ecx, ACTIVE_BUTTON_ELEMENT_WIDTH * Drawing.BIG / 2
+        mov       [activeButtonElement2 + Object.x], ecx        
+        mov       [activeButtonElement4 + Object.x], ecx
                 
-        mov       edx, ecx
+        mov       edx, [eax + Object.y]
         sub       edx, Drawing.BIG
         mov       [activeButtonElement1 + Object.y], edx
         mov       [activeButtonElement2 + Object.y], edx
 
-        add       edx, [ebx + Object.height]
+        add       edx, [eax + Object.height]
         sub       edx, ACTIVE_BUTTON_ELEMENT_HEIGHT * Drawing.BIG / 2
         mov       [activeButtonElement3 + Object.y], edx        
         mov       [activeButtonElement4 + Object.y], edx
