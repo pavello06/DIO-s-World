@@ -3,23 +3,24 @@ struct Array
   element  dd ?
 ends
 
-proc Array.Iterate uses ebx,\
+proc Array.Iterate uses ebx esi,\
      refAction, refArray
      
-        mov     ebx, [refArray] 
+        mov     ebx, [refAction]
+        mov     esi, [refArray] 
         
-        mov     ecx, [ebx + Array.length]
+        mov     ecx, [esi + Array.length]
         cmp     ecx, 0
         je      .exit
         
-        lea     ebx, [ebx + Array.element]
+        add     esi, sizeof.Array.length
   
   .loop:
         push    ecx     
         
-        stdcall [refAction], [ebx]
+        stdcall ebx, [esi]
                                 
-        add     ebx, sizeof.Array.element
+        add     esi, sizeof.Array.element
         pop     ecx                                   
         loop    .loop        
 
