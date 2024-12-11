@@ -4,17 +4,17 @@ proc Menu.Start uses ebx
 
         mov     ebx, [currentMenu]
         
-        stdcall Star.ProcessObjects, [ebx + Menu.menuObjects.refStars]
+        stdcall Star.TimerObjects, [ebx + Menu.menuObjects.refStars]
+        stdcall String.TimerObjects, [ebx + Menu.menuObjects.refStrings]        
         
-        stdcall Menu.KeyDown, VK_RIGHT
-        stdcall Menu.KeyDown, VK_LEFT
+        mov     eax, [ebx + Menu.menuObjects.refButtons]
+        add     eax, sizeof.Array.element * 2
+        stdcall ActiveButtonElement.ChangeActiveButton, [eax] 
 
         ret
 endp
 
-proc Menu.Timer uses ebx
-
-        mov     ebx, [currentMenu]
+proc Menu.Timer
 
         ret
 endp
@@ -25,20 +25,19 @@ proc Menu.Paint uses ebx
         
         stdcall Screen.UpdateForMenu
         
-        stdcall String.TimerObjects, [ebx + Menu.menuObjects.refWords]
-        stdcall Number.TimerObjects, [ebx + Menu.menuObjects.refNumbers]
-        
         stdcall Drawing.DrawObjects, [ebx + Menu.menuObjects.refMenuObjectsWithDrawing]
         stdcall Animation.AnimateObjects, [ebx + Menu.menuObjects.refMenuObjectsWithAnimation]
 
         ret
 endp
 
-proc Menu.KeyDown\
+proc Menu.KeyDown uses ebx,\
      key
         
-        stdcall KeyDown.Click, [key]
-        stdcall KeyDown.PreviousAndNext, [key]
+        mov     ebx, [key]
+        
+        stdcall KeyDown.Click, ebx
+        stdcall KeyDown.PreviousAndNext, ebx
         
         ret
 endp
