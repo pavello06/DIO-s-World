@@ -1,18 +1,18 @@
 struct Star
   menuObjectWithDrawing MenuObjectWithDrawing
   neededCountToLight    dd ?
-  refLevel              dd ?
+  refLevelStars         dd ?
 ends
 
 proc Star.CanLight\
      refStar
      
         mov     eax, [refStar]
+                
+        mov     ecx, [eax + Star.refLevelStars]
+        mov     edx, [ecx]
         
-        mov     ecx, [eax + Star.refLevel]
-        mov     ecx, [ecx + Level.levelStatistics.bestStars]
-        
-        cmp     [eax + Star.neededCountToLight], ecx
+        cmp     [eax + Star.neededCountToLight], edx
         ja      .canNotLight
      
   .canLight:
@@ -46,28 +46,30 @@ proc Star.Extinguish\
         ret     
 endp
 
-proc Star.ProcessObject\
+proc Star.TimerObject uses ebx,\
      refStar
      
-        stdcall Star.CanLight, [refStar]
+        mov     ebx, [refStar]
+     
+        stdcall Star.CanLight, ebx
         cmp     eax, FALSE
         je      .canNotLight
    
   .canLight:
-        stdcall Star.Light, [refStar]
+        stdcall Star.Light, ebx
         jmp     .exit
         
   .canNotLight:
-        stdcall Star.Extinguish, [refStar]   
+        stdcall Star.Extinguish, ebx   
 
   .exit:         
         ret     
 endp
 
-proc Star.ProcessObjects\
+proc Star.TimerObjects\
      refStars
      
-        stdcall Array.Iterate, Star.ProcessObject, [refStars] 
+        stdcall Array.Iterate, Star.TimerObject, [refStars] 
         
         ret     
 endp
