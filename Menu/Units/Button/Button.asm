@@ -37,11 +37,7 @@ proc Button.GameStart\
         cmp     DWORD [eax + Level.levelStatistics.isAvailable], FALSE
         je      .exit
 
-        stdcall WindowProcFunctions.ChangeToGame
-        
-        mov     eax, [refScreen]
-        mov     [currentLevel], eax
-        
+        stdcall WindowProcFunctions.ChangeToGame        
         stdcall Game.Start
 
   .exit:
@@ -53,8 +49,7 @@ proc Button.GameRestart\
      
         stdcall Music.Play, buttonMusic
 
-        stdcall WindowProcFunctions.ChangeToGame
-        
+        stdcall WindowProcFunctions.ChangeToGame        
         stdcall Game.Start
 
         ret
@@ -76,16 +71,15 @@ proc Button.GameNext\
         stdcall Music.Play, buttonMusic
 
         stdcall Levels.GetCurrentLevelInArray
+        add     eax, 4
         
-        cmp     DWORD [eax], level3
-        je      .exit
+        cmp     DWORD [eax], 0
+        je      .exit    
         
-        add     eax, 4    
-        
-        mov     eax, [eax]
-        mov     [currentLevel], eax
+        mov     ecx, [eax]
+        mov     [currentLevel], ecx
 
-        stdcall WindowProcFunctions.ChangeToGame
+        stdcall WindowProcFunctions.ChangeToGame        
         stdcall Game.Start
 
   .exit:
