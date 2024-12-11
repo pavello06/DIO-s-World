@@ -1,13 +1,13 @@
 StartMenu:
 
-.wDIOS String <Object.MENU, 62 * Drawing.BIG, 90 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE>, <'D', 'I', 'O', '''', 'S', 0, 0, 0, 0, 0>, .wDIOS1
+.wDIOS dd Object.MENU, 62 * Drawing.BIG, 90 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE, .wDIOS1, 'D', 'I', 'O', '''', 'S', 0 
 .wDIOS1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wDIOS2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wDIOS3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wDIOS4 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>  
 .wDIOS5 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 
-.wWORLD String <Object.MENU, 62 * Drawing.BIG, 70 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE>, <'W', 'O', 'R', 'L', 'D', 0, 0, 0, 0, 0>, .wWORLD1
+.wWORLD dd Object.MENU, 62 * Drawing.BIG, 70 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE, .wWORLD1, 'W', 'O', 'R', 'L', 'D', 0
 .wWORLD1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wWORLD2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wWORLD3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
@@ -19,7 +19,7 @@ StartMenu:
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>>,\
 TRUE, Button.Menu, levelsMenu
                                    
-.wPLAY String <Object.MENU, 88 * Drawing.BIG, 50 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, <'P', 'L', 'A', 'Y', 0, 0, 0, 0, 0, 0>, .wPLAY1           
+.wPLAY dd Object.MENU, 88 * Drawing.BIG, 50 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wPLAY1, 'P', 'L', 'A', 'Y', 0           
 .wPLAY1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wPLAY2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wPLAY3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
@@ -28,9 +28,9 @@ TRUE, Button.Menu, levelsMenu
 .exitButton Button\
 <<<Object.MENU, 88 * Drawing.BIG, 35 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>>,\
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>>,\
-TRUE, Button.Exit, 0
+FALSE, Button.Exit, 0
                                    
-.wEXIT String <Object.MENU, 88 * Drawing.BIG, 35 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, <'E', 'X', 'I', 'T', 0, 0, 0, 0, 0, 0>, .wEXIT1           
+.wEXIT dd Object.MENU, 88 * Drawing.BIG, 35 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wEXIT1, 'E', 'X', 'I', 'T', 0            
 .wEXIT1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wEXIT2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wEXIT3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
@@ -153,12 +153,8 @@ TRUE, Button.Exit, 0
  
 .starsLength                    = $ - .stars
 
-.words                          dd .wordsLength / 4 - 1,\
+.strings                        dd .stringsLength / 4 - 1,\
                                    .wDIOS, .wWORLD, .wPLAY, .wEXIT
-.wordsLength                    = $ - .words
+.stringsLength                  = $ - .strings
 
-.numbers                        dd .numbersLength / 4 - 1
-                                    
-.numbersLength                  = $ - .numbers
-
-startMenu Menu <80, 187, 255>, <StartMenu.menuObjects, StartMenu.menuObjectsWithDrawing, StartMenu.menuObjectsWithAnimation, StartMenu.buttons, StartMenu.stars, StartMenu.words, StartMenu.numbers>
+startMenu Menu <80, 187, 255>, <StartMenu.menuObjects, StartMenu.menuObjectsWithDrawing, StartMenu.menuObjectsWithAnimation, StartMenu.buttons, StartMenu.stars, StartMenu.strings>

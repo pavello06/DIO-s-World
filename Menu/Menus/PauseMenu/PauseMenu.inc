@@ -1,6 +1,6 @@
 PauseMenu:
 
-.wPAUSE String <Object.MENU, 62 * Drawing.BIG, 90 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE>, <'P', 'A', 'U', 'S', 'E', 0, 0, 0, 0, 0>, .wPAUSE1
+.wPAUSE dd Object.MENU, 62 * Drawing.BIG, 90 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE, .wPAUSE1, 'P', 'A', 'U', 'S', 'E', 0
 .wPAUSE1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wPAUSE2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wPAUSE3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.HUGE, A_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
@@ -59,12 +59,8 @@ TRUE, Button.GameContinue, 0
  
 .starsLength                    = $ - .stars
 
-.words                          dd .wordsLength / 4 - 1,\
+.strings                        dd .stringsLength / 4 - 1,\
                                    .wPAUSE
-.wordsLength                    = $ - .words
-
-.numbers                        dd .numbersLength / 4 - 1
-                                    
-.numbersLength                  = $ - .numbers
+.stringsLength                  = $ - .strings
                                                                                                                                                                                        
-pauseMenu Menu <80, 187, 255>, <PauseMenu.menuObjects, PauseMenu.menuObjectsWithDrawing, PauseMenu.menuObjectsWithAnimation, PauseMenu.buttons, PauseMenu.stars, PauseMenu.words, PauseMenu.numbers>
+pauseMenu Menu <80, 187, 255>, <PauseMenu.menuObjects, PauseMenu.menuObjectsWithDrawing, PauseMenu.menuObjectsWithAnimation, PauseMenu.buttons, PauseMenu.stars, PauseMenu.strings>

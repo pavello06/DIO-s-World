@@ -1,13 +1,13 @@
 WinMenu:
                                                
-.wLEVEL String <Object.MENU, 25 * Drawing.NORMAL, 120 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, <'L', 'E', 'V', 'E', 'L', 0, 0, 0, 0, 0>, .wLEVEL1
+.wLEVEL dd Object.MENU, 25 * Drawing.NORMAL, 120 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wLEVEL1, 'L', 'E', 'V', 'E', 'L', 0
 .wLEVEL1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wLEVEL2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>
 .wLEVEL3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>
 .wLEVEL4 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>  
 .wLEVEL5 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>
 
-.wCOMPLETED String <Object.MENU, 125 * Drawing.NORMAL, 120 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE>, <'C', 'O', 'M', 'P', 'L', 'E', 'T', 'E', 'D', 0>, .wCOMPLETED1
+.wCOMPLETED dd Object.MENU, 125 * Drawing.NORMAL, 120 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.HUGE - Drawing.HUGE, A_HEIGHT * Drawing.HUGE, .wCOMPLETED1, 'C', 'O', 'M', 'P', 'L', 'E', 'T', 'E', 'D', 0
 .wCOMPLETED1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wCOMPLETED2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>
 .wCOMPLETED3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>
@@ -18,28 +18,28 @@ WinMenu:
 .wCOMPLETED8 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>  
 .wCOMPLETED9 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * (Drawing.BIG + 2), A_HEIGHT * (Drawing.BIG + 2)>>, <(Drawing.BIG + 2), Drawing.RIGHT, Drawing.UP, voidTexture>
 
-.wSCORE String <Object.MENU, 80 * Drawing.NORMAL, 100 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, <'S', 'C', 'O', 'R', 'E', 0, 0, 0, 0, 0>, .wSCORE1
+.wSCORE dd Object.MENU, 80 * Drawing.NORMAL, 100 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wSCORE1, 'S', 'C', 'O', 'R', 'E', 0 
 .wSCORE1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wSCORE2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wSCORE3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wSCORE4 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>  
 .wSCORE5 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 
-.nSCORE Number <Object.MENU, 155 * Drawing.NORMAL, 100 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, 0, <0, 0, 0, 0, 0>, .nSCORE1
+.nSCORE dd Object.MENU, 155 * Drawing.NORMAL, 100 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .nSCORE1, '0', '0', '0', '0', '0', 0 
 .nSCORE1 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .nSCORE2 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 .nSCORE3 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 .nSCORE4 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>  
 .nSCORE5 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 
-.wBEST String <Object.MENU, 80 * Drawing.NORMAL, 80 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, <'B', 'E', 'S', 'T', 0, 0, 0, 0, 0, 0>, .wBEST1
+.wBEST dd Object.MENU, 80 * Drawing.NORMAL, 80 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wBEST1, 'B', 'E', 'S', 'T', 0
 .wBEST1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wBEST2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wBEST3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wBEST4 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>  
 .wBEST5 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 
-.nBEST Number <Object.MENU, 155 * Drawing.NORMAL, 80 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>, 0, <0, 0, 0, 0, 0>, .nBEST1
+.nBEST dd Object.MENU, 155 * Drawing.NORMAL, 80 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .nBEST1, '0', '0', '0', '0', '0', 0 
 .nBEST1 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .nBEST2 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
 .nBEST3 MenuObjectWithDrawing <<Object.MENU, 0, 0, ZERO_WIDTH * Drawing.HUGE, ZERO_HEIGHT * Drawing.HUGE>>, <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, voidTexture>
@@ -49,17 +49,17 @@ WinMenu:
 .star1 Star\
 <<<Object.MENU, 82 * Drawing.BIG, 39 * Drawing.BIG, STAR_WIDTH * Drawing.BIG, STAR_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
-1, level1
+1, level1.levelStatistics.stars
 
 .star2 Star\
 <<<Object.MENU, 102 * Drawing.BIG, 39 * Drawing.BIG, STAR_WIDTH * Drawing.BIG, STAR_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
-2, level1
+2, level1.levelStatistics.stars
 
 .star3 Star\
 <<<Object.MENU, 122 * Drawing.BIG, 39 * Drawing.BIG, STAR_WIDTH * Drawing.BIG, STAR_HEIGHT * Drawing.BIG>>,\ 
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidStarTexture>>,\
-3, level1
+3, level1.levelStatistics.stars
 
 .background1 MenuObjectWithDrawing\
 <<Object.MENU, 70 * Drawing.BIG, 20 * Drawing.BIG, MENU_WIDTH * Drawing.BIG, MENU_HEIGHT * Drawing.BIG>>,\
@@ -116,12 +116,8 @@ TRUE, Button.GameNext, 0
                                    .star1, .star2, .star3
 .starsLength                    = $ - .stars
 
-.words                          dd .wordsLength / 4 - 1,\
-                                   .wLEVEL, .wCOMPLETED, .wSCORE, .wBEST
-.wordsLength                    = $ - .words
-
-.numbers                        dd .numbersLength / 4 - 1,\
-                                   .nSCORE, .nBEST 
-.numbersLength                  = $ - .numbers
+.strings                        dd .stringsLength / 4 - 1,\
+                                   .wLEVEL, .wCOMPLETED, .wSCORE, .nSCORE, .wBEST, .nBEST
+.stringsLength                  = $ - .strings
                                                                                                                                                                                        
-winMenu Menu <173, 181, 224>, <WinMenu.menuObjects, WinMenu.menuObjectsWithDrawing, WinMenu.menuObjectsWithAnimation, WinMenu.buttons, WinMenu.stars, WinMenu.words, WinMenu.numbers>
+winMenu Menu <173, 181, 224>, <WinMenu.menuObjects, WinMenu.menuObjectsWithDrawing, WinMenu.menuObjectsWithAnimation, WinMenu.buttons, WinMenu.stars, WinMenu.strings>

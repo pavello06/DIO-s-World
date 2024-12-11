@@ -4,8 +4,7 @@ struct MenuObjects
   refMenuObjectsWithAnimation dd ?
   refButtons                  dd ?
   refStars                    dd ?
-  refWords                    dd ?
-  refNumbers                  dd ?
+  refStrings                  dd ?
 ends
 
 struct Menu
@@ -20,6 +19,3 @@ include 'StartMenu/StartMenu.inc'
 include 'WinMenu/WinMenu.inc'
 
 currentMenu dd startMenu
-
-menus       dd menusLength / 4 - 1, levelsMenu
-menusLength = $ - menus
