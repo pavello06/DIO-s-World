@@ -4,7 +4,184 @@ struct Texture
   color  Color 
 ends
 
+;Game===========================================================================
 ;General------------------------------------------------------------------------
+;Blocks-------------------------------------------------------------------------
+include 'Game/General/Blocks/block.inc'
+
+include 'Game/General/Blocks/bottomPipe.inc'
+
+include 'Game/General/Blocks/brick.inc'
+
+include 'Game/General/Blocks/luck.inc'
+include 'Game/General/Blocks/luck2.inc'
+include 'Game/General/Blocks/luck3.inc'
+include 'Game/General/Blocks/luck4.inc'
+
+include 'Game/General/Blocks/spawn.inc'
+
+include 'Game/General/Blocks/spring.inc'
+include 'Game/General/Blocks/spring2.inc'
+include 'Game/General/Blocks/spring3.inc'
+
+include 'Game/General/Blocks/topPipe.inc'
+
+;Bonuses------------------------------------------------------------------------
+include 'Game/General/Bonuses/arrow.inc'
+
+include 'Game/General/Bonuses/border.inc'
+
+include 'Game/General/Bonuses/coin.inc'
+include 'Game/General/Bonuses/coin2.inc'
+include 'Game/General/Bonuses/coin3.inc'
+include 'Game/General/Bonuses/coin4.inc'
+include 'Game/General/Bonuses/coin5.inc'
+include 'Game/General/Bonuses/coin6.inc'
+
+include 'Game/General/Bonuses/heart.inc'
+include 'Game/General/Bonuses/heart2.inc'
+
+include 'Game/General/Bonuses/star.inc'
+
+include 'Game/General/Bonuses/world.inc'
+
+;Mobs---------------------------------------------------------------------------
+include 'Game/General/Mobs/bee.inc'
+include 'Game/General/Mobs/bee2.inc'
+
+include 'Game/General/Mobs/cannon.inc'
+
+include 'Game/General/Mobs/core.inc'
+
+include 'Game/General/Mobs/deadBee.inc'
+
+include 'Game/General/Mobs/deadSnail.inc'
+
+include 'Game/General/Mobs/deadVenusFlycatcher.inc'
+
+include 'Game/General/Mobs/snail.inc'
+include 'Game/General/Mobs/snail2.inc'
+
+include 'Game/General/Mobs/spike.inc'
+
+include 'Game/General/Mobs/venusFlycatcher.inc'
+include 'Game/General/Mobs/venusFlycatcher2.inc'
+
+;Player-------------------------------------------------------------------------
+include 'Game/General/Player/deadPlayerBullet.inc'
+include 'Game/General/Player/deadPlayerBullet2.inc'
+
+include 'Game/General/Player/downJumpingPlayer.inc'
+
+include 'Game/General/Player/dyingPlayer.inc'
+
+include 'Game/General/Player/playerBullet.inc'
+include 'Game/General/Player/playerBullet2.inc'
+
+include 'Game/General/Player/runningPlayer.inc'
+include 'Game/General/Player/runningPlayer2.inc'
+include 'Game/General/Player/runningPlayer3.inc'
+include 'Game/General/Player/runningPlayer4.inc'
+include 'Game/General/Player/runningPlayer5.inc'
+include 'Game/General/Player/runningPlayer6.inc'
+
+include 'Game/General/Player/standingPlayer.inc'
+include 'Game/General/Player/standingPlayer2.inc'
+include 'Game/General/Player/standingPlayer3.inc'
+
+include 'Game/General/Player/upJumpingPlayer.inc'
+
+;Location1----------------------------------------------------------------------
+;Blocks-------------------------------------------------------------------------
+include 'Game/Location1/Blocks/bigBlock.inc'
+
+include 'Game/Location1/Blocks/blueBlock.inc'
+
+include 'Game/Location1/Blocks/dirt.inc'
+
+include 'Game/Location1/Blocks/grass.inc'
+
+include 'Game/Location1/Blocks/greenBlock.inc'
+
+include 'Game/Location1/Blocks/pinkBlock.inc'
+
+include 'Game/Location1/Blocks/yellowBlock.inc'
+
+;Decorations--------------------------------------------------------------------
+include 'Game/Location1/Decorations/bush.inc'
+
+include 'Game/Location1/Decorations/flower.inc'
+
+include 'Game/Location1/Decorations/palm.inc'
+
+include 'Game/Location1/Decorations/shadow.inc'
+
+;Mobs---------------------------------------------------------------------------
+include 'Game/Location1/Mobs/deadHoney.inc'
+
+include 'Game/Location1/Mobs/deadOwl.inc'
+
+include 'Game/Location1/Mobs/honey.inc'
+include 'Game/Location1/Mobs/honey2.inc'
+include 'Game/Location1/Mobs/honey3.inc'
+include 'Game/Location1/Mobs/honey4.inc'
+include 'Game/Location1/Mobs/honey5.inc'
+include 'Game/Location1/Mobs/honey6.inc'
+
+include 'Game/Location1/Mobs/owl.inc'
+include 'Game/Location1/Mobs/owl2.inc'
+include 'Game/Location1/Mobs/owl3.inc'
+include 'Game/Location1/Mobs/owl4.inc'
+include 'Game/Location1/Mobs/owl5.inc'
+include 'Game/Location1/Mobs/owl6.inc'
+
+;Location2----------------------------------------------------------------------
+;Blocks-------------------------------------------------------------------------
+include 'Game/Location2/Blocks/stone.inc'
+
+include 'Game/Location2/Blocks/water.inc'
+include 'Game/Location2/Blocks/water2.inc'
+include 'Game/Location2/Blocks/water3.inc'
+include 'Game/Location2/Blocks/water4.inc'
+include 'Game/Location2/Blocks/water5.inc'
+
+;Decorations--------------------------------------------------------------------
+include 'Game/Location2/Decorations/pineapple.inc'
+
+include 'Game/Location2/Decorations/web.inc'
+
+;Mobs---------------------------------------------------------------------------
+include 'Game/Location2/Mobs/deadCoconut.inc'
+
+include 'Game/Location2/Mobs/deadSigma.inc'
+
+include 'Game/Location2/Mobs/deadSpider.inc'
+
+include 'Game/Location2/Mobs/coconut.inc'
+include 'Game/Location2/Mobs/coconut2.inc'
+include 'Game/Location2/Mobs/coconut3.inc'
+include 'Game/Location2/Mobs/coconut4.inc'
+include 'Game/Location2/Mobs/coconut5.inc'
+include 'Game/Location2/Mobs/coconut6.inc'
+
+include 'Game/Location2/Mobs/nedoSigma.inc'
+include 'Game/Location2/Mobs/nedoSigma2.inc'
+include 'Game/Location2/Mobs/nedoSigma3.inc'
+include 'Game/Location2/Mobs/nedoSigma4.inc'
+include 'Game/Location2/Mobs/nedoSigma5.inc'
+include 'Game/Location2/Mobs/nedoSigma6.inc'
+
+include 'Game/Location2/Mobs/sigma.inc'
+include 'Game/Location2/Mobs/sigma2.inc'
+include 'Game/Location2/Mobs/sigma3.inc'
+include 'Game/Location2/Mobs/sigma4.inc'
+include 'Game/Location2/Mobs/sigma5.inc'
+include 'Game/Location2/Mobs/sigma6.inc'
+
+include 'Game/Location2/Mobs/spider.inc'
+include 'Game/Location2/Mobs/spider2.inc'
+
+;General========================================================================
 ;Alphabet-----------------------------------------------------------------------
 include 'General/Alphabet/a.inc'
 include 'General/Alphabet/b.inc'
@@ -50,137 +227,7 @@ include 'General/Digits/9.inc'
 ;Void---------------------------------------------------------------------------
 include 'General/Void/void.inc'
 
-;Game---------------------------------------------------------------------------
-;General------------------------------------------------------------------------
-;Blocks-------------------------------------------------------------------------
-include 'Game/General/Blocks/shadow.inc'
-
-include 'Game/General/Blocks/dirt.inc'
-
-include 'Game/General/Blocks/brick.inc'
-
-include 'Game/General/Blocks/luck.inc'
-include 'Game/General/Blocks/luck2.inc'
-include 'Game/General/Blocks/luck3.inc'
-include 'Game/General/Blocks/luck4.inc'
-
-include 'Game/General/Blocks/block.inc'
-
-include 'Game/General/Blocks/blueBlock.inc'
-
-include 'Game/General/Blocks/greenBlock.inc'
-
-include 'Game/General/Blocks/pinkBlock.inc'
-
-include 'Game/General/Blocks/yellowBlock.inc'
-
-include 'Game/General/Blocks/bigBlock.inc'
-
-include 'Game/General/Blocks/bottomPipe.inc'
-include 'Game/General/Blocks/topPipe.inc'
-
-include 'Game/General/Blocks/spring.inc'
-include 'Game/General/Blocks/spring2.inc'
-include 'Game/General/Blocks/spring3.inc'
-
-include 'Game/General/Blocks/spawn.inc'
-
-;Bonuses------------------------------------------------------------------------
-include 'Game/General/Bonuses/border.inc'
-
-include 'Game/General/Bonuses/coin.inc'
-include 'Game/General/Bonuses/coin2.inc'
-include 'Game/General/Bonuses/coin3.inc'
-include 'Game/General/Bonuses/coin4.inc'
-include 'Game/General/Bonuses/coin5.inc'
-include 'Game/General/Bonuses/coin6.inc'
-
-include 'Game/General/Bonuses/star.inc'
-
-include 'Game/General/Bonuses/heart.inc'
-include 'Game/General/Bonuses/heart2.inc'
-
-include 'Game/General/Bonuses/arrow.inc'
-
-include 'Game/General/Bonuses/world.inc'
-
-;Mobs---------------------------------------------------------------------------
-include 'Game/General/Mobs/venusFlycatcher.inc'
-include 'Game/General/Mobs/venusFlycatcher2.inc'
-
-include 'Game/General/Mobs/deadVenusFlycatcher.inc'
-
-include 'Game/General/Mobs/spike.inc'
-
-;Player-------------------------------------------------------------------------
-include 'Game/General/Player/standingPlayer.inc'
-include 'Game/General/Player/standingPlayer2.inc'
-include 'Game/General/Player/standingPlayer3.inc'
-
-include 'Game/General/Player/runningPlayer.inc'
-include 'Game/General/Player/runningPlayer2.inc'
-include 'Game/General/Player/runningPlayer3.inc'
-include 'Game/General/Player/runningPlayer4.inc'
-include 'Game/General/Player/runningPlayer5.inc'
-include 'Game/General/Player/runningPlayer6.inc'
-
-include 'Game/General/Player/upJumpingPlayer.inc'
-
-include 'Game/General/Player/downJumpingPlayer.inc'
-
-include 'Game/General/Player/dyingPlayer.inc'
-
-include 'Game/General/Player/playerBullet.inc'
-include 'Game/General/Player/playerBullet2.inc'
-
-include 'Game/General/Player/deadPlayerBullet.inc'
-include 'Game/General/Player/deadPlayerBullet2.inc'
-
-;Location1----------------------------------------------------------------------
-;Blocks-------------------------------------------------------------------------
-include 'Game/Location1/Blocks/grass.inc'
-
-;Decorations--------------------------------------------------------------------
-include 'Game/Location1/Decorations/bush.inc'
-
-include 'Game/Location1/Decorations/palm.inc'
-
-include 'Game/Location1/Decorations/flower.inc'
-
-;Mobs---------------------------------------------------------------------------
-include 'Game/Location1/Mobs/owl.inc'
-include 'Game/Location1/Mobs/owl2.inc'
-include 'Game/Location1/Mobs/owl3.inc'
-include 'Game/Location1/Mobs/owl4.inc'
-include 'Game/Location1/Mobs/owl5.inc'
-include 'Game/Location1/Mobs/owl6.inc'
-
-include 'Game/Location1/Mobs/deadOwl.inc'
-
-include 'Game/Location1/Mobs/bee.inc'
-include 'Game/Location1/Mobs/bee2.inc'
-
-include 'Game/Location1/Mobs/deadBee.inc'
-
-include 'Game/Location1/Mobs/honey.inc'
-include 'Game/Location1/Mobs/honey2.inc'
-include 'Game/Location1/Mobs/honey3.inc'
-include 'Game/Location1/Mobs/honey4.inc'
-include 'Game/Location1/Mobs/honey5.inc'
-include 'Game/Location1/Mobs/honey6.inc'
-
-include 'Game/Location1/Mobs/deadHoney.inc'
-
-include 'Game/Location1/Mobs/snail.inc'
-include 'Game/Location1/Mobs/snail2.inc'
-
-include 'Game/Location1/Mobs/deadSnail.inc'
-
-include 'Game/Location1/Mobs/cannon.inc'
-
-include 'Game/Location1/Mobs/core.inc'
-
-;Menu---------------------------------------------------------------------------
+;Menu===========================================================================
 ;Buttons------------------------------------------------------------------------
 include 'Menu/Buttons/continue.inc'
 
@@ -204,7 +251,7 @@ include 'Menu/Decorations/dandelion3.inc'
 include 'Menu/Decorations/dandelion4.inc'
 include 'Menu/Decorations/dandelion5.inc'
 
-include 'Menu/Decorations/voidStar.inc'
-
 include 'Menu/Decorations/toothless.inc'
 include 'Menu/Decorations/toothless2.inc'
+
+include 'Menu/Decorations/voidStar.inc'
