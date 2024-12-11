@@ -6,8 +6,8 @@ struct Object
   height dd ?
 ends
 
-Object.GENERAL = 0
-Object.GAME    = 1
+Object.GAME    = 0
+Object.GENERAL = 1
 Object.MENU    = 2
 
 Object.TRASH_X = -1000
