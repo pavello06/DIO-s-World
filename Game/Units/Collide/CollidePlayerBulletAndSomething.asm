@@ -52,13 +52,13 @@ proc Collide.CollidePlayerBulletAndSomething uses ebx esi edi,\
         je      @F
         stdcall Collide.CollidePlayerBulletAndBlock, ebx
   @@:
-        test    edi, GameObject.SNAIL
-        je      @F
-        stdcall Collide.CollidePlayerBulletAndSnail, ebx, esi
-  @@:
         test    edi, GameObject.ENEMY
         je      @F
         stdcall Collide.CollidePlayerBulletAndEnemy, ebx, esi
+  @@:
+        test    edi, GameObject.SNAIL
+        je      @F
+        stdcall Collide.CollidePlayerBulletAndSnail, ebx, esi
   @@:
         test    edi, GameObject.UNTOCHABLE_ENEMY
         je      @F

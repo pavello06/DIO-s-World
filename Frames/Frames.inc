@@ -83,6 +83,28 @@ include 'Game/Location1/Mobs/deadSnail.inc'
 
 include 'Game/Location1/Mobs/core.inc'
 
+;Location2----------------------------------------------------------------------
+;Blocks-------------------------------------------------------------------------
+include 'Game/Location2/Blocks/water.inc'
+
+;Decorations--------------------------------------------------------------------
+include 'Game/Location2/Decorations/web.inc'
+
+;Mobs---------------------------------------------------------------------------
+include 'Game/Location2/Mobs/spider.inc'
+
+include 'Game/Location2/Mobs/deadSpider.inc'
+
+include 'Game/Location2/Mobs/sigma.inc'
+
+include 'Game/Location2/Mobs/nedoSigma.inc'
+
+include 'Game/Location2/Mobs/deadSigma.inc'
+
+include 'Game/Location2/Mobs/coconut.inc'
+
+include 'Game/Location2/Mobs/deadCoconut.inc'
+
 ;Menu---------------------------------------------------------------------------
 ;Buttons------------------------------------------------------------------------
 

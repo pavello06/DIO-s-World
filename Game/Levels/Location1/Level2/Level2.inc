@@ -1043,7 +1043,6 @@ TRUE, 8, 0, TRUE>,\
                                    .spring2, .coin24, .coin25, .coin26, .coin27, .coin28, .coin29, .coin30, .coin31, .coin32,\
                                    .coin33, .luck7, .owl2, .owl3, .owl4,\
                                    .honey5,\
-                                   Statistic.bonus,\
                                    playerBullet1, playerBullet2, playerBullet3, player
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
@@ -1095,11 +1094,7 @@ TRUE, 8, 0, TRUE>,\
 .bulletsLength                   = $ - .bullets
 
 .words                          dd .wordsLength / 4 - 1,\
-                                   Statistic.wSCORE
+                                   Statistic.wSCORE, Statistic.nSCORE 
 .wordsLength                    = $ - .words
 
-.numbers                        dd .numbersLength / 4 - 1,\
-                                   Statistic.nSCORE 
-.numbersLength                  = $ - .numbers
-
-level2 Level <FALSE, 0, 0, 0, 0>, 0, 0, 228 * DIRT_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level2.gameObjects, Level2.gameObjectsWithDrawing, Level2.gameObjectsWithAnimation, Level2.entities, Level2.bricksWithBreakTimer, Level2.enemies, Level2.enemiesWithBullets, Level2.enemiesWithReverseTimer, Level2.enemiesWithStopTimer, Level2.bullets, Level2.words, Level2.numbers>, Level2, BufferLevel2
+level2 Level <FALSE, 0, 0, 0, 0>, 0, 0, 228 * DIRT_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level2.gameObjects, Level2.gameObjectsWithDrawing, Level2.gameObjectsWithAnimation, Level2.entities, Level2.bricksWithBreakTimer, Level2.enemies, Level2.enemiesWithBullets, Level2.enemiesWithStopTimer, Level2.bullets, Level2.words>, Level2, BufferLevel2

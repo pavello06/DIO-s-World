@@ -1,7 +1,7 @@
-proc Collide.CollideSnailAndBlock\
+proc Collide.CollideSnailAndBlock uses ebx,\
      refSnail, side
 
-        mov     eax, [refSnail]
+        mov     ebx, [refSnail]
         
         cmp     DWORD [side], Collide.BOTTOM
         je      .exit
@@ -9,15 +9,14 @@ proc Collide.CollideSnailAndBlock\
         cmp     DWORD [eax + Enemy.health], 1
         jne     .exit
         
-        stdcall Collide.CollideReverseableEnemyAndReverse, [refSnail]
-        mov     eax, [refSnail]
+        stdcall Collide.CollideReverseableEnemyAndReverse, ebx
         
-        dec     DWORD [eax + Snail.countOfCollides]
+        dec     DWORD [ebx + Snail.countOfCollides]
         
-        cmp     DWORD [eax + Snail.countOfCollides], 0
+        cmp     DWORD [ebx + Snail.countOfCollides], 0
         jne     .exit
         
-        stdcall Snail.GetDamage, eax    
+        stdcall Snail.GetDamage, ebx    
 
   .exit:
         ret

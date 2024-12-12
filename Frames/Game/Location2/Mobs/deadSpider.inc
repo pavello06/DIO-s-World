@@ -1,0 +1,1 @@
+deadSpiderFrames dd 1, deadSpiderTexture

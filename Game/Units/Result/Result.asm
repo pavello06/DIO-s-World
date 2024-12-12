@@ -22,52 +22,48 @@ proc Result.IsWin
         ret
 endp
 
-proc Result.Win
+proc Result.Win uses ebx
 
         stdcall Music.Play, winMusic
 
-        mov     eax, [currentLevel]
+        mov     ebx, [currentLevel]
         
-        mov     ecx, [eax + Level.levelStatistics.score]
+        mov     eax, [ebx + Level.levelStatistics.score]
         
-        cmp     ecx, [eax + Level.levelStatistics.bestScore]
+        cmp     eax, [ebx + Level.levelStatistics.bestScore]
         jb      .notRewriteScore
   
   .rewriteScore:
-        mov     [eax + Level.levelStatistics.bestScore], ecx      
+        mov     [ebx + Level.levelStatistics.bestScore], eax      
 
   .notRewriteScore:
-        mov     edx, [eax + Level.levelStatistics.stars]
+        mov     ecx, [ebx + Level.levelStatistics.stars]
         
-        cmp     edx, [eax + Level.levelStatistics.bestStars]
+        cmp     ecx, [ebx + Level.levelStatistics.bestStars]
         jb      .notRewriteStars
   
   .rewriteStars:
-        mov     [eax + Level.levelStatistics.bestStars], edx      
+        mov     [ebx + Level.levelStatistics.bestStars], ecx      
 
   .notRewriteStars:
         mov     [currentMenu], winMenu  
         stdcall WindowProcFunctions.ChangeToMenu
         
-        mov     eax, [currentLevel]
+        stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.score], WinMenu.nSCORE + String.string
+        stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.bestScore], WinMenu.nBEST + String.string 
         
-        mov     ecx, [eax + Level.levelStatistics.score]
-        mov     [WinMenu.nSCORE.number], ecx
-        mov     edx, [eax + Level.levelStatistics.bestScore]
-        mov     [WinMenu.nBEST.number], edx 
-        
-        mov     [WinMenu.star1.refLevel], eax
-        mov     [WinMenu.star2.refLevel], eax
-        mov     [WinMenu.star3.refLevel], eax
+        lea     eax, [ebx + Level.levelStatistics.score]
+        mov     [WinMenu.star1.refLevelStars], eax
+        mov     [WinMenu.star2.refLevelStars], eax
+        mov     [WinMenu.star3.refLevelStars], eax
         
         stdcall Menu.Start
         
         stdcall Levels.GetCurrentLevelInArray
+        add     eax, 4 
         
-        cmp     DWORD [eax], level3
-        je      .exit
-        
-        add     eax, 4    
+        cmp     DWORD [eax], 0
+        je      .exit   
         
         mov     eax, [eax]
         mov     DWORD [eax + Level.levelStatistics.isAvailable], TRUE         
@@ -76,23 +72,22 @@ proc Result.Win
         ret
 endp
 
-proc Result.Lose
+proc Result.Lose uses ebx
 
         stdcall Music.Play, loseMusic
 
         mov     [currentMenu], loseMenu  
         stdcall WindowProcFunctions.ChangeToMenu
 
-        mov     eax, [currentLevel]
+        mov     ebx, [currentLevel]
         
-        mov     ecx, [eax + Level.levelStatistics.score]
-        mov     [LoseMenu.nSCORE.number], ecx
-        mov     edx, [eax + Level.levelStatistics.bestScore]
-        mov     [LoseMenu.nBEST.number], edx 
+        stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.score], LoseMenu.nSCORE + String.string
+        stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.bestScore], LoseMenu.nBEST + String.string 
         
-        mov     [LoseMenu.star1.refLevel], eax
-        mov     [LoseMenu.star2.refLevel], eax
-        mov     [LoseMenu.star3.refLevel], eax
+        lea     eax, [ebx + Level.levelStatistics.score]
+        mov     [LoseMenu.star1.refLevelStars], eax
+        mov     [LoseMenu.star2.refLevelStars], eax
+        mov     [LoseMenu.star3.refLevelStars], eax
         
         stdcall Menu.Start 
 

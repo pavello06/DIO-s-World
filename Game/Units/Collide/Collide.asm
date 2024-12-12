@@ -1,6 +1,3 @@
-include 'CollideEnemyBulletAndSomething.asm'
-include 'CollidePlayerBulletAndSomething.asm'
-
 include 'CollideDeadEnemyAndSomething.asm'
 include 'CollideEnemyAndSomething.asm'
 include 'CollideSnailAndSomething.asm'
@@ -12,11 +9,12 @@ include 'CollideStopableEnemyAndSomething.asm'
 
 include 'CollideDeadPlayerAndSomething.asm'
 include 'CollidePlayerAndSomething.asm'
+include 'CollidePlayerBulletAndSomething.asm'
 
-Collide.LEFT   = 0
-Collide.TOP    = 1
-Collide.RIGHT  = 2
-Collide.BOTTOM = 3
+Collide.TOP    = 0
+Collide.RIGHT  = 1
+Collide.BOTTOM = 2
+Collide.LEFT   = 3
 
 proc Collide.AreObjectsColliding\
      refObject1, refObject2
@@ -123,18 +121,6 @@ proc Collide.HandleCollision uses ebx esi edi,\
         mov     esi, [refObject2]
         mov     edi, [ebx + GameObject.collide]
         
-        test    edi, GameObject.ENEMY_BULLET
-        je      .notEnemyBullet
-        stdcall Collide.CollideEnemyBulletAndSomething, ebx, esi, [side]
-        jmp     .exit
-         
-  .notEnemyBullet:
-        test    edi, GameObject.PLAYER_BULLET
-        je      .notPlayerBullet
-        stdcall Collide.CollidePlayerBulletAndSomething, ebx, esi, [side]
-        jmp     .exit
-         
-  .notPlayerBullet:
         test    edi, GameObject.DEAD_PLAYER
         je      .notDeadPlayer
         stdcall Collide.CollideDeadPlayerAndSomething, ebx, esi, [side]
@@ -145,8 +131,13 @@ proc Collide.HandleCollision uses ebx esi edi,\
         je      .notPlayer
         stdcall Collide.CollidePlayerAndSomething, ebx, esi, [side]
         jmp     .exit
-         
-  .notPlayer:  
+        
+  .notPlayer:
+        test    edi, GameObject.PLAYER_BULLET
+        je      .notPlayerBullet
+        stdcall Collide.CollidePlayerBulletAndSomething, ebx, esi, [side]
+  
+  .notPlayerBullet:         
         test    edi, GameObject.DEAD_ENEMY
         je      @F
         stdcall Collide.CollideDeadEnemyAndSomething, ebx, esi, [side]
@@ -218,4 +209,3 @@ proc Collide.HandleCollisions uses ebx esi edi,\
   .exit: 
         ret
 endp
-;-------------------------------------------------------------------------------

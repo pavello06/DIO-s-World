@@ -6,28 +6,24 @@ ends
 GameObject.DECORATION         = 1
 ;blocks
 ;with both
-GameObject.BLOCK              = GameObject.DECORATION * 2
-GameObject.TOP_BLOCK          = GameObject.BLOCK * 2
-GameObject.JUMP               = GameObject.TOP_BLOCK * 2
-GameObject.KILL               = GameObject.JUMP * 2
+GameObject.TOP_BLOCK          = GameObject.DECORATION * 2
+GameObject.BLOCK              = GameObject.TOP_BLOCK * 2
+GameObject.KILL               = GameObject.BLOCK * 2
 GameObject.DELETE             = GameObject.KILL * 2
 ;with player
 GameObject.TOP_BREAK          = GameObject.DELETE * 2
 GameObject.BOTTOM_BREAK       = GameObject.TOP_BREAK * 2
 GameObject.BOTTOM_LUCK        = GameObject.BOTTOM_BREAK * 2
-GameObject.TELEPORT           = GameObject.BOTTOM_LUCK * 2
+GameObject.JUMP               = GameObject.BOTTOM_LUCK * 2
 ;with enemy
-GameObject.REVERSE            = GameObject.TELEPORT * 2
+GameObject.REVERSE            = GameObject.JUMP * 2
 GameObject.SPECIAL            = GameObject.REVERSE * 2
 ;bonuses
 GameObject.BONUS_FOR_LEVEL    = GameObject.SPECIAL * 2
 GameObject.BONUS_FOR_PLAYER   = GameObject.BONUS_FOR_LEVEL * 2
-;bullets
-GameObject.ENEMY_BULLET       = GameObject.BONUS_FOR_PLAYER  * 2
-GameObject.PLAYER_BULLET      = GameObject.ENEMY_BULLET * 2
 ;enemies
 ;with both
-GameObject.DEAD_ENEMY         = GameObject.PLAYER_BULLET * 2
+GameObject.DEAD_ENEMY         = GameObject.BONUS_FOR_PLAYER * 2
 GameObject.ENEMY              = GameObject.DEAD_ENEMY * 2
 GameObject.SNAIL              = GameObject.ENEMY * 2
 ;with block
@@ -42,6 +38,7 @@ GameObject.UNBEATABLE_ENEMY   = GameObject.UNTOCHABLE_ENEMY * 2
 ;players
 GameObject.DEAD_PLAYER        = GameObject.UNBEATABLE_ENEMY * 2
 GameObject.PLAYER             = GameObject.DEAD_PLAYER * 2
+GameObject.PLAYER_BULLET      = GameObject.PLAYER * 2
 
 struct GameObjectWithDrawing
   gameObject GameObject

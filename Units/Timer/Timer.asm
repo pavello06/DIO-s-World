@@ -27,19 +27,13 @@ proc Timer.IsTimeUp\
         
         mov     ecx, [refTimer] 
         
-        mov     edx, [ecx]
-        
-        cmp     edx, -1
-        je      .TimeIsUpWhenNotStart
-        
-	      sub	    eax, edx
+	      sub	    eax, [ecx]
 	      cmp	    eax, [maxTimer]
 	      jb	    .TimeIsNotUp
         
   .TimeIsUp:
         add	    [ecx], eax
-  
-  .TimeIsUpWhenNotStart:      
+       
         mov     eax, TRUE
         jmp     .exit   
   

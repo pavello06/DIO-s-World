@@ -1,0 +1,1 @@
+waterFrames dd 8, waterTexture, water2Texture, water3Texture, water4Texture, water5Texture, water4Texture, water3Texture, water2Texture

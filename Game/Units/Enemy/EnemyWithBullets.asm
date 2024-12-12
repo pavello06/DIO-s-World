@@ -3,12 +3,14 @@ struct EnemyWithBullets
   refBullets     dd ?
 ends
 
+EnemyWithBullets.MAX_DISTANCE = 2600
+
 proc EnemyWithBullets.CanShoot uses ebx,\
      refEnemyWithBullets
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall Enemy.IsPlayerNear, ebx, 2600        
+        stdcall Enemy.IsPlayerNear, ebx, EnemyWithBullets.MAX_DISTANCE        
         cmp     eax, FALSE
         je      .canNotShoot
         

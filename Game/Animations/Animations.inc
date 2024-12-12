@@ -1,47 +1,63 @@
 ;General------------------------------------------------------------------------
-;Blocks-------------------------------------------------------------------------
-
-;Bonuses------------------------------------------------------------------------
-heartAnimation dd FALSE, 0, 150, 0, heartFrames
-
-arrowAnimation dd TRUE, 0, 10000, 0, arrowFrames
-
-worldAnimation dd TRUE, 0, 10000, 0, worldFrames
-
 ;Mobs---------------------------------------------------------------------------
-venusFlycatcherAnimations dd TRUE, 0, 10, 0, deadVenusFlycatcherFrames, FALSE, 0, 120, 0, venusFlycatcherFrames
+beeAnimations dd\
+TRUE, 0, 0, 0, deadBeeFrames,\
+FALSE, 0, 120, 0, beeFrames
+
+coreAnimations dd\ 
+TRUE, 0, 0, 0, voidFrames,\
+FALSE, 0, 10, 0, coreFrames
+
+snailAnimations dd\ 
+TRUE, 0, 0, 0, deadSnailFrames,\ 
+TRUE, 0, 0, 0, deadSnailFrames,\ 
+TRUE, 0, 0, 0, deadSnailFrames,\ 
+FALSE, 0, 100, 0, snailFrames
+
+venusFlycatcherAnimations dd\
+TRUE, 0, 0, 0, deadVenusFlycatcherFrames,\
+FALSE, 0, 120, 0, venusFlycatcherFrames
 
 ;Player-------------------------------------------------------------------------
-playerAnimations dd 5,\
-FALSE, 0, 200, 0, standingPlayerFrames,\
-FALSE, 0, 100, 0, runningPlayerFrames,\
-TRUE, 0, 100, 0, upJumpingPlayerFrames,\
-TRUE, 0, 100, 0, downJumpingPlayerFrames,\
-TRUE, 0, 100, 0, dyingPlayerFrames
-
-invulnerablePlayerAnimations dd 5,\
+invulnerablePlayerAnimations dd\
 FALSE, 0, 200, 0, invulnerableStandingPlayerFrames,\
 FALSE, 0, 200, 0, invulnerableRunningPlayerFrames,\
 FALSE, 0, 200, 0, invulnerableUpJumpingPlayerFrames,\
 FALSE, 0, 200, 0, invulnerableDownJumpingPlayerFrames,\
 FALSE, 0, 200, 0, invulnerableDyingPlayerFrames
 
-playerBulletAnimations dd 2,\
+playerAnimations dd\
+FALSE, 0, 200, 0, standingPlayerFrames,\
+FALSE, 0, 100, 0, runningPlayerFrames,\
+TRUE, 0, 0, 0, upJumpingPlayerFrames,\
+TRUE, 0, 0, 0, downJumpingPlayerFrames,\
+TRUE, 0, 0, 0, dyingPlayerFrames
+
+playerBulletAnimations dd\
 TRUE, 0, 100, 0, deadPlayerBulletFrames,\
 FALSE, 0, 120, 0, playerBulletFrames
 
 ;Location1----------------------------------------------------------------------
-;Blocks-------------------------------------------------------------------------
-
-;Decorations--------------------------------------------------------------------
-
 ;Mobs---------------------------------------------------------------------------
-owlAnimations dd TRUE, 0, 10, 0, deadOwlFrames, FALSE, 100, 0, 0, owlFrames
+honeyAnimations dd\ 
+TRUE, 0, 0, 0, deadHoneyFrames,\ 
+FALSE, 0, 100, 0, honeyFrames
 
-beeAnimations dd TRUE, 0, 10, 0, deadBeeFrames, FALSE, 0, 120, 0, beeFrames
+owlAnimations dd\
+TRUE, 0, 0, 0, deadOwlFrames,\
+FALSE, 0, 100, 0, owlFrames
 
-honeyAnimations dd TRUE, 0, 10, 0, deadHoneyFrames, FALSE, 0, 100, 0, honeyFrames
+;Location2----------------------------------------------------------------------
+;Mobs---------------------------------------------------------------------------
+coconutAnimations dd\
+TRUE, 0, 0, 0, deadCoconutFrames,\
+FALSE, 0, 100, 0, coconutFrames
 
-snailAnimations dd TRUE, 0, 10, 0, deadSnailFrames, TRUE, 0, 10, 0, deadSnailFrames, TRUE, 0, 10, 0, deadSnailFrames, FALSE, 0, 100, 0, snailFrames
+sigmaAnimations dd\
+TRUE, 0, 0, 0, deadSigmaFrames,\
+FALSE, 0, 100, 0, nedoSigmaFrames,\
+FALSE, 0, 100, 0, sigmaFrames
 
-coreAnimations dd 2, TRUE, 0, 10, 0, voidFrames, FALSE, 0, 10, 0, coreFrames
+spiderAnimations dd\
+TRUE, 0, 0, 0, deadSpiderFrames,\ 
+FALSE, 0, 100, 0, spiderFrames

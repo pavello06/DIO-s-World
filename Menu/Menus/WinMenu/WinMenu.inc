@@ -68,7 +68,7 @@ WinMenu:
 .menuButton Button\
 <<<Object.MENU, 70 * Drawing.BIG, 20 * Drawing.BIG, MENU_WIDTH * Drawing.BIG, MENU_HEIGHT * Drawing.BIG>>,\
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, menuTexture>>,\
-FALSE, Button.Menu, levelsMenu
+TRUE, Button.Menu, levelsMenu
 
 .background2 MenuObjectWithDrawing\
 <<Object.MENU, 100 * Drawing.BIG, 20 * Drawing.BIG, MENU_WIDTH * Drawing.BIG, MENU_HEIGHT * Drawing.BIG>>,\
@@ -86,7 +86,7 @@ FALSE, Button.GameRestart, 0
 .nextButton Button\
 <<<Object.MENU, 130 * Drawing.BIG, 20 * Drawing.BIG, CONTINUE_WIDTH * Drawing.BIG, CONTINUE_HEIGHT * Drawing.BIG>>,\
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, nextTexture>>,\
-TRUE, Button.GameNext, 0
+FALSE, Button.GameNext, 0
                                    
 
 

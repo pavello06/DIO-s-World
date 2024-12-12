@@ -78,7 +78,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
-        stdcall File.ReadLevelStatistics        
+        stdcall File.ReadLevelStatistics       
         stdcall Menu.Start
               
         xor     eax, eax
@@ -118,25 +118,8 @@ proc WindowProc uses ebx esi edi,\
         
   .wmsize:
         invoke  GetClientRect, [hwnd], rc
-        invoke  glViewport, 0, 0, [rc.right], [rc.bottom]
-        
-        cmp     DWORD [rc.right], 1920
-        jne     .forNotMyScale
-        cmp     DWORD [rc.bottom], 1080
-        jne     .forNotMyScale
-  
-  .forMyScale:      
-        mov     eax, [rc.right]
-        mov     [Screen.screen.object.width], eax
-        mov     eax, [rc.bottom]
-        mov     [Screen.screen.object.height], eax
-        jmp     @F
-  
-  .forNotMyScale:      
-        mov     [Screen.screen.object.width], 1535
-        mov     [Screen.screen.object.height], 850         
-  
-  @@:      
+        invoke  glViewport, 0, 0, [rc.right], [rc.bottom]         
+       
         xor     eax, eax
         jmp     .exit
         

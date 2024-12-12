@@ -6,14 +6,14 @@ struct Entity
   canGravitate            dd ?
 ends
 
-proc Entity.Delete uses ebx,\
+proc Entity.Delete\
      refEntity
      
-        mov     ebx, [refEntity]
+        mov     eax, [refEntity]
+        
+        mov     DWORD [eax + Entity.canMove], FALSE
      
-        stdcall Object.Delete, ebx
-                
-        mov     DWORD [ebx + Entity.canMove], FALSE
+        stdcall Object.Delete, eax
      
         ret
 endp

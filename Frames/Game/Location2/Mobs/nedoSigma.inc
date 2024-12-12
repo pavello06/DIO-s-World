@@ -1,0 +1,1 @@
+nedoSigmaFrames dd 6, nedoSigmaTexture, nedoSigma2Texture, nedoSigma3Texture, nedoSigma4Texture, nedoSigma5Texture, nedoSigma6Texture

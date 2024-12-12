@@ -178,14 +178,6 @@ proc Collide.CollidePlayerAndBottomLuck\
         ret
 endp
 
-proc Collide.CollidePlayerAndTeleport\
-     refPlayer, refTeleport 
-        
-        stdcall Teleport.TeleportObject, [refTeleport], [refPlayer]
-     
-        ret
-endp
-
 proc Collide.CollidePlayerAndBonusForLevel\
      refLevel, refBonus     
         
@@ -336,10 +328,6 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
         test    edi, GameObject.BOTTOM_LUCK
         je      @F
         stdcall Collide.CollidePlayerAndBottomLuck, esi, [side]
-  @@:
-        test    edi, GameObject.TELEPORT
-        je      @F
-        stdcall Collide.CollidePlayerAndTeleport, ebx, esi
   @@: 
         test    edi, GameObject.BONUS_FOR_LEVEL 
         je      @F
@@ -348,10 +336,6 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
         test    edi, GameObject.BONUS_FOR_PLAYER
         je      @F
         stdcall Collide.CollidePlayerAndBonusForPlayer, ebx, esi
-  @@:
-        test    edi, GameObject.ENEMY_BULLET
-        je      @F
-        stdcall Collide.CollidePlayerAndEnemyBullet, ebx
   @@:
         test    edi, GameObject.SNAIL
         je      @F

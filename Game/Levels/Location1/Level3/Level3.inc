@@ -921,7 +921,6 @@ Level3.cores
                                    .honey4, .owl5,\
                                    .venusFlycatcher2, .luck6, .spring1,\
                                    .owl6, .honey5, .owl7, .honey6, .bee2, .bee3, .snail1, .snail2, .core1, .core2, .core3,\
-                                   Statistic.bonus,\
                                    playerBullet1, playerBullet2, playerBullet3, player
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
@@ -973,11 +972,7 @@ Level3.cores
 .bulletsLength                   = $ - .bullets
 
 .words                          dd .wordsLength / 4 - 1,\
-                                   Statistic.wSCORE
+                                   Statistic.wSCORE, Statistic.nSCORE
 .wordsLength                    = $ - .words
 
-.numbers                        dd .numbersLength / 4 - 1,\
-                                   Statistic.nSCORE 
-.numbersLength                  = $ - .numbers
-
-level3 Level <FALSE, 0, 0, 0, 0>, 0, 0, 176 * DIRT_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level3.gameObjects, Level3.gameObjectsWithDrawing, Level3.gameObjectsWithAnimation, Level3.entities, Level3.bricksWithBreakTimer, Level3.enemies, Level3.enemiesWithBullets, Level3.enemiesWithReverseTimer, Level3.enemiesWithStopTimer, Level3.bullets, Level3.words, Level3.numbers>, Level3, BufferLevel3
+level3 Level <FALSE, 0, 0, 0, 0>, 0, 0, 176 * DIRT_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level3.gameObjects, Level3.gameObjectsWithDrawing, Level3.gameObjectsWithAnimation, Level3.entities, Level3.bricksWithBreakTimer, Level3.enemies, Level3.enemiesWithBullets, Level3.enemiesWithStopTimer, Level3.bullets, Level3.words>, Level3, BufferLevel3

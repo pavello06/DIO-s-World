@@ -1,0 +1,1 @@
+sigmaFrames dd 6, sigmaTexture, sigma2Texture, sigma3Texture, sigma4Texture, sigma5Texture, sigma6Texture

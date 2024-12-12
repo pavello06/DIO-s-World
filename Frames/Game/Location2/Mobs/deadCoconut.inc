@@ -1,0 +1,1 @@
+deadCoconutFrames dd 1, deadCoconutTexture

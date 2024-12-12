@@ -33,7 +33,7 @@ proc Collide.CollideRotateableEnemyAndSomething uses ebx esi edi,\
         mov     esi, [refObject]
         mov     edi, [esi + GameObject.collide]
              
-        test    edi, GameObject.REVERSE
+        test    edi, GameObject.SPECIAL
         je      .exit
         stdcall Collide.CollideRotateableEnemyAndRotate, ebx, [side]
   

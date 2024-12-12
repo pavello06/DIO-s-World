@@ -1,5 +1,3 @@
-include '../Animations/Animations.inc'
-
 include 'GameObject.asm'
 include 'Entity/Entity.asm'
 
@@ -9,13 +7,12 @@ include 'Bullet/Bullet.asm'
 include 'Enemy/Enemy.asm'
 include 'Enemy/EnemyWithTimer.asm'
 include 'Enemy/EnemyWithBullets.asm'
-include 'Enemy/EnemyWithReverseTimer.asm'
 include 'Enemy/EnemyWithStopTimer.asm'
+include 'Enemy/Snail.asm'
 include 'Luck/Luck.asm'
 include 'Player/Player.asm'
-include 'Enemy/Snail.asm'
-include 'Teleport/Teleport.asm'
 
+include '../Animations/Animations.inc'
 include '../Levels/Levels.inc'
 
 include 'Collide/Collide.asm'

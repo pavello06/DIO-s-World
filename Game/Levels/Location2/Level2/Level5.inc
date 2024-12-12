@@ -51,11 +51,7 @@ Level5:
 .bulletsLength                   = $ - .bullets
 
 .words                          dd .wordsLength / 4 - 1,\
-                                   Statistic.wSCORE
+                                   Statistic.wSCORE, Statistic.nSCORE
 .wordsLength                    = $ - .words
 
-.numbers                        dd .numbersLength / 4 - 1,\
-                                   Statistic.nSCORE 
-.numbersLength                  = $ - .numbers
-
-level5 Level <FALSE, 0, 0, 0, 0>, 0, 0, 5475, 1300, <80, 187, 255>, <Level5.gameObjects, Level5.gameObjectsWithDrawing, Level5.gameObjectsWithAnimation, Level5.entities, Level5.bricksWithBreakTimer, Level5.enemies, Level5.enemiesWithBullets, Level5.enemiesWithReverseTimer, Level5.enemiesWithStopTimer, Level5.bullets, Level5.words, Level5.numbers>, Level5, BufferLevel5
+level5 Level <FALSE, 0, 0, 0, 0>, 0, 0, 5475, 1300, <80, 187, 255>, <Level5.gameObjects, Level5.gameObjectsWithDrawing, Level5.gameObjectsWithAnimation, Level5.entities, Level5.bricksWithBreakTimer, Level5.enemies, Level5.enemiesWithBullets, Level5.enemiesWithStopTimer, Level5.bullets, Level5.words>, Level5, BufferLevel5

@@ -19,13 +19,13 @@ proc Bullet.ActivateOrDeactivate uses ebx,\
         mov     eax, [isActive]
         mov     DWORD [ebx + Bullet.isActive], eax
         
-        mov     ecx, 4 + sizeof.Animation
+        mov     ecx, sizeof.Animation
         
         cmp     [isActive], FALSE
         je      .notActive
   
   .active:
-        mov     ecx, 4
+        mov     ecx, 0
         
   .notActive:          
         add     ecx, [ebx + Bullet.refAnimations]

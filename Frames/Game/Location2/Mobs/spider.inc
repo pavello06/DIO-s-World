@@ -1,0 +1,1 @@
+spiderFrames dd 2, spiderTexture, spider2Texture

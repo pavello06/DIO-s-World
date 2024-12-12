@@ -23,6 +23,8 @@ proc ActiveButtonElement.ChangeActiveButton\
 
         mov       eax, [refButton]
         
+        mov       DWORD [eax + Button.isActive], TRUE
+        
         mov       ecx, [eax + Object.x]
         sub       ecx, Drawing.BIG
         mov       [activeButtonElement1 + Object.x], ecx        

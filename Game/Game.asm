@@ -1,14 +1,12 @@
 include 'Units/Units.inc'
 
-proc Game.Start uses ebx
+proc Game.Start
 
-        mov     ebx, [currentLevel]
+        stdcall Music.Play, startAndEndMusic
 
         stdcall Levels.CopyFromBuffer
         stdcall Player.Reset
         stdcall Statistic.Reset
-        
-        stdcall Music.Play, startAndEndMusic
 
         ret
 endp
@@ -31,18 +29,16 @@ proc Game.Timer uses ebx
         stdcall Move.MoveEntities 
         
         stdcall BrickWithBreakTimer.TimerObjects, [ebx + Level.gameObjects.refBricksWithBreakTimer]
-        stdcall Player.TimerObject
-        stdcall EnemyWithBullets.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithBullets]
-        stdcall EnemyWithReverseTimer.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithReverseTimer]        
-        stdcall EnemyWithStopTimer.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithStopTimer]
         stdcall Bullet.TimerObjects, [ebx + Level.gameObjects.refBullets]
+        stdcall EnemyWithBullets.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithBullets]        
+        stdcall EnemyWithStopTimer.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithStopTimer]
+        stdcall Player.TimerObject
         
         stdcall Result.IsWin
         cmp     eax, FALSE
         je      .notWin
         
   .win:
-        stdcall Music.Play, startAndEndMusic
         stdcall Result.Win
         jmp     .exit
   
@@ -59,8 +55,7 @@ proc Game.Paint uses ebx
         stdcall Screen.UpdateForGame
         
         stdcall Statistic.Update 
-        stdcall String.TimerObjects, [ebx + Level.gameObjects.refWords]
-        stdcall Number.TimerObjects, [ebx + Level.gameObjects.refNumbers]                
+        stdcall String.TimerObjects, [ebx + Level.gameObjects.refWords]                
         
         stdcall Drawing.DrawObjects, [ebx + Level.gameObjects.refGameObjectsWithDrawing]
         cmp     DWORD [player.worldTimer], -1
@@ -79,20 +74,24 @@ proc Game.Paint uses ebx
         ret
 endp
 
-proc Game.KeyDown\
+proc Game.KeyDown uses ebx,\
      key
+     
+        mov     ebx, [key]
         
-        stdcall KeyDown.Move, [key]
-        stdcall KeyDown.Pause, [key]
+        stdcall KeyDown.Move, ebx
+        stdcall KeyDown.Pause, ebx
         
         ret
 endp
 
-proc Game.KeyUp\
+proc Game.KeyUp uses ebx,\
      key
+     
+        mov     ebx, [key]
         
-        stdcall KeyUp.Move, [key]
-        stdcall KeyUp.Shoot, [key]
+        stdcall KeyUp.Move, ebx
+        stdcall KeyUp.Shoot, ebx
         
         ret
 endp

@@ -14,7 +14,7 @@ PauseMenu:
 .menuButton Button\
 <<<Object.MENU, 40 * Drawing.BIG, 45 * Drawing.BIG, MENU_WIDTH * Drawing.HUGE, MENU_HEIGHT * Drawing.HUGE>>,\
 <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, menuTexture>>,\
-FALSE, Button.Menu, levelsMenu
+TRUE, Button.Menu, levelsMenu
 
 .background2 MenuObjectWithDrawing\
 <<Object.MENU, 90 * Drawing.BIG, 45 * Drawing.BIG, MENU_WIDTH * Drawing.HUGE, MENU_HEIGHT * Drawing.HUGE>>,\
@@ -32,7 +32,7 @@ FALSE, Button.GameRestart, 0
 .continueButton Button\
 <<<Object.MENU, 140 * Drawing.BIG, 45 * Drawing.BIG, CONTINUE_WIDTH * Drawing.HUGE, CONTINUE_HEIGHT * Drawing.HUGE>>,\
 <Drawing.HUGE, Drawing.RIGHT, Drawing.UP, continueTexture>>,\
-TRUE, Button.GameContinue, 0
+FALSE, Button.GameContinue, 0
                                    
 
 

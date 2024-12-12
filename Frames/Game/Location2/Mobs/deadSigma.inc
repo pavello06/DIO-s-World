@@ -1,0 +1,1 @@
+deadSigmaFrames dd 1, deadSigmaTexture
