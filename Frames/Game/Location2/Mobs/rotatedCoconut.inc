@@ -1,0 +1,1 @@
+rotatedCoconutFrames dd 6, rotatedCoconutTexture, rotatedCoconut2Texture, rotatedCoconut3Texture, rotatedCoconut4Texture, rotatedCoconut5Texture, rotatedCoconut6Texture       

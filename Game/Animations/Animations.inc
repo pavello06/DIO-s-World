@@ -48,6 +48,11 @@ TRUE, 0, 0, 0, deadOwlFrames,\
 FALSE, 0, 100, 0, owlFrames
 
 ;Location2----------------------------------------------------------------------
+;Decorations--------------------------------------------------------------------
+laserAnimations dd\
+TRUE, 0, 0, 0, voidFrames,\
+TRUE, 0, 0, 0, laserFrames
+
 ;Mobs---------------------------------------------------------------------------
 coconutAnimations dd\
 TRUE, 0, 0, 0, deadCoconutFrames,\

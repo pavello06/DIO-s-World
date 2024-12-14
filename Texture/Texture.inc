@@ -137,6 +137,9 @@ include 'Game/Location1/Mobs/owl6.inc'
 
 ;Location2----------------------------------------------------------------------
 ;Blocks-------------------------------------------------------------------------
+include 'Game/Location2/Blocks/oldBrick.inc'
+include 'Game/Location2/Blocks/oldBrick2.inc'
+
 include 'Game/Location2/Blocks/stone.inc'
 
 include 'Game/Location2/Blocks/water.inc'
@@ -146,6 +149,8 @@ include 'Game/Location2/Blocks/water4.inc'
 include 'Game/Location2/Blocks/water5.inc'
 
 ;Decorations--------------------------------------------------------------------
+include 'Game/Location2/Decorations/laser.inc'
+
 include 'Game/Location2/Decorations/pineapple.inc'
 
 include 'Game/Location2/Decorations/web.inc'
@@ -163,6 +168,13 @@ include 'Game/Location2/Mobs/coconut3.inc'
 include 'Game/Location2/Mobs/coconut4.inc'
 include 'Game/Location2/Mobs/coconut5.inc'
 include 'Game/Location2/Mobs/coconut6.inc'
+
+include 'Game/Location2/Mobs/rotatedCoconut.inc'
+include 'Game/Location2/Mobs/rotatedCoconut2.inc'
+include 'Game/Location2/Mobs/rotatedCoconut3.inc'
+include 'Game/Location2/Mobs/rotatedCoconut4.inc'
+include 'Game/Location2/Mobs/rotatedCoconut5.inc'
+include 'Game/Location2/Mobs/rotatedCoconut6.inc'
 
 include 'Game/Location2/Mobs/nedoSigma.inc'
 include 'Game/Location2/Mobs/nedoSigma2.inc'

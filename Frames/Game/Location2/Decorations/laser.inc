@@ -1,0 +1,1 @@
+laserFrames dd 1, laserTexture
