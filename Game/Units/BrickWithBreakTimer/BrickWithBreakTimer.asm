@@ -12,8 +12,10 @@ proc BrickWithBreakTimer.Start uses ebx,\
         lea     eax, [ebx + BrickWithBreakTimer.timer]
         stdcall Timer.Start, eax 
         
-        lea     eax, [ebx + GameObjectWithAnimation.animation] 
-        stdcall Animation.Start, eax 
+        lea     ecx, [ebx + GameObjectWithAnimation.animation] 
+        stdcall Animation.Start, ecx
+        
+        xor     DWORD [ebx + GameObject.collide], GameObject.TOP_BREAK 
      
         ret
 endp
