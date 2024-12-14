@@ -104,11 +104,7 @@ endp
 proc Button.Exit\
      arg
      
-        stdcall Music.Play, buttonMusic
-
-        stdcall File.WriteLevelStatistics
-
-        invoke  ExitProcess, 0
+        jmp     start.exit
 
         ret
 endp
