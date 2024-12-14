@@ -42,7 +42,7 @@ include '../Levels/Location2/Level1/Buffer.inc'
 include '../Levels/Location2/Level2/Level5.inc'
 include '../Levels/Location2/Level2/Buffer.inc'
 
-currentLevel dd level1
+currentLevel dd level5
 
 levels       dd levelsLength / 4 - 2, level1, level2, level3, level4, level5, 0
 levelsLength = $ - levels
