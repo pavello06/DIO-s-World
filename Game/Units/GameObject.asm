@@ -35,8 +35,9 @@ GameObject.STOPABLE_ENEMY     = GameObject.ROTATEABLE_ENEMY * 2
 ;with player
 GameObject.UNTOCHABLE_ENEMY   = GameObject.STOPABLE_ENEMY * 2 
 GameObject.UNBEATABLE_ENEMY   = GameObject.UNTOCHABLE_ENEMY * 2
+GameObject.BOSS               = GameObject.UNBEATABLE_ENEMY * 2
 ;players
-GameObject.DEAD_PLAYER        = GameObject.UNBEATABLE_ENEMY * 2
+GameObject.DEAD_PLAYER        = GameObject.BOSS * 2
 GameObject.PLAYER             = GameObject.DEAD_PLAYER * 2
 GameObject.PLAYER_BULLET      = GameObject.PLAYER * 2
 
