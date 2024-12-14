@@ -312,6 +312,12 @@ Level4.coin8
 TRUE, 7, 0, TRUE>,\
 2, sigmaAnimations, 100
 
+.reverse5_1 GameObject\
+<Object.GAME, 61 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse6_1 GameObject\
+<Object.GAME, (70 * STONE_WIDTH - 1) * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
 .pineapple4 GameObjectWithDrawing\
 <<Object.GAME, 70 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, PINEAPPLE_WIDTH * Drawing.NORMAL, PINEAPPLE_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, pineappleTexture>
@@ -956,6 +962,12 @@ Level4.coin19
 
 .reverse28 GameObject\
 <Object.GAME, (222 * STONE_WIDTH - 1) * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse27_1 GameObject\
+<Object.GAME, 213 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse28_1 GameObject\
+<Object.GAME, (225 * STONE_WIDTH - 1) * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .sigma8 Enemy\
 <<<<<Object.GAME, 218 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, SIGMA_WIDTH * Drawing.NORMAL, SIGMA_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY>,\

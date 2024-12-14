@@ -1028,7 +1028,7 @@ TRUE, 8, 0, TRUE>,\
                                    .bigBlock14, .bigBlock15, .bigBlock16, .bigBlock17, .honey5,\
                                    .dirt13, .grass13, .shadow13_1, .flower7, .palm12, .bush12, .bush13, .bush14, .spawn2,\
                                    Statistic.wSCORE1, Statistic.wSCORE2, Statistic.wSCORE3, Statistic.wSCORE4, Statistic.wSCORE5, Statistic.nSCORE1, Statistic.nSCORE2, Statistic.nSCORE3, Statistic.nSCORE4, Statistic.nSCORE5, Statistic.border, Statistic.bonus, Statistic.stars,\
-                                   playerBullet1, playerBullet2, playerBullet3, player
+                                   playerBullet1, playerBullet2, playerBullet3, playerTexture
 .gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
 
 .gameObjectsWithAnimation       dd .gameObjectsWithAnimationLength / 4 - 1,\
@@ -1044,7 +1044,7 @@ TRUE, 8, 0, TRUE>,\
                                    .spring2, .coin24, .coin25, .coin26, .coin27, .coin28, .coin29, .coin30, .coin31, .coin32,\
                                    .coin33, .luck7, .owl2, .owl3, .owl4,\
                                    .honey5,\
-                                   playerBullet1, playerBullet2, playerBullet3, player
+                                   playerBullet1, playerBullet2, playerBullet3, playerTexture
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
 .entities                       dd .entitiesLength / 4 - 1,\

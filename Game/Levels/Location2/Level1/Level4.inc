@@ -311,6 +311,12 @@ Level4.coin8
 TRUE, 7, 0, TRUE>,\
 2, sigmaAnimations, 100
 
+.reverse5_1 GameObject\
+<Object.GAME, 61 * STONE_WIDTH * Drawing.NORMAL, 6 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse6_1 GameObject\
+<Object.GAME, (70 * STONE_WIDTH - 1) * Drawing.NORMAL, 6 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
 .pineapple4 GameObjectWithDrawing\
 <<Object.GAME, 70 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, PINEAPPLE_WIDTH * Drawing.NORMAL, PINEAPPLE_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, pineappleTexture>
@@ -956,6 +962,12 @@ Level4.coin18
 .reverse28 GameObject\
 <Object.GAME, (222 * STONE_WIDTH - 1) * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
+.reverse27_1 GameObject\
+<Object.GAME, 213 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse28_1 GameObject\
+<Object.GAME, (225 * STONE_WIDTH - 1) * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
 .sigma8 Enemy\
 <<<<<Object.GAME, 218 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, SIGMA_WIDTH * Drawing.NORMAL, SIGMA_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, sigmaTexture>>,\
@@ -1191,7 +1203,7 @@ Bonus.COIN
                                    .stone4, .reverse1, .reverse2, .web1, .spider1, .stone5, .pineapple2, .brick1, .brick2, .coin5, .luck1,\
                                    .stone6, .reverse3, .reverse4, .sigma1, .sigma2, .snail1, .pineapple3, .coin6, .luck2,\
                                    .stone7, .stone8, .spike1, .stone9, .coconut1, .special1, .special2, .special3, .special4,\
-                                   .stone10, .stone11, .coin7, .luck3, .brick3, .brick4, .coin8, .luck4, .reverse5, .reverse6, .sigma3, .coin9, .coin10, .coin11, .coin12, .coin13, .coin14, .coin15, .coin16, .core1, .core2, .core3, .cannon1,\
+                                   .stone10, .stone11, .coin7, .luck3, .brick3, .brick4, .coin8, .luck4, .reverse5, .reverse6, .reverse5_1, .reverse6_1, .sigma3, .coin9, .coin10, .coin11, .coin12, .coin13, .coin14, .coin15, .coin16, .core1, .core2, .core3, .cannon1,\
                                    .water2, .stone12, .stone13, .stone14, .stone15, .special5, .special6, .special7, .special8, .coconut2, .special9, .special10, .special11, .special12, .coconut3, .special13, .special14, .special15, .special16, .coconut4,\
                                    .water3, .brickWitBreakTimer1, .brickWitBreakTimer2, .brickWitBreakTimer3, .brickWitBreakTimer4, .stone16, .stone17, .stone17_2, .stone17_3, .star2, .coin17, .luck5, .pineapple5, .reverse7, .reverse8, .sigma4,\
                                    .water4, .stone18, .water5, .stone19, .brickWitBreakTimer5, .brickWitBreakTimer6, .brickWitBreakTimer7, .arrow1, .stone20, .special17, .special18, .special19, .special20, .coconut5, .special21, .special22, .special23, .special24, .coconut6,\
@@ -1200,7 +1212,7 @@ Bonus.COIN
                                    .stone23, .stone24, .spring1, .water7, .bottomPipe6, .topPipe6, .bottomPipe7, .topPipe7, .reverse19, .reverse20, .venusFlycatcher2,\
                                    .stone25, .pineapple7, .pineapple8, .reverse21, .reverse22, .sigma7, .core4, .core5, .core6, .cannon2,\
                                    .stone26, .stone27, .reverse23, .reverse24, .web3, .spider3, .pineapple9, .reverse25, .reverse26, .web4, .spider4,\
-                                   .stone28, .brick5, .brick6, .coin18, .luck6, .brick7, .brick8, .coin19, .luck7, .reverse27, .reverse28, .sigma8,\
+                                   .stone28, .brick5, .brick6, .coin18, .luck6, .brick7, .brick8, .coin19, .luck7, .reverse27, .reverse28, .reverse27_1, .reverse28_1, .sigma8,\
                                    .stone29, .stone30, .coin20, .coin21, .coin22, .coin23, .coin24, .coin25, .pineapple10, .reverse29, .reverse30, .sigma9, .sigma10,\
                                    .water8, .stone31, .stone32, .stone33, .brickWitBreakTimer9, .brickWitBreakTimer10, .special25, .special26, .special27, .special28, .coconut7, .special29, .special30, .special31, .special32, .coconut8, .core7, .core8, .core9, .cannon3,\
                                    .water9, .stone34, .pineapple11, .pineapple12, .pineapple13, .coin26, .coin27, .coin28, .coin29, .spawn2, .stone35,\
@@ -1229,7 +1241,7 @@ Bonus.COIN
                                    .water9, .stone34, .pineapple11, .pineapple12, .pineapple13, .coin26, .coin27, .coin28, .coin29, .spawn2, .stone35,\
                                    .coconut9, .coconut10, .coconut11, .coconut12,\
                                    Statistic.wSCORE1, Statistic.wSCORE2, Statistic.wSCORE3, Statistic.wSCORE4, Statistic.wSCORE5, Statistic.nSCORE1, Statistic.nSCORE2, Statistic.nSCORE3, Statistic.nSCORE4, Statistic.nSCORE5, Statistic.border, Statistic.bonus, Statistic.stars,\
-                                   playerBullet1, playerBullet2, playerBullet3, player
+                                   playerBullet1, playerBullet2, playerBullet3, playerTexture
 .gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
 
 .gameObjectsWithAnimation       dd .gameObjectsWithAnimationLength / 4 - 1,\
@@ -1250,7 +1262,7 @@ Bonus.COIN
                                    .coin20, .coin21, .coin22, .coin23, .coin24, .coin25, .sigma9, .sigma10,\
                                    .water8, .coconut7, .coconut8, .core7, .core8, .core9,\
                                    .water9, .coin26, .coin27, .coin28, .coin29, .coconut9, .coconut10, .coconut11, .coconut12,\
-                                   playerBullet1, playerBullet2, playerBullet3, player
+                                   playerBullet1, playerBullet2, playerBullet3, playerTexture
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
 .entities                       dd .entitiesLength / 4 - 1,\

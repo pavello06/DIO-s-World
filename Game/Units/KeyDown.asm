@@ -14,7 +14,7 @@ proc KeyDown.Move\
         jne     .notVKLeft
         
   .VKLeft:
-        mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT        
+        mov     DWORD [playerTexture + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT        
         mov     DWORD [player + Entity.speedX], -Player.SPEED_X_AFTER_MOVE_KEY
         jmp     .exit     
   
@@ -47,7 +47,7 @@ proc KeyDown.Move\
         jne     .exit
         
   .VKRight:
-        mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT  
+        mov     DWORD [playerTexture + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT  
         mov     DWORD [player + Entity.speedX], Player.SPEED_X_AFTER_MOVE_KEY       
         
   .exit:  

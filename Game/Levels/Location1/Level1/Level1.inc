@@ -890,7 +890,7 @@ Bonus.STAR
                                    .dirt18, .grass18, .star3, .dirt181, .shadow24,\
                                    .dirt19, .grass19, .shadow25, .palm12, .flower9,\
                                    Statistic.wSCORE1, Statistic.wSCORE2, Statistic.wSCORE3, Statistic.wSCORE4, Statistic.wSCORE5, Statistic.nSCORE1, Statistic.nSCORE2, Statistic.nSCORE3, Statistic.nSCORE4, Statistic.nSCORE5, Statistic.border, Statistic.bonus, Statistic.stars,\
-                                   player
+                                   playerBullet1, playerBullet2, playerBullet3, playerTexture
 .gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
 
 .gameObjectsWithAnimation       dd .gameObjectsWithAnimationLength / 4 - 1,\
@@ -903,7 +903,7 @@ Bonus.STAR
                                    .owl6,\
                                    .coin17, .coin18, .coin19, .luck5,\
                                    .owl7, .coin20, .luck6,\
-                                   player
+                                   playerTexture
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
 .entities                       dd .entitiesLength / 4 - 1,\

@@ -58,12 +58,18 @@ TRUE, playerBulletAnimations
 playerBullets dd 3, playerBullet1, playerBullet2, playerBullet3
 
 player Player\
-<<<<<Object.GAME, Player.START_X, Player.START_Y, STANDING_PLAYER_WIDTH * Drawing.NORMAL, STANDING_PLAYER_HEIGHT * Drawing.NORMAL>,\ 
+<<<<<Object.GAME, Player.START_X, Player.START_Y, 9 * Drawing.NORMAL, 15 * Drawing.NORMAL>,\ 
 GameObject.PLAYER>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
 <FALSE, 0, 200, 0, standingPlayerFrames>>,\
 TRUE, 0, 0, TRUE>,\
 FALSE, playerBullets, FALSE, FALSE, -1, 9000, -1, 1500, playerAnimations
+
+playerTexture GameObjectWithAnimation\
+<<<Object.GAME, Player.START_X, Player.START_Y, STANDING_PLAYER_WIDTH * Drawing.NORMAL, STANDING_PLAYER_HEIGHT * Drawing.NORMAL>,\ 
+GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, standingPlayerTexture>>,\
+<FALSE, 0, 200, 0, standingPlayerFrames>
 
 onlyPlayer dd 1, player
 
@@ -74,9 +80,9 @@ proc Player.Reset
         
         mov     DWORD [player + GameObject.collide], GameObject.PLAYER
         
-        mov     DWORD [player + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT
-        mov     DWORD [player + GameObjectWithDrawing.drawing.directionY], Drawing.UP
-        mov     DWORD [player + GameObjectWithDrawing.drawing.refTexture], standingPlayerTexture
+        mov     DWORD [playerTexture + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT
+        mov     DWORD [playerTexture + GameObjectWithDrawing.drawing.directionY], Drawing.UP
+        mov     DWORD [playerTexture + GameObjectWithDrawing.drawing.refTexture], standingPlayerTexture
         
         mov     eax, [player.refAnimations]
         add     eax, Player.STANDING
@@ -112,7 +118,7 @@ endp
               
 proc Player.ChangeAnimation uses ebx
         
-        mov     ebx, [player + GameObjectWithAnimation.animation.refFrames] 
+        mov     ebx, [playerTexture + GameObjectWithAnimation.animation.refFrames] 
         
         mov     eax, [player.refAnimations]
         
@@ -153,12 +159,12 @@ proc Player.ChangeAnimation uses ebx
         add     eax, Player.STANDING
   
   .animation:
-        stdcall Animation.Copy, player + GameObjectWithAnimation.animation, eax
+        stdcall Animation.Copy, playerTexture + GameObjectWithAnimation.animation, eax
         
-        cmp     ebx, [player + GameObjectWithAnimation.animation.refFrames]
+        cmp     ebx, [playerTexture + GameObjectWithAnimation.animation.refFrames]
         je      .exit
         
-        stdcall Animation.Start, player + GameObjectWithAnimation.animation
+        stdcall Animation.Start, playerTexture + GameObjectWithAnimation.animation
   
   .exit:
         ret     
@@ -194,10 +200,10 @@ proc Player.Shoot
         
         mov     eax, [ecx + GameObjectWithDrawing.drawing.directionX]
         mul     DWORD [ecx + Entity.speedX]        
-        mul     DWORD [player + GameObjectWithDrawing.drawing.directionX]  
+        mul     DWORD [playerTexture + GameObjectWithDrawing.drawing.directionX]  
         mov     [ecx + Entity.speedX], eax
         
-        mov     eax, [player + GameObjectWithDrawing.drawing.directionX]
+        mov     eax, [playerTexture + GameObjectWithDrawing.drawing.directionX]
         mov     [ecx + GameObjectWithDrawing.drawing.directionX], eax        
         
         mov     eax, [player + Object.height]
@@ -271,6 +277,12 @@ endp
 proc Player.TimerObject
 
         stdcall Player.ChangeAnimation
+        
+        mov     eax, [player + Object.x]
+        sub     eax, 2 * Drawing.NORMAL
+        mov     [playerTexture + Object.x], eax
+        mov     ecx, [player + Object.y]
+        mov     [playerTexture + Object.y], ecx
         
         stdcall Timer.IsTimeUp, player.invulnerabilityTimer, [player.maxInvulnerabilityTimer]
         cmp     eax, FALSE

@@ -219,13 +219,13 @@ Level5.nHEALTH1, '1', '0', '0', 0
                                    .core1, .core2, .core3, .core4, .core5, .spike1, .spike2,\
                                    .star1, .star2, .spawn1, .coconut1, .nHEALTH1, .nHEALTH2, .nHEALTH3,\
                                    Statistic.wSCORE1, Statistic.wSCORE2, Statistic.wSCORE3, Statistic.wSCORE4, Statistic.wSCORE5, Statistic.nSCORE1, Statistic.nSCORE2, Statistic.nSCORE3, Statistic.nSCORE4, Statistic.nSCORE5, Statistic.border, Statistic.bonus, Statistic.stars,\
-                                   playerBullet1, playerBullet2, playerBullet3, player
+                                   playerBullet1, playerBullet2, playerBullet3, playerTexture
 .gameObjectsWithDrawingLength   = $ - .gameObjectsWithDrawing
 
 .gameObjectsWithAnimation       dd .gameObjectsWithAnimationLength / 4 - 1,\
                                    .beeTexture, .water1,\
                                    .core1, .core2, .core3, .core4, .core5, .coconut1,\
-                                   playerBullet1, playerBullet2, playerBullet3, player
+                                   playerBullet1, playerBullet2, playerBullet3, playerTexture
 .gameObjectsWithAnimationLength = $ - .gameObjectsWithAnimation
 
 .entities                       dd .entitiesLength / 4 - 1,\
