@@ -1,7 +1,9 @@
 proc Collide.CollidePlayerBulletAndBlock\
      refBullet
 
-        stdcall Bullet.Activate, [refBullet]
+        mov     eax, [refBullet]
+        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
+        stdcall Bullet.Activate, eax
            
         ret
 endp
@@ -9,6 +11,8 @@ endp
 proc Collide.CollidePlayerBulletAndSnail\
      refBullet, refSnail
 
+        mov     eax, [refBullet]
+        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
         stdcall Bullet.Activate, [refBullet]
         stdcall Snail.GetDamage, [refSnail]
   
@@ -18,6 +22,8 @@ endp
 proc Collide.CollidePlayerBulletAndEnemy\
      refBullet, refEnemy
 
+        mov     eax, [refBullet]
+        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
         stdcall Bullet.Activate, [refBullet]
         stdcall Enemy.GetDamage, [refEnemy]
   
@@ -27,6 +33,8 @@ endp
 proc Collide.CollidePlayerBulletAndUntochableEnemy\
      refBullet, refEnemy
         
+        mov     eax, [refBullet]
+        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
         stdcall Bullet.Activate, [refBullet]
         stdcall Enemy.GetDamage, [refEnemy]
  
@@ -36,7 +44,20 @@ endp
 proc Collide.CollidePlayerBulletAndUnbeatableEnemy\
      refBullet
         
+        mov     eax, [refBullet]
+        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
         stdcall Bullet.Activate, [refBullet] 
+ 
+        ret
+endp
+
+proc Collide.CollidePlayerBulletAndBoss\
+     refBullet, refBoss
+        
+        mov     eax, [refBullet]
+        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
+        stdcall Bullet.Activate, [refBullet] 
+        stdcall Boss.GetDamage, [refBoss] 
  
         ret
 endp
@@ -65,8 +86,12 @@ proc Collide.CollidePlayerBulletAndSomething uses ebx esi edi,\
         stdcall Collide.CollidePlayerBulletAndUntochableEnemy, ebx, esi
   @@:
         test    edi, GameObject.UNBEATABLE_ENEMY
+        je      @F
+        stdcall Collide.CollidePlayerBulletAndUnbeatableEnemy, ebx        
+  @@:
+        test    edi, GameObject.BOSS
         je      .exit
-        stdcall Collide.CollidePlayerBulletAndUnbeatableEnemy, ebx
+        stdcall Collide.CollidePlayerBulletAndBoss, ebx, esi
   
   .exit:   
         ret     

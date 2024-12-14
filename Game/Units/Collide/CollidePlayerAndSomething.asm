@@ -241,6 +241,7 @@ proc Collide.CollidePlayerAndEnemy\
         cmp     DWORD [player + Entity.speedY], -2
         jge     .notBottom
         
+        add     DWORD [player + Object.y], 2
         mov     DWORD [player + Player.canJump], FALSE
         mov     DWORD [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
         
@@ -289,6 +290,14 @@ proc Collide.CollidePlayerAndUnbeatableEnemy\
      refPlayer
         
         stdcall Player.GetDamage, [refPlayer] 
+ 
+        ret
+endp
+
+proc Collide.CollidePlayerAndBoss\
+     refPlayer
+        
+        stdcall Player.Die, [refPlayer] 
  
         ret
 endp
@@ -350,8 +359,12 @@ proc Collide.CollidePlayerAndSomething uses ebx esi edi,\
         stdcall Collide.CollidePlayerAndUntochableEnemy, ebx
   @@:
         test    edi, GameObject.UNBEATABLE_ENEMY
-        je      .exit
+        je      @F
         stdcall Collide.CollidePlayerAndUnbeatableEnemy, ebx
+  @@:
+        test    edi, GameObject.BOSS
+        je      .exit
+        stdcall Collide.CollidePlayerAndBoss, ebx
   
   .exit:   
         ret     

@@ -4,23 +4,55 @@ proc Collide.CollideRotateableEnemyAndRotate\
         mov     eax, [refEnemy]
         mov     ecx, [side]
    
-        cmp     ecx, Collide.TOP
-        je      .vertical
+        cmp     ecx, Collide.RIGHT
+        je      .right
         cmp     ecx, Collide.BOTTOM
-        je      .vertical 
+        je      .bottom
+        cmp     ecx, Collide.LEFT
+        je      .left  
         
-  .horizontal:
-        neg     DWORD [eax + Entity.speedY]
-        inc     DWORD [eax + Entity.speedY]        
-
-        mov     DWORD [eax + Entity.speedX], 0        
+  .top:
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionY], Drawing.UP
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.refTexture], coconutTexture
+        
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], coconutFrames
+  
+        mov     DWORD [eax + Entity.speedX], 5
+        mov     DWORD [eax + Entity.speedY], 0
         jmp     .exit 
         
-  .vertical:
-        neg     DWORD [eax + Entity.speedX]
-        inc     DWORD [eax + Entity.speedX]        
-
+  .right:
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.RIGHT
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionY], Drawing.UP
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.refTexture], rotatedCoconutTexture
+        
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], rotatedCoconutFrames
+        
+        mov     DWORD [eax + Entity.speedX], 0
+        mov     DWORD [eax + Entity.speedY], -5
+        jmp     .exit 
+        
+  .bottom:
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionY], Drawing.DOWN
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.refTexture], coconutTexture
+        
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], coconutFrames
+        
+        mov     DWORD [eax + Entity.speedX], -5
         mov     DWORD [eax + Entity.speedY], 0
+        jmp     .exit
+        
+  .left:
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.directionY], Drawing.DOWN
+        mov     DWORD [eax + GameObjectWithDrawing.drawing.refTexture], rotatedCoconutTexture
+        
+        mov     DWORD [eax + GameObjectWithAnimation.animation.refFrames], rotatedCoconutFrames
+        
+        mov     DWORD [eax + Entity.speedX], 0
+        mov     DWORD [eax + Entity.speedY], 5
 
   .exit:   
         ret
@@ -36,6 +68,7 @@ proc Collide.CollideRotateableEnemyAndSomething uses ebx esi edi,\
         test    edi, GameObject.SPECIAL
         je      .exit
         stdcall Collide.CollideRotateableEnemyAndRotate, ebx, [side]
+        stdcall Collide.CollideBlockableEnemyAndBlock, ebx, esi, [side]
   
   .exit:   
         ret     

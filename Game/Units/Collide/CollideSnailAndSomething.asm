@@ -6,7 +6,7 @@ proc Collide.CollideSnailAndBlock uses ebx,\
         cmp     DWORD [side], Collide.BOTTOM
         je      .exit
         
-        cmp     DWORD [eax + Enemy.health], 1
+        cmp     DWORD [ebx + Enemy.health], 1
         jne     .exit
         
         stdcall Collide.CollideReverseableEnemyAndReverse, ebx
@@ -22,6 +22,20 @@ proc Collide.CollideSnailAndBlock uses ebx,\
         ret
 endp
 
+proc Collide.CollideSnailAndEnemy uses ebx,\
+     refSnail, refEnemy
+
+        mov     ebx, [refSnail]
+        
+        cmp     DWORD [ebx + Enemy.health], 1
+        jne     .exit
+        
+        stdcall Enemy.GetDamage, [refEnemy]    
+
+  .exit:
+        ret
+endp
+
 proc Collide.CollideSnailAndSomething uses ebx esi edi,\
      refEnemy, refObject, side
      
@@ -30,8 +44,12 @@ proc Collide.CollideSnailAndSomething uses ebx esi edi,\
         mov     edi, [esi + GameObject.collide]
              
         test    edi, GameObject.BLOCK
+        je      @F
+        stdcall Collide.CollideSnailAndBlock, ebx, [side]
+  @@:
+        test    edi, GameObject.ENEMY
         je      .exit
-        stdcall Collide.CollideSnailAndBlock, ebx , [side]
+        stdcall Collide.CollideSnailAndEnemy, ebx, esi
   
   .exit:   
         ret     
