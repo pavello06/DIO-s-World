@@ -64,7 +64,7 @@ proc Statistic.UpdateBorderAndBonus uses ebx
         
         mov     DWORD [Statistic.bonus + Object.width], WORLD_WIDTH * Drawing.SMALL
         mov     DWORD [Statistic.bonus + Object.height], WORLD_HEIGHT * Drawing.SMALL
-        mov     DWORD [Statistic.bonus + MenuObjectWithDrawing.drawing.refTexture], worldTexture       
+        mov     DWORD [Statistic.bonus + GameObjectWithDrawing.drawing.refTexture], worldTexture       
         jmp     .borderAndBonus
 
   .notWorld:
@@ -73,7 +73,7 @@ proc Statistic.UpdateBorderAndBonus uses ebx
         
         mov     DWORD [Statistic.bonus + Object.width], ARROW_WIDTH * Drawing.SMALL
         mov     DWORD [Statistic.bonus + Object.height], ARROW_HEIGHT * Drawing.SMALL        
-        mov     DWORD [Statistic.bonus + MenuObjectWithDrawing.drawing.refTexture], arrowTexture
+        mov     DWORD [Statistic.bonus + GameObjectWithDrawing.drawing.refTexture], arrowTexture
         jmp     .borderAndBonus
 
   .notArrow:
@@ -82,11 +82,11 @@ proc Statistic.UpdateBorderAndBonus uses ebx
         
         mov     DWORD [Statistic.bonus + Object.width], HEART_WIDTH * Drawing.SMALL
         mov     DWORD [Statistic.bonus + Object.height], HEART_HEIGHT * Drawing.SMALL        
-        mov     DWORD [Statistic.bonus + MenuObjectWithDrawing.drawing.refTexture], heartTexture
+        mov     DWORD [Statistic.bonus + GameObjectWithDrawing.drawing.refTexture], heartTexture
         jmp     .borderAndBonus
 
   .notHeart:
-        mov     DWORD [Statistic.bonus + MenuObjectWithDrawing.drawing.refTexture], voidTexture
+        mov     DWORD [Statistic.bonus + GameObjectWithDrawing.drawing.refTexture], voidTexture
   
   .borderAndBonus:
         mov     eax, [Screen.xMin]
