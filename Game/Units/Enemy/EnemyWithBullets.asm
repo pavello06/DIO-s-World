@@ -3,20 +3,21 @@ struct EnemyWithBullets
   refBullets     dd ?
 ends
 
-EnemyWithBullets.MAX_DISTANCE = 2600
-
 proc EnemyWithBullets.CanShoot uses ebx,\
      refEnemyWithBullets
      
         mov     ebx, [refEnemyWithBullets]
         
-        stdcall Enemy.IsPlayerNear, ebx, EnemyWithBullets.MAX_DISTANCE        
+        test    DWORD [ebx + GameObject.collide], GameObject.DEAD_ENEMY
+        jne     .canNotShoot
+                
+        stdcall Screen.IsObjectOnScreen, ebx        
         cmp     eax, FALSE
         je      .canNotShoot
         
         stdcall Bullet.GetActiveBullet, [ebx + EnemyWithBullets.refBullets]       
         cmp     eax, -1
-        je      .canNotShoot
+        je      .canNotShoot 
 
         add     ebx, EnemyWithTimer.timer
         stdcall Timer.IsTimeUp, ebx, [ebx + sizeof.EnemyWithTimer.timer]         

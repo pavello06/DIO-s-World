@@ -18,13 +18,8 @@ proc Enemy.IsPlayerNear\
         mov     ecx, [eax + Object.x]
         sub     ecx, [player + Object.x]
         
-        mov     edx, [distance]
-        
-        cmp     ecx, edx
-        jg      .playerIsNotNear
-        neg     edx
-        cmp     ecx, edx
-        jl      .playerIsNotNear
+        cmp     ecx, [distance]
+        ja      .playerIsNotNear
   
   .playerIsNear:      
         mov     eax, TRUE
