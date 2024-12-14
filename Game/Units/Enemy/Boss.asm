@@ -3,17 +3,19 @@ struct Boss
   henchmen dd ?
 ends
 
-proc Boss.GetDamage\
+proc Boss.GetDamage uses ebx,\
      refBoss
      
-        mov     eax, [refBoss]
+        mov     ebx, [refBoss]
      
-        dec     DWORD [eax + Enemy.health]
+        dec     DWORD [ebx + Enemy.health]
         
-        cmp     DWORD [eax + Enemy.health], 0
+        stdcall String.NumberToString, 3, [ebx + Enemy.health], Level5.nHEALTH + String.string
+        
+        cmp     DWORD [ebx + Enemy.health], 0
         jne     .exit
         
-        stdcall Boss.Die, eax
+        stdcall Boss.Die, ebx
   
   .exit:   
         ret     

@@ -1,12 +1,21 @@
 BufferLevel5:
-dd BufferLevel5Length / 4 - 1             
-
+dd BufferLevel5Length / 4 - 1
+             
 .delete GameObject\
 <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
            
 .stone1 GameObjectWithDrawing\
-<<Object.GAME, STONE_WIDTH * Drawing.NORMAL / 2, 0, 31 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, STONE_WIDTH * Drawing.NORMAL / 2, 0, 9 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone1_1 GameObjectWithDrawing\
+<<Object.GAME, (29 * STONE_WIDTH - 6) * Drawing.NORMAL / 2, 0, 31 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.water1 GameObjectWithAnimation\
+<<<Object.GAME, 19 * STONE_WIDTH / 2 * Drawing.NORMAL, 0, 5 * WATER_WIDTH * Drawing.NORMAL, WATER_HEIGHT * Drawing.NORMAL>, GameObject.KILL>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, waterTexture>>,\
+<FALSE, 0, 100, 0, waterFrames>
 
 .stone2 GameObjectWithDrawing\
 <<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2, 0, 1 * STONE_WIDTH * Drawing.NORMAL, 11 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -29,7 +38,7 @@ dd BufferLevel5Length / 4 - 1
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
 
 .arrow1 Bonus\
-<<<<Object.GAME, 4 * STONE_WIDTH * Drawing.NORMAL, (5 * STONE_HEIGHT + 5) * Drawing.NORMAL, ARROW_WIDTH * Drawing.SMALL, ARROW_HEIGHT * Drawing.SMALL>, GameObject.BONUS_FOR_PLAYER>,\
+<<<<Object.GAME, (4 * STONE_WIDTH + 3) * Drawing.NORMAL, (5 * STONE_HEIGHT + 5) * Drawing.NORMAL, ARROW_WIDTH * Drawing.SMALL, ARROW_HEIGHT * Drawing.SMALL>, GameObject.BONUS_FOR_PLAYER>,\
 <Drawing.SMALL, Drawing.RIGHT, Drawing.UP, arrowTexture>>,\
 <FALSE, 0, 100, 0, arrowFrames>>,\
 Bonus.ARROW
@@ -55,7 +64,7 @@ TRUE, coreAnimations
 .cores1 dd 2, Level5.core1, Level5.core2
 
 .cannon1 EnemyWithBullets\
-<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 6 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 6 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
 0, 0, 0, 0>,\
@@ -80,7 +89,7 @@ TRUE, coreAnimations
 .cores2 dd 2, Level5.core3, Level5.core4
 
 .cannon2 EnemyWithBullets\
-<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL - 13, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
 0, 0, 0, 0>,\
@@ -89,16 +98,16 @@ TRUE, coreAnimations
 Level5.cores2
 
 .core5 Bullet\
-<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, 40 * Drawing.LITTLE, 5 * Drawing.LITTLE>, GameObject.UNBEATABLE_ENEMY>,\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, 40 * Drawing.LITTLE, 5 * Drawing.LITTLE>, GameObject.KILL>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, laserTexture>>,\
-<TRUE, 0, 100, 0, laserFrames>>,\
+<0, 0, 0, 0, 0>>,\
 FALSE, -10, 0, FALSE>,\
 TRUE, laserAnimations
 
 .cores3 dd 1, Level5.core5
 
 .cannon3 EnemyWithBullets\
-<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
 0, 0, 0, 0>,\
@@ -106,41 +115,43 @@ TRUE, laserAnimations
 0, 7000>,\
 Level5.cores3
 
-.henchmen1 dd 3, Level5.cannon1, Level5.cannon2, Level5.cannon3
+.henchmen1 dd 4, Level5.cannon1, Level5.cannon2, Level5.cannon3, Level5.beeTexture 
 
-.beeTexture GameObjectWithAnimation\
-<<<Object.GAME, 12 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.DECORATION>,\
+.beeTexture Enemy\
+<<<<<Object.GAME, 12 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.DECORATION>,\
 <Drawing.LARGE, Drawing.LEFT, Drawing.UP, beeTexture>>,\
-<FALSE, 0, 100, 0, beeFrames>
+<FALSE, 0, 100, 0, beeFrames>>,\
+TRUE, 0, 0, FALSE>,\
+1, beeAnimations, 0
 
 .bee1 Boss\
 <<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.BOSS>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
 TRUE, 0, 0, FALSE>,\
-100, beeAnimations, 98799>,\
+100, 0, 98799>,\
 .henchmen1
 
 .reverse1 GameObject\
-<Object.GAME, STONE_WIDTH / 2 * Drawing.NORMAL, 700 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, 500 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .reverse2 GameObject\
-<Object.GAME, STONE_WIDTH / 2 * Drawing.NORMAL, -700 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, -530 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .reverse3 GameObject\
-<Object.GAME, (STONE_WIDTH / 2 + 15 * SPIKE_WIDTH) * Drawing.NORMAL, (700 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, (3 * STONE_WIDTH / 2 + 15 * SPIKE_WIDTH) * Drawing.NORMAL, (500 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .reverse4 GameObject\
-<Object.GAME, (STONE_WIDTH / 2 + 1) * Drawing.NORMAL, (-700 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, (3 * STONE_WIDTH / 2 + 15 * SPIKE_WIDTH - 1) * Drawing.NORMAL, (-530 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .spike1 Entity\
-<<<<Object.GAME, STONE_WIDTH / 2 * Drawing.NORMAL, 490 * Drawing.NORMAL, 15 * SPIKE_WIDTH * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
+<<<<Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, 480 * Drawing.NORMAL, (15 * SPIKE_WIDTH) * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spikeTexture>>,\
 <0, 0, 0, 0, 0>>,\
 TRUE, 0, -6, FALSE
 
 .spike2 Entity\
-<<<<Object.GAME, (STONE_WIDTH / 2 + 1) * Drawing.NORMAL, 490 * Drawing.NORMAL - SPIKE_HEIGHT * Drawing.NORMAL, 15 * SPIKE_WIDTH * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
+<<<<Object.GAME, (3 * STONE_WIDTH / 2 + 1) * Drawing.NORMAL, 480 * Drawing.NORMAL - SPIKE_HEIGHT * Drawing.NORMAL, (15 * SPIKE_WIDTH) * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.DOWN, spikeTexture>>,\
 <0, 0, 0, 0, 0>>,\
 TRUE, 0, -6, FALSE
@@ -158,7 +169,7 @@ Bonus.STAR
 Bonus.STAR
 
 .star3 Bonus\
-<<<<Object.GAME, 28 * STONE_WIDTH * Drawing.NORMAL, (2 * STONE_HEIGHT + 5) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<<<<Object.GAME, 4 * STONE_WIDTH * Drawing.NORMAL, (4 * STONE_HEIGHT + 1) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, starTexture>>,\
 <TRUE, 0, 10, 0, starFrames>>,\
 Bonus.STAR 
@@ -171,10 +182,10 @@ Bonus.STAR
 <Object.GAME, (-10 * STONE_WIDTH - 1) * Drawing.NORMAL, (2 * STONE_HEIGHT + COCONUT_WIDTH) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.SPECIAL
 
 .special2 GameObject\
-<Object.GAME, (20 * STONE_WIDTH + COCONUT_WIDTH) * Drawing.NORMAL, (2 * STONE_HEIGHT + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.SPECIAL
+<Object.GAME, (9 * STONE_WIDTH + COCONUT_WIDTH) * Drawing.NORMAL + STONE_WIDTH * Drawing.NORMAL / 2, (2 * STONE_HEIGHT + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.SPECIAL
 
 .special3 GameObject\
-<Object.GAME, (20 * STONE_WIDTH) * Drawing.NORMAL, (-2 * STONE_HEIGHT - COCONUT_WIDTH) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.SPECIAL
+<Object.GAME, (9 * STONE_WIDTH) * Drawing.NORMAL + STONE_WIDTH * Drawing.NORMAL / 2, (-2 * STONE_HEIGHT - COCONUT_WIDTH) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.SPECIAL
 
 .special4 GameObject\
 <Object.GAME, (-10 * STONE_WIDTH - 1 - COCONUT_WIDTH) * Drawing.NORMAL, (-2 * STONE_HEIGHT - 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.SPECIAL
@@ -184,6 +195,14 @@ Bonus.STAR
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, coconutTexture>>,\
 <FALSE, 0, 100, 0, coconutFrames>>,\
 TRUE, 4, 0, FALSE>,\
-1, coconutAnimations, 100  
+1, coconutAnimations, 100
+
+.nHEALTH dd\
+Object.GENERAL, 8 * STONE_WIDTH * Drawing.NORMAL, 10 * STONE_WIDTH * Drawing.NORMAL, 5 * (ZERO_WIDTH + 1) * Drawing.NORMAL - Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL,\
+Level5.nHEALTH1, '1', '0', '0', 0
+
+.nHEALTH1 dd Object.GENERAL, 0, 0, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG, Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture                            
+.nHEALTH2 dd Object.GENERAL, 0, 0, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG, Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture  
+.nHEALTH3 dd Object.GENERAL, 0, 0, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG, Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture             
             
 BufferLevel5Length = $ - BufferLevel5

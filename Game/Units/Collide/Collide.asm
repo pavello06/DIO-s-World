@@ -121,6 +121,11 @@ proc Collide.HandleCollision uses ebx esi edi,\
         mov     esi, [refObject2]
         mov     edi, [ebx + GameObject.collide]
         
+        test    edi, GameObject.DECORATION
+        jne     .exit
+        test    DWORD [esi + GameObject.collide], GameObject.DECORATION
+        jne     .exit  
+        
         test    edi, GameObject.DEAD_PLAYER
         je      .notDeadPlayer
         stdcall Collide.CollideDeadPlayerAndSomething, ebx, esi, [side]

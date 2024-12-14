@@ -25,9 +25,14 @@ proc Timer.IsTimeUp\
      
         invoke	GetTickCount
         
-        mov     ecx, [refTimer] 
+        mov     ecx, [refTimer]
         
-	      sub	    eax, [ecx]
+        mov     edx, [ecx] 
+                
+        cmp     edx, -1
+        je      .TimeIsNotUp
+        
+	      sub	    eax, edx
 	      cmp	    eax, [maxTimer]
 	      jb	    .TimeIsNotUp
         

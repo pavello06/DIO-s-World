@@ -1,9 +1,7 @@
 proc Collide.CollidePlayerBulletAndBlock\
      refBullet
 
-        mov     eax, [refBullet]
-        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
-        stdcall Bullet.Activate, eax
+        stdcall Bullet.Activate, [refBullet]
            
         ret
 endp
@@ -11,8 +9,6 @@ endp
 proc Collide.CollidePlayerBulletAndSnail\
      refBullet, refSnail
 
-        mov     eax, [refBullet]
-        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
         stdcall Bullet.Activate, [refBullet]
         stdcall Snail.GetDamage, [refSnail]
   
@@ -22,8 +18,6 @@ endp
 proc Collide.CollidePlayerBulletAndEnemy\
      refBullet, refEnemy
 
-        mov     eax, [refBullet]
-        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
         stdcall Bullet.Activate, [refBullet]
         stdcall Enemy.GetDamage, [refEnemy]
   
@@ -33,8 +27,6 @@ endp
 proc Collide.CollidePlayerBulletAndUntochableEnemy\
      refBullet, refEnemy
         
-        mov     eax, [refBullet]
-        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
         stdcall Bullet.Activate, [refBullet]
         stdcall Enemy.GetDamage, [refEnemy]
  
@@ -44,9 +36,7 @@ endp
 proc Collide.CollidePlayerBulletAndUnbeatableEnemy\
      refBullet
         
-        mov     eax, [refBullet]
-        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
-        stdcall Bullet.Activate, [refBullet] 
+        stdcall Bullet.Activate, [refBullet]
  
         ret
 endp
@@ -54,9 +44,7 @@ endp
 proc Collide.CollidePlayerBulletAndBoss\
      refBullet, refBoss
         
-        mov     eax, [refBullet]
-        xor     [eax + GameObject.collide], GameObject.PLAYER_BULLET
-        stdcall Bullet.Activate, [refBullet] 
+        stdcall Bullet.Activate, [refBullet]
         stdcall Boss.GetDamage, [refBoss] 
  
         ret

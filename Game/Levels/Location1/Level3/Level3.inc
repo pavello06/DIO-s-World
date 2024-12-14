@@ -869,6 +869,7 @@ Level3.cores
            
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
+                                   playerBullet1, playerBullet2, playerBullet3,\
                                    .delete, .kill, .border1,\
                                    .dirt1, .grass1, .spawn1,\
                                    .dirt2, .grass2, .reverse1, .reverse2, .owl1, .coin1, .luck1, .brick1, .brick2, .brick3, .coin2, .luck2, .coin3, .luck3, .brick4, .brick5, .brick6, .reverse3, .specia1, .specia2, .reverse4, .honey1, .coin4, .coin5, .coin6,\

@@ -846,6 +846,7 @@ Bonus.STAR
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, flowerTexture>            
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
+                                   playerBullet1, playerBullet2, playerBullet3,\
                                    .border1, .border2, .spawn1, .spawn2, .delete, .dirt1, .grass1, .bush1, .palm1, .flower1, .coin1, .coin2, .coin3, .coin4, .palm2, .brick1, .brick2, .heart1, .luck1, .bush2, .shadow1,\
                                    .dirt2, .grass2, .reverse1, .reverse2, .flower2, .owl1,\
                                    .shadow2, .dirt3, .grass3, .palm3, .coin5, .coin6, .coin7, .bottomPipe1, .topPipe1, .reverse3, .reverse4, .bush3, .reverse5, .reverse6, .bottomPipe2, .topPipe2, .venusFlycatcher1, .shadow6,\

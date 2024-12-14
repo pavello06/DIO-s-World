@@ -41,8 +41,8 @@ endp
 proc Bullet.Activate\
      refBullet
      
-        mov     eax, [refBullet]
-     
+        mov     eax, [refBullet]     
+        or      DWORD [eax + GameObject.collide], GameObject.DECORATION
         stdcall Bullet.ActivateOrDeactivate, eax, [eax + Object.x], [eax + Object.y], TRUE
      
         ret
@@ -51,7 +51,11 @@ endp
 proc Bullet.Deactivate\
      refBullet, x, y
      
-        stdcall Bullet.ActivateOrDeactivate, [refBullet], [x], [y], FALSE
+        mov     eax, [refBullet]
+        mov     ecx, GameObject.DECORATION
+        not     ecx
+        and     [eax + GameObject.collide], ecx
+        stdcall Bullet.ActivateOrDeactivate, eax, [x], [y], FALSE
      
         ret
 endp

@@ -995,6 +995,7 @@ TRUE, 8, 0, TRUE>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
+                                   playerBullet1, playerBullet2, playerBullet3,\
                                    .delete, .kill, .border1,\
                                    .dirt1, .grass1, .spawn1, .brick1, .arrow1, .luck1, .blueBlock1, .yellowBlock1, .blueBlock2,\
                                    .dirt2, .grass2, .dirt3, .grass3, .spike1, .dirt4, .grass4, .reverse1, .special1, .special2, .reverse2, .honey1,\

@@ -1184,6 +1184,7 @@ Bonus.COIN
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>          
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
+                                   playerBullet1, playerBullet2, playerBullet3,\
                                    .brickWitBreakTimer0, .delete, .kill, .border1, .border2, .border3, .star1,\
                                    .stone1, .stone2, .stone3, .spawn1,\
                                    .bottomPipe1, .topPipe1, .coin1, .coin2, .bottomPipe2, .topPipe2, .coin3, .coin4, .water1,\
@@ -1310,4 +1311,4 @@ Bonus.COIN
                                    Statistic.wSCORE, Statistic.nSCORE
 .wordsLength                    = $ - .words
 
-level4 Level <TRUE, 0, 0, 0, 0>, 0, 0, 281 * STONE_WIDTH * Drawing.NORMAL, 1300, <228, 228, 156>, <Level4.gameObjects, Level4.gameObjectsWithDrawing, Level4.gameObjectsWithAnimation, Level4.entities, Level4.bricksWithBreakTimer, Level4.enemies, Level4.enemiesWithBullets, Level4.enemiesWithStopTimer, Level4.bullets, Level4.words>, Level4, BufferLevel4
+level4 Level <FALSE, 0, 0, 0, 0>, 0, 0, 281 * STONE_WIDTH * Drawing.NORMAL, 1300, <228, 228, 156>, <Level4.gameObjects, Level4.gameObjectsWithDrawing, Level4.gameObjectsWithAnimation, Level4.entities, Level4.bricksWithBreakTimer, Level4.enemies, Level4.enemiesWithBullets, Level4.enemiesWithStopTimer, Level4.bullets, Level4.words>, Level4, BufferLevel4

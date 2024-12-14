@@ -92,6 +92,7 @@ proc Player.Reset
         mov     DWORD [player.hasArrow], FALSE
         stdcall Timer.Stop, player.worldTimer
         stdcall Timer.Stop, player.invulnerabilityTimer
+        mov     DWORD [player.refAnimations], playerAnimations
         
         mov     [playerBullet1 + Object.x], Object.TRASH_X
         mov     [playerBullet2 + Object.x], Object.TRASH_X
@@ -270,16 +271,18 @@ endp
 proc Player.TimerObject
 
         stdcall Player.ChangeAnimation
-     
-        cmp     DWORD [player.invulnerabilityTimer], -1
-        jne     .invulnerabilityTimeIsNotUp
+        
+        stdcall Timer.IsTimeUp, player.invulnerabilityTimer, [player.maxInvulnerabilityTimer]
+        cmp     eax, FALSE
+        je      .invulnerabilityTimeIsNotUp
         
         stdcall Timer.Stop, player.invulnerabilityTimer
         mov     DWORD [player.refAnimations], playerAnimations 
   
-  .invulnerabilityTimeIsNotUp:
-        cmp     DWORD [player.worldTimer], -1
-        jne     .exit
+  .invulnerabilityTimeIsNotUp:        
+        stdcall Timer.IsTimeUp, player.worldTimer, [player.maxWorldTimer]
+        cmp     eax, FALSE
+        je      .exit
 
         stdcall Timer.Stop, player.worldTimer
         

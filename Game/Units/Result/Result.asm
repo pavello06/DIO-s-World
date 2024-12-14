@@ -9,7 +9,7 @@ proc Result.IsWin
         sub     edx, Player.START_X
         
         cmp     ecx, edx
-        jb      .isNotWin
+        jl      .isNotWin
 
   .isWin:
         mov     eax, TRUE
@@ -52,7 +52,7 @@ proc Result.Win uses ebx
         stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.score], WinMenu.nSCORE + String.string
         stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.bestScore], WinMenu.nBEST + String.string 
         
-        lea     eax, [ebx + Level.levelStatistics.score]
+        lea     eax, [ebx + Level.levelStatistics.stars]
         mov     [WinMenu.star1.refLevelStars], eax
         mov     [WinMenu.star2.refLevelStars], eax
         mov     [WinMenu.star3.refLevelStars], eax
@@ -84,7 +84,7 @@ proc Result.Lose uses ebx
         stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.score], LoseMenu.nSCORE + String.string
         stdcall String.NumberToString, Statistic.N_SCORE_LENGTH, [ebx + Level.levelStatistics.bestScore], LoseMenu.nBEST + String.string 
         
-        lea     eax, [ebx + Level.levelStatistics.score]
+        lea     eax, [ebx + Level.levelStatistics.stars]
         mov     [LoseMenu.star1.refLevelStars], eax
         mov     [LoseMenu.star2.refLevelStars], eax
         mov     [LoseMenu.star3.refLevelStars], eax

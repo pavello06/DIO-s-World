@@ -32,23 +32,26 @@ section '.text' code readable executable
   .exit:
         invoke ShowCursor, TRUE
         
+        stdcall File.WriteLevelStatistics
+        
         invoke  ExitProcess, [windowMessage.wParam]
 
 proc WindowProc uses ebx esi edi,\
      hwnd, wmsg, wparam, lparam
-        cmp     [wmsg], WM_CREATE
+        mov     eax, [wmsg]
+        cmp     eax, WM_CREATE
         je      .wmcreate
-        cmp     [wmsg], WM_DESTROY
+        cmp     eax, WM_DESTROY
         je      .wmdestroy
-        cmp     [wmsg], WM_KEYDOWN
+        cmp     eax, WM_KEYDOWN
         je      .wmkeydown
-        cmp     [wmsg], WM_KEYUP
+        cmp     eax, WM_KEYUP
         je      .wmkeyup
-        cmp     [wmsg], WM_PAINT
+        cmp     eax, WM_PAINT
         je      .wmpaint
-        cmp     [wmsg], WM_SIZE
+        cmp     eax, WM_SIZE
         je      .wmsize
-        cmp     [wmsg], WM_TIMER
+        cmp     eax, WM_TIMER
         je      .wmtimer
         
   .defwndproc:
@@ -78,9 +81,9 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
+        invoke  SetTimer, [hwnd], 1, 25, NULL       
         stdcall File.ReadLevelStatistics       
-        stdcall Menu.Start
-              
+        stdcall Menu.Start             
         xor     eax, eax
         jmp     .exit
         
@@ -90,42 +93,36 @@ proc WindowProc uses ebx esi edi,\
         invoke  ReleaseDC, [hwnd], [hdc]
         invoke  PostQuitMessage, 0
         
-        stdcall File.WriteLevelStatistics
-        
+        invoke  KillTimer, [hwnd], 1                
         xor     eax, eax
         jmp     .exit
         
-  .wmkeydown:
-  
-        stdcall [windowProcFunctions.refKeyDown], [wparam]
-        
+  .wmkeydown:  
+        stdcall [windowProcFunctions.refKeyDown], [wparam]        
+        xor     eax, eax
         jmp     .exit
   
-  .wmkeyup:
-  
-        stdcall [windowProcFunctions.refKeyUp], [wparam]
-        
+  .wmkeyup:  
+        stdcall [windowProcFunctions.refKeyUp], [wparam]        
+        xor     eax, eax
         jmp     .exit
         
-  .wmpaint:
-  
+  .wmpaint:  
         stdcall [windowProcFunctions.refPaint]
         
-        invoke  SwapBuffers, [hdc]
-           
+        invoke  SwapBuffers, [hdc]           
         xor     eax, eax
         jmp     .wmtimer
         
   .wmsize:
         invoke  GetClientRect, [hwnd], rc
-        invoke  glViewport, 0, 0, [rc.right], [rc.bottom]         
-       
+        invoke  glViewport, 0, 0, [rc.right], [rc.bottom]                
         xor     eax, eax
         jmp     .exit
         
-  .wmtimer:
-  
+  .wmtimer: 
         stdcall [windowProcFunctions.refTimer]
+        xor     eax, eax
         
   .exit:
         ret
@@ -151,14 +148,14 @@ include 'Units/Libraries.inc'
 
 section         '.rsrc' resource data readable
  
-  directory     RT_ICON,icons,\
-                RT_GROUP_ICON,group_icons
+  directory     RT_ICON, icons,\
+                RT_GROUP_ICON, group_icons
  
     resource    icons,\
-                1,LANG_NEUTRAL,icon_data
+                1, LANG_NEUTRAL,icon_data
  
     resource    group_icons,\
-                2,LANG_NEUTRAL,main_icon
+                2, LANG_NEUTRAL,main_icon
  
       icon      main_icon,\
-                icon_data,'icon.ico'
+                icon_data, 'icon.ico'
