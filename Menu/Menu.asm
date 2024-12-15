@@ -5,8 +5,14 @@ proc Menu.Start uses ebx
         mov     ebx, [currentMenu]
         
         stdcall Star.TimerObjects, [ebx + Menu.menuObjects.refStars]
-        stdcall String.TimerObjects, [ebx + Menu.menuObjects.refStrings]        
+        stdcall String.TimerObjects, [ebx + Menu.menuObjects.refStrings]
         
+        cmp     ebx, levelsMenu
+        jne     @F       
+  
+        stdcall Lock.TimerObjects, LevelsMenu.locks
+  
+  @@:      
         mov     eax, [ebx + Menu.menuObjects.refButtons]
         add     eax, sizeof.Array.element * 2
         stdcall ActiveButtonElement.ChangeActiveButton, [eax] 
@@ -23,7 +29,7 @@ proc Menu.Paint uses ebx
 
         mov     ebx, [currentMenu]
         
-        stdcall Screen.UpdateForMenu
+        stdcall Screen.UpdateForMenu 
         
         stdcall Drawing.DrawObjects, [ebx + Menu.menuObjects.refMenuObjectsWithDrawing]
         stdcall Animation.AnimateObjects, [ebx + Menu.menuObjects.refMenuObjectsWithAnimation]

@@ -263,6 +263,10 @@ include 'Menu/Decorations/dandelion3.inc'
 include 'Menu/Decorations/dandelion4.inc'
 include 'Menu/Decorations/dandelion5.inc'
 
+include 'Menu/Decorations/lock.inc'
+
+include 'Menu/Decorations/open.inc'
+
 include 'Menu/Decorations/toothless.inc'
 include 'Menu/Decorations/toothless2.inc'
 
