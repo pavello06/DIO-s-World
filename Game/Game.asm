@@ -62,7 +62,7 @@ proc Game.Paint uses ebx
         je      .notWorldTimer
   
   .worldTimer: 
-        push    onlyPlayer
+        push    onlyPlayerTexture
         jmp     @F
         
   .notWorldTimer: 

@@ -72,6 +72,7 @@ GameObject.DECORATION>,\
 <FALSE, 0, 200, 0, standingPlayerFrames>
 
 onlyPlayer dd 1, player
+onlyPlayerTexture dd 1, playerTexture
 
 proc Player.Reset
   
