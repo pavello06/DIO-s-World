@@ -25,12 +25,26 @@ TRUE, Button.Menu, levelsMenu
 .wPLAY3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wPLAY4 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 
+.optionsButton Button\
+<<<Object.MENU, (88- 15)* Drawing.BIG, 35 * Drawing.BIG, 7 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>>,\
+<Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>>,\
+TRUE, Button.Menu, optionsMenu
+                                   
+.wOPTIONS dd Object.MENU, (88- 15) * Drawing.BIG, (35 ) * Drawing.BIG, 7 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wOPTIONS1, 'O', 'P', 'T', 'I', 'O', 'N', 'S', 0           
+.wOPTIONS1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
+.wOPTIONS2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
+.wOPTIONS3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
+.wOPTIONS4 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
+.wOPTIONS5 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
+.wOPTIONS6 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
+.wOPTIONS7 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
+
 .exitButton Button\
-<<<Object.MENU, 88 * Drawing.BIG, 35 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>>,\
+<<<Object.MENU, 88 * Drawing.BIG, 20 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG>>,\
 <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>>,\
 FALSE, Button.Exit, 0
                                    
-.wEXIT dd Object.MENU, 88 * Drawing.BIG, 35 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wEXIT1, 'E', 'X', 'I', 'T', 0            
+.wEXIT dd Object.MENU, 88 * Drawing.BIG, 20 * Drawing.BIG, 4 * (A_WIDTH + 1) * Drawing.BIG - Drawing.BIG, A_HEIGHT * Drawing.BIG, .wEXIT1, 'E', 'X', 'I', 'T', 0            
 .wEXIT1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wEXIT2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>
 .wEXIT3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.BIG, A_HEIGHT * Drawing.BIG>>, <Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture>                              
@@ -97,7 +111,7 @@ FALSE, Button.Exit, 0
 .dandelion2 MenuObjectWithAnimation\
 <<<Object.MENU, 1060, 1 * (DIRT_HEIGHT + GRASS_HEIGHT) * Drawing.NORMAL, 1 * DANDELION_WIDTH * Drawing.NORMAL, 1 * DANDELION_HEIGHT * Drawing.NORMAL>>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, dandelionTexture>>,\
-<FALSE, 0, 200, 0, dandelionFrames>
+<FALSE, 0, 200, 3, dandelionFrames>
 
 .shadow3 MenuObjectWithDrawing\
 <<Object.MENU, 1057, 0, 1 * SHADOW_WIDTH * Drawing.NORMAL, 1 * (DIRT_HEIGHT + GRASS_HEIGHT) * Drawing.NORMAL>>,\
@@ -136,7 +150,7 @@ FALSE, Button.Exit, 0
 .menuObjectsWithDrawing         dd .menuObjectsWithDrawingLength / 4 - 1,\
                                    activeButtonElement1, activeButtonElement2, activeButtonElement3, activeButtonElement4,\
                                    .wDIOS1, .wDIOS2, .wDIOS3, .wDIOS4, .wDIOS5, .wWORLD1, .wWORLD2, .wWORLD3, .wWORLD4, .wWORLD5,\
-                                   .wPLAY1, .wPLAY2, .wPLAY3, .wPLAY4, .wEXIT1, .wEXIT2, .wEXIT3, .wEXIT4,\
+                                   .wPLAY1, .wPLAY2, .wPLAY3, .wPLAY4, .wOPTIONS1, .wOPTIONS2, .wOPTIONS3, .wOPTIONS4, .wOPTIONS5, .wOPTIONS6, .wOPTIONS7, .wEXIT1, .wEXIT2, .wEXIT3, .wEXIT4,\
                                    .dirt1, .grass1, .bush1, .dandelion1, .shadow1, .dirt2, .grass2, .flower1, .palm1, .toothless1, .shadow2, .dirt3, .grass3, .bush2, .dandelion2, .shadow3, .dirt4, .grass4, .flower2, .palm2, .shadow4, .shadow5
 .menuObjectsWithDrawingLength   = $ - .menuObjectsWithDrawing
 
@@ -146,7 +160,7 @@ FALSE, Button.Exit, 0
 .menuObjectsWithAnimationLength = $ - .menuObjectsWithAnimation
 
 .buttons			                  dd .buttonsLength / 4 - 3,\
-                                   0, .playButton, .exitButton, 0
+                                   0, .playButton, .optionsButton, .exitButton, 0
 .buttonsLength			            = $ - .buttons
 
 .stars                          dd .starsLength / 4 - 1
@@ -154,7 +168,7 @@ FALSE, Button.Exit, 0
 .starsLength                    = $ - .stars
 
 .strings                        dd .stringsLength / 4 - 1,\
-                                   .wDIOS, .wWORLD, .wPLAY, .wEXIT
+                                   .wDIOS, .wWORLD, .wPLAY, .wOPTIONS, .wEXIT
 .stringsLength                  = $ - .strings
 
 startMenu Menu <80, 187, 255>, <StartMenu.menuObjects, StartMenu.menuObjectsWithDrawing, StartMenu.menuObjectsWithAnimation, StartMenu.buttons, StartMenu.stars, StartMenu.strings>

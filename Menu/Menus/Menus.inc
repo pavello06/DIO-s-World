@@ -14,6 +14,7 @@ ends
 
 include 'LevelsMenu/LevelsMenu.inc'
 include 'LoseMenu/LoseMenu.inc'
+include 'OptionsMenu/OptionsMenu.inc'
 include 'PauseMenu/PauseMenu.inc'
 include 'StartMenu/StartMenu.inc'
 include 'WinMenu/WinMenu.inc'
