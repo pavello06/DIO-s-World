@@ -24,6 +24,8 @@ proc KeyDown.Move\
         cmp     eax, 'w'
         je      .VKUp
         cmp     eax, 'W'
+        je      .VKUp
+        cmp     eax, VK_SPACE
         jne     .notVKUp
         
   .VKUp:

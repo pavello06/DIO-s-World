@@ -4,19 +4,30 @@ proc KeyUp.Move\
         mov     eax, [key]
         
         cmp     eax, VK_LEFT
-        je      .VKLeftOrVKRight
+        je      .VKLeft
         cmp     eax, 'a'
-        je      .VKLeftOrVKRight
+        je      .VKLeft
         cmp     eax, 'A'
-        je      .VKLeftOrVKRight
+        jne     .notVKLeft
+        
+  .VKLeft:
+        cmp     DWORD [player + Entity.speedX], 0
+        jg      .exit
+                        
+        mov     DWORD [player + Entity.speedX], 0
+  
+  .notVKLeft:      
         cmp     eax, VK_RIGHT
-        je      .VKLeftOrVKRight
+        je      .VKRight
         cmp     eax, 'd'
-        je      .VKLeftOrVKRight
+        je      .VKRight
         cmp     eax, 'D'
         jne     .exit
-        
-  .VKLeftOrVKRight:                
+  
+  .VKRight:      
+        cmp     DWORD [player + Entity.speedX], 0
+        jl      .exit
+                        
         mov     DWORD [player + Entity.speedX], 0   
                          
   .exit:  
