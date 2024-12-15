@@ -35,7 +35,7 @@ Bonus.STAR
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
 
 .spawn1 GameObjectWithDrawing\
-<<Object.GAME, 1 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 1 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .pineapple1 GameObjectWithDrawing\
@@ -958,10 +958,10 @@ Bonus.COIN
 Level4.coin19
 
 .reverse27 GameObject\
-<Object.GAME, 217 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, (217 * STONE_WIDTH - 4) * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .reverse28 GameObject\
-<Object.GAME, (222 * STONE_WIDTH - 1) * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, (223 * STONE_WIDTH - 1) * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .reverse27_1 GameObject\
 <Object.GAME, 213 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
@@ -1189,7 +1189,7 @@ Bonus.COIN
 Bonus.COIN
 
 .spawn2 GameObjectWithDrawing\
-<<Object.GAME, 278 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 278 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .stone35 GameObjectWithDrawing\

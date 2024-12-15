@@ -197,6 +197,15 @@ Bonus.COIN
 <<Object.GAME, 36 * DIRT_WIDTH * Drawing.NORMAL, 10 * DIRT_HEIGHT * Drawing.NORMAL,  7 * GRASS_WIDTH * Drawing.NORMAL, (1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
+.wSAVE dd\
+Object.GENERAL, 37 * DIRT_WIDTH * Drawing.NORMAL, (4 * DIRT_HEIGHT + 2 * GRASS_HEIGHT - 1) * Drawing.NORMAL, 5 * (A_WIDTH + 1) * Drawing.LITTLE - Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE,\
+.wSAVE1, 'S', 'A', 'V', 'E', 0
+
+.wSAVE1 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture                            
+.wSAVE2 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
+.wSAVE3 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
+.wSAVE4 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture 
+
 .shadow5_1 GameObjectWithDrawing\
 <<Object.GAME, (36 * DIRT_WIDTH - 0) * Drawing.NORMAL, 0, Drawing.NORMAL, (10 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
@@ -893,7 +902,7 @@ Level3.cores
 .gameObjectsWithDrawing         dd .gameObjectsWithDrawingLength / 4 - 1,\
                                    .dirt1, .grass1, .shadow1_1, .spawn1, .palm1, .bush1,\
                                    .dirt2, .grass2, .palm2, .bush2, .flower1, .owl1, .coin1, .luck1, .brick1, .brick2, .brick3, .coin2, .luck2, .coin3, .luck3, .brick4, .brick5, .brick6, .honey1, .coin4, .coin5, .coin6,\
-                                   .dirt5, .grass5, .shadow5_1, .shadow5_2, .bigBlock1, .bush5, .palm5, .dirt3, .grass3, .shadow3_1, .shadow1, .palm3, .bush3, .palm4, .dirt4, .grass4, .shadow4_1, .shadow2, .bush4, .owl2, .coin10, .coin11, .coin12, .coin13, .coin7, .coin8, .coin9,\
+                                   .dirt5, .grass5, .shadow5_1, .shadow5_2, .bigBlock1, .wSAVE1, .wSAVE2, .wSAVE3, .wSAVE4, .bush5, .palm5, .dirt3, .grass3, .shadow3_1, .shadow1, .palm3, .bush3, .palm4, .dirt4, .grass4, .shadow4_1, .shadow2, .bush4, .owl2, .coin10, .coin11, .coin12, .coin13, .coin7, .coin8, .coin9,\
                                    .dirt6, .grass6, .shadow6_1, .shadow6_2, .bush6, .honey2,\
                                    .dirt7, .grass7, .shadow7_2, .shadow3, .brick7, .coin14, .luck4, .bush7, .flower2, .bush8, .palm6, .bush9, .owl3,\
                                    .dirt8, .grass8, .shadow8_2, .bush10, .bush11, .palm7, .bee1, .bigBlock2, .star1,\
@@ -973,7 +982,7 @@ Level3.cores
 .bulletsLength                   = $ - .bullets
 
 .words                          dd .wordsLength / 4 - 1,\
-                                   Statistic.wSCORE, Statistic.nSCORE
+                                   Statistic.wSCORE, Statistic.nSCORE, .wSAVE
 .wordsLength                    = $ - .words
 
 level3 Level <FALSE, 0, 0, 0, 0>, 0, 0, 176 * DIRT_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level3.gameObjects, Level3.gameObjectsWithDrawing, Level3.gameObjectsWithAnimation, Level3.entities, Level3.bricksWithBreakTimer, Level3.enemies, Level3.enemiesWithBullets, Level3.enemiesWithStopTimer, Level3.bullets, Level3.words>, Level3, BufferLevel3

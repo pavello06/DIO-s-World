@@ -1231,7 +1231,7 @@ Bonus.COIN
                                    .water3, .brickWitBreakTimer1, .brickWitBreakTimer2, .brickWitBreakTimer3, .brickWitBreakTimer4, .stone16, .stone17, .star2, .stone17_2, .stone17_3, .coin17, .luck5, .pineapple5, .sigma4,\
                                    .water4, .stone18, .water5, .stone19, .brickWitBreakTimer5, .brickWitBreakTimer6, .brickWitBreakTimer7, .arrow1, .stone20, .coconut5, .coconut6,\
                                    .stone21, .web2, .spider2, .water6,\
-                                   .stone22, .venusFlycatcher1, .bottomPipe3, .topPipe3, .sigma5, .bottomPipe4, .topPipe4, .snail2, .bottomPipe5, .topPipe5, .sigma6, .pineapple6,\
+                                   .venusFlycatcher1, .stone22, .bottomPipe3, .topPipe3, .sigma5, .bottomPipe4, .topPipe4, .snail2, .bottomPipe5, .topPipe5, .sigma6, .pineapple6,\
                                    .stone23, .stone24, .spring1, .water7, .bottomPipe6, .topPipe6, .venusFlycatcher2, .bottomPipe7, .topPipe7,\ 
                                    .stone25, .pineapple7, .pineapple8, .sigma7, .core4, .core5, .core6, .cannon2,\
                                    .stone26, .stone27, .web3, .spider3, .pineapple9, .web4, .spider4,\

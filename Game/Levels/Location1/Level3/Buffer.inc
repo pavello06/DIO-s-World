@@ -23,7 +23,7 @@ dd BufferLevel3Length / 4 - 1
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .spawn1 GameObjectWithDrawing\
-<<Object.GAME, 1 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 1 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .palm1 GameObjectWithDrawing\
@@ -198,6 +198,15 @@ Bonus.COIN
 <<Object.GAME, 36 * DIRT_WIDTH * Drawing.NORMAL, 10 * DIRT_HEIGHT * Drawing.NORMAL,  7 * GRASS_WIDTH * Drawing.NORMAL, (1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
 
+.wSAVE dd\
+Object.GENERAL, 37 * DIRT_WIDTH * Drawing.NORMAL, 9 * DIRT_HEIGHT * Drawing.NORMAL, 5 * (A_WIDTH + 1) * Drawing.LITTLE - Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE,\
+Level3.wSAVE1, 'S', 'A', 'V', 'E', 0
+
+.wSAVE1 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture                            
+.wSAVE2 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
+.wSAVE3 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture  
+.wSAVE4 dd Object.GENERAL, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE, Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture 
+
 .shadow5_1 GameObjectWithDrawing\
 <<Object.GAME, (36 * DIRT_WIDTH - 0) * Drawing.NORMAL, 0, Drawing.NORMAL, (10 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
@@ -310,7 +319,7 @@ Bonus.COIN
                                 
 .grass6 GameObjectWithDrawing\
 <<Object.GAME, 45 * DIRT_WIDTH * Drawing.NORMAL, 10 * DIRT_HEIGHT * Drawing.NORMAL,  6 * GRASS_WIDTH * Drawing.NORMAL, (1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.DECORATION>,\
-<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture>
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, grassTexture> 
 
 .shadow6_1 GameObjectWithDrawing\
 <<Object.GAME, (45 * DIRT_WIDTH - 0) * Drawing.NORMAL, 0, Drawing.NORMAL, (10 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -865,7 +874,7 @@ Level3.cores
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, bigBlockTexture>
 
 .spawn2 GameObjectWithDrawing\
-<<Object.GAME, (173 * DIRT_WIDTH + 4) * Drawing.NORMAL, (1 * DIRT_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, (173 * DIRT_WIDTH + 4) * Drawing.NORMAL, (1 * DIRT_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
            
 BufferLevel3Length = $ - BufferLevel3

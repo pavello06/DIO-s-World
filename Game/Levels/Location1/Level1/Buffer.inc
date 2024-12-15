@@ -8,11 +8,11 @@ dd BufferLevel1Length / 4 - 1
 <Object.GAME, 12476, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
 
 .spawn1 GameObjectWithDrawing\
-<<Object.GAME, 24 * Drawing.NORMAL, 49 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 24 * Drawing.NORMAL, 49 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .spawn2 GameObjectWithDrawing\
-<<Object.GAME, 12476 - 35 * Drawing.NORMAL, 97 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 12476 - 35 * Drawing.NORMAL, 97 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .delete GameObject <Object.GAME, 0, -1, 100000, 1>, GameObject.DELETE
@@ -742,7 +742,7 @@ Bonus.COIN
 Level1.coin19
 
 .star2 Bonus\
-<<<<Object.GAME, 2000 * Drawing.NORMAL, 180 * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<<<<Object.GAME, 2010 * Drawing.NORMAL, 180 * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, starTexture>>,\
 <FALSE, 0, 90, 0, starFrames>>,\
 Bonus.STAR
@@ -785,7 +785,7 @@ TRUE, 5, 0, TRUE>,\
 <Object.GAME, 2335 * Drawing.NORMAL, 49 * Drawing.NORMAL, 1 * Drawing.NORMAL, 1 * Drawing.NORMAL>, GameObject.REVERSE
 
 .brick8 GameObjectWithDrawing\
-<<Object.GAME, 2250 * Drawing.NORMAL, 113 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
+<<Object.GAME, 2250 * Drawing.NORMAL, 112 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
 
 .coin20 Bonus\
@@ -795,13 +795,13 @@ TRUE, 5, 0, TRUE>,\
 Bonus.COIN
                               
 .luck6 Luck\
-<<<<Object.GAME, 2266 * Drawing.NORMAL, 113 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
+<<<<Object.GAME, 2266 * Drawing.NORMAL, 112 * Drawing.NORMAL, LUCK_WIDTH * Drawing.NORMAL, LUCK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_LUCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, luckTexture>>,\
 <FALSE, 0, 150, 0, luckFrames>>,\
 Level1.coin12
 
 .brick9 GameObjectWithDrawing\
-<<Object.GAME, 2282 * Drawing.NORMAL, 113 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
+<<Object.GAME, 2282 * Drawing.NORMAL, 112 * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
 ;-------------------------------------------------------------------------------
 .dirt18 GameObjectWithDrawing\

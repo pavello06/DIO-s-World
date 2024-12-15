@@ -26,7 +26,7 @@ dd BufferLevel2Length / 4 - 1
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
 .spawn1 GameObjectWithDrawing\
-<<Object.GAME, 1 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 1 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .palm1 GameObjectWithDrawing\
@@ -991,7 +991,7 @@ TRUE, 8, 0, TRUE>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, bushTexture>
 
 .spawn2 GameObjectWithDrawing\
-<<Object.GAME, 225 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 225 * DIRT_WIDTH * Drawing.NORMAL, (2 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
             
 BufferLevel2Length = $ - BufferLevel2
