@@ -9,7 +9,7 @@ dd BufferLevel5Length / 4 - 1
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
 
 .stone1_1 GameObjectWithDrawing\
-<<Object.GAME, (29 * STONE_WIDTH - 6) * Drawing.NORMAL / 2, 0, 31 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, (29 * STONE_WIDTH - 20) * Drawing.NORMAL / 2, 0, 31 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
 
 .water1 GameObjectWithAnimation\
@@ -18,7 +18,7 @@ dd BufferLevel5Length / 4 - 1
 <FALSE, 0, 100, 0, waterFrames>
 
 .stone2 GameObjectWithDrawing\
-<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2, 0, 1 * STONE_WIDTH * Drawing.NORMAL, 11 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2, 0, 1 * STONE_WIDTH * Drawing.NORMAL, 20 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
 
 .stone3 GameObjectWithDrawing\
@@ -157,25 +157,25 @@ TRUE, 0, -6, FALSE
 TRUE, 0, -6, FALSE
 
 .star1 Bonus\
-<<<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, (2 * STONE_HEIGHT + 5) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<<<<Object.GAME, 17 * STONE_WIDTH * Drawing.NORMAL, (13 * STONE_HEIGHT + 5) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, starTexture>>,\
 <TRUE, 0, 10, 0, starFrames>>,\
 Bonus.STAR
 
 .star2 Bonus\
-<<<<Object.GAME, 27 * STONE_WIDTH * Drawing.NORMAL, (2 * STONE_HEIGHT + 5) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<<<<Object.GAME, 4 * STONE_WIDTH * Drawing.NORMAL, (4 * STONE_HEIGHT + 1) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, starTexture>>,\
 <TRUE, 0, 10, 0, starFrames>>,\
 Bonus.STAR
 
 .star3 Bonus\
-<<<<Object.GAME, 4 * STONE_WIDTH * Drawing.NORMAL, (4 * STONE_HEIGHT + 1) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
+<<<<Object.GAME, 1 * STONE_WIDTH * Drawing.NORMAL, (13 * STONE_HEIGHT + 5) * Drawing.NORMAL, STAR_WIDTH * Drawing.LITTLE, STAR_HEIGHT * Drawing.LITTLE>, GameObject.BONUS_FOR_LEVEL>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, starTexture>>,\
 <TRUE, 0, 10, 0, starFrames>>,\
 Bonus.STAR 
 
 .spawn1 GameObjectWithDrawing\
-<<Object.GAME, 29 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, 29 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, 1 * SPAWN_WIDTH * Drawing.NORMAL, 1 * SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spawnTexture>
 
 .special1 GameObject\
@@ -198,11 +198,145 @@ TRUE, 4, 0, FALSE>,\
 1, coconutAnimations, 100
 
 .nHEALTH dd\
-Object.GENERAL, 8 * STONE_WIDTH * Drawing.NORMAL, 10 * STONE_WIDTH * Drawing.NORMAL, 5 * (ZERO_WIDTH + 1) * Drawing.NORMAL - Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL,\
+Object.GENERAL, 9 * STONE_WIDTH * Drawing.NORMAL, 10 * STONE_WIDTH * Drawing.NORMAL, 5 * (ZERO_WIDTH + 1) * Drawing.NORMAL - Drawing.NORMAL, ZERO_HEIGHT * Drawing.NORMAL,\
 Level5.nHEALTH1, '1', '0', '0', 0
 
 .nHEALTH1 dd Object.GENERAL, 0, 0, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG, Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture                            
 .nHEALTH2 dd Object.GENERAL, 0, 0, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG, Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture  
-.nHEALTH3 dd Object.GENERAL, 0, 0, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG, Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture             
+.nHEALTH3 dd Object.GENERAL, 0, 0, ZERO_WIDTH * Drawing.BIG, ZERO_HEIGHT * Drawing.BIG, Drawing.BIG, Drawing.RIGHT, Drawing.UP, voidTexture 
+
+.stone4 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone5 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 4 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone6 GameObjectWithDrawing\
+<<Object.GAME, 23 * STONE_WIDTH * Drawing.NORMAL, 4 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone7 GameObjectWithDrawing\
+<<Object.GAME, 23 * STONE_WIDTH * Drawing.NORMAL, 6 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone8 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 8 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone9 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 10 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture> 
+
+.stone10 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 11 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone11 GameObjectWithDrawing\
+<<Object.GAME, 23 * STONE_WIDTH * Drawing.NORMAL, 7 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone12 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 13 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone13 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 14 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture> 
+
+.stone14 GameObjectWithDrawing\
+<<Object.GAME, 26 * STONE_WIDTH * Drawing.NORMAL, 15 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone15 GameObjectWithDrawing\
+<<Object.GAME, 24 * STONE_WIDTH * Drawing.NORMAL, 12 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture> 
+
+.stone16 GameObjectWithDrawing\
+<<Object.GAME, 24 * STONE_WIDTH * Drawing.NORMAL, 14 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture> 
+
+.stone17 GameObjectWithDrawing\
+<<Object.GAME, 24 * STONE_WIDTH * Drawing.NORMAL, 15 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone18 GameObjectWithDrawing\
+<<Object.GAME, 24 * STONE_WIDTH * Drawing.NORMAL, 16 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone19 GameObjectWithDrawing\
+<<Object.GAME, 22 * STONE_WIDTH * Drawing.NORMAL, 13 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture> 
+
+.stone20 GameObjectWithDrawing\
+<<Object.GAME, 22 * STONE_WIDTH * Drawing.NORMAL, 15 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture> 
+
+.stone21 GameObjectWithDrawing\
+<<Object.GAME, 22 * STONE_WIDTH * Drawing.NORMAL, 16 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone22 GameObjectWithDrawing\
+<<Object.GAME, 22 * STONE_WIDTH * Drawing.NORMAL, 17 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.core8 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, CORE_WIDTH * Drawing.LITTLE, CORE_HEIGHT * Drawing.LITTLE>, GameObject.UNBEATABLE_ENEMY>,\
+<Drawing.LITTLE, Drawing.LEFT, Drawing.UP, coreTexture>>,\
+<FALSE, 0, 1000, 0, coreFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, coreAnimations
+
+.core9 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, CORE_WIDTH * Drawing.LITTLE, CORE_HEIGHT * Drawing.LITTLE>, GameObject.UNBEATABLE_ENEMY>,\
+<Drawing.LITTLE, Drawing.LEFT, Drawing.UP, coreTexture>>,\
+<FALSE, 0, 1000, 0, coreFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, coreAnimations
+
+.core10 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, CORE_WIDTH * Drawing.LITTLE, CORE_HEIGHT * Drawing.LITTLE>, GameObject.UNBEATABLE_ENEMY>,\
+<Drawing.LITTLE, Drawing.LEFT, Drawing.UP, coreTexture>>,\
+<FALSE, 0, 1000, 0, coreFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, coreAnimations
+
+.core11 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, CORE_WIDTH * Drawing.LITTLE, CORE_HEIGHT * Drawing.LITTLE>, GameObject.UNBEATABLE_ENEMY>,\
+<Drawing.LITTLE, Drawing.LEFT, Drawing.UP, coreTexture>>,\
+<FALSE, 0, 1000, 0, coreFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, coreAnimations
+
+.core12 Bullet\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, CORE_WIDTH * Drawing.LITTLE, CORE_HEIGHT * Drawing.LITTLE>, GameObject.UNBEATABLE_ENEMY>,\
+<Drawing.LITTLE, Drawing.LEFT, Drawing.UP, coreTexture>>,\
+<FALSE, 0, 1000, 0, coreFrames>>,\
+FALSE, 13, 0, FALSE>,\
+TRUE, coreAnimations
+                                              
+.cores4 dd 5, Level5.core8, Level5.core9, Level5.core10, Level5.core11, Level5.core12
+
+.cannon4 EnemyWithBullets\
+<<<<<<<Object.GAME, 2 * STONE_WIDTH * Drawing.NORMAL, 13 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.LEFT, Drawing.UP, cannonTexture>>,\
+<0, 0, 0, 0, 0>>,\
+0, 0, 0, 0>,\
+0, 0, 0>,\
+0, 800>,\
+Level5.cores4
+
+.stone23 GameObjectWithDrawing\
+<<Object.GAME, 16 * STONE_WIDTH * Drawing.NORMAL, 13 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture> 
+
+.stone24 GameObjectWithDrawing\
+<<Object.GAME, 16 * STONE_WIDTH * Drawing.NORMAL, 14 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stone25 GameObjectWithDrawing\
+<<Object.GAME, 16 * STONE_WIDTH * Drawing.NORMAL, 15 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
             
 BufferLevel5Length = $ - BufferLevel5
