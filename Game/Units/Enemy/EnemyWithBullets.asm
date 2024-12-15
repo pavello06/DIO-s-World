@@ -44,7 +44,14 @@ proc EnemyWithBullets.Shoot uses ebx,\
         
         mov     ecx, [ebx + Object.y]
         add     ecx, 24
-        stdcall Bullet.Deactivate, eax, [ebx + Object.x], ecx
+        mov     edx, [ebx + Object.x]
+        cmp     DWORD [ebx + GameObjectWithDrawing.drawing.directionX], Drawing.LEFT
+        jne     @F
+        
+        add     edx, 3 * Drawing.NORMAL
+  
+  @@:       
+        stdcall Bullet.Deactivate, eax, edx, ecx
     
         ret     
 endp

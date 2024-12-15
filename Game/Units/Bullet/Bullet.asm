@@ -89,30 +89,14 @@ proc Bullet.GetActiveBullet\
 endp
 
 proc Bullet.TimerObject\
-     refBullet
-     
-        mov     eax, [refBullet]
+     refBullet 
         
-        mov     ecx, [eax + Object.x]
-        cmp     ecx, [Screen.xMax]
-        jg      .activate
-        
-        add     ecx, [eax + Object.width]
-        cmp     ecx, [Screen.xMin]
-        jl      .activate
-        
-        mov     edx, [eax + Object.y]
-        cmp     edx, [Screen.yMax]
-        jg      .activate
-        
-        add     edx, [eax + Object.height]
-        cmp     edx, [Screen.yMin]
-        jl      .activate
-        
-        jmp     .exit        
+        stdcall Screen.IsObjectOnScreen, [refBullet]       
+        cmp     eax, TRUE
+        je      .exit      
         
   .activate:
-        stdcall Bullet.Activate, eax
+        stdcall Bullet.Activate, [refBullet]
   
   .exit:   
         ret
