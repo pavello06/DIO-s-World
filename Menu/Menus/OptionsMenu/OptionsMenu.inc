@@ -14,10 +14,10 @@ FALSE, Button.Audio, 0
 .wAUDIO5 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * 6, A_HEIGHT * 6>>, <6, Drawing.RIGHT, Drawing.UP, voidTexture>
 
 .wON dd Object.MENU, 175 * Drawing.NORMAL, 145 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.NORMAL - Drawing.NORMAL, A_HEIGHT * Drawing.NORMAL,\
-.wON1, 'O', 'F', 'F', 0            
+.wON1, 'O', 'N', 0, 0            
 .wON1 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE>>, <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 .wON2 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE>>, <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
-.wON3 MenuObjectWithDrawing <<Object.MENU, 0, 0, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE>>, <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
+.wON3 MenuObjectWithDrawing <<Object.MENU, (175) * Drawing.NORMAL + 77, 145 * Drawing.NORMAL, A_WIDTH * Drawing.LITTLE, A_HEIGHT * Drawing.LITTLE>>, <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, voidTexture>                              
 
 .wA dd Object.MENU, 48 * Drawing.NORMAL, 120 * Drawing.NORMAL, 4 * (A_WIDTH + 1) * Drawing.NORMAL - Drawing.NORMAL, A_HEIGHT * Drawing.NORMAL,\
 .wA1, 'A', 0            

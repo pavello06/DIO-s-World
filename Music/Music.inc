@@ -1,3 +1,5 @@
+isMusicOn dd TRUE
+
 mci_open_cmd  db 256 dup (?)
 mci_play_cmd  db 'play sound wait', 0
 mci_close_cmd db 'close sound', 0
@@ -5,6 +7,9 @@ thread_handle rb 4
 
 proc Music.Play uses esi edi,\
      refMusic
+     
+        cmp     DWORD [isMusicOn], FALSE
+        je      .exit
      
         mov     eax, [refMusic]
         
@@ -16,6 +21,7 @@ proc Music.Play uses esi edi,\
         
         invoke  CreateThread, 0, 0, thread_proc, 0, 0, thread_handle
 
+  .exit:
         ret
 endp
 

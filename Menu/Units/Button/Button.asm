@@ -101,6 +101,35 @@ proc Button.Menu\
         ret
 endp
 
+proc Button.Audio\
+     arg
+
+        xor     DWORD [isMusicOn], 1
+        
+        cmp     DWORD [isMusicOn], FALSE
+        je      .off
+
+  .on:
+        mov     DWORD [OptionsMenu.wON + String.string], 'O'
+        mov     DWORD [OptionsMenu.wON + String.string + 4], 'N'
+        mov     DWORD [OptionsMenu.wON + String.string + 8], 0
+        mov     DWORD [OptionsMenu.wON1 + MenuObjectWithDrawing.drawing.refTexture], oTexture
+        mov     DWORD [OptionsMenu.wON2 + MenuObjectWithDrawing.drawing.refTexture], nTexture
+        mov     DWORD [OptionsMenu.wON3 + MenuObjectWithDrawing.drawing.refTexture], voidTexture                       
+        jmp     .exit
+
+  .off:
+        mov     DWORD [OptionsMenu.wON + String.string], 'O'
+        mov     DWORD [OptionsMenu.wON + String.string + 4], 'F'
+        mov     DWORD [OptionsMenu.wON + String.string + 8], 'F'
+        mov     DWORD [OptionsMenu.wON1 + MenuObjectWithDrawing.drawing.refTexture], oTexture
+        mov     DWORD [OptionsMenu.wON2 + MenuObjectWithDrawing.drawing.refTexture], fTexture
+        mov     DWORD [OptionsMenu.wON3 + MenuObjectWithDrawing.drawing.refTexture], fTexture
+  
+  .exit:
+        ret
+endp
+
 proc Button.Exit\
      arg
      
