@@ -36,6 +36,15 @@ proc Collide.CollideSnailAndEnemy uses ebx,\
         ret
 endp
 
+proc Collide.CollideSnailAndKill\
+     refSnail
+
+        stdcall Enemy.Die, [refSnail]    
+
+  .exit:
+        ret
+endp
+
 proc Collide.CollideSnailAndSomething uses ebx esi edi,\
      refEnemy, refObject, side
      
@@ -48,8 +57,12 @@ proc Collide.CollideSnailAndSomething uses ebx esi edi,\
         stdcall Collide.CollideSnailAndBlock, ebx, [side]
   @@:
         test    edi, GameObject.ENEMY
-        je      .exit
+        je      @F
         stdcall Collide.CollideSnailAndEnemy, ebx, esi
+  @@:
+        test    edi, GameObject.KILL
+        je      .exit
+        stdcall Collide.CollideSnailAndKill, ebx
   
   .exit:   
         ret     

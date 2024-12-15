@@ -263,8 +263,9 @@ proc Collide.CollidePlayerAndSnail\
         cmp     DWORD [side], Collide.BOTTOM
         jne     .notBottom
         
+        add     DWORD [player + Object.y], 2
+        mov     DWORD [player + Player.canJump], FALSE
         mov     [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
-        add     [player + Object.y], 10
         
         mov     eax, [refSnail]        
         
