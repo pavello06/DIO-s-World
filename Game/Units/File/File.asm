@@ -1,5 +1,4 @@
 fileName    db 'levelsStatistics.txt', 0
-buffer      dd ?
 fileHandle  dd ?
 
 proc File.ReadAndWriteLevelStatisticsAction uses ebx esi edi,\

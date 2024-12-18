@@ -1,5 +1,6 @@
 proc Collide.CollideDeadPlayerAndDelete
 
+        stdcall Entity.Delete, player
         stdcall Result.Lose
 
         ret

@@ -84,7 +84,7 @@ proc Collide.CollidePlayerAndJump\
         add     ecx, GameObjectWithAnimation.animation
         stdcall Animation.Start, ecx
         
-        stdcall Music.Play, springMusic        
+        stdcall Audio.Start, springMusic        
   
   .exit:   
         ret
@@ -116,7 +116,7 @@ proc Collide.CollidePlayerAndBottomBreak uses ebx,\
         cmp     DWORD [side], Collide.TOP
         jne     .exit
         
-        stdcall Music.Play, brickMusic
+        stdcall Audio.Start, brickMusic
         
         mov     eax, [refObject]
         mov     ecx, [eax + Object.x]

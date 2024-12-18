@@ -46,4 +46,5 @@ library gdi, 'GDI32.DLL',\
          TranslateMessage, 'TranslateMessage'
          
   import winmm,\
-         mciSendString, 'mciSendStringA'
+         mciSendString, 'mciSendStringA',\
+         PlaySound, 'PlaySoundA'

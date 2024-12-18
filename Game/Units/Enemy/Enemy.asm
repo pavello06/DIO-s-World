@@ -66,7 +66,7 @@ endp
 proc Enemy.GetDamage\
      refEnemy
      
-        stdcall Music.Play, mobMusic
+        stdcall Audio.Start, mobMusic
      
         mov     ecx, [refEnemy]
      

@@ -193,7 +193,7 @@ endp
 
 proc Player.Shoot 
      
-        stdcall Music.Play, playerBulletMusic
+        stdcall Audio.Start, playerBulletMusic
      
         stdcall Bullet.GetActiveBullet, [player.refBullets]
         
@@ -230,7 +230,7 @@ proc Player.GetDamage
         jmp     .exit        
         
   .hasNotInvulnerability:        
-        stdcall Music.Play, dyingPlayerMusic
+        stdcall Audio.Start, dyingPlayerMusic
         
         cmp     DWORD [player.worldTimer], -1
         je      .hasNotWorld

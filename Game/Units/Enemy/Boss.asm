@@ -29,6 +29,12 @@ proc Boss.Die\
         mov     eax, [refBoss]
      
         stdcall Array.Iterate, Enemy.Die, [eax + Boss.henchmen]
-     
+        
+        cmp     BYTE [isAudioOn], FALSE
+        je      @F
+        
+        invoke  PlaySound, backgroundMusic, 0, 0x00020000 or 0x0001 or 0x0008
+        
+  @@:     
         ret     
 endp

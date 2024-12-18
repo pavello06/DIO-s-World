@@ -29,7 +29,7 @@ endp
 proc Button.GameStart\
      refScreen
      
-        stdcall Music.Play, buttonMusic
+        stdcall Audio.Start, buttonMusic
 
         mov     eax, [refScreen]
         mov     [currentLevel], eax
@@ -47,7 +47,7 @@ endp
 proc Button.GameRestart\
      refScreen
      
-        stdcall Music.Play, buttonMusic
+        stdcall Audio.Start, buttonMusic
 
         stdcall WindowProcFunctions.ChangeToGame        
         stdcall Game.Start
@@ -58,7 +58,7 @@ endp
 proc Button.GameContinue\
      refScreen
      
-        stdcall Music.Play, buttonMusic
+        stdcall Audio.Start, buttonMusic
 
         stdcall WindowProcFunctions.ChangeToGame
 
@@ -68,7 +68,7 @@ endp
 proc Button.GameNext\
      arg
      
-        stdcall Music.Play, buttonMusic
+        stdcall Audio.Start, buttonMusic
 
         stdcall Levels.GetCurrentLevelInArray
         add     eax, 4
@@ -89,24 +89,25 @@ endp
 proc Button.Menu\
      refScreen
      
-        stdcall Music.Play, buttonMusic
+        stdcall Audio.Start, buttonMusic
 
         stdcall WindowProcFunctions.ChangeToMenu
         
         mov     eax, [refScreen]
         mov     [currentMenu], eax
         
-        stdcall Menu.Start
+        stdcall Menu.Start         
 
+  .exit:
         ret
 endp
 
 proc Button.Audio\
      arg
 
-        xor     DWORD [isMusicOn], 1
+        xor     BYTE [isAudioOn], 1
         
-        cmp     DWORD [isMusicOn], FALSE
+        cmp     BYTE [isAudioOn], FALSE
         je      .off
 
   .on:
@@ -130,9 +131,9 @@ proc Button.Audio\
         ret
 endp
 
-proc Button.Exit\
-     arg
+proc Button.Exit
      
+        pop     eax
         jmp     start.exit
 
         ret

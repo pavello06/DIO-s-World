@@ -17,6 +17,12 @@ proc Menu.Start uses ebx
         add     eax, sizeof.Array.element * 2
         stdcall ActiveButtonElement.ChangeActiveButton, [eax] 
 
+        cmp     DWORD [currentMenu], pauseMenu
+        je      .exit
+
+        invoke  PlaySound, voidMusic, 0, 0x00020000 or 0x0001
+
+  .exit:
         ret
 endp
 

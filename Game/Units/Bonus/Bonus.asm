@@ -15,7 +15,7 @@ Bonus.STAR_SCORE = 400
 proc Bonus.GetCoin\
      refBonus
         
-        stdcall Music.Play, coinMusic 
+        stdcall Audio.Start, coinMusic 
      
         mov     eax, [currentLevel]
         
@@ -29,7 +29,7 @@ endp
 proc Bonus.GetStar\
      refBonus
      
-        stdcall Music.Play, starMusic
+        stdcall Audio.Start, starMusic
      
         mov     eax, [currentLevel] 
         
@@ -44,7 +44,7 @@ endp
 proc Bonus.GetHeart\
      refBonus
      
-        stdcall Music.Play, heartMusic
+        stdcall Audio.Start, heartMusic
         
         mov     [player.hasHeart], TRUE
         
@@ -56,7 +56,7 @@ endp
 proc Bonus.GetArrow\
      refBonus
      
-        stdcall Music.Play, arrowMusic
+        stdcall Audio.Start, arrowMusic
         
         mov     [player.hasArrow], TRUE
         
@@ -68,7 +68,7 @@ endp
 proc Bonus.GetWorld\
      refBonus
      
-        stdcall Music.Play, worldMusic
+        stdcall Audio.Start, worldMusic
      
         stdcall Timer.Start, player.worldTimer
         

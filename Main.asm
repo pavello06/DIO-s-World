@@ -83,7 +83,8 @@ proc WindowProc uses ebx esi edi,\
         
         invoke  SetTimer, [hwnd], 1, 25, NULL       
         stdcall File.ReadLevelStatistics       
-        stdcall Menu.Start             
+        stdcall Menu.Start
+                    
         xor     eax, eax
         jmp     .exit
         
@@ -93,12 +94,12 @@ proc WindowProc uses ebx esi edi,\
         invoke  ReleaseDC, [hwnd], [hdc]
         invoke  PostQuitMessage, 0
         
-        invoke  KillTimer, [hwnd], 1                
+        invoke  KillTimer, [hwnd], 1               
         xor     eax, eax
         jmp     .exit
         
   .wmkeydown:  
-        stdcall [windowProcFunctions.refKeyDown], [wparam]        
+        stdcall [windowProcFunctions.refKeyDown], [wparam]                
         xor     eax, eax
         jmp     .exit
   
@@ -122,6 +123,7 @@ proc WindowProc uses ebx esi edi,\
         
   .wmtimer: 
         stdcall [windowProcFunctions.refTimer]
+        stdcall Audio.Free
         xor     eax, eax
         
   .exit:
@@ -140,22 +142,22 @@ section '.data' data readable writeable
   hrc dd ?  
   rc  RECT
   
-  timer_id dd 1
+  buffer db 32 dup (0)
 
 section '.idata' import data readable writeable
 
 include 'Units/Libraries.inc'
 
-section         '.rsrc' resource data readable
+section '.rsrc' resource data readable
  
-  directory     RT_ICON, icons,\
-                RT_GROUP_ICON, group_icons
+  directory RT_ICON, icons,\
+            RT_GROUP_ICON, group_icons
  
-    resource    icons,\
-                1, LANG_NEUTRAL,icon_data
+    resource icons,\
+             1, LANG_NEUTRAL,icon_data
  
-    resource    group_icons,\
-                2, LANG_NEUTRAL,main_icon
+    resource group_icons,\
+             2, LANG_NEUTRAL,main_icon
  
-      icon      main_icon,\
-                icon_data, 'icon.ico'
+      icon main_icon,\
+           icon_data, 'icon.ico'

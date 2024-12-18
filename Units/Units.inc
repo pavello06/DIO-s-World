@@ -4,6 +4,7 @@ include 'Object.asm'
 
 include 'Animation/Animation.asm'
 include 'Array/Array.asm'
+include 'Audio/Audio.asm'
 include 'Color/Color.asm'
 include 'Drawing/Drawing.asm'
 include 'Normalize/Normalize.asm'

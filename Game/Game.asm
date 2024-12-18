@@ -2,8 +2,21 @@ include 'Units/Units.inc'
 
 proc Game.Start
 
-        stdcall Music.Play, startAndEndMusic
+        stdcall Audio.Start, startMusic
+        
+        cmp     BYTE [isAudioOn], FALSE
+        je      @F
+        
+        cmp     DWORD [currentLevel], level5
+        je      .boss
+        
+        invoke  PlaySound, backgroundMusic, 0, 0x00020000 or 0x0001 or 0x0008
+        jmp     @F
+        
+  .boss:
+        invoke  PlaySound, bossMusic, 0, 0x00020000 or 0x0001 or 0x0008
 
+  @@:
         stdcall Levels.CopyFromBuffer
         stdcall Player.Reset
         stdcall Statistic.Reset
@@ -12,7 +25,7 @@ proc Game.Start
 endp
 
 proc Game.Timer uses ebx
-        
+       
         mov     ebx, [currentLevel]
         
         cmp     DWORD [player.worldTimer], -1
@@ -76,7 +89,7 @@ endp
 
 proc Game.KeyDown uses ebx,\
      key
-     
+        
         mov     ebx, [key]
         
         stdcall KeyDown.Move, ebx
@@ -87,7 +100,7 @@ endp
 
 proc Game.KeyUp uses ebx,\
      key
-     
+
         mov     ebx, [key]
         
         stdcall KeyUp.Move, ebx

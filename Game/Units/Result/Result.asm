@@ -24,7 +24,7 @@ endp
 
 proc Result.Win uses ebx
 
-        stdcall Music.Play, winMusic
+        stdcall Audio.Start, winMusic
 
         mov     ebx, [currentLevel]
         
@@ -74,7 +74,7 @@ endp
 
 proc Result.Lose uses ebx
 
-        stdcall Music.Play, loseMusic
+        stdcall Audio.Start, loseMusic
 
         mov     [currentMenu], loseMenu  
         stdcall WindowProcFunctions.ChangeToMenu
