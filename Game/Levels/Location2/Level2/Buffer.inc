@@ -89,7 +89,7 @@ TRUE, coreAnimations
 .cores2 dd 2, Level5.core3, Level5.core4
 
 .cannon2 EnemyWithBullets\
-<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL - 13, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL - 16, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
 0, 0, 0, 0>,\
@@ -98,7 +98,7 @@ TRUE, coreAnimations
 Level5.cores2
 
 .core5 Bullet\
-<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, 40 * Drawing.LITTLE, 5 * Drawing.LITTLE>, GameObject.KILL>,\
+<<<<<Object.GAME, Object.TRASH_X, Object.TRASH_Y, 40 * Drawing.LITTLE, 5 * Drawing.LITTLE>, GameObject.UNBEATABLE_ENEMY>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, laserTexture>>,\
 <0, 0, 0, 0, 0>>,\
 FALSE, -10, 0, FALSE>,\
