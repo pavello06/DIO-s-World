@@ -82,7 +82,7 @@ proc Collide.GetCollisionSide uses ebx esi,\
 
   @@:              
         cmp     edx, ebx
-        jg      .vertical
+        jge     .vertical
 
   .horizontal:
         mov     edx, [eax + Object.x]

@@ -3,7 +3,7 @@ struct Screen
   speedY dd ?
 ends
 
-Screen.SPEED_Y   = 10
+Screen.SPEED_Y   = 12
 Screen.MAX_TIMER = 17
 Screen.timer     dd 0
 

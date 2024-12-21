@@ -67,7 +67,7 @@ TRUE, coreAnimations
 <<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 6 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-0, 0, 0, 0>,\
+TRUE, 5, 0, FALSE>,\
 0, 0, 0>,\
 2500, 2800>,\
 Level5.cores1
@@ -89,10 +89,10 @@ TRUE, coreAnimations
 .cores2 dd 2, Level5.core3, Level5.core4
 
 .cannon2 EnemyWithBullets\
-<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL - 16, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
+<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL - 15, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-0, 0, 0, 0>,\
+TRUE, 5, 0, FALSE>,\
 0, 0, 0>,\
 5000, 3200>,\
 Level5.cores2
@@ -110,7 +110,7 @@ TRUE, laserAnimations
 <<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-0, 0, 0, 0>,\
+TRUE, 5, 0, FALSE>,\
 0, 0, 0>,\
 0, 7000>,\
 Level5.cores3
@@ -124,13 +124,20 @@ Level5.cores3
 TRUE, 0, 0, FALSE>,\
 1, beeAnimations, 0
 
+.reverse11 GameObject\
+<Object.GAME, (3 * STONE_WIDTH / 2 + 16 * SPIKE_WIDTH + 1) * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse12 GameObject\
+<Object.GAME, (23 * STONE_WIDTH - 5) * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE + GameObject.SPECIAL
+
 .bee1 Boss\
-<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.BOSS>,\
+<<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.BOSS + GameObject.REVERSEABLE_ENEMY + GameObject.STOPABLE_ENEMY>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-TRUE, 0, 0, FALSE>,\
+TRUE, 12, 0, FALSE>,\
 100, 0, 98799>,\
-.henchmen1
+0, 12000>>,\
+Level5.henchmen1, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL
 
 .reverse1 GameObject\
 <Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, 500 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
@@ -139,19 +146,19 @@ TRUE, 0, 0, FALSE>,\
 <Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, -530 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .reverse3 GameObject\
-<Object.GAME, (3 * STONE_WIDTH / 2 + 15 * SPIKE_WIDTH) * Drawing.NORMAL, (500 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, (3 * STONE_WIDTH / 2 + 16 * SPIKE_WIDTH) * Drawing.NORMAL, (500 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .reverse4 GameObject\
-<Object.GAME, (3 * STONE_WIDTH / 2 + 15 * SPIKE_WIDTH - 1) * Drawing.NORMAL, (-530 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+<Object.GAME, (3 * STONE_WIDTH / 2 + 16 * SPIKE_WIDTH - 1) * Drawing.NORMAL, (-530 - SPIKE_HEIGHT) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .spike1 Entity\
-<<<<Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, 480 * Drawing.NORMAL, (15 * SPIKE_WIDTH) * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
+<<<<Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, 480 * Drawing.NORMAL, (16 * SPIKE_WIDTH) * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, spikeTexture>>,\
 <0, 0, 0, 0, 0>>,\
 TRUE, 0, -6, FALSE
 
 .spike2 Entity\
-<<<<Object.GAME, (3 * STONE_WIDTH / 2 + 1) * Drawing.NORMAL, 480 * Drawing.NORMAL - SPIKE_HEIGHT * Drawing.NORMAL, (15 * SPIKE_WIDTH) * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
+<<<<Object.GAME, (3 * STONE_WIDTH / 2 + 1) * Drawing.NORMAL, 480 * Drawing.NORMAL - SPIKE_HEIGHT * Drawing.NORMAL, (16 * SPIKE_WIDTH) * Drawing.NORMAL, SPIKE_HEIGHT * Drawing.NORMAL>, GameObject.REVERSEABLE_ENEMY + GameObject.UNBEATABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.DOWN, spikeTexture>>,\
 <0, 0, 0, 0, 0>>,\
 TRUE, 0, -6, FALSE

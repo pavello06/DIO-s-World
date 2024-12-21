@@ -81,7 +81,7 @@ proc WindowProc uses ebx esi edi,\
         invoke  wglMakeCurrent, [hdc], [hrc]
         invoke  GetClientRect, [hwnd], rc
         
-        invoke  SetTimer, [hwnd], 1, 25, NULL       
+        invoke  SetTimer, [hwnd], 1, 1000, NULL      
         stdcall File.ReadLevelStatistics       
         stdcall Menu.Start
                     

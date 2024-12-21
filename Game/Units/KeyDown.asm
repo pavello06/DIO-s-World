@@ -68,6 +68,6 @@ proc KeyDown.Pause\
         stdcall Button.Menu, pauseMenu
         mov     DWORD [player + Entity.speedX], 0
   
-  .exit:        
+  .exit:            
         ret
 endp

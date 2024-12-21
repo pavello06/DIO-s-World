@@ -2,10 +2,10 @@ BufferLevel1:
 dd BufferLevel1Length / 4 - 1             
 
 .border1 GameObject\
-<Object.GAME, -1, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
+<Object.GAME, -1, 0, Drawing.NORMAL, 1000 * Drawing.NORMAL>, GameObject.BLOCK
 
 .border2 GameObject\
-<Object.GAME, 12476, 0, Drawing.NORMAL, 100 * Drawing.NORMAL>, GameObject.BLOCK
+<Object.GAME, 12476, 0, Drawing.NORMAL, 1000 * Drawing.NORMAL>, GameObject.BLOCK
 
 .spawn1 GameObjectWithDrawing\
 <<Object.GAME, 24 * Drawing.NORMAL, 49 * Drawing.NORMAL, SPAWN_WIDTH * Drawing.NORMAL, SPAWN_HEIGHT * Drawing.NORMAL>, GameObject.TOP_BLOCK>,\

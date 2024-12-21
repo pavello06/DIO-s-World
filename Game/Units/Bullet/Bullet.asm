@@ -88,14 +88,19 @@ proc Bullet.GetActiveBullet\
         ret
 endp
 
-proc Bullet.TimerObject\
+proc Bullet.TimerObject uses ebx,\
      refBullet 
         
-        stdcall Screen.IsObjectOnScreen, [refBullet]       
+        mov     ebx, [refBullet] 
+        
+        stdcall Screen.IsObjectOnScreen, ebx      
         cmp     eax, TRUE
+        je      .exit
+        
+        cmp     DWORD [ebx + Bullet.isActive], TRUE
         je      .exit      
         
-  .activate:
+  .activate:        
         stdcall Bullet.Activate, [refBullet]
   
   .exit:   

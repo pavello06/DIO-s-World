@@ -20,15 +20,15 @@ FALSE, 0, 120, 0, venusFlycatcherFrames
 
 ;Player-------------------------------------------------------------------------
 invulnerablePlayerAnimations dd\
-FALSE, 0, 200, 0, invulnerableStandingPlayerFrames,\
-FALSE, 0, 200, 0, invulnerableRunningPlayerFrames,\
-FALSE, 0, 200, 0, invulnerableUpJumpingPlayerFrames,\
-FALSE, 0, 200, 0, invulnerableDownJumpingPlayerFrames,\
-FALSE, 0, 200, 0, invulnerableDyingPlayerFrames
+FALSE, 0, 180, 0, invulnerableStandingPlayerFrames,\
+FALSE, 0, 180, 0, invulnerableRunningPlayerFrames,\
+FALSE, 0, 180, 0, invulnerableUpJumpingPlayerFrames,\
+FALSE, 0, 180, 0, invulnerableDownJumpingPlayerFrames,\
+FALSE, 0, 180, 0, dyingPlayerFrames
 
 playerAnimations dd\
-FALSE, 0, 200, 0, standingPlayerFrames,\
-FALSE, 0, 100, 0, runningPlayerFrames,\
+FALSE, 0, 180, 0, standingPlayerFrames,\
+FALSE, 0, 80, 0, runningPlayerFrames,\
 TRUE, 0, 0, 0, upJumpingPlayerFrames,\
 TRUE, 0, 0, 0, downJumpingPlayerFrames,\
 TRUE, 0, 0, 0, dyingPlayerFrames

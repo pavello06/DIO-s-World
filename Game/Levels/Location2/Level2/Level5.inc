@@ -66,7 +66,7 @@ TRUE, coreAnimations
 <<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 6 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-0, 0, 0, 0>,\
+TRUE, 0, 0, FALSE>,\
 0, 0, 0>,\
 2500, 2800>,\
 Level5.cores1
@@ -91,7 +91,7 @@ TRUE, coreAnimations
 <<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL - 13, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-0, 0, 0, 0>,\
+TRUE, 0, 0, FALSE>,\
 0, 0, 0>,\
 5000, 3200>,\
 Level5.cores2
@@ -109,7 +109,7 @@ TRUE, laserAnimations
 <<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, CANNON_WIDTH * Drawing.NORMAL, CANNON_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-0, 0, 0, 0>,\
+TRUE, 0, 0, FALSE>,\
 0, 0, 0>,\
 0, 7000>,\
 Level5.cores3
@@ -120,16 +120,23 @@ Level5.cores3
 <<<<<Object.GAME, 12 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.DECORATION>,\
 <Drawing.LARGE, Drawing.LEFT, Drawing.UP, beeTexture>>,\
 <FALSE, 0, 100, 0, beeFrames>>,\
-TRUE, 0, 0, FALSE>,\
+FALSE, 0, 0, FALSE>,\
 1, beeAnimations, 0
 
+.reverse11 GameObject\
+<Object.GAME, 8 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+
+.reverse12 GameObject\
+<Object.GAME, 30 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE + GameObject.SPECIAL
+
 .bee1 Boss\
-<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.BOSS>,\
+<<<<<<<<Object.GAME, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL, BEE_WIDTH * Drawing.LARGE, BEE_HEIGHT * Drawing.LARGE>, GameObject.BOSS + GameObject.REVERSEABLE_ENEMY + GameObject.STOPABLE_ENEMY>,\
 <0, 0, 0, 0>>,\
 <0, 0, 0, 0, 0>>,\
-TRUE, 0, 0, FALSE>,\
-1, 0, 98799>,\
-.henchmen1
+TRUE, 5, 0, FALSE>,\
+100, 0, 98799>,\
+0, 10000>>,\
+.henchmen1, 14 * STONE_WIDTH * Drawing.NORMAL, 5 * STONE_HEIGHT / 2 * Drawing.NORMAL
 
 .reverse1 GameObject\
 <Object.GAME, 3 * STONE_WIDTH / 2 * Drawing.NORMAL, 500 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
@@ -342,7 +349,7 @@ Level5.cores4
 
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
                                    playerBullet1, playerBullet2, playerBullet3,\
-                                   .delete,\
+                                   .delete, .reverse11, .reverse12,\
                                    .stone1, .stone1_1, .water1, .stone2, .stone3, .brick1, .brick2, .brick3, .bee1, .arrow1,\
                                    .core1, .core2, .core3, .core4, .core5, .spike1, .reverse1, .reverse2, .spike2, .reverse3, .reverse4,\
                                    .star1, .star2, .star3, .spawn1,\
@@ -370,7 +377,7 @@ Level5.cores4
 
 .entities                       dd .entitiesLength / 4 - 1,\
                                    player, playerBullet1, playerBullet2, playerBullet3,\
-                                   .bee1, .cannon1, .core1, .core2, .core3, .core4, .core5, .core8, .core9, .core10, .core11, .core12, .cannon2, .cannon3, .spike1, .spike2, .coconut1, .beeTexture 
+                                   .bee1, .core1, .core2, .core3, .core4, .core5, .core8, .core9, .core10, .core11, .core12, .spike1, .spike2, .coconut1, .beeTexture 
 .entitiesLength                 = $ - .entities
 
 .bricksWithBreakTimer           dd .bricksWithBreakTimerLength / 4 - 1
@@ -385,8 +392,8 @@ Level5.cores4
                                    .cannon1, .cannon2, .cannon3, .cannon4
 .enemiesWithBulletsLength       = $ - .enemiesWithBullets
 
-.enemiesWithStopTimer           dd .enemiesWithStopTimerLength / 4 - 1
-
+.enemiesWithStopTimer           dd .enemiesWithStopTimerLength / 4 - 1,\
+                                   .bee1
 .enemiesWithStopTimerLength     = $ - .enemiesWithStopTimer
 
 .bullets                        dd .bulletsLength / 4 - 1,\
@@ -398,4 +405,4 @@ Level5.cores4
                                    Statistic.wSCORE, Statistic.nSCORE, .nHEALTH
 .wordsLength                    = $ - .words
 
-level5 Level <FALSE, 0, 0, 0, 0>, 0, 0, 31 * STONE_WIDTH * Drawing.NORMAL, 1300, <80, 187, 255>, <Level5.gameObjects, Level5.gameObjectsWithDrawing, Level5.gameObjectsWithAnimation, Level5.entities, Level5.bricksWithBreakTimer, Level5.enemies, Level5.enemiesWithBullets, Level5.enemiesWithStopTimer, Level5.bullets, Level5.words>, Level5, BufferLevel5
+level5 Level <FALSE, 0, 0, 0, 0>, 0, 0, 31 * STONE_WIDTH * Drawing.NORMAL, 1300, <228, 228, 156>, <Level5.gameObjects, Level5.gameObjectsWithDrawing, Level5.gameObjectsWithAnimation, Level5.entities, Level5.bricksWithBreakTimer, Level5.enemies, Level5.enemiesWithBullets, Level5.enemiesWithStopTimer, Level5.bullets, Level5.words>, Level5, BufferLevel5

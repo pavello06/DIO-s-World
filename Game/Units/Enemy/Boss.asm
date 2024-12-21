@@ -1,6 +1,8 @@
 struct Boss
-  enemy    Enemy
-  henchmen dd ?
+  enemyWithStopTimer EnemyWithStopTimer 
+  henchmen           dd ?
+  oldX               dd ?
+  oldY               dd ? 
 ends
 
 proc Boss.GetDamage uses ebx,\
@@ -36,5 +38,28 @@ proc Boss.Die\
         invoke  PlaySound, backgroundMusic, 0, 0x00020000 or 0x0001 or 0x0008
         
   @@:     
+        ret     
+endp
+
+proc Boss.TimerObject uses ebx esi,\
+     refBoss
+     
+        mov     eax, [refBoss]
+        mov     edx, [eax + Boss.henchmen]
+        mov     ecx, [edx]
+        add     edx, 4
+        
+  .loop:
+        mov     ebx, [edx]
+        mov     esi, [eax + Object.x]
+        sub     esi, [eax + Boss.oldX]
+        add     [ebx + Object.x], esi
+        mov     esi, [eax + Object.y]
+        sub     esi, [eax + Boss.oldY]
+        add     [ebx + Object.y], esi       
+        
+        add     edx, 4
+        loop    .loop
+         
         ret     
 endp

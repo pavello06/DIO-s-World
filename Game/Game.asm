@@ -27,7 +27,16 @@ endp
 proc Game.Timer uses ebx
        
         mov     ebx, [currentLevel]
+                
+        cmp     ebx, level5
+        jne     @F
+     
+        mov     eax, [Level5.bee1 + Object.x]
+        mov     [Level5.bee1 + Boss.oldX], eax
+        mov     ecx, [Level5.bee1 + Object.y]
+        mov     [Level5.bee1 + Boss.oldY], ecx
         
+  @@: 
         cmp     DWORD [player.worldTimer], -1
         je      .notWorldTimer
         
@@ -47,6 +56,12 @@ proc Game.Timer uses ebx
         stdcall EnemyWithStopTimer.TimerObjects, [ebx + Level.gameObjects.refEnemiesWithStopTimer]
         stdcall Player.TimerObject
         
+        cmp     ebx, level5
+        jne     @F
+        
+        stdcall Boss.TimerObject, Level5.bee1
+        
+  @@:       
         stdcall Result.IsWin
         cmp     eax, FALSE
         je      .notWin

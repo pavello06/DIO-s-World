@@ -1,11 +1,10 @@
 isAudioOn db TRUE
 
-mciOpen       db 256 dup (0)
-mciPlay       db 'play sound', 0
-mciStatus     db 'status sound mode', 0
-mciClose      db 'close sound', 0
+mciOpen   db 256 dup (0)
+mciPlay   db 'play ---- wait', 0
+mciClose  db 'close ----', 0
 
-mciStatusStopped db 'stopped', 0
+count dd 0
 
 audioHandles       dd 8 dup (-1)
 audioHandlesLength = ($ - audioHandles) / 4
@@ -20,6 +19,11 @@ proc Audio.GetMciOpen uses esi edi,\
         
         movzx   ecx, BYTE [eax + 0]
         rep     movsb
+        
+        inc     DWORD [count]
+        
+        sub     edi, 5
+        stdcall String.NumberToString, 4, [count], edi
     
         ret 
 endp
@@ -29,8 +33,8 @@ proc Audio.Start\
      
         cmp     BYTE [isAudioOn], FALSE
         je      .exit
-     
-        stdcall Audio.GetMciOpen, [refAudio]
+        
+        stdcall Audio.GetMciOpen, [refAudio] 
         
         mov     eax, audioHandles
         mov     ecx, audioHandlesLength
@@ -43,36 +47,30 @@ proc Audio.Start\
         loop    .loop
         jmp     .exit
         
-  .createThread:      
-        invoke  CreateThread, 0, 0, Audio.Play, 0, 0, eax
+  .createThread:        
+        invoke  CreateThread, 0, 0, Audio.Play, 0, 0, eax       
 
   .exit:
         ret
 endp
 
-Audio.Play:
-
-        invoke  mciSendString, mciOpen, 0, 0, 0
-        invoke  mciSendString, mciPlay, 0, 0, 0
+proc Audio.Play
     
-  .loop:  
-        invoke  mciSendString, mciStatus, buffer, 32, 0
+        locals
+          number dd ?
+        endl
         
-        lea     esi, [buffer]
-        lea     edi, [mciStatusStopped]
-        
-        mov     ecx, 7
-        repe    cmpsb
-        
-        cmp     ecx, 0
-        je      .close
-        
-        jmp     .loop
-        
-  .close:
+        mov     eax, [count]
+        mov     [number], eax
+    
+        invoke  mciSendString, mciOpen, 0, 0, 0
+        stdcall String.NumberToString, 4, [number], mciPlay + 5
+        invoke  mciSendString, mciPlay, 0, 0, 0
+        stdcall String.NumberToString, 4, [number], mciClose + 6
         invoke  mciSendString, mciClose, 0, 0, 0
 
         ret
+endp
 
 proc Audio.Free uses ebx
 
@@ -84,11 +82,11 @@ proc Audio.Free uses ebx
         cmp     DWORD [ebx], -1
         je      .endLoop
             
-        invoke  WaitForSingleObject, [ebx], 0        
+        invoke  WaitForSingleObject, [ebx], 0       
         cmp     eax, WAIT_TIMEOUT
         je      .endLoop  
 
-        invoke  CloseHandle, [ebx]
+        ;invoke  CloseHandle, [ebx]
         mov     DWORD [ebx], -1
         
   .endLoop:      

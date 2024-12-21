@@ -506,6 +506,10 @@ TRUE, 6, 0, TRUE>,\
 <<Object.GAME, (79 * DIRT_WIDTH - 0) * Drawing.NORMAL, (2 * DIRT_HEIGHT  + 1 * GRASS_HEIGHT - 8) * Drawing.NORMAL, Drawing.NORMAL, (23) * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
 
+.shadow10_2 GameObjectWithDrawing\
+<<Object.GAME, (84 * DIRT_WIDTH - 1) * Drawing.NORMAL, 0, Drawing.NORMAL, (4 * DIRT_HEIGHT + 1) * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, shadowTexture>
+
 .brick8 GameObjectWithDrawing\
 <<Object.GAME, 80 * DIRT_WIDTH * Drawing.NORMAL, (5 * DIRT_HEIGHT + 1 * GRASS_HEIGHT) * Drawing.NORMAL, BRICK_WIDTH * Drawing.NORMAL, BRICK_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK + GameObject.BOTTOM_BREAK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, brickTexture>
@@ -907,7 +911,7 @@ Level3.cores
                                    .dirt7, .grass7, .shadow7_2, .shadow3, .brick7, .coin14, .luck4, .bush7, .flower2, .bush8, .palm6, .bush9, .owl3,\
                                    .dirt8, .grass8, .shadow8_2, .bush10, .bush11, .palm7, .bee1, .bigBlock2, .star1,\
                                    .dirt9, .grass9, .bush12, .owl4,\
-                                   .dirt10, .grass10, .shadow10_1, .brick8, .coin15, .luck5, .brick9, .venusFlycatcher1, .bottomPipe1, .topPipe1,\
+                                   .dirt10, .grass10, .shadow10_1, .shadow10_2, .brick8, .coin15, .luck5, .brick9, .venusFlycatcher1, .bottomPipe1, .topPipe1,\
                                    .dirt11, .grass11, .shadow11_1, .flower3, .palm9, .bush13, .honey4, .owl5,\
                                    .dirt12, .grass12, .shadow12_1, .flower4, .palm10,\
                                    .dirt13, .grass13, .shadow13_1, .shadow13_2, .bush14,\
