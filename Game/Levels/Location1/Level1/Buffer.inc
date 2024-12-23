@@ -240,11 +240,11 @@ dd BufferLevel1Length / 4 - 1
 .palm7 GameObjectWithDrawing <<Object.GAME, 1027 * Drawing.NORMAL, 49 * Drawing.NORMAL, PALM_WIDTH * Drawing.NORMAL, PALM_HEIGHT * Drawing.NORMAL>, GameObject.DECORATION>,\
 			     <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, palmTexture>
 
-.reverse7 GameObject <Object.GAME, 1007 * Drawing.NORMAL, 89 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE      
+.reverse7 GameObject <Object.GAME, 1007 * Drawing.NORMAL, 90 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE      
 
-.reverse8 GameObject <Object.GAME, 1107 * Drawing.NORMAL, 89 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
+.reverse8 GameObject <Object.GAME, 1107 * Drawing.NORMAL, 90 * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
                              
-.bee1 Enemy <<<<<Object.GAME, 1047 * Drawing.NORMAL, 89 * Drawing.NORMAL, BEE_WIDTH * Drawing.NORMAL, BEE_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.REVERSEABLE_ENEMY>,\
+.bee1 Enemy <<<<<Object.GAME, 1047 * Drawing.NORMAL, 90 * Drawing.NORMAL, BEE_WIDTH * Drawing.NORMAL, BEE_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.REVERSEABLE_ENEMY>,\
 	    <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, beeTexture>>,\
             <FALSE, 0, 100, 0, beeFrames>>,\
             TRUE, 4, 0, FALSE>,\

@@ -17,8 +17,16 @@ Level5:
 <FALSE, 0, 100, 0, waterFrames>
 
 .stone2 GameObjectWithDrawing\
-<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2, 0, 1 * STONE_WIDTH * Drawing.NORMAL, 20 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2, 0, 1 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stoneq GameObjectWithDrawing\
+<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2 - Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, oldBrickTexture>
+
+.stonew GameObjectWithDrawing\
+<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2 - Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 17 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, oldBrickTexture>
 
 .stone3 GameObjectWithDrawing\
 <<Object.GAME, STONE_WIDTH * Drawing.NORMAL / 2, 10 * STONE_HEIGHT * Drawing.NORMAL, 19 * STONE_WIDTH * Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
@@ -350,7 +358,7 @@ Level5.cores4
 .gameObjects                    dd .gameObjectsLength / 4 - 1,\
                                    playerBullet1, playerBullet2, playerBullet3,\
                                    .delete, .reverse11, .reverse12,\
-                                   .stone1, .stone1_1, .water1, .stone2, .stone3, .brick1, .brick2, .brick3, .bee1, .arrow1,\
+                                   .stone1, .stone1_1, .water1, .stone2, .stoneq, .stonew, .stone3, .brick1, .brick2, .brick3, .bee1, .arrow1,\
                                    .core1, .core2, .core3, .core4, .core5, .spike1, .reverse1, .reverse2, .spike2, .reverse3, .reverse4,\
                                    .star1, .star2, .star3, .spawn1,\
                                    .special1, .special2, .special3, .special4, .coconut1,\
@@ -360,7 +368,7 @@ Level5.cores4
 .gameObjectsLength              = $ - .gameObjects
 
 .gameObjectsWithDrawing         dd .gameObjectsWithDrawingLength / 4 - 1,\
-                                   .star1, .star2, .stone1, .water1, .stone1_1, .stone2, .stone3, .star3, .brick1, .brick2, .brick3, .pineapple1, .beeTexture, .arrow1,\
+                                   .star1, .star2, .stone1, .water1, .stone1_1, .stone2, .stoneq, .stonew, .stone3, .star3, .brick1, .brick2, .brick3, .pineapple1, .beeTexture, .arrow1,\
                                    .core1, .core2, .core3, .core4, .core5, .spike1, .spike2,\
                                    .spawn1, .coconut1, .nHEALTH1, .nHEALTH2, .nHEALTH3,\
                                    .stone10, .stone6, .stone7, .stone8, .stone9, .stone11, .stone12, .stone13, .stone14, .stone15, .stone16, .stone17, .stone18,\

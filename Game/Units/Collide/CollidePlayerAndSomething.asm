@@ -241,7 +241,7 @@ proc Collide.CollidePlayerAndEnemy\
         cmp     DWORD [player + Entity.speedY], -2
         jge     .notBottom
         
-        add     DWORD [player + Object.y], 2
+        stdcall Collide.CollidePlayerAndBlock, [refPlayer], [refEnemy], [side]
         mov     DWORD [player + Player.canJump], FALSE
         mov     DWORD [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
         
@@ -262,8 +262,10 @@ proc Collide.CollidePlayerAndSnail\
 
         cmp     DWORD [side], Collide.BOTTOM
         jne     .notBottom
+        cmp     DWORD [player + Entity.speedY], -2
+        jge     .notBottom
         
-        add     DWORD [player + Object.y], 2
+        stdcall Collide.CollidePlayerAndBlock, [refPlayer], [refSnail], [side]
         mov     DWORD [player + Player.canJump], FALSE
         mov     [player + Entity.speedY], Player.SPEED_Y_AFTER_COLLIDING_WITH_ENEMY
         

@@ -49,7 +49,7 @@ proc Animation.Copy\
         ret
 endp
 
-proc Animation.AnimateObject uses ebx esi,\
+proc Animation.AnimateObject uses ebx,\
      refObjectWithAnimation
      
         mov     ebx, [refObjectWithAnimation]
@@ -58,43 +58,41 @@ proc Animation.AnimateObject uses ebx esi,\
         cmp     eax, FALSE
         je      .exit
         
-        mov     esi, sizeof.GameObject + sizeof.Drawing 
+        mov     ecx, sizeof.GameObject + sizeof.Drawing 
         
         cmp     DWORD [ebx + Object.type], Object.GAME
         je      .gameObject
         
   .menuObject:
-        add     esi, sizeof.MenuObject - sizeof.GameObject
+        add     ecx, sizeof.MenuObject - sizeof.GameObject
   
-  .gameObject:      
-        cmp     DWORD [ebx + esi + Animation.timer], -1
-        je      .exit
-	      
-        lea     eax, [ebx + esi + Animation.timer]
+  .gameObject:
+        add     ebx, ecx
+              
+        lea     eax, [ebx + Animation.timer]
         stdcall Timer.IsTimeUp, eax, [eax + sizeof.Animation.timer]       
         cmp     eax, FALSE
         je      .exit
         
-        mov     eax, [ebx + esi + Animation.currentFrame]
+        mov     eax, [ebx + Animation.currentFrame]
         inc     eax
         
-        mov     ecx, [ebx + esi + Animation.refFrames]
+        mov     ecx, [ebx + Animation.refFrames]
         
         xor     edx, edx
         div     DWORD [ecx + Frames.totalFrames]
         
-        mov     [ebx + esi + Animation.currentFrame], edx
+        mov     [ebx + Animation.currentFrame], edx
                 
         shl     edx, 2
         mov     ecx, [ecx + edx + Frames.refTexture]
-        mov     [ebx + esi - sizeof.Drawing + Drawing.refTexture], ecx
+        mov     [ebx - sizeof.Drawing + Drawing.refTexture], ecx
         
-        cmp     DWORD [ebx + esi + Animation.isFinite], TRUE
+        cmp     DWORD [ebx + Animation.isFinite], TRUE
         jne     .exit
-        cmp     DWORD [ebx + esi + Animation.currentFrame], 0
+        cmp     DWORD [ebx + Animation.currentFrame], 0
         jne     .exit
         
-        add     ebx, esi
         stdcall Animation.Stop, ebx
   
   .exit:            

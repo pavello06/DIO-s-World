@@ -18,7 +18,15 @@ dd BufferLevel5Length / 4 - 1
 <FALSE, 0, 100, 0, waterFrames>
 
 .stone2 GameObjectWithDrawing\
-<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2, 0, 1 * STONE_WIDTH * Drawing.NORMAL, 20 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2, 0, 1 * STONE_WIDTH * Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
+
+.stoneq GameObjectWithDrawing\
+<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2 - Drawing.NORMAL, 2 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 1 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
+<Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, oldBrickTexture>
+
+.stonew GameObjectWithDrawing\
+<<Object.GAME, -STONE_WIDTH * Drawing.NORMAL / 2 - Drawing.NORMAL, 3 * STONE_HEIGHT * Drawing.NORMAL, 1 * STONE_WIDTH * Drawing.NORMAL, 17 * STONE_HEIGHT * Drawing.NORMAL>, GameObject.BLOCK>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, stoneTexture>
 
 .stone3 GameObjectWithDrawing\

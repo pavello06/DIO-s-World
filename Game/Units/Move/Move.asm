@@ -67,8 +67,8 @@ proc Move.MoveEntity uses ebx,\
         sub     DWORD [ebx + Entity.speedY], Move.G
         
   .canNotGravitate:      
-        stdcall Move.MoveEntityCoordinateX, ebx
         stdcall Move.MoveEntityCoordinateY, ebx
+        stdcall Move.MoveEntityCoordinateX, ebx
 
   .exit:     
         ret

@@ -13,7 +13,7 @@ proc Array.Iterate uses ebx esi,\
         cmp     ecx, 0
         je      .exit
         
-        add     esi, sizeof.Array.length
+        add     esi, Array.length + sizeof.Array.length
   
   .loop:
         push    ecx     

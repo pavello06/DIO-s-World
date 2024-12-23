@@ -260,7 +260,7 @@ Level3.wSAVE1, 'S', 'A', 'V', 'E', 0
 <Object.GAME, (38 * DIRT_WIDTH - 1) * Drawing.NORMAL, (4 * DIRT_WIDTH + 2 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
 
 .owl2 EnemyWithStopTimer\
-<<<<<<<Object.GAME, 32 * DIRT_WIDTH * Drawing.NORMAL, (4 * DIRT_WIDTH + 2 * GRASS_WIDTH + 1) * Drawing.NORMAL, OWL_WIDTH * Drawing.NORMAL, OWL_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY>,\
+<<<<<<<Object.GAME, 32 * DIRT_WIDTH * Drawing.NORMAL, (4 * DIRT_WIDTH + 2 * GRASS_WIDTH + 5) * Drawing.NORMAL, OWL_WIDTH * Drawing.NORMAL, OWL_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, owlTexture>>,\
 <FALSE, 0, 100, 0, owlFrames>>,\
 TRUE, 6, 0, TRUE>,\
@@ -349,7 +349,7 @@ Bonus.COIN
 <Object.GAME, 51 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, Drawing.NORMAL, Drawing.NORMAL>, GameObject.REVERSE
  
 .honey2 EnemyWithStopTimer\
-<<<<<<<Object.GAME, 41 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_WIDTH + 1 * GRASS_WIDTH + 1) * Drawing.NORMAL, HONEY_WIDTH * Drawing.NORMAL, HONEY_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.JUMPABLE_ENEMY>,\
+<<<<<<<Object.GAME, 41 * DIRT_WIDTH * Drawing.NORMAL, (10 * DIRT_WIDTH + 1 * GRASS_WIDTH + 5) * Drawing.NORMAL, HONEY_WIDTH * Drawing.NORMAL, HONEY_HEIGHT * Drawing.NORMAL>, GameObject.ENEMY + GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.JUMPABLE_ENEMY>,\
 <Drawing.NORMAL, Drawing.RIGHT, Drawing.UP, honeyTexture>>,\
 <FALSE, 0, 100, 0, honeyFrames>>,\
 TRUE, 8, 0, TRUE>,\
@@ -830,7 +830,7 @@ TRUE, 7, 0, TRUE>,\
 <Object.GAME, (152 * DIRT_WIDTH) * Drawing.NORMAL, 6 *  DIRT_HEIGHT * Drawing.NORMAL, Drawing.NORMAL, 500 * Drawing.NORMAL>, GameObject.REVERSE
 
 .snail2 Snail\
-<<<<<<Object.GAME, 154 * DIRT_WIDTH * Drawing.NORMAL, (6 * DIRT_WIDTH) * Drawing.NORMAL, SNAIL_WIDTH * Drawing.LITTLE, SNAIL_HEIGHT * Drawing.LITTLE>, GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.SNAIL>,\
+<<<<<<Object.GAME, 154 * DIRT_WIDTH * Drawing.NORMAL, (6 * DIRT_WIDTH + 10) * Drawing.NORMAL, SNAIL_WIDTH * Drawing.LITTLE, SNAIL_HEIGHT * Drawing.LITTLE>, GameObject.BLOCKABLE_ENEMY + GameObject.REVERSEABLE_ENEMY + GameObject.SNAIL>,\
 <Drawing.LITTLE, Drawing.RIGHT, Drawing.UP, snailTexture>>,\
 <FALSE, 0, 200, 0, snailFrames>>,\
 TRUE, 7, 0, TRUE>,\

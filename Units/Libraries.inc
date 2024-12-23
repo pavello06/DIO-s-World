@@ -17,7 +17,6 @@ library gdi, 'GDI32.DLL',\
          GetModuleHandle, 'GetModuleHandleA',\
          GetTickCount, 'GetTickCount',\
          ReadFile, 'ReadFile',\
-         Sleep, 'Sleep',\
          WaitForSingleObject, 'WaitForSingleObject',\
          WriteFile, 'WriteFile'
          
