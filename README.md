@@ -12,4 +12,4 @@
   </p>
   <h2>Inspiration</h2>
   <p><a href="https://vseigru.net/igry-mario/37677-igra-mir-super-olivera.html">https://vseigru.net/igry-mario/37677-igra-mir-super-olivera.html</a></p>
-</body>
+</body> 
